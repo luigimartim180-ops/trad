@@ -23,6 +23,7 @@ the ES/EN source text is never regenerated.
 from __future__ import annotations
 
 import csv
+import json
 import re
 import sys
 from pathlib import Path
@@ -34,6 +35,7 @@ OUT_COMPLETA = "revisao_pt_BR_completa.xlsx"
 OUT_REVISAR = "revisao_pt_BR_REVISAR.xlsx"
 OUT_DUVIDAS = "duvidas_PO.xlsx"
 OUT_CSV = "correcoes_backend.csv"
+OUT_DECISOES = "decisoes_revisao.jsonl"
 
 KEY_COLUMNS = ["Clave", "Clave técnica (no editar)", "Código"]
 PT_COLUMNS = ["Traducción PT actual", "Texto PT", "Traducción PT"]
@@ -44,6 +46,14 @@ COL_AVISO = "Aviso"
 COL_PRIORIDADE = "Prioridade"
 INFO_SHEET = "Instrucciones"
 DUVIDAS_SHEET = "Dúvidas"
+
+#: Estado values. ``OK`` = already valid pt-BR (nothing to patch);
+#: ``CORRIGIDO`` = validated pt-BR suggestion, exported to the backend;
+#: ``PENDENTE_PO`` = glossary decision owned by the PO, never auto-converted.
+ESTADO_OK = "OK"
+ESTADO_CORRIGIDO = "CORRIGIDO"
+ESTADO_PENDENTE_PO = "PENDENTE_PO"
+
 DEAD_COLUMNS = [
     "A1_Léxico",
     "A2_Gramática",
@@ -101,16 +111,16 @@ WHITELIST_IGUAL_ES_EN = {
     "valor",
 }
 
-#: Words that are identical to ES but are either wrong in pt-BR or too
-#: ambiguous to close automatically. They stay REVISAR even if a reviewer
-#: mass-closes the "Igual a ES/EN" bucket.
+#: Words that are wrong in pt-BR (Spanish-only or pt-PT spelling). They stay
+#: PENDENTE_PO even if a reviewer mass-closes the "Igual a ES/EN" bucket.
+#: NOTE: "Cancelar", "Transferir", "Compensar" are valid pt-BR and are NOT
+#: listed here, despite being identical to Spanish.
 NOT_OK_IGUAL_ES_EN = {
+    # pt-PT spelling that changes in pt-BR
     "acrónimo",
     "acrónimos",
     "género",
-    "transferir",
-    "guardar",
-    "cancelar",
+    # Spanish-only vocabulary with a different pt-BR term
     "cerrar",
     "borrar",
     "crear",
@@ -119,6 +129,7 @@ NOT_OK_IGUAL_ES_EN = {
     "cupo",
     "habitación",
     "huésped",
+    "guardar",
 }
 
 #: Keys without a translation in the source workbook (kept as-is).
@@ -580,21 +591,25 @@ def _key_value(row: pd.Series, key_col: str | None) -> str:
 
 
 def _resolve_estado(aviso: str, pt: str, converted: str) -> str:
+    """Estado for a row whose pt-BR text is ``converted``.
+
+    Returns ``CORRIGIDO`` when there is a real change to export, ``OK`` when
+    the text is already valid pt-BR, and ``PENDENTE_PO`` when no automatic
+    decision is possible (missing translation / ambiguous warning).
+    """
     aviso_low = (aviso or "").lower()
-    pt_norm = (pt or "").strip().lower()
 
     if "sin traducción" in aviso_low or "sem tradução" in aviso_low:
-        return "REVISAR"
-    if "igual a es" in aviso_low or "igual a en" in aviso_low:
-        if converted != pt:
-            # there is a suggested correction to apply; never drop it
-            return "REVISAR"
-        if _igual_es_en_is_safe(pt):
-            return "OK"
-        return "REVISAR"
+        return ESTADO_PENDENTE_PO
     if not pt.strip():
-        return "REVISAR"
-    return "OK" if converted == pt else "REVISAR"
+        return ESTADO_PENDENTE_PO
+    if converted != pt:
+        return ESTADO_CORRIGIDO
+    if "igual a es" in aviso_low or "igual a en" in aviso_low:
+        if _igual_es_en_is_safe(pt):
+            return ESTADO_OK
+        return ESTADO_PENDENTE_PO
+    return ESTADO_OK
 
 
 #: pt-PT spelling/vocabulary that must never be closed as "already valid
@@ -632,6 +647,40 @@ def _igual_es_en_is_safe(pt: str) -> bool:
     return True
 
 
+def load_decisoes(path: Path | None = None) -> dict[str, str]:
+    """Load pt-BR decisions validated by the review agents.
+
+    File is JSONL, one object per line:
+    ``{"clave": ..., "verdict": "APROVAR"|"CORRIGIR", "pt_br": ..., "motivo": ...}``.
+    ``APROVAR`` keeps the deterministic suggestion; ``CORRIGIR`` replaces it
+    with the agent's ``pt_br``. Missing file -> no overrides.
+    """
+    if path is None:
+        path = Path(__file__).resolve().parent / OUT_DECISOES
+    decisoes: dict[str, str] = {}
+    if not path.exists():
+        return decisoes
+    with open(path, encoding="utf-8") as fh:
+        for line in fh:
+            line = line.strip()
+            if not line:
+                continue
+            record = json.loads(line)
+            clave = record.get("clave")
+            pt_br = _clean(record.get("pt_br"))
+            if clave and pt_br and record.get("verdict") in (
+                "APROVAR",
+                "CORRIGIR",
+            ):
+                decisoes[clave] = pt_br
+    return decisoes
+
+
+#: Filled in ``build()`` from ``decisoes_revisao.jsonl``; empty by default so
+#: unit tests of ``converter``/``process_sheet`` stay deterministic.
+DECISOES: dict[str, str] = {}
+
+
 def _clean(value: object) -> str:
     if value is None or (isinstance(value, float) and pd.isna(value)):
         return ""
@@ -639,9 +688,9 @@ def _clean(value: object) -> str:
 
 
 def _prioridade(estado: str, tem_correcao: bool, e_duvida: bool) -> str:
-    if estado == "OK":
+    if estado == ESTADO_OK:
         return ""
-    if e_duvida:
+    if estado == ESTADO_PENDENTE_PO or e_duvida:
         return "P0 - dúvida PO"
     if not tem_correcao:
         return "P1 - decisão manual"
@@ -668,7 +717,7 @@ def process_sheet(df: pd.DataFrame) -> pd.DataFrame:
         if clave in OK_MANUAL:
             # closed by the reviewer: already-valid pt-BR term, warning is a
             # false positive
-            out.at[idx, COL_ESTADO] = "OK"
+            out.at[idx, COL_ESTADO] = ESTADO_OK
             out.at[idx, COL_CORRECAO] = ""
             out.at[idx, COL_PRIORIDADE] = "Fechado"
             continue
@@ -676,27 +725,32 @@ def process_sheet(df: pd.DataFrame) -> pd.DataFrame:
         if clave in DUVIDAS_KEYS or CORRECOES.get(clave, "") is None:
             # open question for the PO: never auto-converted, listed in
             # duvidas_PO.xlsx for a human decision
-            out.at[idx, COL_ESTADO] = "REVISAR"
+            out.at[idx, COL_ESTADO] = ESTADO_PENDENTE_PO
             out.at[idx, COL_CORRECAO] = ""
-            out.at[idx, COL_PRIORIDADE] = _prioridade("REVISAR", False, True)
+            out.at[idx, COL_PRIORIDADE] = _prioridade(
+                ESTADO_PENDENTE_PO, False, True
+            )
             continue
 
-        if clave in CORRECOES:
+        if clave in DECISOES:
+            # validated by the review agents: accept their pt-BR verbatim
+            converted = DECISOES[clave]
+        elif clave in CORRECOES:
             converted = CORRECOES[clave]
         else:
             converted = converter(texto_pt)
 
         estado = _resolve_estado(aviso, texto_pt, converted)
 
-        if estado == "OK":
+        if estado == ESTADO_OK:
             out.at[idx, COL_CORRECAO] = ""
         else:
             out.at[idx, COL_CORRECAO] = (
                 converted if converted != texto_pt else ""
             )
         out.at[idx, COL_ESTADO] = estado
-        if clave in CORRECOES:
-            # reviewed and closed by the reviewer
+        if clave in CORRECOES or clave in DECISOES:
+            # reviewed and closed by the reviewer / review agents
             out.at[idx, COL_PRIORIDADE] = "Fechado"
         else:
             out.at[idx, COL_PRIORIDADE] = _prioridade(
@@ -770,6 +824,9 @@ def build() -> int:
         print(f"ERRO: {XLSX_IN} não encontrado em {root}", file=sys.stderr)
         return 1
 
+    global DECISOES
+    DECISOES = load_decisoes(root / OUT_DECISOES)
+
     xl = pd.ExcelFile(xlsx_path)
     review_sheets = _review_sheet_names(xl)
     if not review_sheets:
@@ -786,7 +843,7 @@ def build() -> int:
 
     with pd.ExcelWriter(root / OUT_REVISAR) as writer:
         for sheet, df in processed.items():
-            pendentes = df[df[COL_ESTADO] != "OK"]
+            pendentes = df[df[COL_ESTADO] != ESTADO_OK]
             if not pendentes.empty:
                 pendentes.to_excel(writer, sheet_name=sheet[:31], index=False)
 
@@ -794,7 +851,9 @@ def build() -> int:
     duvidas.to_excel(root / OUT_DUVIDAS, index=False)
 
     rows = pd.concat(processed.values(), ignore_index=True)
-    backend = rows[rows[COL_ESTADO] != "OK"]
+    # only validated corrections go to the backend; OK has nothing to patch and
+    # PENDENTE_PO is a glossary decision owned by the PO
+    backend = rows[rows[COL_ESTADO] == ESTADO_CORRIGIDO]
     with open(root / OUT_CSV, "w", newline="", encoding="utf-8") as fh:
         writer = csv.writer(fh, delimiter=";")
         writer.writerow(
@@ -816,18 +875,12 @@ def build() -> int:
 
     contagem = rows[COL_ESTADO].value_counts().to_dict()
     print("Contagem final por estado:")
-    for estado, total in sorted(contagem.items()):
-        print(f"  {estado}: {total}")
+    for estado in (ESTADO_OK, ESTADO_CORRIGIDO, ESTADO_PENDENTE_PO):
+        print(f"  {estado}: {contagem.get(estado, 0)}")
     print(f"Total de linhas: {len(rows)}")
     print(f"Substituições distintas: {len(SUBSTITUICOES)}")
     print(f"Dúvidas (não convertidas): {len(duvidas)}")
-
-    prioridades = (
-        rows[rows[COL_ESTADO] != "OK"][COL_PRIORIDADE].value_counts().to_dict()
-    )
-    print("Prioridades dos pendentes:")
-    for prio, total in sorted(prioridades.items()):
-        print(f"  {prio}: {total}")
+    print(f"Decisões dos agentes aplicadas: {len(DECISOES)}")
     return 0
 
 

@@ -329,15 +329,15 @@ class TestPipeline(unittest.TestCase):
                 or clave in conv.DUVIDAS_KEYS
                 or conv.CORRECOES.get(clave, "") is None
             ):
-                self.assertEqual(row[conv.COL_ESTADO], "REVISAR")
+                self.assertEqual(row[conv.COL_ESTADO], conv.ESTADO_PENDENTE_PO)
                 continue
             converted = conv.CORRECOES.get(clave) or conv.converter(pt)
             if clave in conv.OK_MANUAL or (
                 converted == pt and conv._igual_es_en_is_safe(pt)
             ):
-                self.assertEqual(row[conv.COL_ESTADO], "OK")
+                self.assertEqual(row[conv.COL_ESTADO], conv.ESTADO_OK)
             else:
-                self.assertEqual(row[conv.COL_ESTADO], "REVISAR")
+                self.assertEqual(row[conv.COL_ESTADO], conv.ESTADO_CORRIGIDO)
 
     def test_no_pt_pt_marker_is_closed_as_ok(self) -> None:
         for _, row in self.all_rows.iterrows():
@@ -441,11 +441,11 @@ class TestPipeline(unittest.TestCase):
                 if key not in by_key.index:
                     continue
                 row = by_key.loc[key]
-                self.assertEqual(row[conv.COL_ESTADO], "REVISAR", key)
+                self.assertEqual(row[conv.COL_ESTADO], conv.ESTADO_PENDENTE_PO, key)
                 self.assertEqual(_clean(row[conv.COL_CORRECAO]), "", key)
                 self.assertEqual(row[conv.COL_PRIORIDADE], "P0 - dúvida PO", key)
 
-    def test_revisar_file_contains_only_non_ok(self) -> None:
+    def test_pendentes_file_contains_only_non_ok(self) -> None:
         path = ROOT / conv.OUT_REVISAR
         if not path.exists():
             raise unittest.SkipTest(f"{path} not generated")
@@ -453,10 +453,24 @@ class TestPipeline(unittest.TestCase):
         total = 0
         for name, df in sheets.items():
             self.assertIn(conv.COL_ESTADO, df.columns, name)
-            self.assertTrue((df[conv.COL_ESTADO] != "OK").all(), name)
+            self.assertTrue((df[conv.COL_ESTADO] != conv.ESTADO_OK).all(), name)
             total += len(df)
-        expected = (self.all_rows[conv.COL_ESTADO] != "OK").sum()
+        expected = (self.all_rows[conv.COL_ESTADO] != conv.ESTADO_OK).sum()
         self.assertEqual(total, expected)
+
+    def test_backend_csv_only_corrigido(self) -> None:
+        path = ROOT / conv.OUT_CSV
+        if not path.exists():
+            raise unittest.SkipTest(f"{path} not generated")
+        csv_rows = pd.read_csv(path, sep=";", dtype=str).fillna("")
+        self.assertFalse(csv_rows.empty)
+        self.assertTrue((csv_rows[conv.COL_ESTADO] == conv.ESTADO_CORRIGIDO).all())
+        self.assertTrue((csv_rows[conv.COL_CORRECAO].str.strip() != "").all())
+        expected = (self.all_rows[conv.COL_ESTADO] == conv.ESTADO_CORRIGIDO).sum()
+        self.assertEqual(len(csv_rows), expected)
+
+    def test_no_revisar_state_left(self) -> None:
+        self.assertEqual((self.all_rows[conv.COL_ESTADO] == "REVISAR").sum(), 0)
 
 
 if __name__ == "__main__":
