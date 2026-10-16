@@ -496,6 +496,35 @@ class TestPipeline(unittest.TestCase):
     def test_no_revisar_state_left(self) -> None:
         self.assertEqual((self.all_rows[conv.COL_ESTADO] == "REVISAR").sum(), 0)
 
+    def test_audit_new_rules_connosco_contacte(self) -> None:
+        self.assertEqual(conv.converter("estadia connosco"), "estadia conosco")
+        self.assertEqual(conv.converter("Contacte o administrador"), "Contate o administrador")
+        self.assertEqual(conv.converter("contacte-nos"), "contate-nos")
+        self.assertEqual(conv.converter("contactar-nos"), "contatar-nos")
+
+    def test_audit_new_rules_meal_and_register(self) -> None:
+        self.assertEqual(conv.converter("pequeno-almoço"), "café da manhã")
+        self.assertEqual(conv.converter("alojamento e pequeno-almoço"), "alojamento e café da manhã")
+        self.assertEqual(conv.converter("por se registar"), "por se registrar")
+        self.assertEqual(conv.converter("o pessoal registe"), "o pessoal registre")
+        self.assertEqual(conv.converter("caixa registadora"), "caixa registradora")
+
+    def test_audit_new_rules_default_and_housekeeping(self) -> None:
+        self.assertEqual(conv.converter("valor predefinido"), "valor padrão")
+        self.assertEqual(conv.converter("empresa predefinida"), "empresa padrão")
+        self.assertEqual(conv.converter("valores predefinidos"), "valores padrão")
+        self.assertEqual(conv.converter("Casa de banho"), "Banheiro")
+        self.assertEqual(conv.converter("apelido"), "sobrenome")
+        self.assertEqual(conv.converter("segundo apelido"), "segundo sobrenome")
+
+    def test_transferir_still_kept_in_account_sense(self) -> None:
+        for texto in (
+            "transferir automaticamente um serviço para outro folio",
+            "Transferir dados do usuário",
+            "deseja transferir estes produtos?",
+        ):
+            self.assertIn("transferir", conv.converter(texto).lower())
+
     def test_cli_accepts_custom_output_dir(self) -> None:
         import tempfile
         with tempfile.TemporaryDirectory() as tmp:

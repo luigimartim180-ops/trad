@@ -188,6 +188,14 @@ CORRECOES: dict[str, str | None] = {
     "shared.switch.downloadReservation.message": (
         "Ative esta opção para baixar automaticamente as reservas"
     ),
+    # report generation option: "download now" sense, not an account transfer
+    "apps.report.options.information": (
+        "Selecione como deseja gerar o seu relatório:\n\n"
+        "Baixar agora: obtenha o seu relatório imediatamente.\n\n"
+        "Processar em fila: o seu relatório será adicionado a uma fila de "
+        "processamento e gerado em segundo plano. Será notificado quando "
+        "estiver pronto para baixar."
+    ),
     # AO90 spelling -> Brazilian spelling
     "core.button.transferEntity": "Transferir {{entity}}",
     # refined pt-BR wording (pt-PT residue or idiom fixes in the suggestion)
@@ -328,6 +336,8 @@ SUBSTITUICOES: list[tuple[re.Pattern[str], str]] = [
     _rule("montantes", "valores"),
     _rule("telemóveis", "celulares"),
     _rule("predefinições", "padrões"),
+    _rule("predefinidos", "padrão"),
+    _rule("predefinidas", "padrão"),
     _rule("receções", "recepções"),
     _rule("subscrições", "assinaturas"),
     _rule("faturações", "faturamentos"),
@@ -344,10 +354,36 @@ SUBSTITUICOES: list[tuple[re.Pattern[str], str]] = [
     _rule("actividades", "atividades"),
     _rule("detetados", "detectados"),
     _rule("detetadas", "detectadas"),
+    _rule("casas de banho", "banheiros"),
+    _rule("apelidos", "sobrenomes"),
+    _rule("contactaram", "contataram"),
+    _rule("contactámos", "contatamos"),
     # 3. remaining single verbs / nouns
     _rule("palavra-passe", "senha"),
     _rule("secção", "seção"),
     _rule("contacto", "contato"),
+    _rule("casa de banho", "banheiro"),
+    _rule("apelido", "sobrenome"),
+    _rule("contactar", "contatar"),
+    _rule("contacte", "contate"),
+    _rule("contactem", "contatem"),
+    _rule("contactado", "contatado"),
+    _rule("contactada", "contatada"),
+    _rule("contactável", "contatável"),
+    _rule("connosco", "conosco"),
+    _rule("convosco", "com você"),
+    _rule("pequenos-almoços", "cafés da manhã"),
+    _rule("pequeno-almoço", "café da manhã"),
+    _rule("registe", "registre"),
+    _rule("registem", "registrem"),
+    _rule("registou", "registrou"),
+    _rule("registaram", "registraram"),
+    _rule("registámos", "registramos"),
+    _rule("registando", "registrando"),
+    _rule("registado", "registrado"),
+    _rule("registada", "registrada"),
+    _rule("registadora", "registradora"),
+    _rule("registar", "registrar"),
     # "carregar" -> "enviar" only in the upload sense: followed by a file/media
     # object (optionally with an article) or standing alone as a button label.
     # Pagination ("carregar mais") and load errors ("não foi possível
@@ -373,6 +409,8 @@ SUBSTITUICOES: list[tuple[re.Pattern[str], str]] = [
     # 4. extended glossary
     _rule("morada", "endereço"),
     _rule("predefinição", "padrão"),
+    _rule("predefinido", "padrão"),
+    _rule("predefinida", "padrão"),
     _rule("fecho", "fechamento"),
     _rule("receção", "recepção"),
     _rule("detetada", "detectada"),

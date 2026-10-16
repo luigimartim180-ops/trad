@@ -164,8 +164,31 @@ python3 qa_report.py                 # validações de aceitação (PASS/FAIL)
 
 * `python3 -m unittest test_pt_pt_pt_br` → **OK** (0 falhas).
 * `python3 qa_report.py` → **RESULTADO GLOBAL: PASS ✅**.
+* `python3 auditoria_pt_pt.py` → confirma que **nenhuma** linha (incluindo as
+  `OK`, que nunca foram tocadas) tem resíduo pt-PT.
 * Nenhuma linha `OK` com `Corrección PT` preenchida.
 * Nenhum placeholder corrompido.
+
+### Importante: ordem de execução depois de mudar uma regra
+
+O pipeline tem uma dependência que engana. O `pt_pt_para_pt_br.py` **aplica**
+o `decisoes_revisao.jsonl` (decisões dos agentes) por cima das regras. Se
+acrescentar uma regra e voltar a correr só o pipeline, o ficheiro de decisões
+**antigo** volta a impor as sugestões velhas — parece que a regra não funciona.
+
+Sempre assim, nesta ordem:
+
+```bash
+rm -rf worklists __pycache__ && rm -f decisoes_revisao.jsonl   # 1. limpar estado antigo
+python3 pt_pt_para_pt_br.py                                    # 2. gerar SEM decisões antigas
+python3 auditoria_pt_pt.py                                     # 3. verificar resíduo
+python3 orquestrador.py worklists                              # 4. só agora regenerar decisões
+python3 agentes_runner.py
+python3 orquestrador.py consolidar
+python3 orquestrador.py aplicar                                # 5. reaplicar
+python3 qa_report.py                                           # 6. PASS/FAIL
+python3 -m unittest test_pt_pt_pt_br                           # 7. testes
+```
 
 ---
 
@@ -179,6 +202,7 @@ python3 qa_report.py                 # validações de aceitação (PASS/FAIL)
 | `orquestrador.py` | Worklists, consolidação e aplicação das decisões. |
 | `agentes_runner.py` | Gera as decisões dos agentes em JSONL. |
 | `qa_report.py` | Validações de aceitação e relatório de sign-off. |
+| `auditoria_pt_pt.py` | Auditoria independente de resíduo pt-PT (todas as linhas). |
 | `test_pt_pt_pt_br.py` | Testes unitários com casos reais. |
 | `README.md` | Visão geral técnica do pipeline. |
 

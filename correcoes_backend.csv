@@ -29,12 +29,14 @@ apps.chainContactCategory.action.new;CORRIGIDO;Nova categoria de contato;
 apps.chainInvoiceVoidReasonType.action.new;CORRIGIDO;Novo tipo de motivo de cancelamento de fatura;
 apps.chainPolicy.depositAdditionalSuggestedAmount.info;CORRIGIDO;Indique aqui se deseja configurar um valor ou porcentagem sugerido para o pedido de pagamentos adicionais ao da formalização da reserva.;
 apps.chainPolicy.depositSuggestedAmount.info;CORRIGIDO;"Indique aqui se deseja sugerir um valor para formalizar a reserva; caso não o indique, o valor será sugerido em função dos custos de cancelamento.";
+apps.chainPreference.modal.addCompanyRegistrationFieldCountry.info;CORRIGIDO;Selecione todos os campos necessários para registrar novas empresas originárias do país selecionado;
 apps.chainPreference.profileCompanySequenceType.alphabetic.info;CORRIGIDO;Selecione esta opção se deseja gerar automaticamente os códigos com base no nome da empresa;
 apps.chainPreference.profileCompanySequenceType.alphabetic.option;CORRIGIDO;Acrônimo;
 apps.chainPreference.profileCompanySequenceType.numeric.info;CORRIGIDO;Selecione esta opção se deseja gerar o código com base num número sequencial;
 apps.chainProductPackage.action.delete;CORRIGIDO;Excluir pacote;
 apps.chainPromotion.pageView.property;CORRIGIDO;Grade;
 apps.chainProperty.modal.copy.sections;CORRIGIDO;Selecione as seções que deseja copiar da propriedade selecionada.;
+apps.chainPropertyPreference.guestRegistrationInfo;CORRIGIDO;Selecione todos os campos necessários para registrar um novo hóspede;
 apps.chainPropertyPreference.roomAssignMode;CORRIGIDO;Ative esta opção se deseja definir um modo de atribuição automática de quartos.;
 apps.chainProposalSection.action.new;CORRIGIDO;Nova seção de proposta;
 apps.chainReceptionBookCategory.action.new;CORRIGIDO;Nova categoria de livro de recepção;
@@ -60,6 +62,10 @@ apps.connectionsUserEventsConfiguration.entity.room;CORRIGIDO;Sempre que os usu�
 apps.contact.action.new;CORRIGIDO;Novo contato;
 apps.customer.accountReceivable.createModal.info;CORRIGIDO;Selecione a conta à qual deseja associar.;
 apps.dashboard.action.delete;CORRIGIDO;Excluir painel;
+apps.dashboard.maxDashboard.message;CORRIGIDO;Olá! Atingiu o número máximo de painéis. Contate o seu administrador para atualizar a sua conta;
+apps.dashboard.maxDashboard.success;CORRIGIDO;Contatar;
+apps.dashboard.maxWidget.message;CORRIGIDO;Olá! Atingiu o número máximo de widgets neste painel. Tente criar um novo painel ou contate o seu administrador para resolver a situação;
+apps.dashboard.maxWidget.success;CORRIGIDO;Contatar;
 apps.endOfDay.process.arrivalsNotCheckedIn.description;CORRIGIDO;Escolha se deseja marcar como no-show ou efetuar o check-in de todas as chegadas que não efetuaram o check-in hoje. Em alternativa, pode marcá-las todas como no-show e continuar para o passo seguinte.;
 apps.endOfDay.process.departuresNotCheckedOut.description;CORRIGIDO;Escolha se deseja prolongar por mais 1 dia as reservas que não efetuaram o check-out ou efetuar o check-out uma a uma. Em alternativa, prolongue-as todas por 1 dia e continue o processo de auditoria.;
 apps.endOfDay.process.depositExpected.description;CORRIGIDO;Encontra abaixo os depósitos pendentes de aplicação para as chegadas de hoje, que serão aplicados automaticamente no check-in. Se quiser efetuar esta ação agora, clique o botão para aplicar o depósito desejado.;
@@ -85,26 +91,28 @@ apps.importJob.typeInstructions.ContactCategory;CORRIGIDO;Categoria de contato, 
 apps.importMap.importExcelModal.info;CORRIGIDO;Selecione um arquivo Excel para importar os mapeamentos;
 apps.initialSetup.initialBusinessDate.default;CORRIGIDO;Padrão;
 apps.initialSetup.loadingTestData;CORRIGIDO;"O Ulyses Suite está carregando os dados de demonstração; aguarde alguns minutos para acessar";
+apps.initialSetup.options.default.label;CORRIGIDO;Carregar informação padrão (Recomendado);
 apps.initialSetup.options.default.text;CORRIGIDO;Selecione esta opção para poder começar a utilizar o Ulyses Suite na sua nova propriedade imediatamente. Esta opção carregará informação do nível da rede, mas também criará informação relevante da propriedade, como a caixa, os tipos de fatura, etc.;
 apps.initialSetup.options.external.text;CORRIGIDO;Todos os dados da rede serão criados a partir da origem;
 apps.initialSetup.options.test.text;CORRIGIDO;Selecione esta opção para carregar dados de teste no Ulyses Suite na sua nova propriedade imediatamente.;
-apps.initialSetup.propertySetup.info;CORRIGIDO;"Tipo de propriedade desejado; se selecionar predefinido, terá as opções para ambos os casos.";
+apps.initialSetup.propertySetup.default;CORRIGIDO;Padrão;
+apps.initialSetup.propertySetup.info;CORRIGIDO;"Tipo de propriedade desejado; se selecionar padrão, terá as opções para ambos os casos.";
 apps.initialSetup.userInformation;CORRIGIDO;Informação do usuário;
-apps.initialSetup.welcomeHint;CORRIGIDO;Obrigado por se registar no Ulyses Suite. É agora altura de começar a configurar a sua primeira propriedade. Clique aqui para visitar a nossa Base de Conhecimento e aprender a configurar a sua propriedade, a ligar o Ulyses Suite a outras plataformas e a gerenciar as suas reservas.;
-apps.integration.accounting.companyTab.description;CORRIGIDO;Indique aqui se deseja substituir o valor predefinido por um mapeamento personalizado.;
-apps.integration.accounting.customerTab.description;CORRIGIDO;Indique aqui se deseja substituir o valor predefinido por um mapeamento personalizado.;
+apps.initialSetup.welcomeHint;CORRIGIDO;Obrigado por se registrar no Ulyses Suite. É agora altura de começar a configurar a sua primeira propriedade. Clique aqui para visitar a nossa Base de Conhecimento e aprender a configurar a sua propriedade, a ligar o Ulyses Suite a outras plataformas e a gerenciar as suas reservas.;
+apps.integration.accounting.companyTab.description;CORRIGIDO;Indique aqui se deseja substituir o valor padrão por um mapeamento personalizado.;
+apps.integration.accounting.customerTab.description;CORRIGIDO;Indique aqui se deseja substituir o valor padrão por um mapeamento personalizado.;
 apps.integration.accounting.downloadFile;CORRIGIDO;Baixar arquivos;
-apps.integration.accounting.invoiceTypeTab.description;CORRIGIDO;Indique aqui se deseja substituir o valor predefinido por um mapeamento de tipo de fatura;
-apps.integration.accounting.productTab.description;CORRIGIDO;Indique aqui se deseja substituir o valor predefinido por um mapeamento personalizado;
+apps.integration.accounting.invoiceTypeTab.description;CORRIGIDO;Indique aqui se deseja substituir o valor padrão por um mapeamento de tipo de fatura;
+apps.integration.accounting.productTab.description;CORRIGIDO;Indique aqui se deseja substituir o valor padrão por um mapeamento personalizado;
 apps.integration.accounting.trevenque.check;CORRIGIDO;Tem certeza de que deseja verificar?;
 apps.integration.barcelo.includedElementsDescription;CORRIGIDO;Indique aqui os elementos que deseja incluir;
-apps.integration.bavel.ftp.info;CORRIGIDO;Se deseja enviar extratos de contas a receber para a Bavel por SFTP (Secure FTP), indique as credenciais da Bavel para o efeito. Para as obter, contacte o seu fornecedor de TI ou a Bavel.;
+apps.integration.bavel.ftp.info;CORRIGIDO;Se deseja enviar extratos de contas a receber para a Bavel por SFTP (Secure FTP), indique as credenciais da Bavel para o efeito. Para as obter, contate o seu fornecedor de TI ou a Bavel.;
 apps.integration.bavel.mapping.info;CORRIGIDO;Esta seção destina-se apenas a faturas;
 apps.integration.bavel.webservice.info;CORRIGIDO;Se deseja enviar extratos de contas a receber para a Bavel por Webservice, indique o host, o usuário e a senha.;
-apps.integration.bavel3XML.mappingTab.description;CORRIGIDO;Indique aqui se deseja substituir o valor predefinido por um mapeamento de pagamento;
+apps.integration.bavel3XML.mappingTab.description;CORRIGIDO;Indique aqui se deseja substituir o valor padrão por um mapeamento de pagamento;
 apps.integration.bavel3XML.mappingTab.headers.chainProductCode;CORRIGIDO;Código do produto da rede;
 apps.integration.bavel3XML.mappingTab.headers.chainProductName;CORRIGIDO;Nome do produto da rede;
-apps.integration.bavel3XML.productTab.description;CORRIGIDO;Indique aqui se deseja substituir o valor predefinido por um mapeamento personalizado;
+apps.integration.bavel3XML.productTab.description;CORRIGIDO;Indique aqui se deseja substituir o valor padrão por um mapeamento personalizado;
 apps.integration.description.360sp;CORRIGIDO;Integração com a API da 3ParkOnline para gerenciar reservas de serviços de estacionamento para clientes do hotel.;
 apps.integration.description.a3;CORRIGIDO;Transfira arquivos e carregue-os no sistema de contabilidade A3Con. Poupe tempo e analise dados com esta solução da Wolters Kluwer.;
 apps.integration.description.acibi;CORRIGIDO;Potencie a estratégia do seu hotel com a nossa integração ACI BI: analise projeções, tendências de pickup e produção em tempo real. Acesse a informação precisa para tomar decisões fundamentadas e maximizar a rentabilidade operacional.;
@@ -118,6 +126,7 @@ apps.integration.description.bsfactura;CORRIGIDO;Adicione esta integração para
 apps.integration.description.canarytechnologies;CORRIGIDO;A Canary Technologies está modernizando a tecnologia hoteleira com a sua premiada Guest Management Platform baseada em IA. Ao digitalizar os pontos de contato com o hóspede, da reserva ao check-out, as soluções de ponta da Canary simplificam as operações do hotel, aumentam a receita e elevam a experiência do hóspede. Estas inovações são possíveis graças à Canary AI, o modelo de IA mais avançado desenvolvido especificamente para hotéis.;
 apps.integration.description.checkamate;CORRIGIDO;O Checkamate permite-lhe acessar a uma base de dados centralizada para a qual contribuem hostels de todo o mundo, a fim de verificar se alguém foi reportado por um hostel no passado.;
 apps.integration.description.chekin;CORRIGIDO;Aumente as suas receitas e lucros e melhore a experiência dos seus hóspedes, poupando tempo e dinheiro ao automatizar todo o processo de registro;
+apps.integration.description.civitfun;CORRIGIDO;Adicione esta integração para permitir que os hóspedes façam o check-in online. Contate a Civitfun para mais informações.;
 apps.integration.description.daconex;CORRIGIDO;Esta integração ajudá-lo-á a gerar os arquivos necessários para alimentar o seu sistema de contabilidade Datisa. Gere facilmente arquivos das suas receitas, faturas, pagamentos e muito mais.;
 apps.integration.description.deepupsell;CORRIGIDO;A DeepUpsell é a solução de IA especializada em upselling hoteleiro que transforma os seus dados de reservas em oportunidades reais de receita e personalização. Através de recomendações inteligentes, dota a equipe de recepção da oferta certa para cada hóspede, aumentando a receita e melhorando a experiência de cada estadia.;
 apps.integration.description.delta;CORRIGIDO;A Delta informatica é um especialista global em leitores de documentos e armazenamento. Adicione esta integração se deseja ligar o Ulyses Suite aos leitores da Delta ID.;
@@ -158,6 +167,7 @@ apps.integration.description.openkey;CORRIGIDO;A aplicação OpenKey Front Desk 
 apps.integration.description.opertoguest;CORRIGIDO;A Guest Technology Operto oferece entrada sem chave e integra-se numa gama de soluções que proporcionam eficiência operacional e uma experiência personalizada ao hóspede, tudo gerenciado a partir de um único painel.;
 apps.integration.description.owner;CORRIGIDO;Com esta aplicação pode acessar aos dados de produção dos seus alojamentos.;
 apps.integration.description.pace;CORRIGIDO;A Pace está revolucionando o revenue management. Agora, hotéis ou hostels podem fixar o preço perfeito de cada reserva.;
+apps.integration.description.passportscan;CORRIGIDO;Envie reservas do Ulyses Suite para o PassportScan para registrar os seus clientes através da leitura dos seus passaportes ou cartões de identificação.;
 apps.integration.description.prinexs;CORRIGIDO;Esta integração permite criar todos os arquivos necessários para carregar no Prinex, um fornecedor especializado no setor imobiliário.;
 apps.integration.description.pui;CORRIGIDO;Ligue a sua propriedade à Plataforma Única de Identidade do México para gerenciar relatórios de pesquisa e comunicar de forma segura possíveis correspondências.;
 apps.integration.description.qualitelis;CORRIGIDO;A Qualitelis centraliza a coleta de feedback, a gestão de avaliações e a automatização da relação com o cliente. Graças à sua abordagem GEO (otimização para motores de pesquisa e assistentes de IA), a Qualitelis estrutura as suas avaliações (temas, contexto, evidências) para reforçar a sua visibilidade online e aumentar as suas hipóteses de ser recomendado pela IA.;
@@ -212,29 +222,34 @@ Para acessar a todas as funcionalidades da integração eSeason Digital Marketin
 1. Preencha o código do hotel no formulário acima e guarde
 2. Clique em ""Configuração de credenciais"" no menu Opções (canto superior direito)
 3. Informe o nome de usuário e a senha fornecidos pela eSeason Digital Marketing";
+apps.integration.edm.inactive;CORRIGIDO;A integração eSeason Digital Marketing não está configurada. Contate o suporte do Ulyses Suite para utilizar esta integração.;
 apps.integration.edm.refreshMapping;CORRIGIDO;"Utilize esta ação se deseja reenviar informações sobre as entidades da propriedade ou as estadias da reserva.
 Tenha em conta que as alterações não serão aplicadas imediatamente; por isso, recomendamos consultar o aba ""Fila"" para acompanhar o progresso.";
-apps.integration.facturacionCL.invoiceTypeTab.description;CORRIGIDO;Indique aqui se deseja substituir o valor predefinido por um mapeamento de tipo de fatura.;
-apps.integration.fatturaPA.mappingTab.description;CORRIGIDO;Indique aqui se deseja substituir o valor predefinido por um mapeamento de pagamento;
+apps.integration.facturacionCL.invoiceTypeTab.description;CORRIGIDO;Indique aqui se deseja substituir o valor padrão por um mapeamento de tipo de fatura.;
+apps.integration.fatturaPA.mappingTab.description;CORRIGIDO;Indique aqui se deseja substituir o valor padrão por um mapeamento de pagamento;
 apps.integration.fatturaPA.mappingTab.headers.chainProductCode;CORRIGIDO;Código de produto da rede;
 apps.integration.fatturaPA.mappingTab.headers.chainProductName;CORRIGIDO;Nome de produto da rede;
 apps.integration.fideltour.excludedElementsDescription;CORRIGIDO;Indique aqui os elementos que deseja excluir dos consumos que acumularão pontos de fidelização;
-apps.integration.genericAccounting.productTab.description;CORRIGIDO;Indique aqui se deseja substituir o valor predefinido por um mapeamento personalizado.;
-apps.integration.ideas.ftp.info;CORRIGIDO;Se deseja enviar extratos de contas a receber para a Ideas por SFTP (FTP seguro), forneça as credenciais da Ideas para o fazer. Para as obter, contacte o seu fornecedor de TI ou a Ideas.;
+apps.integration.genericAccounting.productTab.description;CORRIGIDO;Indique aqui se deseja substituir o valor padrão por um mapeamento personalizado.;
+apps.integration.ideas.ftp.info;CORRIGIDO;Se deseja enviar extratos de contas a receber para a Ideas por SFTP (FTP seguro), forneça as credenciais da Ideas para o fazer. Para as obter, contate o seu fornecedor de TI ou a Ideas.;
 apps.integration.ine.mapping.longStay.info;CORRIGIDO;"Defina a ocupação máxima a enviar ao INE dia a dia; por padrão, se nada for configurado, será enviada 100% de ocupação.";
 apps.integration.ine.mapping.statistics.infoSegmentSource;CORRIGIDO;O INE classifica as estatísticas por segmento ou origem. Escolha a forma como deseja apresentá-las e mapeie cada segmento ou origem para o respetivo valor do INE.;
+apps.integration.infrasys.infrasysDefaultValues;CORRIGIDO;Indique o valor padrão.;
 apps.integration.integrations.message;CORRIGIDO;Deseja estabelecer uma integração com {{name}};
 apps.integration.istac.mapping.statistics.infoSegmentSource;CORRIGIDO;O ISTAC classifica as estatísticas por segmento ou origem. Escolha a forma como deseja apresentá-las e mapeie cada segmento ou origem para o respetivo valor do ISTAC.;
-apps.integration.italianPolice.mappingTab.description;CORRIGIDO;Indique aqui se deseja substituir o valor predefinido por um mapeamento de tipo de documento;
-apps.integration.mossos.mappingTab.description;CORRIGIDO;Indique aqui se deseja substituir o valor predefinido por um mapeamento de tipo de pagamento;
+apps.integration.italianPolice.mappingTab.description;CORRIGIDO;Indique aqui se deseja substituir o valor padrão por um mapeamento de tipo de documento;
+apps.integration.mossos.mappingTab.description;CORRIGIDO;Indique aqui se deseja substituir o valor padrão por um mapeamento de tipo de pagamento;
 apps.integration.nf525.action.downloadArchives;CORRIGIDO;Baixar individualmente;
 apps.integration.nf525.action.downloadArchivesPeriod;CORRIGIDO;Baixar agrupado;
+apps.integration.oneCard.mapping.accommodationType.activate;CORRIGIDO;Ativar a configuração padrão de zonas de acesso com base no tipo de alojamento;
+apps.integration.paynopain.paynopainDefaultValues;CORRIGIDO;Indique o valor padrão a adicionar ao pagamento caso não tenha sido feito um mapeamento.;
 apps.integration.pricelabs.userToken;CORRIGIDO;Token de usuário;
 apps.integration.publicApiPush.button.refreshMappingLog;CORRIGIDO;Registro de mapeamentos;
 apps.integration.publicApiPush.importExcel;CORRIGIDO;"Peça ao seu gerente de contas na Siteminder um modelo válido para o preencher com todos os produtos que criou no seu Channel Manager e carregue-o aqui, para que o Ulyses Suite faça a correspondência entre os produtos da Siteminder e os que criou no Ulyses PMS.
 Abaixo encontra um exemplo de um modelo válido, mas certifique-se de que está correto.";
-apps.integration.publicApiPush.modal.changeCredentials;CORRIGIDO;Altere as credenciais de acesso desta integração. Caso deseje utilizar as credenciais predefinidas, deixe os campos vazios e reenvie o pedido.;
+apps.integration.publicApiPush.modal.changeCredentials;CORRIGIDO;Altere as credenciais de acesso desta integração. Caso deseje utilizar as credenciais padrão, deixe os campos vazios e reenvie o pedido.;
 apps.integration.publicApiPush.newRoomMapping.step2;CORRIGIDO;Selecione o alojamento no seu PMS com o qual deseja fazer o mapeamento.;
+apps.integration.publicApiPush.publicApiPushDefaultValues;CORRIGIDO;Indique o valor padrão a mostrar nas reservas caso não tenha sido feito um mapeamento. Tenha em conta que será apresentado um alerta na reserva sempre que isto ocorrer.;
 apps.integration.publicApiPush.refreshMapping;CORRIGIDO;"Aplique esta ação se deseja reenviar informações sobre o seu inventário, preços ou restrições para um período específico, tipos de alojamento ou tarifas.
 Tenha em conta que as alterações não serão atualizadas imediatamente; por isso, recomendamos que consulte o aba Fila para acompanhar a evolução.";
 apps.integration.publicApiPush.roomRateMappingCreate.step3;CORRIGIDO;"Selecione a ocupação e a tarifa no seu PMS com as quais deseja fazer o mapeamento; pode também selecionar a aplicação de oferta e promoção.";
@@ -251,7 +266,8 @@ apps.integration.publicApiRest.refreshEventEntity.message;CORRIGIDO;"Aplique est
 Tenha em conta que as alterações não serão atualizadas de imediato; por isso, recomendamos que consulte a aba Fila de eventos para acompanhar a evolução.";
 apps.integration.publicApiRest.removeEventEntity.message;CORRIGIDO;"Aplique esta ação se deseja excluir informações sobre a entidade de evento selecionada.
 Tenha em conta que as alterações não serão atualizadas de imediato; por isso, recomendamos que consulte a aba Fila de eventos para acompanhar a evolução.";
-apps.integration.septeoBill.invoiceTypeTab.description;CORRIGIDO;Indique aqui se deseja substituir o valor predefinido por um mapeamento de tipo de fatura;
+apps.integration.retailForce.mapping.entity.businessTransactionType;CORRIGIDO;"Apenas os produtos do tipo alojamento e serviço; caso não sejam mapeados, o valor padrão será REVENUE";
+apps.integration.septeoBill.invoiceTypeTab.description;CORRIGIDO;Indique aqui se deseja substituir o valor padrão por um mapeamento de tipo de fatura;
 apps.integration.septeoChannel.button.downloadTemplateFiles;CORRIGIDO;Baixar modelo;
 apps.integration.septeoChannel.button.refreshMappingLog;CORRIGIDO;Registro de mapeamentos;
 apps.integration.septeoChannel.importExcel;CORRIGIDO;"Peça ao seu gerente de contas na Siteminder um modelo válido para o preencher com todos os produtos que criou no seu Channel Manager e carregue-o aqui, para que o Ulyses Suite faça a correspondência entre os produtos da Siteminder e os que criou no Ulyses PMS.
@@ -260,10 +276,12 @@ apps.integration.septeoChannel.newRoomMapping.step2;CORRIGIDO;Selecione o alojam
 apps.integration.septeoChannel.refreshMapping;CORRIGIDO;"Aplique esta ação se deseja reenviar informações sobre o seu inventário, preços ou restrições para um período específico, tipos de alojamento ou tarifas. 
  Tenha em conta que as alterações não serão atualizadas imediatamente; por isso, recomendamos que consulte o aba Fila para acompanhar a evolução.";
 apps.integration.septeoChannel.roomRateMappingCreate.step3;CORRIGIDO;"Selecione a ocupação e a tarifa no seu PMS com as quais deseja fazer o mapeamento; pode também selecionar a aplicação de oferta e promoção.";
+apps.integration.septeoChannel.siteMinderDefaultValues;CORRIGIDO;Indique o valor padrão a mostrar nas reservas caso não tenha sido feito um mapeamento. Tenha em conta que será apresentado um alerta na reserva sempre que isto ocorrer.;
 apps.integration.septeoChannel.uploadRestricted;CORRIGIDO;Tenha em conta que terá de ativar o envio de restrições nas definições gerais se deseja enviar os seus preços para o Channel Manager.;
 apps.integration.septeoChannel.uploadRestrictedInventory;CORRIGIDO;Tenha em conta que terá de ativar o envio de inventário nas definições gerais se deseja enviar os seus preços para o Channel Manager.;
 apps.integration.septeoChannel.uploadRestrictedPrice;CORRIGIDO;Tenha em conta que terá de ativar o envio de preços nas definições gerais se deseja enviar os seus preços para o Channel Manager.;
-apps.integration.sii.invoiceTypeTab.description;CORRIGIDO;Indique aqui se deseja substituir o valor predefinido por um mapeamento de tipo de fatura;
+apps.integration.septeoPayment.defaultValues;CORRIGIDO;Indique o valor padrão a adicionar ao pagamento caso não tenha sido feito um mapeamento.;
+apps.integration.sii.invoiceTypeTab.description;CORRIGIDO;Indique aqui se deseja substituir o valor padrão por um mapeamento de tipo de fatura;
 apps.integration.siteminder.button.downloadTemplateFiles;CORRIGIDO;Baixar modelo;
 apps.integration.siteminder.button.refreshMappingLog;CORRIGIDO;Registro de mapeamentos;
 apps.integration.siteminder.importExcel;CORRIGIDO;"Peça ao seu gerente de contas na Siteminder um modelo válido para o preencher com todos os produtos que criou no seu Channel Manager e carregue-o aqui, para que o Ulyses Suite faça a correspondência entre os produtos da Siteminder e os que criou no Ulyses PMS.
@@ -272,14 +290,18 @@ apps.integration.siteminder.newRoomMapping.step2;CORRIGIDO;Selecione o alojament
 apps.integration.siteminder.refreshMapping;CORRIGIDO;"Aplique esta ação se deseja reenviar informações sobre o seu inventário, preços ou restrições para um período específico, tipos de alojamento ou tarifas.
 Tenha em conta que as alterações não serão atualizadas imediatamente; por isso, recomendamos que consulte o aba Fila para acompanhar a evolução.";
 apps.integration.siteminder.roomRateMappingCreate.step3;CORRIGIDO;"Selecione a ocupação e a tarifa no seu PMS com as quais deseja fazer o mapeamento; pode também selecionar a aplicação de oferta e promoção.";
+apps.integration.siteminder.siteMinderDefaultValues;CORRIGIDO;Indique o valor padrão a mostrar nas reservas caso não tenha sido feito um mapeamento. Tenha em conta que será apresentado um alerta na reserva sempre que isto ocorrer.;
 apps.integration.siteminder.uploadRestricted;CORRIGIDO;Tenha em conta que terá de ativar o envio de restrições nas definições gerais se deseja enviar os seus preços para o Channel Manager.;
 apps.integration.siteminder.uploadRestrictedInventory;CORRIGIDO;Tenha em conta que terá de ativar o envio de inventário nas definições gerais se deseja enviar os seus preços para o Channel Manager.;
 apps.integration.siteminder.uploadRestrictedPrice;CORRIGIDO;Tenha em conta que terá de ativar o envio de preços nas definições gerais se deseja enviar os seus preços para o Channel Manager.;
-apps.integration.ticketBAI.invoiceTypeTab.description;CORRIGIDO;Indique aqui se deseja substituir o valor predefinido por um mapeamento de tipo de fatura.;
+apps.integration.stripe.stripeDefaultValues;CORRIGIDO;Indique o valor padrão a adicionar ao pagamento caso não tenha sido feito um mapeamento.;
+apps.integration.tesiproPBX.defaultValue;CORRIGIDO;Indique o valor padrão necessário para lançar o produto no folio;
+apps.integration.ticketBAI.invoiceTypeTab.description;CORRIGIDO;Indique aqui se deseja substituir o valor padrão por um mapeamento de tipo de fatura.;
 apps.integration.webcamp.button.refreshMappingLog;CORRIGIDO;Registro de mapeamentos;
 apps.integration.webcamp.importExcel;CORRIGIDO;"Peça ao seu gerente de contas na Siteminder um modelo válido para o preencher com todos os produtos que criou no seu Channel Manager e carregue-o aqui, para que o Ulyses Suite faça a correspondência entre os produtos da Siteminder e os que criou no Ulyses PMS.
 Abaixo encontra um exemplo de um modelo válido, mas certifique-se de que está correto.";
-apps.integration.webcamp.modal.changeCredentials;CORRIGIDO;Altere as credenciais de acesso desta integração. Caso deseje utilizar as credenciais predefinidas, deixe os campos vazios e reenvie o pedido.;
+apps.integration.webcamp.inactive;CORRIGIDO;A integração Webcamp não está configurada. Contate o suporte do Ulyses Suite para utilizar esta integração.;
+apps.integration.webcamp.modal.changeCredentials;CORRIGIDO;Altere as credenciais de acesso desta integração. Caso deseje utilizar as credenciais padrão, deixe os campos vazios e reenvie o pedido.;
 apps.integration.webcamp.newRoomMapping.step2;CORRIGIDO;Selecione o alojamento no seu PMS com o qual deseja fazer o mapeamento.;
 apps.integration.webcamp.refreshMapping;CORRIGIDO;"Aplique esta ação se deseja reenviar informações sobre o seu inventário, preços ou restrições para um período específico, tipos de alojamento ou tarifas.
 Tenha em conta que as alterações não serão atualizadas imediatamente; por isso, recomendamos que consulte o aba Fila para acompanhar a evolução.";
@@ -287,22 +309,29 @@ apps.integration.webcamp.roomRateMappingCreate.step3;CORRIGIDO;"Selecione a ocup
 apps.integration.webcamp.uploadRestricted;CORRIGIDO;Tenha em conta que terá de ativar o envio de restrições nas definições gerais se deseja enviar os seus preços para o Channel Manager.;
 apps.integration.webcamp.uploadRestrictedInventory;CORRIGIDO;Tenha em conta que terá de ativar o envio de inventário nas definições gerais se deseja enviar os seus preços para o Channel Manager.;
 apps.integration.webcamp.uploadRestrictedPrice;CORRIGIDO;Tenha em conta que terá de ativar o envio de preços nas definições gerais se deseja enviar os seus preços para o Channel Manager.;
+apps.integration.webcamp.webcampDefaultValues;CORRIGIDO;Indique o valor padrão a mostrar nas reservas caso não tenha sido feito um mapeamento. Tenha em conta que será apresentado um alerta na reserva sempre que isto ocorrer.;
+apps.integration.yacan.loginInfo;CORRIGIDO;Para começar a utilizar o Yacan, tem de obter o token de autorização. Para isso, tem de se registrar na plataforma Yacan.;
+apps.invoiceType.modal.addRequiredFieldCountry.info;CORRIGIDO;Selecione todos os campos necessários para registrar novos perfis provenientes do país selecionado;
 apps.invoiceVoidReason.action.new;CORRIGIDO;Novo motivo de cancelamento de fatura;
 apps.login.label.newPassword;CORRIGIDO;Nova senha;
 apps.login.label.oldPassword;CORRIGIDO;Senha antiga;
 apps.login.label.password;CORRIGIDO;Senha;
 apps.login.label.repeatNewPassword;CORRIGIDO;Repetir nova senha;
 apps.login.label.username;CORRIGIDO;Usuário;
+apps.login.section.connection.checkSysAdmin;CORRIGIDO;Contate o administrador do sistema para mais informações;
 apps.login.section.ipWhiteList.allow;CORRIGIDO;O usuário {{userName}} foi autorizado a acessar temporariamente ao Ulyses Suite a partir do endereço IP atual:;
 apps.login.section.ipWhiteList.deny;CORRIGIDO;O usuário {{userName}} não foi autorizado a acessar ao Ulyses Suite a partir do endereço IP atual;
+apps.login.section.ipWhiteList.operation.error;CORRIGIDO;"Não foi possível concluir a operação. Certifique-se de que tem ligação à Internet.
+
+Se o problema persistir, contate o serviço de suporte do Ulyses Suite.";
 apps.login.section.ipWhiteList.tokenInvalid;CORRIGIDO;"Não foi possível concluir a operação; talvez o pedido tenha expirado ou a operação já tenha sido concluída por outra pessoa.
 
-Contacte o usuário que solicitou o acesso para que peça novamente acesso a partir de um novo endereço IP.";
+Contate o usuário que solicitou o acesso para que peça novamente acesso a partir de um novo endereço IP.";
 apps.login.section.login.error.2FAValidation;CORRIGIDO;O código informado está incorreto.;
-apps.login.section.login.error.active;CORRIGIDO;Usuário inativo, contacte o seu administrador.;
+apps.login.section.login.error.active;CORRIGIDO;Usuário inativo, contate o seu administrador.;
 apps.login.section.login.error.deviceDenied;CORRIGIDO;"O seu usuário não conseguiu acessar ao Ulyses Suite porque o dispositivo ({{deviceUserAgent}}) a partir do qual tenta ligar-se foi bloqueado.
 
-Contacte o administrador do Ulyses Suite para que lhe conceda acesso a partir do seu dispositivo atual.";
+Contate o administrador do Ulyses Suite para que lhe conceda acesso a partir do seu dispositivo atual.";
 apps.login.section.login.error.devicePending;CORRIGIDO;"O seu usuário não foi autorizado a acessar ao Ulyses Suite a partir do dispositivo atual.
 
 Para garantir a segurança da sua conta, precisa primeiro de confirmar que este dispositivo é de confiança.
@@ -336,7 +365,7 @@ apps.login.section.login.error.errorUserPrefGridSort;CORRIGIDO;"Este usuário n�
  Não foi possível carregar a ordenação da grade das preferências.";
 apps.login.section.login.error.ipDenied;CORRIGIDO;"O seu usuário não conseguiu acessar ao Ulyses Suite porque o endereço IP ({{ipAddress}}) a partir do qual tenta ligar-se foi bloqueado.
 
-Contacte o administrador do Ulyses Suite para que lhe conceda acesso a partir do seu endereço IP atual.";
+Contate o administrador do Ulyses Suite para que lhe conceda acesso a partir do seu endereço IP atual.";
 apps.login.section.login.error.ipPending;CORRIGIDO;"O seu usuário não tem autorização para acessar ao Ulyses Suite a partir do seu endereço IP atual ({{ipAddress}}).
 
 Enviamos um e-mail ao administrador do Ulyses Suite para confirmar que tem permissão para acessar";
@@ -344,9 +373,15 @@ apps.login.section.login.error.passwordExpired;CORRIGIDO;A sua senha expirou, al
 apps.login.section.login.error.remainingAttempts;CORRIGIDO;"A sua senha está incorreta.
 Ainda tem {{attempts}} tentativas.";
 apps.login.section.login.error.sendMail;CORRIGIDO;Enviamos-lhe um e-mail para recuperar a sua senha.;
+apps.login.section.login.error.ssoLoginError;CORRIGIDO;"A sua conta Septeo foi verificada, mas o Ulyses Suite não conseguiu iniciar a sua sessão.
+
+Contate o administrador do Ulyses Suite.";
 apps.login.section.login.error.ssoTimeout;CORRIGIDO;"O início de sessão Septeo está demorando muito a responder.
 Recarregue a página e tente novamente.";
 apps.login.section.login.error.updatePassword;CORRIGIDO;A sua senha foi atualizada.;
+apps.login.section.login.error.userDisabled;CORRIGIDO;"A sua conta foi desativada.
+
+Contate o administrador do Ulyses Suite para que lhe conceda acesso.";
 apps.login.section.login.error.userFound;CORRIGIDO;"Senha errada. Tente novamente ou clique em ""Esqueceu-se da senha?"" para a repor.";
 apps.login.section.login.error.userPasswordError;CORRIGIDO;"Usuário ou senha errados.
 Tente novamente ou clique em ""Esqueceu-se da senha?"" para a repor.";
@@ -355,10 +390,11 @@ apps.login.section.login.info2FAValidation;CORRIGIDO;Informe o código único pa
 apps.login.section.login.updated;CORRIGIDO;Senha atualizada;
 apps.login.section.passwordRecovery.botValidation;CORRIGIDO;A validar que o usuário é humano;
 apps.login.section.passwordRecovery.description;CORRIGIDO;Escreva o seu nome de usuário se deseja receber por e-mail uma ligação para repor a sua senha;
+apps.login.section.passwordRecovery.failed;CORRIGIDO;Não foi possível enviar-lhe o e-mail. Tente novamente ou contate o seu administrador.;
 apps.login.section.passwordRecovery.integrationSuccess;CORRIGIDO;"A sua senha foi alterada com sucesso.
 
 Agora tem acesso à API pública do UlysesCloud.";
-apps.login.section.passwordRecovery.isRobot;CORRIGIDO;Foi detectado um comportamento invulgar e a ação não será executada por motivos de segurança. Se o problema persistir, contacte o seu administrador do UlysesCloud.;
+apps.login.section.passwordRecovery.isRobot;CORRIGIDO;Foi detectado um comportamento invulgar e a ação não será executada por motivos de segurança. Se o problema persistir, contate o seu administrador do UlysesCloud.;
 apps.login.section.passwordRecovery.success;CORRIGIDO;Enviamos-lhe um e-mail. Siga as instruções para recuperar a sua senha.;
 apps.login.section.passwordRecovery.title;CORRIGIDO;Recupere a sua senha;
 apps.login.section.passwordReset.descriptionMail;CORRIGIDO;{{userName}}, preencha o formulário para recuperar a sua senha.;
@@ -371,9 +407,12 @@ apps.login.section.passwordReset.success;CORRIGIDO;Senha atualizada corretamente
 apps.login.section.passwordReset.title;CORRIGIDO;Repor senha;
 apps.login.section.trustDevice.allow;CORRIGIDO;O usuário {{userName}} foi autorizado a acessar ao Ulyses Suite a partir do seguinte dispositivo:;
 apps.login.section.trustDevice.deny;CORRIGIDO;O usuário {{userName}} não foi autorizado a acessar ao Ulyses Suite a partir do dispositivo atual:;
+apps.login.section.trustDevice.operation.error;CORRIGIDO;"Não foi possível concluir a operação. Certifique-se de que tem ligação à Internet.
+
+Se o problema persistir, contate o serviço de suporte do Ulyses Suite.";
 apps.login.section.trustDevice.tokenInvalid;CORRIGIDO;"Não foi possível concluir a operação; talvez o pedido tenha expirado ou a operação já tenha sido concluída por outra pessoa.
 
-Contacte o usuário que solicitou o acesso para que peça novamente acesso a partir de um dispositivo.";
+Contate o usuário que solicitou o acesso para que peça novamente acesso a partir de um dispositivo.";
 apps.lostItem.destroyLostItemModal.message;CORRIGIDO;Tem certeza de que deseja marcar o objeto perdido como destruído?;
 apps.maintenanceWorkOrder.kanban.confirmUpdateStatusTasks;CORRIGIDO;Esta ordem de trabalho tem tarefas atribuídas. Deseja atualizar também o respetivo estado?;
 apps.management.button.exportExcel;CORRIGIDO;Baixar Excel;
@@ -392,6 +431,7 @@ apps.noConnection.section;CORRIGIDO;Precisa de ligação à Internet para acessa
 apps.offer.titleSection.historyLog;CORRIGIDO;Registro do histórico;
 apps.paymentScheduler.actionType.processPaymentReservationBalance;CORRIGIDO;Processar o pagamento do valor total da reserva (com base no saldo da reserva, solicitar o valor de pagamento pendente);
 apps.paymentScheduler.actionType.processPaymentSuggestedDeposit;CORRIGIDO;Processar o pagamento do valor da política;
+apps.paymentScheduler.label.defaultEmailTemplate;CORRIGIDO;Padrão;
 apps.permission.noPermissionModal.message;CORRIGIDO;Não tem permissão para acessar a {{page}};
 apps.planning.assignPending.appliedFilter;CORRIGIDO;Filtro aplicado ao planejamento;
 apps.planning.assignPending.deleteFilter;CORRIGIDO;Remover filtro do planejamento;
@@ -412,14 +452,14 @@ apps.profileCommissionTransaction.transfer.header;CORRIGIDO;Tem certeza de que d
 apps.profileType.action.new;CORRIGIDO;Novo tipo de perfil de rede;
 apps.proformaProductType.info;CORRIGIDO;Selecione o tipo de produto que deseja mostrar na proforma;
 apps.promotion.titleSection.historyLog;CORRIGIDO;Registro do histórico;
-apps.property.preferences.ageLimit;CORRIGIDO;Informe um limite de idade para cada ocupação se deseja que seja apresentado um aviso ao registar um ocupante cuja idade esteja fora do limite especificado.;
-apps.property.preferences.info;CORRIGIDO;Configure aqui as preferências da sua propriedade. Poderá selecionar valores predefinidos nas suas reservas, escolher se deseja automatizar processos e muito mais. Acesse a cada seção e complete a seleção de acordo com as necessidades da sua propriedade.;
+apps.property.preferences.ageLimit;CORRIGIDO;Informe um limite de idade para cada ocupação se deseja que seja apresentado um aviso ao registrar um ocupante cuja idade esteja fora do limite especificado.;
+apps.property.preferences.info;CORRIGIDO;Configure aqui as preferências da sua propriedade. Poderá selecionar valores padrão nas suas reservas, escolher se deseja automatizar processos e muito mais. Acesse a cada seção e complete a seleção de acordo com as necessidades da sua propriedade.;
 apps.property.preferences.occupancy;CORRIGIDO;Selecione a ocupação que deseja gerenciar na sua propriedade;
 apps.property.titlesSetting.contact;CORRIGIDO;Contato;
 apps.propertyAvailabilityRule.includes.limit.hint;CORRIGIDO;Informe o valor que determinará quando a venda fechará automaticamente de acordo com as condições e o período definidos.;
 apps.propertyAvailabilityRule.ruleType.description;CORRIGIDO;Selecione o tipo de regra de disponibilidade que deseja configurar;
 apps.propertyAvailabilityRule.summary.description;CORRIGIDO;Verifique a configuração da regra antes de a salvar.;
-apps.propertyBE.bookingEngineAvailability.message;CORRIGIDO;Esta seção permite selecionar os itens que deseja que sejam apresentados apenas na disponibilidade do motor de reservas. Se não adicionar nenhum item, o sistema aplicará a configuração predefinida;
+apps.propertyBE.bookingEngineAvailability.message;CORRIGIDO;Esta seção permite selecionar os itens que deseja que sejam apresentados apenas na disponibilidade do motor de reservas. Se não adicionar nenhum item, o sistema aplicará a configuração padrão;
 apps.propertyBEOSection.action.new;CORRIGIDO;Nova seção BEO;
 apps.propertyCommunicationEmailType.entity.button.addNewSection;CORRIGIDO;Adicionar seção;
 apps.propertyCommunicationEmailType.entity.button.deleteSection;CORRIGIDO;Excluir;
@@ -459,11 +499,14 @@ apps.propertyEmailScheduler.wizard.templateTypeHelp;CORRIGIDO;Selecione o tipo d
 apps.propertyHome.property;CORRIGIDO;As propriedades são os hotéis que precisa de gerenciar no Ulyses Suite;
 apps.propertyHome.propertyBEOSection;CORRIGIDO;Configure as seções BEO na sua propriedade;
 apps.propertyHome.propertyProposalSection;CORRIGIDO;Configure as seções de proposta na sua propriedade;
-apps.propertyKSK.availability.message;CORRIGIDO;Esta seção permite-lhe selecionar os itens que deseja que sejam apresentados apenas na disponibilidade do quiosque. Se não adicionar nenhum item, o sistema aplicará a configuração predefinida;
+apps.propertyKSK.availability.message;CORRIGIDO;Esta seção permite-lhe selecionar os itens que deseja que sejam apresentados apenas na disponibilidade do quiosque. Se não adicionar nenhum item, o sistema aplicará a configuração padrão;
 apps.propertyKioskStaticReport.name.registrationCard;CORRIGIDO;Ficha de registro;
+apps.propertyPreference.billingInfoHint;CORRIGIDO;Indique abaixo a empresa registrada padrão que será apresentada nas suas faturas, bem como o tipo de faturas utilizado nas diferentes ações.;
+apps.propertyPreference.modal.addGuestRegistrationFieldCountry.info;CORRIGIDO;Selecione todos os campos necessários para registrar novos perfis originários do país selecionado;
 apps.propertyProfileCommission.action.delete;CORRIGIDO;Excluir comissão;
 apps.propertyProfileDiscount.action.delete;CORRIGIDO;Excluir desconto;
 apps.propertyProposalSection.action.new;CORRIGIDO;Nova seção de proposta;
+apps.propertyRegisteredCompany.action.new;CORRIGIDO;Nova empresa registrada;
 apps.propertyRoomType.action.delete;CORRIGIDO;Excluir tipo de alojamento;
 apps.propertyServiceConsumptionControl.action.delete;CORRIGIDO;Excluir controlo de consumo;
 apps.propertySettingHome.propertyGSPProductService;CORRIGIDO;Os serviços do GSP devem ter um nome traduzido e uma imagem definidos para serem apresentados corretamente ao usuário final;
@@ -481,7 +524,7 @@ apps.report.downloadPDF;CORRIGIDO;Baixar PDF;
 apps.report.noPropertySMTPAccount;CORRIGIDO;Certifique-se de que existe uma conta SMTP válida e que está atribuída na seção Fatura, em Definições da propriedade > Configuração de e-mail;
 apps.report.options.information;CORRIGIDO;"Selecione como deseja gerar o seu relatório:
 
-Transferir agora: obtenha o seu relatório imediatamente.
+Baixar agora: obtenha o seu relatório imediatamente.
 
 Processar em fila: o seu relatório será adicionado a uma fila de processamento e gerado em segundo plano. Será notificado quando estiver pronto para baixar.";
 apps.report.reportEmail;CORRIGIDO;Informe os destinatários a quem deseja enviar o e-mail do relatório;
@@ -526,6 +569,7 @@ core.button.actionLog;CORRIGIDO;Registro de ações;
 core.button.bulkInvoice;CORRIGIDO;Faturamento em massa;
 core.button.changePassword;CORRIGIDO;Alterar senha;
 core.button.copyToChain;CORRIGIDO;Copiar para a rede;
+core.button.default;CORRIGIDO;Padrão;
 core.button.delete;CORRIGIDO;Excluir;
 core.button.deleteEntity;CORRIGIDO;Excluir {{entity}};
 core.button.download;CORRIGIDO;Baixar;
@@ -535,6 +579,7 @@ core.button.downloadNDocuments;CORRIGIDO;Baixar documentos ({{n}});
 core.button.downloadTemplate;CORRIGIDO;Baixar modelo;
 core.button.historyLog;CORRIGIDO;Registro de histórico;
 core.button.manageMeters;CORRIGIDO;Gerenciar contadores;
+core.button.markAsDefault;CORRIGIDO;Marcar como padrão;
 core.button.resetPassword;CORRIGIDO;Repor senha;
 core.button.save;CORRIGIDO;Salvar;
 core.button.saveAndActivate;CORRIGIDO;Salvar e ativar;
@@ -638,9 +683,21 @@ core.label.chainSpaceLockType;CORRIGIDO;Tipo de bloqueio de espaço da rede;
 core.label.changeCompaniesTab;CORRIGIDO;Alterar aba de empresas;
 core.label.commissionAmount;CORRIGIDO;Valor da comissão;
 core.label.contact;CORRIGIDO;Contato;
-core.label.defaultGender;CORRIGIDO;Gênero predefinido;
+core.label.contactTo;CORRIGIDO;Contatar;
+core.label.default;CORRIGIDO;Padrão;
+core.label.defaultAccountingAccount;CORRIGIDO;Conta contabilística padrão;
+core.label.defaultCFDIProductAccommodation;CORRIGIDO;CFDI padrão para produto de alojamento;
+core.label.defaultCFDIProductService;CORRIGIDO;CFDI padrão para produto de serviço;
+core.label.defaultCountry;CORRIGIDO;País padrão;
+core.label.defaultDocumentType;CORRIGIDO;Tipo de documento padrão;
+core.label.defaultGender;CORRIGIDO;Gênero padrão;
+core.label.defaultPropertySource;CORRIGIDO;Origem de propriedade padrão;
+core.label.defaultService;CORRIGIDO;Serviço padrão;
+core.label.defaultValue;CORRIGIDO;Valor padrão;
+core.label.defaultVehicleService;CORRIGIDO;Serviço de veículo padrão;
 core.label.delete;CORRIGIDO;Excluir;
 core.label.deleted;CORRIGIDO;Excluído;
+core.label.doNotRegister;CORRIGIDO;Não registrar;
 core.label.endOfDayHourBeforeCloseDay;CORRIGIDO;Horas antes do fechamento do dia;
 core.label.endOfFileFlag;CORRIGIDO;Indicador de fim de arquivo;
 core.label.errorRepeatPassword;CORRIGIDO;As senhas não coincidem;
@@ -671,9 +728,14 @@ core.label.hospedajeReservaHospedajeRegistration;CORRIGIDO;Registro de reserva;
 core.label.httpTraces;CORRIGIDO;Registros HTTP;
 core.label.infant;CORRIGIDO;Bebê;
 core.label.infants;CORRIGIDO;Bebês;
+core.label.integrationINERoomType;CORRIGIDO;Alojamento padrão;
+core.label.integrationINESegmentType;CORRIGIDO;Grupo estatístico padrão;
+core.label.integrationISTACRoomType;CORRIGIDO;Alojamento padrão;
+core.label.integrationISTACSegmentType;CORRIGIDO;Grupo estatístico padrão;
 core.label.interfaceFileName;CORRIGIDO;Nome do arquivo de interface;
 core.label.invoiceBilling;CORRIGIDO;Fatura de faturamento;
 core.label.invoiceVoidReasonType;CORRIGIDO;Tipo de motivo de cancelamento;
+core.label.lastName;CORRIGIDO;Sobrenome;
 core.label.logLevel;CORRIGIDO;Nível de registro;
 core.label.logSizeMb;CORRIGIDO;Tamanho do registro (MB);
 core.label.maximumAmountAfterTax;CORRIGIDO;Valor máximo após impostos;
@@ -701,10 +763,14 @@ core.label.propertyDefault;CORRIGIDO;Padrão da propriedade;
 core.label.propertyEndOfDay;CORRIGIDO;Fechamento do dia;
 core.label.propertyPlaning;CORRIGIDO;Planejamento;
 core.label.propertyReceptionBook;CORRIGIDO;Livro de recepção;
+core.label.propertyRegisteredCompany;CORRIGIDO;Empresa registrada;
 core.label.propertySettingBilling;CORRIGIDO;Definições de faturamento da propriedade;
 core.label.proposalSection;CORRIGIDO;Seção da proposta;
 core.label.quantityConsumedInfant;CORRIGIDO;Bebê consumido;
 core.label.recordSeparator;CORRIGIDO;Aba de registros;
+core.label.registerDuringStay;CORRIGIDO;Registrar durante a estadia;
+core.label.registerNow;CORRIGIDO;Registrar agora;
+core.label.registeredCompany;CORRIGIDO;Empresa registrada;
 core.label.registrationCard;CORRIGIDO;Ficha de registro;
 core.label.registrationIntegrationErtzaintzaRequestStatusType;CORRIGIDO;Estado do registro;
 core.label.registrationIntegrationHospedajeRequestStatusType;CORRIGIDO;Estado do registro;
@@ -714,6 +780,7 @@ core.label.repeatNewPassword;CORRIGIDO;Repetir nova senha;
 core.label.resendRegistration;CORRIGIDO;Reenviar registro;
 core.label.saveToCalculateAmount;CORRIGIDO;Guarde para calcular os preços líquidos, os valores faturados e os impostos;
 core.label.scanning;CORRIGIDO;Digitalizando;
+core.label.secondSurName;CORRIGIDO;Segundo sobrenome;
 core.label.section;CORRIGIDO;Seção;
 core.label.shareAvailability;CORRIGIDO;Compartilhar disponibilidade;
 core.label.shareOfAmount;CORRIGIDO;Parte do valor;
@@ -728,6 +795,8 @@ core.label.street;CORRIGIDO;Endereço;
 core.label.subscription;CORRIGIDO;Assinatura;
 core.label.suggestedAmount;CORRIGIDO;Valor sugerido;
 core.label.suggestedPercentageAmount;CORRIGIDO;Porcentagem sugerida;
+core.label.surName;CORRIGIDO;Sobrenome 1;
+core.label.surname;CORRIGIDO;Sobrenome 1;
 core.label.tabs;CORRIGIDO;Abas;
 core.label.targetUser;CORRIGIDO;Usuário de destino;
 core.label.tasksDetected;CORRIGIDO;Tarefas detectadas;
@@ -828,6 +897,7 @@ core.object.entity.propertyPreferenceEndOfDayEmailReport;CORRIGIDO;Relatório po
 core.object.entity.propertyPreferenceEndOfDayEmailReportParameter;CORRIGIDO;Parâmetro do relatório por e-mail de fechamento do dia da preferência;
 core.object.entity.propertyPreferenceGuestRegistrationFieldCountry;CORRIGIDO;Campos de registro por país;
 core.object.entity.propertyProposalSection;CORRIGIDO;Seção da proposta;
+core.object.entity.propertyRegisteredCompany;CORRIGIDO;Sociedade registrada;
 core.object.entity.rateProductOccupancyAvailabilityLog;CORRIGIDO;Registro de disponibilidade da ocupação do produto da tarifa;
 core.object.entity.rateProductOccupancySpreadsheet;CORRIGIDO;Planilha da ocupação do produto da tarifa;
 core.object.entity.receptionBookCategory;CORRIGIDO;Categoria do livro de recepção;
@@ -856,7 +926,10 @@ core.title.unsavedChanges;CORRIGIDO;Alterações não salvas;
 core.userMessage.changeEvent.amount;CORRIGIDO;valor;
 core.userMessage.changeEvent.companyAccommodationPercentageCommission;CORRIGIDO;A porcentagem de comissão não pode ser superior a 100%;
 core.userMessage.changeEvent.noInfantAllowedInProperty;CORRIGIDO;Esta propriedade não aceita bebês;
+core.userMessage.changeEvent.overbooking;CORRIGIDO;É registrado OVERBOOKING para as alterações pedidas;
 core.userMessage.changeEvent.vehicleServiceCreated;CORRIGIDO;Veículo adicional detectado: serviço «{{serviceName}}» criado automaticamente.;
+core.userMessage.connection.cannotFindServer;CORRIGIDO;Por algum motivo não foi possível contatar o servidor para enviar ou obter informação. Recomendamos que aguarde até a ligação ser restabelecida. No entanto, pode verificar o seguinte.;
+core.userMessage.connection.checkSysAdmin;CORRIGIDO;Contate o seu administrador de sistemas para obter mais informações.;
 core.userMessage.internal.cancellationZeroAmount;CORRIGIDO;O valor de cancelamento não pode ser zero. Selecione outra opção ou ajuste a sua seleção.;
 core.userMessage.internal.depositRemainingExceeded;CORRIGIDO;O valor excede o saldo restante do depósito;
 core.userMessage.internal.discountIncorrect;CORRIGIDO;Desconto incorreto: não pode ser superior a 100% nem o valor pode exceder o valor total;
@@ -872,20 +945,23 @@ core.userMessage.internal.percentageNot100;CORRIGIDO;Não foi possível salvar o
 core.userMessage.internal.scanNoData;CORRIGIDO;Não foram recebidos dados. Informe ou vire o documento.;
 core.userMessage.internal.taxAllocationEmpty;CORRIGIDO;Não foi possível salvar o produto. Adicione pelo menos uma linha de atribuição de imposto.;
 core.userMessage.internal.taxAllocationNot100;CORRIGIDO;Não foi possível salvar o produto. Certifique-se de que as porcentagens de atribuição de impostos somam exatamente 100%.;
+core.userMessage.internal.userNotPermissionException;CORRIGIDO;"Não tem permissões para executar a ação!
+Contate o seu administrador de sistemas.";
 core.userMessage.internal.userRoleHasNotPermission;CORRIGIDO;A função do seu usuário não tem permissão;
 core.userMessage.server.accessdenied.delete;CORRIGIDO;Acesso negado: não tem permissões para excluir {{entity}}.;
 core.userMessage.server.amountinferiorthanboardpricing.default;CORRIGIDO;O valor é inferior ao preço total do regime;
 core.userMessage.server.amountmustbeequalorlowerthanbalance.default;CORRIGIDO;O valor tem de ser igual ou inferior ao saldo;
 core.userMessage.server.cashiernotselected.default;CORRIGIDO;O seu usuário não tem uma caixa selecionada. Selecione uma para continuar.;
+core.userMessage.server.checkinrevert.default;CORRIGIDO;Não foi possível concluir o check-in, contate o Ulyses Suite.;
 core.userMessage.server.emptyresultdataaccess.delete;CORRIGIDO;Resultado não encontrado: {{entity}} que está tentando excluir não foi encontrado(a).;
 core.userMessage.server.emptyresultdataaccess.get;CORRIGIDO;Resultado não encontrado: {{entity}} que está procurando não foi encontrado(a).;
 core.userMessage.server.emptyresultdataaccess.post;CORRIGIDO;Resultado não encontrado: {{entity}} que está tentando criar não foi encontrado(a).;
 core.userMessage.server.emptyresultdataaccess.put;CORRIGIDO;Resultado não encontrado: {{entity}} que está tentando editar não foi encontrado(a).;
 core.userMessage.server.foliohasinvoicenumber.default;CORRIGIDO;Encontramos alguns folios abertos que têm de ser fechados. Acesse ao detalhe de cada um deles, tente adicionar um novo lançamento e depois feche-os.;
-core.userMessage.server.httpmessagenotreadable.delete;CORRIGIDO;"O método delete não deve ter corpo; contacte a equipe de suporte da tesipro.";
-core.userMessage.server.httpmessagenotreadable.get;CORRIGIDO;"O método get não deve ter corpo para {{entity}}; contacte a equipe de suporte da tesipro.";
-core.userMessage.server.httpmessagenotreadableexception.delete;CORRIGIDO;"O método delete não deve ter corpo; contacte a equipe de suporte da tesipro.";
-core.userMessage.server.httpmessagenotreadableexception.get;CORRIGIDO;"O método get não deve ter corpo para {{entity}}; contacte a equipe de suporte da tesipro.";
+core.userMessage.server.httpmessagenotreadable.delete;CORRIGIDO;"O método delete não deve ter corpo; contate a equipe de suporte da tesipro.";
+core.userMessage.server.httpmessagenotreadable.get;CORRIGIDO;"O método get não deve ter corpo para {{entity}}; contate a equipe de suporte da tesipro.";
+core.userMessage.server.httpmessagenotreadableexception.delete;CORRIGIDO;"O método delete não deve ter corpo; contate a equipe de suporte da tesipro.";
+core.userMessage.server.httpmessagenotreadableexception.get;CORRIGIDO;"O método get não deve ter corpo para {{entity}}; contate a equipe de suporte da tesipro.";
 core.userMessage.server.invalidverificationcode.default;CORRIGIDO;O código de verificação informado está incorreto.;
 core.userMessage.server.listpercentsmustbegreaterthanzero.default;CORRIGIDO;A porcentagem tem de ser superior a zero. Altere-a e tente novamente.;
 core.userMessage.server.mandatoryprofilecustomerforholder.default;CORRIGIDO;É necessário associar a um perfil de cliente para salvar esta reserva.;
@@ -893,11 +969,20 @@ core.userMessage.server.nopermissions.default;CORRIGIDO;Não foi possível concl
 core.userMessage.server.passwordrevokenotallowedinactiveuser.default;CORRIGIDO;Não pode revogar a senha de um usuário inativo.;
 core.userMessage.server.passwordrevokenotallowedintegrationuser.default;CORRIGIDO;Não pode revogar a senha de um usuário de integração.;
 core.userMessage.server.passwordrevokenotalloweditself.default;CORRIGIDO;Não pode revogar a sua própria senha.;
+core.userMessage.server.paynopain.redsys.107;CORRIGIDO;O banco emissor não permite autorização automática. É necessário contatar o seu centro autorizador por telefone para obter uma aprovação manual.;
+core.userMessage.server.paynopain.redsys.109;CORRIGIDO;Recusada porque o comércio não está devidamente registrado nos sistemas internacionais de cartões.;
 core.userMessage.server.paynopain.redsys.110;CORRIGIDO;O valor da transação é invulgar para o tipo de comércio que solicita a autorização de pagamento.;
+core.userMessage.server.paynopain.redsys.118;CORRIGIDO;Cartão inexistente ou não registrado pelo banco emissor.;
+core.userMessage.server.paynopain.redsys.167;CORRIGIDO;Devido à suspeita de que a transação é fraudulenta, o banco emissor não permite autorização automática. É necessário contatar o seu centro autorizador por telefone para obter uma aprovação manual.;
+core.userMessage.server.paynopain.redsys.207;CORRIGIDO;O banco emissor não permite autorização automática. É necessário contatar o seu centro autorizador por telefone para obter uma aprovação manual. Além disso, o banco emissor considera que o cartão está numa situação de possível fraude.;
 core.userMessage.server.paynopain.redsys.400;CORRIGIDO;Transação de cancelamento ou devolução parcial aceite pelo banco emissor.;
-core.userMessage.server.paynopain.redsys.480;CORRIGIDO;A cancelamento ou devolução parcial não foi aceite porque a operação original não foi localizada ou porque o banco emissor não respondeu dentro do tempo limite predefinido.;
-core.userMessage.server.paynopain.redsys.481;CORRIGIDO;Transação de cancelamento ou devolução parcial aceite pelo banco emissor. No entanto, a resposta do banco emissor foi recebida com muito atraso, fora do tempo limite predefinido.;
+core.userMessage.server.paynopain.redsys.480;CORRIGIDO;A cancelamento ou devolução parcial não foi aceite porque a operação original não foi localizada ou porque o banco emissor não respondeu dentro do tempo limite padrão.;
+core.userMessage.server.paynopain.redsys.481;CORRIGIDO;Transação de cancelamento ou devolução parcial aceite pelo banco emissor. No entanto, a resposta do banco emissor foi recebida com muito atraso, fora do tempo limite padrão.;
+core.userMessage.server.paynopain.redsys.501;CORRIGIDO;A conciliação não foi aceite porque a operação original não foi localizada ou porque o banco emissor não respondeu dentro do tempo limite padrão.;
+core.userMessage.server.paynopain.redsys.503;CORRIGIDO;A conciliação não foi aceite porque a operação original não foi localizada ou porque o banco emissor não respondeu dentro do tempo limite padrão.;
+core.userMessage.server.paynopain.redsys.904;CORRIGIDO;Comércio não registrado no FUC.;
 core.userMessage.server.paynopain.redsys.916;CORRIGIDO;Não é possível operar com este valor.;
+core.userMessage.server.paynopain.redsys.928;CORRIGIDO;O banco emissor não responde ao pedido de autorização dentro do tempo limite padrão.;
 core.userMessage.server.paynopain.redsys.940;CORRIGIDO;Está sendo pedida uma cancelamento ou devolução parcial de uma transação que já tinha sido anulada.;
 core.userMessage.server.paynopain.redsys.943;CORRIGIDO;Está sendo pedida uma confirmação errada.;
 core.userMessage.server.paynopain.redsys.946;CORRIGIDO;Foi pedida a cancelamento ou devolução parcial de uma transação original que ainda está em processamento e a aguardar resposta.;
@@ -906,6 +991,8 @@ core.userMessage.server.paynopain.redsys.9915;CORRIGIDO;A pedido do usuário, o 
 core.userMessage.server.paynopain.redsys.9928;CORRIGIDO;Cancelamento de autorização diferida pelo SIS (processo batch).;
 core.userMessage.server.paynopain.redsys.9929;CORRIGIDO;Cancelamento de autorização diferida realizada pelo comércio.;
 core.userMessage.server.paynopain.redsys.9997;CORRIGIDO;Está sendo processada no SIS outra transação com o mesmo cartão.;
+core.userMessage.server.paynopain.redsys.sis0028;CORRIGIDO;Erro: comércio / terminal não está registrado.;
+core.userMessage.server.paynopain.redsys.sis0046;CORRIGIDO;O BIN do cartão não está registrado.;
 core.userMessage.server.paynopain.redsys.sis0057;CORRIGIDO;O valor a devolver excede o valor autorizado.;
 core.userMessage.server.paynopain.redsys.sis0061;CORRIGIDO;A pré-autorização que se deseja confirmar não está autorizada.;
 core.userMessage.server.paynopain.redsys.sis0062;CORRIGIDO;O valor a confirmar excede o valor autorizado.;
@@ -925,14 +1012,22 @@ core.userMessage.server.paynopain.redsys.sis0297;CORRIGIDO;Número de operaçõe
 core.userMessage.server.paynopain.redsys.sis0298;CORRIGIDO;O comércio não permite operações de cartão em arquivo ou pagamento por referência.;
 core.userMessage.server.paynopain.redsys.sis0325;CORRIGIDO;Foi pedido para não mostrar telas, mas não foi enviada nenhuma referência de cartão.;
 core.userMessage.server.paynopain.redsys.sis0444;CORRIGIDO;Erro produzido ao acessar por um sistema de assinatura antigo tendo configurado o tipo de chave HMAC SHA256.;
+core.userMessage.server.paynopain.redsys.sis0448;CORRIGIDO;Foi realizada uma operação com cartão Diners, mas o comércio não tem este tipo de cartão ativado. Para o ativar, deve contatar diretamente a Diners Club.;
+core.userMessage.server.paynopain.redsys.sis0457;CORRIGIDO;Foi utilizado um cartão empresarial e o comércio não suporta este tipo de cartão. Para o ativar, deve contatar o seu balcão de gestão.;
+core.userMessage.server.paynopain.redsys.sis0458;CORRIGIDO;Foi utilizado um cartão empresarial e o comércio não suporta este tipo de cartão. Para o ativar, deve contatar o seu balcão de gestão.;
+core.userMessage.server.paynopain.redsys.sis0464;CORRIGIDO;Foi utilizado um cartão empresarial e o comércio não suporta este tipo de cartão. Para o ativar, deve contatar o seu balcão de gestão.;
 core.userMessage.server.priceisgreaterthanremainingdeposit.default;CORRIGIDO;O valor informado é superior ao valor restante do depósito. Altere-o e tente novamente;
 core.userMessage.server.pricemustbegreaterthanzero.default;CORRIGIDO;O preço informado tem de ser superior a zero. Altere-o e tente novamente;
+core.userMessage.server.propertynotregistercompany.default;CORRIGIDO;Esta propriedade não tem empresa registrada;
 core.userMessage.server.quantitymustbeone.default;CORRIGIDO;A quantidade informada tem de ser 1. Altere-a e tente novamente;
 core.userMessage.server.quantitymustbeoverone.default;CORRIGIDO;A quantidade informada tem de ser 1 ou superior. Altere-a e tente novamente;
+core.userMessage.server.registeredcompanyprotectedbynf525.default;CORRIGIDO;"A empresa registrada não pode ser atualizada; contate a UlysesCloud";
 core.userMessage.server.reservationroomstayiscancelled.default;CORRIGIDO;Não foi possível concluir a operação. A estadia que está tentando modificar está cancelada;
 core.userMessage.server.roomisnotavailable.default;CORRIGIDO;O alojamento que está tentando atribuir não está disponível neste momento. Altere-o e tente novamente.;
 core.userMessage.server.servicerequiresquantityandlength.default;CORRIGIDO;Não foi possível concluir a operação. Informe a quantidade e a frequência com que este serviço será prestado;
 core.userMessage.server.spaceisnotavailable.default;CORRIGIDO;Não foi possível bloquear o espaço. Este espaço já foi atribuído a uma reserva no período selecionado ou já foi bloqueado por outra pessoa. Reveja o planejamento de reservas ou confirme que não foi bloqueado e tente novamente;
+core.userMessage.server.stripe.account_error_country_change_requires_additional_steps;CORRIGIDO;"Erro do Stripe:
+A sua conta já foi integrada como plataforma Connect. Alterar o país requer passos adicionais. Contate o suporte do Stripe para mais informações.";
 core.userMessage.server.stripe.amount_too_large;CORRIGIDO;"Erro do Stripe:
 O valor especificado é superior ao valor máximo permitido. Utilize um valor inferior e tente novamente.";
 core.userMessage.server.stripe.amount_too_small;CORRIGIDO;"Erro do Stripe:
@@ -944,21 +1039,25 @@ A sua plataforma Connect está tentando compartilhar uma conta bancária não ve
 core.userMessage.server.stripe.bank_account_verification_failed;CORRIGIDO;"Erro do Stripe:
 Não foi possível verificar a conta bancária, porque os valores dos microdepósitos indicados não coincidem com os valores reais ou porque a verificação falhou muitas vezes.";
 core.userMessage.server.stripe.card_decline_rate_limit_exceeded;CORRIGIDO;"Erro do Stripe:
-Este cartão foi recusado muitas vezes. Pode tentar cobrar novamente este cartão após 24 horas. Sugerimos que contacte o seu cliente para garantir que introduziu todos os dados corretamente e que não existem problemas com o cartão.";
+Este cartão foi recusado muitas vezes. Pode tentar cobrar novamente este cartão após 24 horas. Sugerimos que contate o seu cliente para garantir que introduziu todos os dados corretamente e que não existem problemas com o cartão.";
+core.userMessage.server.stripe.cardholder_phone_number_required;CORRIGIDO;"Erro do Stripe:
+Tem de existir um phone_number registrado para os titulares de cartão Issuing que vão criar cartões da UE. Não é possível criar cartões da UE sem um phone_number registrado para o titular. Consulte a documentação do 3D Secure para mais detalhes.";
 core.userMessage.server.stripe.charge_already_captured;CORRIGIDO;"Erro do Stripe:
 A cobrança que está tentando capturar já foi capturada. Atualize o pedido com o ID de uma cobrança não capturada.";
 core.userMessage.server.stripe.charge_already_refunded;CORRIGIDO;"Erro do Stripe:
 A cobrança que está tentando reembolsar já foi reembolsada. Atualize o pedido para utilizar o ID de uma cobrança que não tenha sido reembolsada.";
 core.userMessage.server.stripe.charge_disputed;CORRIGIDO;"Erro do Stripe:
 A cobrança que está tentando reembolsar foi objeto de estorno. Consulte a documentação sobre disputas para saber como responder à disputa.";
+core.userMessage.server.stripe.charge_exceeds_source_limit;CORRIGIDO;"Erro do Stripe:
+Esta cobrança faria com que excedesse o seu limite de processamento em janela móvel para este tipo de origem. Repita a cobrança mais tarde ou contate-nos para pedir um limite de processamento superior.";
 core.userMessage.server.stripe.charge_expired_for_capture;CORRIGIDO;"Erro do Stripe:
 A cobrança não pode ser capturada porque a autorização expirou. As cobranças de autorização e captura têm de ser capturadas num determinado número de dias (7 por padrão).";
 core.userMessage.server.stripe.country_unsupported;CORRIGIDO;"Erro do Stripe:
-A sua plataforma tentou criar uma conta personalizada num país que ainda não é suportado. Certifique-se de que os usuários só se podem registar em países suportados por contas personalizadas.";
+A sua plataforma tentou criar uma conta personalizada num país que ainda não é suportado. Certifique-se de que os usuários só se podem registrar em países suportados por contas personalizadas.";
 core.userMessage.server.stripe.coupon_expired;CORRIGIDO;"Erro do Stripe:
 O cupão indicado para uma assinatura ou encomenda expirou. Crie um novo cupão ou utilize um existente que seja válido.";
 core.userMessage.server.stripe.customer_max_subscriptions;CORRIGIDO;"Erro do Stripe:
-Foi atingido o número máximo de assinaturas para um cliente. Contacte-nos se estiver a receber este erro.";
+Foi atingido o número máximo de assinaturas para um cliente. Contate-nos se estiver a receber este erro.";
 core.userMessage.server.stripe.idempotency_key_in_use;CORRIGIDO;"Erro do Stripe:
 A chave de idempotência indicada está sendo utilizada noutro pedido. Isto ocorre se a sua integração estiver a fazer pedidos duplicados em simultâneo.";
 core.userMessage.server.stripe.invalid_charge_amount;CORRIGIDO;"Erro do Stripe:
@@ -981,6 +1080,8 @@ core.userMessage.server.stripe.missing;CORRIGIDO;"Erro do Stripe:
 Foram indicados um ID de cliente e um ID de origem, mas a origem não foi salva no cliente. Para criar uma cobrança para um cliente com uma origem especificada, tem primeiro de salvar os dados do cartão.";
 core.userMessage.server.stripe.payment_intent_unexpected_state;CORRIGIDO;"Erro do Stripe:
 O estado do PaymentIntent era incompatível com a operação que estava tentando executar.";
+core.userMessage.server.stripe.payment_method_bank_account_blocked;CORRIGIDO;"Erro do Stripe:
+Esta conta bancária falhou a verificação no passado e não pode ser utilizada. Contate-nos se quiser tentar utilizar estas credenciais de conta bancária.";
 core.userMessage.server.stripe.payment_method_billing_details_address_missing;CORRIGIDO;"Erro do Stripe:
 Os dados de faturamento do PaymentMethod não incluem o endereço. Atualize os campos em falta e tente novamente.";
 core.userMessage.server.stripe.payment_method_microdeposit_verification_amounts_invalid;CORRIGIDO;"Erro do Stripe:
@@ -990,9 +1091,11 @@ Os valores indicados não coincidem com os valores enviados para a conta bancár
 core.userMessage.server.stripe.payment_method_unexpected_state;CORRIGIDO;"Erro do Stripe:
 O estado do método de pagamento indicado era incompatível com a operação que estava tentando executar. Confirme que o método de pagamento está num estado permitido para a operação antes de a tentar executar.";
 core.userMessage.server.stripe.platform_api_key_expired;CORRIGIDO;"Erro do Stripe:
-A chave de API indicada pela sua plataforma Connect expirou. Isto ocorre se a sua plataforma gerou uma nova chave ou se a conta associada foi desligada da plataforma. Obtenha as suas chaves de API atuais no painel e atualize a sua integração, ou contacte o usuário e volte a ligar a conta.";
+A chave de API indicada pela sua plataforma Connect expirou. Isto ocorre se a sua plataforma gerou uma nova chave ou se a conta associada foi desligada da plataforma. Obtenha as suas chaves de API atuais no painel e atualize a sua integração, ou contate o usuário e volte a ligar a conta.";
 core.userMessage.server.stripe.rate_limit;CORRIGIDO;"Erro do Stripe:
  Muitos pedidos atingiram a API muito depressa. Recomendamos um recuo exponencial dos seus pedidos.";
+core.userMessage.server.stripe.refer_to_customer;CORRIGIDO;"Erro do Stripe:
+O cliente interrompeu o pagamento junto do seu banco. Contate-o para obter detalhes e combinar o pagamento.";
 core.userMessage.server.stripe.resource_already_exists;CORRIGIDO;"Erro do Stripe:
 Já existe um recurso com um ID especificado pelo usuário (por exemplo, plano ou cupão). Utilize um valor único diferente para o id e tente novamente.";
 core.userMessage.server.stripe.setup_intent_unexpected_state;CORRIGIDO;"Erro do Stripe:
@@ -1001,6 +1104,8 @@ core.userMessage.server.stripe.tls_version_unsupported;CORRIGIDO;"Erro do Stripe
 A sua integração está utilizando uma versão antiga do TLS que não é suportada. Tem de utilizar TLS 1.2 ou superior.";
 core.userMessage.server.stripe.token_in_use;CORRIGIDO;"Erro do Stripe:
 O token indicado está sendo utilizado noutro pedido. Isto ocorre se a sua integração estiver a fazer pedidos duplicados em simultâneo.";
+core.userMessage.server.stripe.transfers_not_allowed;CORRIGIDO;"Erro do Stripe:
+Não é possível criar a transferência pedida. Contate-nos se estiver a receber este erro.";
 core.userMessage.server.stripepricemustbegreaterthanzero.default;CORRIGIDO;O valor tem de ser superior a zero.;
 core.userMessage.server.striperefundamountdoesnotmatch.default;CORRIGIDO;O valor reembolsado no nosso sistema e o valor reembolsado no Stripe são diferentes.;
 core.userMessage.server.taxidrequired.default;CORRIGIDO;Informe um identificador fiscal válido e tente novamente;
@@ -1029,21 +1134,21 @@ core.userPreferences.planningView.name;CORRIGIDO;Vista do planejamento;
 core.userPreferences.receptionBookStrikeMode.name;CORRIGIDO;Modo de riscado do livro de recepção;
 core.userPreferences.reportGrossAmount.name;CORRIGIDO;Valor bruto do relatório;
 core.userPreferences.rowAmountGrid.name;CORRIGIDO;Grade de valores por linha;
-shared.aggregateGrid.empty.allotment.noIncludedProduct;CORRIGIDO;Adicione os produtos que devem ser oferecidos por padrão nesta oferta. Por exemplo, se uma oferta incluir sempre o pequeno-almoço, adicionamos aqui esse serviço.;
-shared.aggregateGrid.empty.chainAllotment.noIncludedProduct;CORRIGIDO;Adicione os produtos que devem ser oferecidos por padrão nesta oferta. Por exemplo, se uma oferta incluir sempre o pequeno-almoço, adicionamos aqui esse serviço.;
+shared.aggregateGrid.empty.allotment.noIncludedProduct;CORRIGIDO;Adicione os produtos que devem ser oferecidos por padrão nesta oferta. Por exemplo, se uma oferta incluir sempre o café da manhã, adicionamos aqui esse serviço.;
+shared.aggregateGrid.empty.chainAllotment.noIncludedProduct;CORRIGIDO;Adicione os produtos que devem ser oferecidos por padrão nesta oferta. Por exemplo, se uma oferta incluir sempre o café da manhã, adicionamos aqui esse serviço.;
 shared.aggregateGrid.empty.chainBoard.noChainProductBreakdown;CORRIGIDO;Adicione os produtos da rede incluídos neste regime.;
 shared.aggregateGrid.empty.chainCommissionType.noIncludedChainProduct;CORRIGIDO;Adicione os produtos da rede que podem utilizar este tipo de comissão.;
 shared.aggregateGrid.empty.chainCommissionType.noIncludedChainProductExcluded;CORRIGIDO;Adicione os produtos da rede excluídos que não podem utilizar este tipo de comissão.;
 shared.aggregateGrid.empty.chainDiscountType.noIncludedChainProduct;CORRIGIDO;Adicione os produtos da rede que podem utilizar este tipo de desconto.;
 shared.aggregateGrid.empty.chainDiscountType.noIncludedChainProductExcluded;CORRIGIDO;Adicione os produtos da rede excluídos que não podem utilizar este tipo de desconto.;
 shared.aggregateGrid.empty.chainIntegrationACIBIChainProductServiceGroupFoodAndBeverage.noProductServiceGroup;CORRIGIDO;Adicione os grupos de serviços de produto que deseja ver no ACIBI;
-shared.aggregateGrid.empty.chainOffer.noIncludedProduct;CORRIGIDO;Adicione os produtos que devem ser oferecidos por padrão nesta oferta. Por exemplo, se uma oferta incluir sempre o pequeno-almoço, adicionamos aqui esse serviço.;
-shared.aggregateGrid.empty.chainPromotion.noIncludedProduct;CORRIGIDO;Adicione os produtos que devem ser oferecidos por padrão nesta promoção. Por exemplo, se uma promoção incluir sempre o pequeno-almoço, adicionamos aqui esse serviço.;
-shared.aggregateGrid.empty.chainRate.noIncludedProduct;CORRIGIDO;Adicione os produtos que devem ser oferecidos por padrão nesta tarifa. Por exemplo, se uma tarifa incluir sempre pequeno-almoço, adicionaremos esse serviço aqui.;
+shared.aggregateGrid.empty.chainOffer.noIncludedProduct;CORRIGIDO;Adicione os produtos que devem ser oferecidos por padrão nesta oferta. Por exemplo, se uma oferta incluir sempre o café da manhã, adicionamos aqui esse serviço.;
+shared.aggregateGrid.empty.chainPromotion.noIncludedProduct;CORRIGIDO;Adicione os produtos que devem ser oferecidos por padrão nesta promoção. Por exemplo, se uma promoção incluir sempre o café da manhã, adicionamos aqui esse serviço.;
+shared.aggregateGrid.empty.chainRate.noIncludedProduct;CORRIGIDO;Adicione os produtos que devem ser oferecidos por padrão nesta tarifa. Por exemplo, se uma tarifa incluir sempre café da manhã, adicionaremos esse serviço aqui.;
 shared.aggregateGrid.empty.chainReceptionBookCategory.noIncludedChainReceptionBookCategoryRole;CORRIGIDO;Adicione as funções que podem utilizar esta categoria do livro de recepção;
-shared.aggregateGrid.empty.offer.noIncludedProduct;CORRIGIDO;Adicione os produtos que devem ser oferecidos por padrão nesta oferta. Por exemplo, se uma oferta incluir sempre pequeno-almoço, adicionaremos esse serviço aqui.;
+shared.aggregateGrid.empty.offer.noIncludedProduct;CORRIGIDO;Adicione os produtos que devem ser oferecidos por padrão nesta oferta. Por exemplo, se uma oferta incluir sempre café da manhã, adicionaremos esse serviço aqui.;
 shared.aggregateGrid.empty.profileInvoiceProductTypeAllowed.noProductType;CORRIGIDO;Selecione se deseja restringir a faturamento a alguns tipos de produto;
-shared.aggregateGrid.empty.promotion.noIncludedProduct;CORRIGIDO;Adicione os produtos que devem ser oferecidos por padrão nesta promoção. Por exemplo, se uma promoção incluir sempre pequeno-almoço, adicionaremos esse serviço aqui.;
+shared.aggregateGrid.empty.promotion.noIncludedProduct;CORRIGIDO;Adicione os produtos que devem ser oferecidos por padrão nesta promoção. Por exemplo, se uma promoção incluir sempre café da manhã, adicionaremos esse serviço aqui.;
 shared.aggregateGrid.empty.propertyBEBoard.noBoards;CORRIGIDO;Adicione os regimes que deseja mostrar apenas na disponibilidade do motor de reservas;
 shared.aggregateGrid.empty.propertyBEOffer.noOffers;CORRIGIDO;Adicione as ofertas que deseja mostrar apenas na disponibilidade do motor de reservas;
 shared.aggregateGrid.empty.propertyBEProductAccommodation.noProductAccommodations;CORRIGIDO;Adicione os alojamentos que deseja mostrar apenas na disponibilidade do motor de reservas;
@@ -1064,6 +1169,7 @@ shared.aggregateGrid.empty.propertyIntegrationFideltour.noPropertySegmentExclude
 shared.aggregateGrid.empty.propertyIntegrationFideltour.noPropertySourceExcluded;CORRIGIDO;Adicione as origens que deseja excluir;
 shared.aggregateGrid.empty.propertyIntegrationFideltour.noRateExcluded;CORRIGIDO;Adicione as tarifas que deseja excluir;
 shared.aggregateGrid.empty.propertyIntegrationSAFTPT.noInvoiceType;CORRIGIDO;Adicione os tipos de fatura que deseja incluir;
+shared.aggregateGrid.empty.propertyIntegrationSalesforceKaizen.emptyProductBreakfast;CORRIGIDO;Adicione cafés da manhã;
 shared.aggregateGrid.empty.propertyIntegrationYacan.emptyRoomMapLock;CORRIGIDO;Adicione as fechaduras que deseja incluir;
 shared.aggregateGrid.empty.propertyKioskCustomField.noPropertyKioskCustomField;CORRIGIDO;Adicione os campos personalizados que deseja solicitar ao cliente;
 shared.aggregateGrid.empty.propertyKioskWalkingCheckinBoard.noBoards;CORRIGIDO;Adicione os regimes que deseja mostrar apenas na disponibilidade do quiosque;
@@ -1071,7 +1177,7 @@ shared.aggregateGrid.empty.propertyKioskWalkingCheckinOffer.noOffers;CORRIGIDO;A
 shared.aggregateGrid.empty.propertyKioskWalkingCheckinProductAccommodation.noProductAccommodations;CORRIGIDO;Adicione os alojamentos que deseja mostrar apenas na disponibilidade do quiosque;
 shared.aggregateGrid.empty.propertyKioskWalkingCheckinPromotion.noPromotions;CORRIGIDO;Adicione as promoções que deseja mostrar apenas na disponibilidade do quiosque;
 shared.aggregateGrid.empty.propertyKioskWalkingCheckinRate.noRates;CORRIGIDO;Adicione as tarifas que deseja mostrar apenas na disponibilidade do quiosque;
-shared.aggregateGrid.empty.rate.noIncludedProduct;CORRIGIDO;Adicione os produtos que devem ser oferecidos por padrão nesta tarifa. Por exemplo, se uma tarifa incluir sempre pequeno-almoço, adicionaremos esse serviço aqui.;
+shared.aggregateGrid.empty.rate.noIncludedProduct;CORRIGIDO;Adicione os produtos que devem ser oferecidos por padrão nesta tarifa. Por exemplo, se uma tarifa incluir sempre café da manhã, adicionaremos esse serviço aqui.;
 shared.aggregateGrid.empty.roomTypeRoomSubType.noRoomTypeRoomSubTypeQuantity;CORRIGIDO;Adicione o número de subalojamentos e a data desejada neste alojamento.;
 shared.aggregateGrid.empty.user.noCustomLink;CORRIGIDO;Adicione URLs que possam ser úteis para o usuário.;
 shared.aggregateGrid.title.chainCommissionType.chainProduct;CORRIGIDO;Produto da rede;
@@ -1081,6 +1187,7 @@ shared.aggregateGrid.title.chainDiscountType.chainProduct;CORRIGIDO;Produto da r
 shared.aggregateGrid.title.chainDiscountType.chainProductExcluded;CORRIGIDO;Produto da rede excluído;
 shared.aggregateGrid.title.chainDiscountType.chainProductIncluded;CORRIGIDO;Produto da rede incluído;
 shared.aggregateGrid.title.chainIntegrationACIBIChainProductServiceGroupFoodAndBeverage.noProductServiceGroup;CORRIGIDO;Adicione os grupos de serviços de produtos que deseja ver no ACIBI.;
+shared.aggregateGrid.title.propertyIntegrationSalesforceKaizen.productBreakfast;CORRIGIDO;Cafés da manhã;
 shared.aiPanel.modes.fullscreen;CORRIGIDO;Tela inteiro;
 shared.analytics.sidebar.title;CORRIGIDO;Seções;
 shared.assistant.addDepositWizard.step1;CORRIGIDO;Definir o valor do depósito;
@@ -1088,6 +1195,7 @@ shared.assistant.addGuaranteeReservation.step1;CORRIGIDO;Informe os detalhes;
 shared.assistant.addGuaranteeSuggested.step1;CORRIGIDO;Informe os detalhes;
 shared.assistant.budget.step1;CORRIGIDO;Enviar planilha;
 shared.assistant.customField.step0;CORRIGIDO;Selecionar grade;
+shared.assistant.customField.step2;CORRIGIDO;Adicionar valores padrão;
 shared.assistant.deposit.step1;CORRIGIDO;Informar valor;
 shared.assistant.importSpreadsheetRate.step1;CORRIGIDO;Enviar planilha;
 shared.assistant.paymentAuthorization.step1;CORRIGIDO;Informar valor;
@@ -1099,6 +1207,8 @@ shared.availability.minimumAmountApplied;CORRIGIDO;Valor mínimo aplicado;
 shared.blockSystem.notCompatibleLayout.small;CORRIGIDO;O dispositivo é muito pequeno;
 shared.chainWithProperty.default;CORRIGIDO;Diferenças Rede | Propriedade;
 shared.chainWithProperty.loading;CORRIGIDO;Carregando...;
+shared.component.agent.hsk.suggestion1.description;CORRIGIDO;Registrar uma avaria de manutenção no quarto 110: o ar condicionado não arrefece.;
+shared.component.agent.hsk.suggestion1.title;CORRIGIDO;Registrar avaria;
 shared.component.agent.revenue.suggestion2.description;CORRIGIDO;Que segmento de mercado está contribuindo mais para a produção este mês?;
 shared.component.folioDetail.showOverwrite;CORRIGIDO;Clique aqui se deseja substituir a informação da reserva;
 shared.component.guarantee.action.delete;CORRIGIDO;Excluir;
@@ -1131,6 +1241,8 @@ shared.empty.default.message;CORRIGIDO;Talvez não existam entidades deste tipo 
 shared.empty.florPlanMap.message;CORRIGIDO;Talvez não exista nenhum mapa criado. Acesse à seção de mapa de áreas para os criar e configurar.;
 shared.empty.loading;CORRIGIDO;Carregando...;
 shared.empty.loadingPassportScan;CORRIGIDO;Carregando digitalização do passaporte...;
+shared.empty.noAuthorizations;CORRIGIDO;Nenhuma autorização registrada;
+shared.empty.noDeposits;CORRIGIDO;Nenhum depósito registrado;
 shared.empty.notFound.title;CORRIGIDO;Oh! Não encontramos nenhum resultado para os filtros aplicados;
 shared.empty.planning.get.title;CORRIGIDO;Oh! Não encontramos nenhum resultado para os filtros aplicados;
 shared.empty.profileGroup.get.page;CORRIGIDO;Esta rede ainda não tem grupos de perfis. Adicione o primeiro grupo de perfis clicando no botão na parte superior.;
@@ -1169,6 +1281,7 @@ shared.grid.header.communicationUuidMessageLog;CORRIGIDO;Registro de mensagens U
 shared.grid.header.contact;CORRIGIDO;Contato;
 shared.grid.header.contactCategory;CORRIGIDO;Categoria de contato;
 shared.grid.header.createdUser;CORRIGIDO;Usuário de criação;
+shared.grid.header.defaultValue;CORRIGIDO;Valor padrão;
 shared.grid.header.delete;CORRIGIDO;Excluir;
 shared.grid.header.deleteFolioAfterClose;CORRIGIDO;Excluir folio ao fechar;
 shared.grid.header.eventExpectedInfant;CORRIGIDO;Bebês esperados;
@@ -1176,6 +1289,7 @@ shared.grid.header.fileName;CORRIGIDO;Nome do arquivo;
 shared.grid.header.gender;CORRIGIDO;Gênero;
 shared.grid.header.genderTypeCode;CORRIGIDO;Código do tipo de gênero;
 shared.grid.header.infant;CORRIGIDO;Bebês;
+shared.grid.header.lastName;CORRIGIDO;Sobrenome;
 shared.grid.header.logDate;CORRIGIDO;Data do registro;
 shared.grid.header.occupancyPercentage;CORRIGIDO;Porcentagem de ocupação;
 shared.grid.header.percentage;CORRIGIDO;Porcentagem;
@@ -1186,7 +1300,11 @@ shared.grid.header.registrationFailedAttempts;CORRIGIDO;Tentativas falhadas de r
 shared.grid.header.registrationLote;CORRIGIDO;Lote de registro;
 shared.grid.header.registrationRequestStatusType;CORRIGIDO;Estado do pedido de registro;
 shared.grid.header.registrationUuidMessageLog;CORRIGIDO;Registro de mensagens UUID do registro;
+shared.grid.header.requiredFieldSurname;CORRIGIDO;Sobrenome obrigatório;
+shared.grid.header.secondName;CORRIGIDO;Segundo sobrenome;
+shared.grid.header.secondSurName;CORRIGIDO;Segundo sobrenome;
 shared.grid.header.shiftClosedDate;CORRIGIDO;Data de fechamento;
+shared.grid.header.surName;CORRIGIDO;Sobrenome;
 shared.grid.header.taxAddress;CORRIGIDO;Endereço fiscal;
 shared.grid.header.user;CORRIGIDO;Usuário;
 shared.grid.header.userName;CORRIGIDO;Nome de usuário;
@@ -1196,16 +1314,19 @@ shared.grid.header.uuidMessageLog;CORRIGIDO;Registro de mensagens UUID;
 shared.grid.noViewAllDataInGrid;CORRIGIDO;O resultado tem muitas linhas, não é possível apresentar todos os dados do sistema.;
 shared.grid.search.profile.get.companyCRS;CORRIGIDO;Escreva aqui para pesquisar por código, nome, NIF, IATA, nome alargado, e-mail, endereço, número do documento;
 shared.grid.search.profile.get.companyPMS;CORRIGIDO;Escreva aqui para pesquisar por código, nome, NIF, IATA, nome alargado, e-mail, endereço, número do documento;
-shared.grid.search.profile.get.customerCRS;CORRIGIDO;Escreva aqui para pesquisar por nome, apelido, segundo apelido, número do documento, e-mail, telefone, endereço, cidade ou código postal;
-shared.grid.search.profile.get.customerPMS;CORRIGIDO;Escreva aqui para pesquisar por nome, apelido, segundo apelido, número do documento, e-mail, telefone, endereço, cidade ou código postal;
+shared.grid.search.profile.get.customerCRS;CORRIGIDO;Escreva aqui para pesquisar por nome, sobrenome, segundo sobrenome, número do documento, e-mail, telefone, endereço, cidade ou código postal;
+shared.grid.search.profile.get.customerPMS;CORRIGIDO;Escreva aqui para pesquisar por nome, sobrenome, segundo sobrenome, número do documento, e-mail, telefone, endereço, cidade ou código postal;
 shared.grid.search.property.getUser.page;CORRIGIDO;Escreva aqui para pesquisar por nome de usuário;
 shared.grid.search.propertyIntegrationHospedaje.getHospedajeQueue.page;CORRIGIDO;Escreva aqui para pesquisar por lote de registro;
 shared.grid.search.role.getUser.page;CORRIGIDO;Escreva aqui para pesquisar por nome de usuário;
 shared.grid.search.user.get.page;CORRIGIDO;Escreva aqui para pesquisar por nome de usuário;
+shared.information.notAuthorized.message;CORRIGIDO;"A sua conta não tem permissões para ver esta página.
+
+Contate o seu administrador para obter estas permissões.";
 shared.information.notFound.message;CORRIGIDO;A página a que está tentando acessar não existe.;
 shared.information.upgradeEdition.message;CORRIGIDO;"Está tentando acessar a elementos de uma versão superior à contratada.
 
-Contacte a UlysesCloud para poder alargar a sua assinatura e usufruir de mais funcionalidades.";
+Contate a UlysesCloud para poder alargar a sua assinatura e usufruir de mais funcionalidades.";
 shared.input.error.pattern.emailList;CORRIGIDO;"Este campo não cumpre o padrão de e-mail necessário.
 Informe uma lista de e-mails válidos separados por ponto e vírgula";
 shared.input.error.pattern.password;CORRIGIDO;"Este campo está incorreto. Informe a senha
@@ -1296,6 +1417,7 @@ Deseja fazer o check-out deste grupo?";
 shared.modal.closeDeviceSession.message;CORRIGIDO;Tem certeza de que deseja fechar a sessão neste dispositivo?;
 shared.modal.closeFolio.balance.closeFolioWithForeignCurrency;CORRIGIDO;O saldo na moeda estrangeira é 0. Deseja fechar o folio com a moeda estrangeira e ajustar o resultado na moeda local?;
 shared.modal.closeFolio.changeInvoiceType;CORRIGIDO;É aconselhável alterar o tipo de fatura para {{invoiceTypeName}} para prosseguir com o fechamento do folio;
+shared.modal.closeFolio.printInvoice.message;CORRIGIDO;"Selecione um formato de agrupamento da fatura; se não selecionar nenhum, será utilizado o formato de impressão padrão";
 shared.modal.columnConfiguration.infoExpanded;CORRIGIDO;Pode definir se um campo está aberto ou fechado por padrão clicando na caixa de seleção desse campo.;
 shared.modal.copyToChain.hint;CORRIGIDO;Selecione as seções para as quais deseja copiar {{entity}} para a rede.;
 shared.modal.copyToChain.selectOne;CORRIGIDO;Tem de selecionar pelo menos uma seção para continuar;
@@ -1579,10 +1701,14 @@ shared.modal.information.invoiceReopen.message;CORRIGIDO;Tem certeza de que dese
 shared.modal.information.invoiceVoid.message;CORRIGIDO;Tem certeza de que deseja anular esta fatura?;
 shared.modal.information.invopopResend.message;CORRIGIDO;Tem certeza de que deseja reenviar esta fatura para a Invopop?;
 shared.modal.information.kioskDeviceMissing.message;CORRIGIDO;"Não foram detectados dispositivos de quiosque; verifique se estão online e tente novamente";
+shared.modal.information.limitDashboard.message;CORRIGIDO;Olá! Atingiu o número máximo de painéis. Contate o seu administrador para atualizar a sua conta;
+shared.modal.information.limitWidget.message;CORRIGIDO;Olá! Atingiu o número máximo de widgets neste painel. Tente criar um novo painel ou contate o seu administrador para resolver a situação;
 shared.modal.information.markAllAsNoShowOrCancelled.message;CORRIGIDO;Todas as chegadas serão marcadas como no-show ou canceladas. Deseja prosseguir?;
 shared.modal.information.modifyMinimumAmountAfterTax.message;CORRIGIDO;Está modificando o preço mínimo deste produto. Isto causará muitas alterações nos dados de todos os produtos. Deseja prosseguir?;
 shared.modal.information.newUserSepteoPayments.message;CORRIGIDO;"Foi criado um usuário no Septeo Payments para consultar cartões.
 Acesse ao e-mail {{email}} para definir a senha e acessar ao sistema.";
+shared.modal.information.notAuthorized.message;CORRIGIDO;"A sua conta não tem as permissões necessárias.
+Contate o seu administrador para obter estas permissões.";
 shared.modal.information.notDeleteEventResource.message;CORRIGIDO;Não pode excluir um recurso de evento passado;
 shared.modal.information.notDeleteEventResource.title;CORRIGIDO;Impossível excluir recurso de evento passado;
 shared.modal.information.notDeletePackage.message;CORRIGIDO;Não pode excluir um pacote passado;
@@ -1594,6 +1720,8 @@ Modifique o folio e tente novamente.";
 shared.modal.information.notSave.message;CORRIGIDO;Não guardou as alterações. Se continuar, perderá as alterações efetuadas. Deseja continuar?;
 shared.modal.information.notSave.submitted;CORRIGIDO;Não salvar;
 shared.modal.information.notSave.title;CORRIGIDO;Não salvar alterações;
+shared.modal.information.overbookingIsNotAllowed.message;CORRIGIDO;Foi registrado OVERBOOKING para a estadia selecionada;
+shared.modal.information.overbookingNotAllowed.message;CORRIGIDO;Foi registrado OVERBOOKING para as alterações pedidas;
 shared.modal.information.pendingChanges.message;CORRIGIDO;Existem alterações pendentes. Guarde-as antes de continuar ou clique o botão aceitar para as descartar.;
 shared.modal.information.productHasNotTaxesIncluded.message;CORRIGIDO;O produto não tem nenhum imposto associado. Tem certeza?;
 shared.modal.information.profileGuaranteeCardDelete.message;CORRIGIDO;Tem certeza de que deseja excluir esta garantia?;
@@ -1702,9 +1830,11 @@ shared.modal.management.downloadExcelHint;CORRIGIDO;Marque os abas que deseja in
 shared.modal.merge.noSuggestion;CORRIGIDO;Lamentamos, não encontramos nenhuma sugestão adequada;
 shared.modal.newFolio.profileType;CORRIGIDO;Selecione uma das opções abaixo para ser atribuída como faturar a no novo folio. Caso nenhuma das sugestões corresponda ao desejado, selecione Outra empresa ou Outro cliente para selecionar manualmente o perfil a faturar;
 shared.modal.newProperty.initialSetup.default.info;CORRIGIDO;Selecione esta opção para poder começar a utilizar o Ulyses Suite na sua nova propriedade imediatamente. Esta opção carregará informação ao nível da rede e criará também informação relevante da propriedade, como a caixa, os tipos de fatura, etc.;
+shared.modal.newProperty.initialSetup.default.title;CORRIGIDO;Carregar informação padrão (Recomendado);
 shared.modal.newProperty.initialSetup.external.chainDataWarning;CORRIGIDO;Alguns dados da rede serão criados automaticamente;
 shared.modal.newProperty.initialSetup.external.info;CORRIGIDO;Duplique uma propriedade existente de outra rede ou ambiente introduzindo o URL de origem. O acesso é verificado antes do arranque e a duplicação é acompanhada durante a execução;
-shared.modal.newProperty.propertySetup.info;CORRIGIDO;Tipo de propriedade desejado. Se selecionar predefinido, terá as opções para ambos os casos.  ;
+shared.modal.newProperty.propertySetup.default;CORRIGIDO;Padrão;
+shared.modal.newProperty.propertySetup.info;CORRIGIDO;Tipo de propriedade desejado. Se selecionar padrão, terá as opções para ambos os casos.  ;
 shared.modal.paymentScheduler.confirmationModal.messageError;CORRIGIDO;Tem certeza de que deseja executar a automatização de pagamentos?;
 shared.modal.paymentScheduler.confirmationModal.messagePending;CORRIGIDO;Tem certeza de que deseja tentar novamente a execução desta automatização de pagamentos?;
 shared.modal.printInvoice.downloadNInvoice;CORRIGIDO;Baixar {{count}} faturas;
@@ -1773,7 +1903,7 @@ shared.modal.saveReservationGroupWithDependency.title;CORRIGIDO;Salvar reserva d
 shared.modal.selectStoredDocument.noSuggestion;CORRIGIDO;Nenhum documento salvo encontrado!;
 shared.modal.selectStoredDocument.title;CORRIGIDO;Selecionar documento salvo;
 shared.modal.sendCommunication.config.emailSMTPConfig;CORRIGIDO;Selecione se deseja enviar este e-mail a partir da sua conta pessoal ou da conta configurada na propriedade.;
-shared.modal.sendCommunication.config.selectTemplate;CORRIGIDO;Selecione o modelo com o qual deseja enviar a comunicação. Se não selecionar nenhum, será enviada com o modelo predefinido.;
+shared.modal.sendCommunication.config.selectTemplate;CORRIGIDO;Selecione o modelo com o qual deseja enviar a comunicação. Se não selecionar nenhum, será enviada com o modelo padrão.;
 shared.modal.sendCommunication.config.sendFiles;CORRIGIDO;Adicione aqui os arquivos que deseja enviar ao cliente. Estes arquivos só serão enviados para este e-mail.;
 shared.modal.sendCommunication.config.titleSendFiles;CORRIGIDO;Enviar arquivos;
 shared.modal.siteminder.preautomapping;CORRIGIDO;Nesta seção pode mapear os códigos do Ulyses Suite para códigos externos. Se forem iguais, não precisa de executar este passo e pode avançar para o passo seguinte.;
@@ -1804,6 +1934,8 @@ shared.navigationSetting.pms.property.section.billing;CORRIGIDO;Faturamento;
 shared.notification.entityDeleted;CORRIGIDO;{{entityType}} foi excluído(a).;
 shared.notification.entitySaved;CORRIGIDO;{{entityType}} foi salvo(a).;
 shared.radioButton.propertyEmailSchedulerEventDATERANGE.message;CORRIGIDO;O e-mail será enviado aos registros cuja data selecionada se encontre neste intervalo (inclusive).;
+shared.radioButton.testPanelSecondary.message;CORRIGIDO;Esta opção define apenas o painel, com o tipo padrão/secundário.;
+shared.radioButton.testPanelSecondary.title;CORRIGIDO;Apenas painel (tipo secundário/padrão);
 shared.sectionPanel.address;CORRIGIDO;Endereço;
 shared.sectionPanel.addresses;CORRIGIDO;Endereços;
 shared.sectionPanel.amountAfterTax;CORRIGIDO;Valor após impostos;
@@ -1813,9 +1945,14 @@ shared.sectionPanel.billingAndFinance;CORRIGIDO;Faturamento e finanças;
 shared.sectionPanel.billingInfo;CORRIGIDO;Informação de faturamento;
 shared.sectionPanel.chainProductType;CORRIGIDO;Tipo de produto da rede;
 shared.sectionPanel.chainProductTypeExcluded;CORRIGIDO;Tipo de produto da rede excluído;
+shared.sectionPanel.companyDefaultParameters;CORRIGIDO;Parâmetros padrão de empresa;
 shared.sectionPanel.contact;CORRIGIDO;Contato;
 shared.sectionPanel.copyOptionsSelection;CORRIGIDO;Selecione as opções que deseja copiar;
 shared.sectionPanel.copySituationSelection;CORRIGIDO;Indique em que tipo de situação deseja criar o novo grupo;
+shared.sectionPanel.customerDefaultParameters;CORRIGIDO;Parâmetros padrão de cliente;
+shared.sectionPanel.defaultProfileTypes;CORRIGIDO;Tipos de perfil padrão;
+shared.sectionPanel.defaultReceiver;CORRIGIDO;Destinatário padrão;
+shared.sectionPanel.defaultValues;CORRIGIDO;Valores padrão;
 shared.sectionPanel.endOfDay;CORRIGIDO;Fechamento do dia;
 shared.sectionPanel.files;CORRIGIDO;Arquivos;
 shared.sectionPanel.frontdesk;CORRIGIDO;Recepção;
@@ -1823,9 +1960,12 @@ shared.sectionPanel.guestRegistration;CORRIGIDO;Registro de hóspedes;
 shared.sectionPanel.historyLog;CORRIGIDO;Registro de histórico;
 shared.sectionPanel.notAvailableConsolidated;CORRIGIDO;A seção atual não está disponível no Consolidado;
 shared.sectionPanel.planning;CORRIGIDO;Planejamento;
+shared.sectionPanel.propertyDefaultParameters;CORRIGIDO;Parâmetros padrão da propriedade;
 shared.sectionPanel.rateAmount;CORRIGIDO;Valor da tarifa;
+shared.sectionPanel.registerOccupation;CORRIGIDO;Registrar ocupação;
 shared.sectionPanel.relatedRecords;CORRIGIDO;Registros relacionados;
 shared.sectionPanel.report.filtersChanged.title;CORRIGIDO;Alteração de parâmetros detectada;
+shared.sectionPanel.reservationDefaultParameters;CORRIGIDO;Parâmetros padrão da reserva;
 shared.sectionPanel.selectOptionsToCopy;CORRIGIDO;Selecione as opções que deseja copiar;
 shared.sectionPanel.syncInfoBetweenPropertyAndChain;CORRIGIDO;Sincronizar informação entre propriedade e rede;
 shared.sectionPanel.tokensByUser;CORRIGIDO;Tokens por usuário;
@@ -1847,6 +1987,8 @@ shared.switch.allowManualBreakdown.message;CORRIGIDO;Ative esta opção para per
 shared.switch.allowManualOtherBreakdown.message;CORRIGIDO;Ative esta opção para permitir que os usuários informem a porcentagem de discriminação de outros de F&B;
 shared.switch.allowOccupancyBreakdown.message;CORRIGIDO;Ative esta opção para permitir que os usuários informem a ocupação nos lançamentos.;
 shared.switch.allowRefundAccountReceivablePaymentAfterCloseDay.message;CORRIGIDO;Ative esta opção para permitir o reembolso do pagamento de contas a receber após o fechamento do dia;
+shared.switch.allowRegisterGuest.message;CORRIGIDO;Ative esta opção para permitir que os seus clientes registrem os seus dados;
+shared.switch.allowRegisterGuest.title;CORRIGIDO;Registrar hóspede;
 shared.switch.allowReopen.message;CORRIGIDO;Ative esta opção para permitir reabrir este tipo de fatura. Tenha em conta que reabrir faturas repõe a fatura original como folio. Esta operação só pode ser efetuada durante o mesmo dia em que o folio original foi fechado. Esta ação só será possível em determinados destinos com faturamento eletrónica.;
 shared.switch.allowRoomingList.message;CORRIGIDO;Ative esta opção para permitir que os usuários preencham a rooming list;
 shared.switch.allowThirdParty.message;CORRIGIDO;Ative esta opção se quiser compartilhar os dados pessoais deste cliente com outros fornecedores terceiros;
@@ -1855,12 +1997,15 @@ shared.switch.alwaysConsiderCleanAtCheckout.message;CORRIGIDO;Ative esta opção
 shared.switch.amountIncluded.message;CORRIGIDO;Ative para incluir o valor deste produto no valor definido em cada alojamento no aba Disponibilidade;
 shared.switch.amountIncluded.title;CORRIGIDO;Valor incluído;
 shared.switch.appliesRoute.message;CORRIGIDO;Detectamos que esta reserva tem uma automatização de encaminhamento configurada. Desative esta opção para evitar que seja redirecionada automaticamente para o destino abaixo.;
+shared.switch.applyDefaultOccupancy.message;CORRIGIDO;Ative esta opção para pré-preencher os campos de ocupação com a ocupação padrão da propriedade na pesquisa de disponibilidade e nos assistentes de reserva.;
+shared.switch.applyDefaultOccupancy.title;CORRIGIDO;Aplicar ocupação padrão;
 shared.switch.applyInCompany.message;CORRIGIDO;Ative esta opção se quiser atribuir perfis de empresa a este tipo;
 shared.switch.applyInCustomer.message;CORRIGIDO;Ative esta opção se quiser atribuir perfis de cliente a este tipo;
 shared.switch.asyncBoardAvailability.message;CORRIGIDO;Ative esta opção se quiser calcular a disponibilidade de regime de forma assíncrona;
 shared.switch.asyncProductServiceAvailability.message;CORRIGIDO;Ative esta opção se quiser calcular a disponibilidade de serviços de produto de forma assíncrona;
 shared.switch.asyncPropertyBookingForecast.message;CORRIGIDO;Ative esta opção se quiser calcular a previsão de reservas de forma assíncrona;
 shared.switch.asyncPropertyRevenue.message;CORRIGIDO;Ative esta opção se quiser calcular as receitas de forma assíncrona;
+shared.switch.autoChangeOnFirstPayment.message;CORRIGIDO;Ative esta opção para alterar automaticamente a reserva para a situação selecionada quando for registrado o primeiro pagamento.;
 shared.switch.autoCheckoutGroupWhenLast.message;CORRIGIDO;Ative esta opção se quiser efetuar automaticamente o check-out do grupo quando for efetuado o check-out da última reserva;
 shared.switch.autoGeneratedInvoiceDescription.message;CORRIGIDO;Ative esta opção se quiser gerar uma descrição de fatura automática com base nos grupos e subgrupos de produtos quando não tiver uma descrição de fatura.;
 shared.switch.automaticExportEnabled.message;CORRIGIDO;Ative esta opção para exportar e submeter automaticamente o seu relatório mensal do INSEE no dia 5 de cada mês. O sistema gerará o arquivo XML do mês anterior e enviá-lo-á ao INSEE através do serviço web configurado.;
@@ -1937,6 +2082,8 @@ shared.switch.microsoftGraph.message;CORRIGIDO;Ative esta opção se quiser util
 shared.switch.nativeAvailability.message;CORRIGIDO;Ative esta opção se quiser calcular a disponibilidade com base em consultas nativas;
 shared.switch.nonTaxable.message;CORRIGIDO;Ative esta opção para poder ativar todas as operações de faturamento com impostos diferentes.;
 shared.switch.nonTaxable.title;CORRIGIDO;Faturamento não sujeita a imposto;
+shared.switch.oneCardAccommodationTypeMapping.message;CORRIGIDO;Quando ativado, os acessos herdam as áreas de acesso padrão configuradas para o tipo de alojamento da estadia.;
+shared.switch.oneCardAccommodationTypeMapping.title;CORRIGIDO;Ativar a configuração de áreas de acesso padrão com base no tipo de alojamento;
 shared.switch.onlyArchive.message;CORRIGIDO;Ative esta opção se quiser que o Bavel envie as faturas diretamente aos clientes.;
 shared.switch.orphanRemoval.message;CORRIGIDO;Ative esta opção caso deseje remover os elementos que não são utilizados em nenhuma propriedade.;
 shared.switch.overwriteBreakdown.message;CORRIGIDO;Ative esta opção para permitir que os usuários informem discriminações de F&B;
@@ -1963,6 +2110,7 @@ shared.switch.propertyIntegrationAccountingProductAutoMapping.message;CORRIGIDO;
 shared.switch.propertyIntegrationAccountingSFTP.message;CORRIGIDO;Selecione esta opção se quiser enviar os seus dados financeiros diários para um servidor específico. A informação será libertada no fechamento do dia. Nesse caso, indique os detalhes do servidor.;
 shared.switch.propertyIntegrationAccountingTravelAgencyAutoMapping.message;CORRIGIDO;Ative esta opção se quiser automatizar os mapeamentos entre as suas agências de viagens e a respetiva contabilidade;
 shared.switch.propertyIntegrationInfrasysAllowAddPayment.message;CORRIGIDO;Ative esta opção se quiser adicionar o pagamento recebido da Infrasys;
+shared.switch.propertyIntegrationPBXDefaultValue.message;CORRIGIDO;Indique o valor padrão necessário para lançar o produto no folio;
 shared.switch.propertyIntegrationPBXSendRequest.message;CORRIGIDO;Ative esta opção se quiser notificar alterações (check-in, check-out, pré-atribuição ou desatribuição, bloqueio ou desbloqueio) nos alojamentos. Tenha em conta que pode acompanhar as alterações dos alojamentos no aba da fila.;
 shared.switch.propertyIntegrationSTRCurrentDailyStatistics.message;CORRIGIDO;Ative esta opção se quiser enviar as estatísticas atuais para a STR;
 shared.switch.propertyIntegrationSTRPastDailyStatistics.message;CORRIGIDO;Ative esta opção se quiser enviar as estatísticas passadas para a STR;
@@ -1994,7 +2142,7 @@ shared.switch.servicePriceUpload.message;CORRIGIDO;Ative esta opção se quiser 
 shared.switch.serviceRestrictionUpload.message;CORRIGIDO;Ative esta opção se quiser enviar a sua disponibilidade (fechado, estadia mínima, estadia máxima, fechado à chegada e fechado à partida) para o channel manager através do PMS. Tenha em conta que terá de mapear todos os serviços ativando esta opção em cada um deles.;
 shared.switch.staffCheckinEnable.message;CORRIGIDO;Ative esta opção se quiser permitir que o pessoal efetue o check-in através do quiosque;
 shared.switch.staffCheckoutEnable.message;CORRIGIDO;Ative esta opção se quiser permitir que o pessoal efetue o check-out através do quiosque;
-shared.switch.staffConsumptionEnable.message;CORRIGIDO;Ative esta opção se quiser permitir que o pessoal registe consumos de serviços através do quiosque;
+shared.switch.staffConsumptionEnable.message;CORRIGIDO;Ative esta opção se quiser permitir que o pessoal registre consumos de serviços através do quiosque;
 shared.switch.storeHttpTrace.message;CORRIGIDO;Ative esta opção se quiser salvar os httpTraces da API pública. Tenha em conta que tem um impacto negativo no desempenho;
 shared.switch.storeHttpTrace.title;CORRIGIDO;Salvar http trace;
 shared.switch.storeLogLevel.message;CORRIGIDO;Ative esta opção se quiser salvar os registros do Ulyses Suite. Tenha em conta que tem um impacto negativo no desempenho;
@@ -2029,6 +2177,7 @@ shared.widget.mulforecast.title;CORRIGIDO;Previsão da rede;
 shared.widget.rebook.description;CORRIGIDO;Tenha acesso rápido ao livro de recepção e comece a comunicar facilmente com os seus colegas;
 shared.widget.rebook.title;CORRIGIDO;Livro de recepção;
 shared.widget.res.description;CORRIGIDO;Efetue o check-in de alojamentos, acesse as contas dos alojamentos e inicie check-outs de alojamentos a partir deste widget;
+;CORRIGIDO;Integração padrão;
 ;CORRIGIDO;Vista de tarifas em abas;
 ;CORRIGIDO;Valor;
 ;CORRIGIDO;Faturamento central;
@@ -2042,8 +2191,14 @@ shared.widget.res.description;CORRIGIDO;Efetue o check-in de alojamentos, acesse
 ;CORRIGIDO;Por usuário;
 ;CORRIGIDO;Cancelado pelo usuário;
 ;CORRIGIDO;Transação autorizada para cancelamentos;
+;CORRIGIDO;Comerciante não registrado no FUC;
 ;CORRIGIDO;Pagamento cancelado a pedido do usuário;
-;CORRIGIDO;Fechamento diário da caixa registadora.;
+;CORRIGIDO;Utilizado quando se retira dinheiro da caixa registradora.;
+;CORRIGIDO;Utilizado quando se deposita dinheiro na caixa registradora.;
+;CORRIGIDO;Utilizado para registrar uma encomenda de cliente / nota de encomenda.;
+;CORRIGIDO;Abertura da caixa registradora.;
+;CORRIGIDO;Relatório intermédio da caixa registradora.;
+;CORRIGIDO;Fechamento diário da caixa registradora.;
 ;CORRIGIDO;Fechamento do dia;
 ;CORRIGIDO;Nova estadia salva;
 ;CORRIGIDO;Bebê;
@@ -2199,7 +2354,7 @@ shared.widget.res.description;CORRIGIDO;Efetue o check-in de alojamentos, acesse
 ;CORRIGIDO;Descreve os pagamentos recebidos de contas a receber, mostrando os valores e as origens dos pagamentos.;
 ;CORRIGIDO;Resume os detalhes de todas as chegadas de hóspedes num período especificado, essencial para as operações de recepção e a gestão hoteleira diária.;
 ;CORRIGIDO;Detalha as chegadas de hóspedes segmentadas por tipo de alojamento, útil para gerenciar diferentes tipos de estabelecimento e otimizar a atribuição de quartos.;
-;CORRIGIDO;Classifica as chegadas com base no regime escolhido, como tudo incluído ou alojamento e pequeno-almoço, útil para o planejamento de comidas e bebidas.;
+;CORRIGIDO;Classifica as chegadas com base no regime escolhido, como tudo incluído ou alojamento e café da manhã, útil para o planejamento de comidas e bebidas.;
 ;CORRIGIDO;Divide as chegadas de hóspedes por data, ajudando no planejamento diário e na atribuição de recursos dos serviços de hotelaria.;
 ;CORRIGIDO;Detalha a forma como os hóspedes pagam as estadias, essencial para o planejamento financeiro e a gestão do fluxo de caixa na hotelaria.;
 ;CORRIGIDO;Classifica as chegadas de fidelização por grupo de reservas para gerenciar e otimizar eficazmente os benefícios do programa de fidelização.;
@@ -2933,16 +3088,19 @@ invoice.direction.label;CORRIGIDO;Endereço;
 invoice.void.reason;CORRIGIDO;MOTIVO DE CANCELAMENTO;
 invoice.void.reason.type;CORRIGIDO;TIPO DE MOTIVO DE CANCELAMENTO;
 wellcome.title;CORRIGIDO;FICHA DE REGISTRO;
-after.checkin.message;CORRIGIDO;Obrigado por ter feito o check-in em {0}. Desejamos-lhe uma estadia agradável connosco. Se deseja melhorar a sua estadia, recomendamos que visite o nosso portal de hóspedes. A partir daí, pode consultar o estado da sua conta, adicionar serviços extra e muito mais.;
+after.checkin.contact;CORRIGIDO;Entretanto, não hesite em contatar-nos para qualquer questão;
+after.checkin.message;CORRIGIDO;Obrigado por ter feito o check-in em {0}. Desejamos-lhe uma estadia agradável conosco. Se deseja melhorar a sua estadia, recomendamos que visite o nosso portal de hóspedes. A partir daí, pode consultar o estado da sua conta, adicionar serviços extra e muito mais.;
 before.checkout.message;CORRIGIDO;Esperamos que tenha gostado da sua estadia em {0}. Para tornar o seu checkout de amanhã mais cômodo, sem contatos e evitando filas na recepção, pode iniciar já o processo de checkout online.;
 before.checkout.message.intro;CORRIGIDO;Esperamos que tenha gostado da sua estadia em {0}. Para tornar a sua partida mais cômoda, sem contato e sem passar pela recepção amanhã, você já pode fazer o check-out online.;
 before.checkout.message.tasklist.3;CORRIGIDO;2- Atualize os seus dados de faturamento;
 before.checkout.message.tasklist.5;CORRIGIDO;Depois de concluir todos os passos, pode sair do hotel sem necessidade de passar pela recepção.;
+cancellation.thanks;CORRIGIDO;Obrigado por trabalhar conosco em;
 cancellationLink.clickBelow;CORRIGIDO;Se deseja cancelar a sua reserva, clique no botão abaixo;
 chainBEOSection.name;CORRIGIDO;Seção BEO;
 chainBEOSection.title;CORRIGIDO;Seções BEO;
 checkInLink.speedUp;CORRIGIDO;No entanto, se deseja acelerar o processo de check-in e minimizar a lista de espera, recomendamos que deixe os seus dados através do seguinte processo.;
 common.amount;CORRIGIDO;Valor;
+common.chatWithUs;CORRIGIDO;Converse conosco;
 deposit.remember;CORRIGIDO; a sua data limite está aproximando-se e gostaríamos que efetuasse o pagamento de um depósito.;
 email.2fa.finalMessage;CORRIGIDO;Se não solicitou este código, alguém pode estar a tentar iniciar sessão na sua conta. Por favor, altere a sua senha o mais rapidamente possível.;
 event.queue.expired.message;CORRIGIDO;os próximos registros expiraram:;
@@ -2950,8 +3108,15 @@ event.queue.pending.message;CORRIGIDO;tem o próximo download de registros pende
 event.queue.pending.registries;CORRIGIDO;registros;
 event.queue.registries;CORRIGIDO;registros;
 excel.grid.message.download;CORRIGIDO;Descarregue o arquivo anexo;
-initialSetup.chain.RoomFeatureType.Name.SharedBath;CORRIGIDO;Casa de banho compartilhada;
+guestSignedMessage.chat;CORRIGIDO;Se precisar de comunicar diretamente conosco, clique no link:;
+initialSetup.chain.RoomFeatureType.Name.Pb;CORRIGIDO;Banheiro privativa;
+initialSetup.chain.RoomFeatureType.Name.SharedBath;CORRIGIDO;Banheiro compartilhada;
+initialSetup.chain.board.Name.bb;CORRIGIDO;Alojamento e café da manhã;
 initialSetup.chain.contactCategory.Name.tea;CORRIGIDO;Equipe;
+initialSetup.chain.product.Name.bb;CORRIGIDO;Quarto e café da manhã;
+initialSetup.chain.product.Name.brk;CORRIGIDO;Café da manhã;
+initialSetup.chain.product.Name.buff;CORRIGIDO;Café da manhã buffet;
+initialSetup.chain.productSubGroup.Name.brk;CORRIGIDO;Café da manhã;
 initialSetup.chain.segment.Name.spo;CORRIGIDO;Equipes desportivas;
 propertyBilling.address;CORRIGIDO;Endereço;
 propertyBilling.title;CORRIGIDO;Informações de faturamento do estabelecimento;
@@ -2971,8 +3136,9 @@ reservationEvent.totalAmount;CORRIGIDO;Valor total;
 reservationGroup.assignedUser;CORRIGIDO;usuário atribuído:;
 reservationGroup.client.name;CORRIGIDO;pessoa de contato:;
 reservationRoomStay.dailyTotalAmount;CORRIGIDO;Valor total diário;
-thankYouPostStay.concerns;CORRIGIDO;Se teve alguma preocupação ou experiência insatisfatória durante a sua estadia, contacte-nos diretamente para que possamos resolvê-la imediatamente.;
-thankYouPreStay.team;CORRIGIDO;Em nome de toda a nossa equipe, desejamos-lhe uma calorosa recepção e que a sua estadia connosco seja agradável e confortável. Não hesite em contactar-nos caso tenha pedidos adicionais.;
+thankYouPostStay.concerns;CORRIGIDO;Se teve alguma preocupação ou experiência insatisfatória durante a sua estadia, contate-nos diretamente para que possamos resolvê-la imediatamente.;
+thankYouPostStay.future;CORRIGIDO;Esperamos que se lembre de nós se os seus futuros planos de viagem o trouxerem novamente à nossa cidade. Não hesite em contatar-nos para obter mais informações sobre datas e tarifas;
+thankYouPreStay.team;CORRIGIDO;Em nome de toda a nossa equipe, desejamos-lhe uma calorosa recepção e que a sua estadia conosco seja agradável e confortável. Não hesite em contatar-nos caso tenha pedidos adicionais.;
 totalPrice.amount;CORRIGIDO;Valor total;
 totalPrice.functional;CORRIGIDO;Valor total;
 user.locked.chain;CORRIGIDO;Tentou ligar-se à rede;
