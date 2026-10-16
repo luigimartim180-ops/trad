@@ -496,6 +496,17 @@ class TestPipeline(unittest.TestCase):
     def test_no_revisar_state_left(self) -> None:
         self.assertEqual((self.all_rows[conv.COL_ESTADO] == "REVISAR").sum(), 0)
 
+    def test_cli_accepts_custom_output_dir(self) -> None:
+        import tempfile
+        with tempfile.TemporaryDirectory() as tmp:
+            rc = conv.build(str(ROOT / conv.XLSX_IN), tmp)
+            self.assertEqual(rc, 0)
+            for saida in (conv.OUT_COMPLETA, conv.OUT_DUVIDAS, conv.OUT_CSV):
+                self.assertTrue((Path(tmp) / saida).exists(), saida)
+
+    def test_cli_reports_missing_input(self) -> None:
+        self.assertEqual(conv.build("nao_existe_xyz.xlsx"), 1)
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

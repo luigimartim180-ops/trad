@@ -22,6 +22,7 @@ the ES/EN source text is never regenerated.
 
 from __future__ import annotations
 
+import argparse
 import csv
 import json
 import re
@@ -850,17 +851,23 @@ def _extract_duvidas(
     )
 
 
-def build() -> int:
+def build(xlsx_in: str | None = None, out_dir: str | None = None) -> int:
     root = Path(__file__).resolve().parent
-    xlsx_path = root / XLSX_IN
-    if not xlsx_path.exists():
-        print(f"ERRO: {XLSX_IN} não encontrado em {root}", file=sys.stderr)
+    entrada = Path(xlsx_in) if xlsx_in else root / XLSX_IN
+    if not entrada.is_absolute():
+        entrada = root / entrada
+    if not entrada.exists():
+        print(f"ERRO: ficheiro de entrada não encontrado: {entrada}", file=sys.stderr)
         return 1
+    destino = Path(out_dir) if out_dir else entrada.parent
+    if not destino.is_absolute():
+        destino = root / destino
+    destino.mkdir(parents=True, exist_ok=True)
 
     global DECISOES
-    DECISOES = load_decisoes(root / OUT_DECISOES)
+    DECISOES = load_decisoes(destino / OUT_DECISOES)
 
-    xl = pd.ExcelFile(xlsx_path)
+    xl = pd.ExcelFile(entrada)
     review_sheets = _review_sheet_names(xl)
     if not review_sheets:
         print("ERRO: nenhuma aba de revisão encontrada", file=sys.stderr)
@@ -870,18 +877,18 @@ def build() -> int:
     for sheet in review_sheets:
         processed[sheet] = process_sheet(_read_sheet(xl, sheet))
 
-    with pd.ExcelWriter(root / OUT_COMPLETA) as writer:
+    with pd.ExcelWriter(destino / OUT_COMPLETA) as writer:
         for sheet, df in processed.items():
             df.to_excel(writer, sheet_name=sheet[:31], index=False)
 
     duvidas = _extract_duvidas(xl, processed)
-    duvidas.to_excel(root / OUT_DUVIDAS, index=False)
+    duvidas.to_excel(destino / OUT_DUVIDAS, index=False)
 
     rows = pd.concat(processed.values(), ignore_index=True)
     # only validated corrections go to the backend; OK has nothing to patch and
     # PENDENTE_PO is a glossary decision owned by the PO
     backend = rows[rows[COL_ESTADO] == ESTADO_CORRIGIDO]
-    with open(root / OUT_CSV, "w", newline="", encoding="utf-8") as fh:
+    with open(destino / OUT_CSV, "w", newline="", encoding="utf-8") as fh:
         writer = csv.writer(fh, delimiter=";")
         writer.writerow([KEY_COLUMNS[0], COL_ESTADO, COL_CORRECAO, COL_COMENTARIO])
         for _, row in backend.iterrows():
@@ -908,5 +915,23 @@ def build() -> int:
     return 0
 
 
+def _cli() -> int:
+    parser = argparse.ArgumentParser(
+        description="Converte pt-PT → pt-BR num ficheiro de revisão Ulyses."
+    )
+    parser.add_argument(
+        "entrada",
+        nargs="?",
+        help=f"XLSX de entrada (por omissão: {XLSX_IN}).",
+    )
+    parser.add_argument(
+        "-o",
+        "--out-dir",
+        help="Diretório de saída (por omissão: o do ficheiro de entrada).",
+    )
+    args = parser.parse_args()
+    return build(args.entrada, args.out_dir)
+
+
 if __name__ == "__main__":
-    raise SystemExit(build())
+    raise SystemExit(_cli())
