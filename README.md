@@ -1,0 +1,53 @@
+# trad — pipeline pt-PT → pt-BR (Ulyses)
+
+Conversão automática do ficheiro de revisão de traduções `Revision_traducciones_PT.xlsx`
+(pt-PT → pt-BR), sem intervenção manual.
+
+## Ficheiros
+
+| Ficheiro | Descrição |
+| --- | --- |
+| `pt_pt_para_pt_br.py` | Pipeline principal (lê o xlsx, converte, escreve as saídas). |
+| `test_pt_pt_pt_br.py` | Testes unitários com casos reais do ficheiro (24 testes). |
+| `revisao_pt_BR_completa.xlsx` | Saída: abas revistas (Estado / Corrección PT / Comentario). |
+| `duvidas_PO.xlsx` | Saída: dúvidas para o PO, nunca convertidas. |
+| `correcoes_backend.csv` | Saída: `Clave;Estado;Corrección PT;Comentario` (só linhas não-OK). |
+
+## Utilização
+
+```bash
+pip install pandas openpyxl
+python3 pt_pt_para_pt_br.py            # gera as 3 saídas
+python3 -m unittest test_pt_pt_pt_br   # 24 testes
+```
+
+## Estrutura do ficheiro (detetada automaticamente)
+
+* `Instrucciones` — aba informativa, ignorada.
+* `Frontend (pantallas)` — chave em `Clave`, texto pt-PT em `Traducción PT actual`.
+* `Entidades de sistema` — chave em `Clave técnica (no editar)`.
+* `Mensajes e informes` — chave em `Clave`.
+* O cabeçalho é localizado procurando `Clave`/`Código` (há linhas de título antes).
+
+As abas de revisão são identificadas por terem uma coluna de chave (`Clave` ou
+`Clave técnica (no editar)`) e uma coluna de texto pt-PT. Só são escritas as
+colunas `Estado`, `Corrección PT` e `Comentario`; o texto ES/EN nunca é regenerado.
+
+## Regras implementadas
+
+* **Compostas primeiro**: `a carregar` → `carregando` antes de `carregar` → `enviar`.
+  Todas as regras usam fronteiras de palavra (`\b`), pelo que `para carregar` não é
+  afetado e `Utilizadores` → `Usuários` (plural antes do singular).
+* **`allotment` mantém-se** (decisão de glossário B2B; sem regra global `→ cota`).
+* **Placeholders protegidos**: `{{...}}`, `{0}`, `{1}` e tags HTML (`<br>`,
+  `<strong>`) são guardados antes das substituições e repostos depois.
+* **Estado**: `OK` ⇒ `Corrección PT` vazia; aviso `Igual a ES/EN` ⇒ `REVISAR`
+  (exceto whitelist: Ok, Overbooking, RevPar, JSON, Check-in, Check-out,
+  Day use, Voucher, Pax, Fiscal, Central, Empresa, Canal); `Sin traducción PT`
+  ⇒ `REVISAR`.
+* **Colunas mortas** `A1_Léxico`..`A5_Consistência` removidas (quando presentes).
+* **Correções cirúrgicas**: `card.hojaRegistro` → `Ficha de registro de hóspedes
+  (FNRH)`; `core.button.settlement` → `Cobranças automáticas`;
+  `invoice.direction.label` → `Endereço`.
+* **Dúvidas** (`DUVIDAS_KEYS`) vão apenas para `duvidas_PO.xlsx` e nunca são
+  convertidas.
