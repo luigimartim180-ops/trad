@@ -165,6 +165,54 @@ class TestConverter(unittest.TestCase):
             conv.converter("será carregada na seção"), "será enviada na seção"
         )
 
+    def test_panel_identified_terms(self) -> None:
+        cases = {
+            "Pode aceder ao detalhe": "Pode acessar ao detalhe",
+            "Aceda à seção": "Acesse à seção",
+            "pronto para gerir a propriedade": "pronto para gerenciar a propriedade",
+            "proteja a sua equipa": "proteja a sua equipe",
+            "um montante ou percentagem": "um valor ou porcentagem",
+            "coluna da grelha": "coluna da grade",
+            "dados pessoais com terceiros, se pretender partilhar": (
+                "dados pessoais com terceiros, se quiser compartilhar"
+            ),
+            "prima pesquisar": "clique pesquisar",
+            "recolha de caixa": "coleta de caixa",
+        }
+        for pt, br in cases.items():
+            self.assertEqual(conv.converter(pt), br, pt)
+
+    def test_gerir_derivatives(self) -> None:
+        for pt, br in {
+            "gerir": "gerenciar",
+            "gerido": "gerenciado",
+            "gerida": "gerenciada",
+            "geridos": "gerenciados",
+            "geridas": "gerenciadas",
+        }.items():
+            self.assertEqual(conv.converter(pt), br, pt)
+
+    def test_progressive_becomes_gerund(self) -> None:
+        for pt, br in {
+            "está a carregar os dados": "está carregando os dados",
+            "está a gerir as reservas": "está gerenciando as reservas",
+            "estão a gerir": "estão gerenciando",
+            "está a ser configurada": "está sendo configurada",
+            "está a tentar excluir": "está tentando excluir",
+            "está a demorar muito": "está demorando muito",
+        }.items():
+            self.assertEqual(conv.converter(pt), br, pt)
+
+    def test_noun_aplicacao_is_not_verb(self) -> None:
+        # "de aplicação" / "Intervalo de aplicação" = application OF a deposit,
+        # not the software "aplicação" -> must stay untouched.
+        for text in (
+            "Data de aplicação",
+            "Intervalo de aplicação",
+            "Modo de aplicação do depósito",
+        ):
+            self.assertEqual(conv.converter(text), text)
+
 
 class TestRules(unittest.TestCase):
     def test_compound_rules_come_first(self) -> None:
@@ -274,11 +322,32 @@ class TestPipeline(unittest.TestCase):
         igual = fe[fe["Aviso"].astype(str).str.startswith("Igual")]
         self.assertFalse(igual.empty)
         for _, row in igual.iterrows():
-            pt = str(row["Traducción PT actual"]).strip().lower()
-            if pt in conv.WHITELIST_IGUAL_ES_EN or row["Clave"] in conv.OK_MANUAL:
+            pt = conv._clean(row["Traducción PT actual"])
+            clave = row["Clave"]
+            if (
+                not pt
+                or clave in conv.DUVIDAS_KEYS
+                or conv.CORRECOES.get(clave, "") is None
+            ):
+                self.assertEqual(row[conv.COL_ESTADO], "REVISAR")
+                continue
+            converted = conv.CORRECOES.get(clave) or conv.converter(pt)
+            if clave in conv.OK_MANUAL or (
+                converted == pt and conv._igual_es_en_is_safe(pt)
+            ):
                 self.assertEqual(row[conv.COL_ESTADO], "OK")
             else:
                 self.assertEqual(row[conv.COL_ESTADO], "REVISAR")
+
+    def test_no_pt_pt_marker_is_closed_as_ok(self) -> None:
+        for _, row in self.all_rows.iterrows():
+            if row[conv.COL_ESTADO] != "OK":
+                continue
+            mark = conv._PT_PT_MARKER.search(str(row["Traducción PT actual"]))
+            self.assertIsNone(
+                mark,
+                f"{row['Clave']}: fechado OK com pt-PT {mark and mark.group(0)!r}",
+            )
 
     def test_priority_column_present(self) -> None:
         for df in self.processed.values():
@@ -350,7 +419,9 @@ class TestPipeline(unittest.TestCase):
             r"\b(pretend\w+|encontrámos|guardad\w+|eliminad\w+|separador\w*|bebé\w*"
             r"|cómod\w+|detet\w+|morad\w+|cadeia\w*|faturação|receção|ecrã\w*"
             r"|ficheiro\w*|palavra-passe\w*|montant\w+|planeament\w*|registo\w*"
-            r"|activ\w+|acç\w+|objectiv\w+|contacto\w*)\b",
+            r"|activ\w+|acç\w+|objectiv\w+|contacto\w*|aceder|aceda|gerir|equipa\w*"
+            r"|partilhar\w*|prima|percentagem\w*|grelha\w*|recolha|demasiado\w*"
+            r"|telemóvel\w*|utilizador\w*|subscrição|anulação\w*)\b",
             re.IGNORECASE,
         )
         for _, row in self.all_rows.iterrows():

@@ -52,10 +52,16 @@ colunas `Estado`, `Corrección PT` e `Comentario`; o texto ES/EN nunca é regene
 * **`allotment` mantém-se** (decisão de glossário B2B; sem regra global `→ cota`).
 * **Placeholders protegidos**: `{{...}}`, `{0}`, `{1}` e tags HTML (`<br>`,
   `<strong>`) são guardados antes das substituições e repostos depois.
-* **Estado**: `OK` ⇒ `Corrección PT` vazia; aviso `Igual a ES/EN` ⇒ `REVISAR`
-  (exceto whitelist: Ok, Overbooking, RevPar, JSON, Check-in, Check-out,
-  Day use, Voucher, Pax, Fiscal, Central, Empresa, Canal); `Sin traducción PT`
-  ⇒ `REVISAR`.
+* **Estado**: `OK` ⇒ `Corrección PT` vazia. O aviso `Igual a ES/EN` é
+  **falso positivo** para códigos, siglas, números, nomes de produto,
+  `lorem ipsum`/`//TODO` e cognatos escritos igual em ES/PT/pt-BR (Total, Menu,
+  Grupo, Cliente…), pelo que essas linhas fecham `OK` automaticamente; ficam
+  `REVISAR` as que contêm grafia/vocabulário pt-PT (`_PT_PT_MARKER`), as de
+  `NOT_OK_IGUAL_ES_EN` (`Acrónimo`, `Género`, `Transferir`, `Cancelar`,
+  `Guardar`…) ou as que têm correção sugerida. `Sin traducción PT` ⇒ `REVISAR`.
+  A whitelist explícita inclui Ok, Overbooking, RevPar, JSON, Check-in,
+  Check-out, Day use, Voucher, Pax, Fiscal, Central, Empresa, Canal, Total,
+  Tipo, Estado, Código, Cliente, Reserva, Depósito, Suplemento…
 * **Colunas mortas** `A1_Léxico`..`A5_Consistência` removidas (quando presentes).
 * **Correções cirúrgicas**: `card.hojaRegistro` → `Ficha de registro de hóspedes
   (FNRH)`; `core.button.settlement` → `Cobranças automáticas`;

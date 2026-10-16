@@ -72,6 +72,53 @@ WHITELIST_IGUAL_ES_EN = {
     "central",
     "empresa",
     "canal",
+    # valid icons/short labels identical to ES that a reviewer would close
+    "total",
+    "tipo",
+    "por",
+    "estado",
+    "código",
+    "hora",
+    "ver",
+    "abrir",
+    "editar",
+    "enviar",
+    "cliente",
+    "grupo",
+    "hotel",
+    "aviso",
+    "nota",
+    "ofertas",
+    "exportar",
+    "importar",
+    "reembolsar",
+    "confirmar",
+    "reserva",
+    "reservas",
+    "depósito",
+    "suplemento",
+    "número",
+    "valor",
+}
+
+#: Words that are identical to ES but are either wrong in pt-BR or too
+#: ambiguous to close automatically. They stay REVISAR even if a reviewer
+#: mass-closes the "Igual a ES/EN" bucket.
+NOT_OK_IGUAL_ES_EN = {
+    "acrónimo",
+    "acrónimos",
+    "género",
+    "transferir",
+    "guardar",
+    "cancelar",
+    "cerrar",
+    "borrar",
+    "crear",
+    "adjunto",
+    "importe",
+    "cupo",
+    "habitación",
+    "huésped",
 }
 
 #: Keys without a translation in the source workbook (kept as-is).
@@ -231,7 +278,6 @@ OK_MANUAL: set[str] = {
     "shared.assistant.productTypeCancellationFee.step2",
     "shared.assistant.propertyAutomatedCheckInScheduler.step1",
     "shared.assistant.propertyPaymentScheduler.step1",
-    "shared.switch.amountIncluded.title",
     "apps.cache.headers.lastStatus",
     "apps.availability.footer.confirm",
     "apps.billing.folio.action.export",
@@ -379,10 +425,75 @@ SUBSTITUICOES: list[tuple[re.Pattern[str], str]] = [
     _rule("todos os separadores", "todas as abas"),
     _rule("separadores", "abas"),
     _rule("separador", "aba"),
+    # 7. pt-PT verbs/nouns identified by the native review panel
+    _rule("aceder", "acessar"),
+    _rule("acede", "acessa"),
+    _rule("acedem", "acessam"),
+    _rule("acedeu", "acessou"),
+    _rule("aceda", "acesse"),
+    _rule("acedam", "acessem"),
+    _rule("gerir", "gerenciar"),
+    _rule("gerido", "gerenciado"),
+    _rule("gerida", "gerenciada"),
+    _rule("geridos", "gerenciados"),
+    _rule("geridas", "gerenciadas"),
+    _rule("equipas", "equipes"),
+    _rule("equipa", "equipe"),
+    _rule("percentagens", "porcentagens"),
+    _rule("percentagem", "porcentagem"),
+    _rule("grelhas", "grades"),
+    _rule("grelha", "grade"),
+    _rule("partilhados", "compartilhados"),
+    _rule("partilhadas", "compartilhadas"),
+    _rule("partilhado", "compartilhado"),
+    _rule("partilhada", "compartilhada"),
+    _rule("partilhe", "compartilhe"),
+    _rule("partilhar", "compartilhar"),
+    _rule("partilhável", "compartilhável"),
+    _rule("partilháveis", "compartilháveis"),
+    _rule("prima", "clique"),
+    _rule("recolha", "coleta"),
+    _rule("recolhida", "coletada"),
+    _rule("recolhidas", "coletadas"),
+    _rule("conta-corrente", "conta corrente"),
+    # 8. "transferir" = download in these compound forms only; the bare verb
+    # stays for account/folio moves (gridAction.transfer, folioProduct.transfer)
+    _rule("para transferir", "para baixar"),
+    _rule("a transferir", "a baixar"),
+    _rule("transferir o ficheiro", "baixar o arquivo"),
+    _rule("transferir o arquivo", "baixar o arquivo"),
+    _rule("transferir o documento", "baixar o documento"),
+    _rule("transferir todas as reservas", "baixar todas as reservas"),
+    _rule("transferir as reservas", "baixar as reservas"),
+    # 9. Brazilian spelling the panel wrongly reported as already valid
+    _rule("géneros", "gêneros"),
+    _rule("género", "gênero"),
+    _rule("acrónimos", "acrônimos"),
+    _rule("acrónimo", "acrônimo"),
+    _rule("prémios", "prêmios"),
+    _rule("prémio", "prêmio"),
+    _rule("quilómetros", "quilômetros"),
+    _rule("quilómetro", "quilômetro"),
 ]
 
 _PLACEHOLDER_RE = re.compile(r"\{\{.*?\}\}|\{\d+\}|<[^>]+>")
 _TOKEN = "\x00PH{}\x00"
+
+#: pt-PT progressive ("está a carregar") -> pt-BR gerund ("está carregando").
+#: The gerund is built by dropping the final "r" and appending "ndo", which
+#: also covers every irregular verb (ser->sendo, ter->tendo, ir->indo...).
+_PROGRESSIVE_RE = re.compile(
+    r"\b(est[áã]o?|estavam|estava|estiverem?|estivermos)\s+a\s+(\w{2,}?)r\b",
+    re.IGNORECASE,
+)
+
+
+def _fix_progressive(text: str) -> str:
+    def _repl(match: re.Match[str]) -> str:
+        aux, verb = match.group(1), match.group(2)
+        return f"{aux} {verb}ndo"
+
+    return _PROGRESSIVE_RE.sub(_repl, text)
 
 
 def _adapt_case(template: str, source: str) -> str:
@@ -423,6 +534,10 @@ def converter(texto: str) -> str:
         protected = pattern.sub(
             lambda m, r=repl: _adapt_case(r, m.group(0)), protected
         )
+
+    # Runs after SUBSTITUICOES so a lemma rule ("gerir"->"gerenciar") is applied
+    # first; the gerund is then derived from the pt-BR stem ("gerenciando").
+    protected = _fix_progressive(protected)
 
     return _restore(protected, saved)
 
@@ -471,12 +586,50 @@ def _resolve_estado(aviso: str, pt: str, converted: str) -> str:
     if "sin traducción" in aviso_low or "sem tradução" in aviso_low:
         return "REVISAR"
     if "igual a es" in aviso_low or "igual a en" in aviso_low:
-        if pt_norm in WHITELIST_IGUAL_ES_EN:
+        if converted != pt:
+            # there is a suggested correction to apply; never drop it
+            return "REVISAR"
+        if _igual_es_en_is_safe(pt):
             return "OK"
         return "REVISAR"
     if not pt.strip():
         return "REVISAR"
     return "OK" if converted == pt else "REVISAR"
+
+
+#: pt-PT spelling/vocabulary that must never be closed as "already valid
+#: pt-BR". Narrow on purpose: "regist\w+", "fat\w+" etc. are identical in
+#: pt-BR and would produce false positives.
+_PT_PT_MARKER = re.compile(
+    r"\b(acrónim\w+|acrónic\w+|géner\w+|morad\w+|montante|montantes|cadeia\w*|"
+    r"equipa|equipas|utilizador\w*|ficheir\w+|contacto\w*|receç\w+|secç\w+|"
+    r"planeament\w*|detet\w+|gerir|gerid\w+|aced\w+|partilh\w+|prima|percentagem\w*|"
+    r"grelha\w*|recolha|demasiad\w*|telemóvel\w*|ecrã\w*|bebé\w*|cómod\w+|"
+    r"subscrição|subscrições|anulaç\w+|pretend\w+|guardad\w+|eliminad\w+|"
+    r"encontrámos)\b",
+    re.IGNORECASE,
+)
+
+
+def _igual_es_en_is_safe(pt: str) -> bool:
+    """True when an "Igual a ES/EN" line is already valid pt-BR.
+
+    The warning is a false positive for codes, acronyms, numbers, product
+    names, ``lorem ipsum``/``//TODO`` and cognates that are spelled the same
+    in Spanish, Portuguese and pt-BR (Total, Menu, Grupo, Cliente...).
+    """
+    text = (pt or "").strip()
+    if not text:
+        return False
+    norm = text.lower()
+    words = set(re.findall(r"\w+", norm, re.UNICODE))
+    if words & NOT_OK_IGUAL_ES_EN:
+        return False
+    if norm in WHITELIST_IGUAL_ES_EN:
+        return True
+    if _PT_PT_MARKER.search(text):
+        return False
+    return True
 
 
 def _clean(value: object) -> str:
