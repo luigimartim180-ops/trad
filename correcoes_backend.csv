@@ -190,6 +190,7 @@ apps.integration.description.sii;CORRIGIDO;Envie automaticamente um arquivo que 
 apps.integration.description.smartrevenue;CORRIGIDO;O Smart Revenue é o software de revenue management da Keytel para otimizar as decisões de preços, bem como a automatização com base em análise preditiva da procura. Tecnologia revolucionária concebida para que as suas decisões sejam corretas: simplifique a tomada de decisões na comercialização do seu hotel, integre processos e relatórios de dados de forma rápida e ágil, aumente o NetRevpar do hotel, maximize a rentabilidade e otimize a eficiência da equipe de revenue management.;
 apps.integration.description.spotpilot;CORRIGIDO;Ligue o Ulyses Suite ao SpotPilot para acessar a painéis de revenue management e business intelligence diretamente a partir do PMS, centralizando a análise de desempenho e a tomada de decisões numa única plataforma.;
 apps.integration.description.sppol;CORRIGIDO;Se a sua propriedade se localiza em Espanha, será obrigado a enviar os dados de todos os hóspedes que efetuaram o check-in com idade superior a 16 anos. Adicione esta integração e gere o arquivo automaticamente.;
+apps.integration.description.spyro;CORRIGIDO;Concepção e desenvolvimento do nosso próprio software de gestão (SPYRO ERP) destinado a empresas industriais, comerciais e de serviços, bem como prestação de serviços de consultoria.;
 apps.integration.description.stripe;CORRIGIDO;Milhões de empresas de todas as dimensões, desde start-ups a grandes empresas, utilizam o software e as APIs da Stripe para aceitar pagamentos, enviar transferências e gerenciar o seu negócio online.;
 apps.integration.description.tbai;CORRIGIDO;O TicketBAI é um projeto compartilhado entre as três Deputações Provinciais e o Governo Basco que visa estabelecer uma série de obrigações legais e técnicas.;
 apps.integration.description.tesa;CORRIGIDO;Ative esta integração para adicionar a possível abertura e gestão de acessos via smartphone ou através de dispositivos com teclado que permitem um check-in autónomo sem recepção 24 horas.;
@@ -263,9 +264,9 @@ O Ulyses Connections ajudará o Ulyses Suite e os seus fornecedores a comunicar 
 ";
 apps.integration.publicApiRest.recoveryPassword.message;CORRIGIDO;Enviaremos um e-mail para repor a senha do seu fornecedor. Verifique a sua caixa de entrada para confirmar que o recebeu corretamente. Caso não tenha recebido nada, não se esqueça de verificar a pasta de spam.;
 apps.integration.publicApiRest.refreshEventEntity.message;CORRIGIDO;"Aplique esta ação se deseja reenviar informações sobre a entidade de evento selecionada.
-Tenha em conta que as alterações não serão atualizadas de imediato; por isso, recomendamos que consulte a aba Fila de eventos para acompanhar a evolução.";
+Tenha em conta que as alterações não serão atualizadas imediatamente; por isso, recomendamos que consulte a aba Fila de eventos para acompanhar a evolução.";
 apps.integration.publicApiRest.removeEventEntity.message;CORRIGIDO;"Aplique esta ação se deseja excluir informações sobre a entidade de evento selecionada.
-Tenha em conta que as alterações não serão atualizadas de imediato; por isso, recomendamos que consulte a aba Fila de eventos para acompanhar a evolução.";
+Tenha em conta que as alterações não serão atualizadas imediatamente; por isso, recomendamos que consulte a aba Fila de eventos para acompanhar a evolução.";
 apps.integration.retailForce.mapping.entity.businessTransactionType;CORRIGIDO;"Apenas os produtos do tipo alojamento e serviço; caso não sejam mapeados, o valor padrão será REVENUE";
 apps.integration.septeoBill.invoiceTypeTab.description;CORRIGIDO;Indique aqui se deseja substituir o valor padrão por um mapeamento de tipo de fatura;
 apps.integration.septeoChannel.button.downloadTemplateFiles;CORRIGIDO;Baixar modelo;
@@ -767,6 +768,8 @@ core.label.propertyRegisteredCompany;CORRIGIDO;Empresa registrada;
 core.label.propertySettingBilling;CORRIGIDO;Definições de faturamento da propriedade;
 core.label.proposalSection;CORRIGIDO;Seção da proposta;
 core.label.quantityConsumedInfant;CORRIGIDO;Bebê consumido;
+core.label.receiverHash;CORRIGIDO;Hash do receptor;
+core.label.receiverType;CORRIGIDO;Tipo de receptor;
 core.label.recordSeparator;CORRIGIDO;Aba de registros;
 core.label.registerDuringStay;CORRIGIDO;Registrar durante a estadia;
 core.label.registerNow;CORRIGIDO;Registrar agora;
@@ -1632,9 +1635,9 @@ shared.modal.information.deletePropertyWithholding.submitted;CORRIGIDO;Excluir;
 shared.modal.information.deletePublicLogin.message;CORRIGIDO;Tem certeza de que deseja excluir este início de sessão público?;
 shared.modal.information.deletePublicLogin.submitted;CORRIGIDO;Excluir;
 shared.modal.information.deletePublicLogin.title;CORRIGIDO;Excluir início de sessão público;
-shared.modal.information.deleteReceiver.message;CORRIGIDO;Tem certeza de que deseja excluir este recetor?;
+shared.modal.information.deleteReceiver.message;CORRIGIDO;Tem certeza de que deseja excluir este receptor?;
 shared.modal.information.deleteReceiver.submitted;CORRIGIDO;Excluir;
-shared.modal.information.deleteReceiver.title;CORRIGIDO;Excluir recetor;
+shared.modal.information.deleteReceiver.title;CORRIGIDO;Excluir receptor;
 shared.modal.information.deleteRelationGrid.message;CORRIGIDO;Tem certeza de que deseja remover esta relação?;
 shared.modal.information.deleteRelationGrid.submitted;CORRIGIDO;Excluir;
 shared.modal.information.deleteRelationGrid.title;CORRIGIDO;Excluir relação;

@@ -525,6 +525,71 @@ class TestPipeline(unittest.TestCase):
         ):
             self.assertIn("transferir", conv.converter(texto).lower())
 
+    def test_final_file_has_single_text_column(self) -> None:
+        sheets = pd.read_excel(ROOT / conv.OUT_FINAL, sheet_name=None)
+        for df in sheets.values():
+            self.assertIn(conv.COL_FINAL, df.columns)
+            self.assertNotIn("Traducción PT actual", df.columns)
+            self.assertNotIn("Texto origen (IA)", df.columns)
+            self.assertNotIn(conv.COL_ESTADO, df.columns)
+            self.assertNotIn(conv.COL_CORRECAO, df.columns)
+
+    def test_final_file_matches_correction_or_original(self) -> None:
+        original = pd.read_excel(ROOT / conv.XLSX_IN, sheet_name=None)
+        for name, df in pd.read_excel(ROOT / conv.OUT_FINAL, sheet_name=None).items():
+            orig_df = original[name]
+            key_col = "Clave" if "Clave" in df.columns else "Código"
+            orig = {
+                str(r[key_col]): str(r.get("Traducción PT actual") or "")
+                for _, r in orig_df.iterrows()
+            }
+            for _, row in df.iterrows():
+                final = row[conv.COL_FINAL]
+                if pd.isna(final) or not str(final).strip():
+                    continue
+                key = str(row[key_col])
+                if str(final) != orig.get(key, ""):
+                    self.assertFalse(
+                        conv._tem_residuo_pt_pt(str(final)),
+                        f"{name}/{key} tem pt-PT no ficheiro final",
+                    )
+
+    def test_final_file_placeholders_intact(self) -> None:
+        import re
+        pat = re.compile(r"\{\{.*?\}\}|\{\d+\}|<[^>]+>")
+        original = pd.read_excel(ROOT / conv.XLSX_IN, sheet_name=None)
+        for name, df in pd.read_excel(ROOT / conv.OUT_FINAL, sheet_name=None).items():
+            orig_df = original[name]
+            key_col = "Clave" if "Clave" in df.columns else "Código"
+            orig_keys = orig_df[key_col].astype(str).values
+            for _, row in df.iterrows():
+                final = row[conv.COL_FINAL]
+                if pd.isna(final):
+                    continue
+                key = str(row[key_col])
+                if key not in orig_keys:
+                    continue
+                orig = str(
+                    orig_df.loc[orig_df[key_col].astype(str) == key,
+                                "Traducción PT actual"].iloc[0]
+                )
+                self.assertEqual(
+                    sorted(pat.findall(orig)),
+                    sorted(pat.findall(str(final))),
+                    f"placeholders alterados em {name}/{key}",
+                )
+
+    def test_final_file_has_no_pt_pt_in_pending_rows(self) -> None:
+        for name, df in pd.read_excel(ROOT / conv.OUT_FINAL, sheet_name=None).items():
+            for _, row in df.iterrows():
+                final = row[conv.COL_FINAL]
+                if pd.isna(final):
+                    continue
+                self.assertFalse(
+                    conv._tem_residuo_pt_pt(str(final)),
+                    f"{name}/{row.get('Clave', row.get('Código'))} tem pt-PT",
+                )
+
     def test_cli_accepts_custom_output_dir(self) -> None:
         import tempfile
         with tempfile.TemporaryDirectory() as tmp:
