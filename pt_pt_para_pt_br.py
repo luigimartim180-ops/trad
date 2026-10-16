@@ -32,7 +32,6 @@ import pandas as pd
 
 XLSX_IN = "Revision_traducciones_PT.xlsx"
 OUT_COMPLETA = "revisao_pt_BR_completa.xlsx"
-OUT_REVISAR = "revisao_pt_BR_REVISAR.xlsx"
 OUT_DUVIDAS = "duvidas_PO.xlsx"
 OUT_CSV = "correcoes_backend.csv"
 OUT_DECISOES = "decisoes_revisao.jsonl"
@@ -314,6 +313,7 @@ def _rule(pt: str, br: str) -> tuple[re.Pattern[str], str]:
 SUBSTITUICOES: list[tuple[re.Pattern[str], str]] = [
     # 1. compound expressions first
     _rule("por defeito", "por padrão"),
+    _rule("de imediato", "imediatamente"),
     _rule("a carregar", "carregando"),
     _rule("a digitalizar", "digitalizando"),
     _rule("tem a certeza", "tem certeza"),
@@ -347,7 +347,20 @@ SUBSTITUICOES: list[tuple[re.Pattern[str], str]] = [
     _rule("palavra-passe", "senha"),
     _rule("secção", "seção"),
     _rule("contacto", "contato"),
-    _rule("carregar", "enviar"),
+    # "carregar" -> "enviar" only in the upload sense: followed by a file/media
+    # object (optionally with an article) or standing alone as a button label.
+    # Pagination ("carregar mais") and load errors ("não foi possível
+    # carregar") keep the pt-BR verb, which is valid in pt-BR.
+    (
+        re.compile(
+            r"\bcarregar\b(?=\s*(?:$|\x00|\{\{|(?:(?:o|a|os|as|um|uma)\s+)?"
+            r"(?:ficheiro|ficheiros|arquivo|arquivos|documento|documentos|"
+            r"imagem|imagens|m[ée]dia|v[íi]deo|v[íi]deos|folha|planilha|modelo|"
+            r"excel)))",
+            re.IGNORECASE | re.MULTILINE,
+        ),
+        "enviar",
+    ),
     _rule("utilizador", "usuário"),
     _rule("ficheiro", "arquivo"),
     _rule("guardar", "salvar"),
@@ -443,6 +456,9 @@ SUBSTITUICOES: list[tuple[re.Pattern[str], str]] = [
     _rule("acedeu", "acessou"),
     _rule("aceda", "acesse"),
     _rule("acedam", "acessem"),
+    # must run AFTER aceda->acesse: pt-BR does not use "aos" after "acesse"
+    _rule("acesse aos", "acesse os"),
+    _rule("acesse às", "acesse as"),
     _rule("gerir", "gerenciar"),
     _rule("gerido", "gerenciado"),
     _rule("gerida", "gerenciada"),
@@ -470,7 +486,17 @@ SUBSTITUICOES: list[tuple[re.Pattern[str], str]] = [
     # 8. "transferir" = download in these compound forms only; the bare verb
     # stays for account/folio moves (gridAction.transfer, folioProduct.transfer)
     _rule("para transferir", "para baixar"),
-    _rule("a transferir", "a baixar"),
+    # "a transferir" is only a download when a downloadable object follows;
+    # "a transferir dados" is a data migration and keeps the verb
+    (
+        re.compile(
+            r"\ba transferir\b(?=\s+(?:(?:o|a|os|as)\s+)?"
+            r"(?:ficheiro|ficheiros|arquivo|arquivos|documento|documentos|"
+            r"fatura|faturas|log|logs|excel|csv|pdf|modelo|relat[óo]rio))",
+            re.IGNORECASE,
+        ),
+        "a baixar",
+    ),
     _rule("transferir o ficheiro", "baixar o arquivo"),
     _rule("transferir o arquivo", "baixar o arquivo"),
     _rule("transferir o documento", "baixar o documento"),
@@ -647,17 +673,22 @@ def _igual_es_en_is_safe(pt: str) -> bool:
     return True
 
 
-def load_decisoes(path: Path | None = None) -> dict[str, str]:
+def load_decisoes(path: Path | None = None) -> dict[tuple[str, str], str]:
     """Load pt-BR decisions validated by the review agents.
 
     File is JSONL, one object per line:
-    ``{"clave": ..., "verdict": "APROVAR"|"CORRIGIR", "pt_br": ..., "motivo": ...}``.
-    ``APROVAR`` keeps the deterministic suggestion; ``CORRIGIR`` replaces it
-    with the agent's ``pt_br``. Missing file -> no overrides.
+    ``{"clave": ..., "pt_atual": ..., "verdict": "APROVAR"|"CORRIGIR",
+    "pt_br": ..., "motivo": ...}``. ``APROVAR`` keeps the deterministic
+    suggestion; ``CORRIGIR`` replaces it with the agent's ``pt_br``.
+
+    The key is ``(clave, pt_atual)`` because a clave is NOT unique across the
+    workbook (the same key can appear in several sheets with different text);
+    matching on the source text keeps a decision scoped to the row it was made
+    for. Missing file -> no overrides.
     """
     if path is None:
         path = Path(__file__).resolve().parent / OUT_DECISOES
-    decisoes: dict[str, str] = {}
+    decisoes: dict[tuple[str, str], str] = {}
     if not path.exists():
         return decisoes
     with open(path, encoding="utf-8") as fh:
@@ -667,18 +698,19 @@ def load_decisoes(path: Path | None = None) -> dict[str, str]:
                 continue
             record = json.loads(line)
             clave = record.get("clave")
+            pt_atual = _clean(record.get("pt_atual"))
             pt_br = _clean(record.get("pt_br"))
             if clave and pt_br and record.get("verdict") in (
                 "APROVAR",
                 "CORRIGIR",
             ):
-                decisoes[clave] = pt_br
+                decisoes[(clave, pt_atual)] = pt_br
     return decisoes
 
 
 #: Filled in ``build()`` from ``decisoes_revisao.jsonl``; empty by default so
 #: unit tests of ``converter``/``process_sheet`` stay deterministic.
-DECISOES: dict[str, str] = {}
+DECISOES: dict[tuple[str, str], str] = {}
 
 
 def _clean(value: object) -> str:
@@ -732,9 +764,10 @@ def process_sheet(df: pd.DataFrame) -> pd.DataFrame:
             )
             continue
 
-        if clave in DECISOES:
+        dec = DECISOES.get((clave, texto_pt))
+        if dec is not None:
             # validated by the review agents: accept their pt-BR verbatim
-            converted = DECISOES[clave]
+            converted = dec
         elif clave in CORRECOES:
             converted = CORRECOES[clave]
         else:
@@ -749,7 +782,7 @@ def process_sheet(df: pd.DataFrame) -> pd.DataFrame:
                 converted if converted != texto_pt else ""
             )
         out.at[idx, COL_ESTADO] = estado
-        if clave in CORRECOES or clave in DECISOES:
+        if dec is not None or clave in CORRECOES:
             # reviewed and closed by the reviewer / review agents
             out.at[idx, COL_PRIORIDADE] = "Fechado"
         else:
@@ -841,12 +874,6 @@ def build() -> int:
         for sheet, df in processed.items():
             df.to_excel(writer, sheet_name=sheet[:31], index=False)
 
-    with pd.ExcelWriter(root / OUT_REVISAR) as writer:
-        for sheet, df in processed.items():
-            pendentes = df[df[COL_ESTADO] != ESTADO_OK]
-            if not pendentes.empty:
-                pendentes.to_excel(writer, sheet_name=sheet[:31], index=False)
-
     duvidas = _extract_duvidas(xl, processed)
     duvidas.to_excel(root / OUT_DUVIDAS, index=False)
 
@@ -856,9 +883,7 @@ def build() -> int:
     backend = rows[rows[COL_ESTADO] == ESTADO_CORRIGIDO]
     with open(root / OUT_CSV, "w", newline="", encoding="utf-8") as fh:
         writer = csv.writer(fh, delimiter=";")
-        writer.writerow(
-            [KEY_COLUMNS[0], COL_ESTADO, COL_CORRECAO, COL_COMENTARIO, COL_PRIORIDADE]
-        )
+        writer.writerow([KEY_COLUMNS[0], COL_ESTADO, COL_CORRECAO, COL_COMENTARIO])
         for _, row in backend.iterrows():
             key = next(
                 (_key_value(row, c) for c in KEY_COLUMNS if c in row.index), ""
@@ -869,7 +894,6 @@ def build() -> int:
                     _clean(row.get(COL_ESTADO)),
                     _clean(row.get(COL_CORRECAO)),
                     _clean(row.get(COL_COMENTARIO)),
-                    _clean(row.get(COL_PRIORIDADE)),
                 ]
             )
 

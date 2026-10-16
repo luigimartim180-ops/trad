@@ -34,9 +34,37 @@ class TestConverter(unittest.TestCase):
         self.assertNotIn("enviar", conv.converter("A carregar…").lower())
 
     def test_a_carregar_does_not_match_para_carregar(self) -> None:
-        # real case: "Clique aqui para carregar mais" -> no "parcarregando"
+        # real case: "Clique aqui para carregar mais" is pagination and stays
+        # valid pt-BR ("carregar mais" is correct in pt-BR)
         out = conv.converter("Clique aqui para carregar mais")
-        self.assertEqual(out, "Clique aqui para enviar mais")
+        self.assertEqual(out, "Clique aqui para carregar mais")
+
+    def test_carregar_upload_sense_only(self) -> None:
+        # upload sense -> "enviar"
+        self.assertEqual(conv.converter("Carregar ficheiro"), "Enviar arquivo")
+        self.assertEqual(conv.converter("Carregar imagem"), "Enviar imagem")
+        self.assertEqual(conv.converter("Carregar"), "Enviar")
+        self.assertEqual(conv.converter("Carregar folha de cálculo"), "Enviar planilha")
+        # load sense -> keeps the pt-BR verb
+        self.assertEqual(
+            conv.converter("Não foi possível carregar os dados"),
+            "Não foi possível carregar os dados",
+        )
+        self.assertEqual(
+            conv.converter("Clique aqui para carregar mais resultados"),
+            "Clique aqui para carregar mais resultados",
+        )
+
+    def test_a_transferir_only_download_objects(self) -> None:
+        self.assertEqual(
+            conv.converter("A transferir ficheiros em massa"),
+            "A baixar arquivos em massa",
+        )
+        # data migration keeps the verb
+        self.assertEqual(
+            conv.converter("A transferir dados: 1 de 10"),
+            "A transferir dados: 1 de 10",
+        )
 
     def test_tem_a_certeza(self) -> None:
         self.assertEqual(
@@ -218,7 +246,11 @@ class TestRules(unittest.TestCase):
     def test_compound_rules_come_first(self) -> None:
         patterns = [p.pattern for p, _ in conv.SUBSTITUICOES]
         compound = patterns.index(r"\ba\s+carregar\b")
-        single = patterns.index(r"\bcarregar\b")
+        # the bare-verb rule is now a context-guarded pattern, not a literal
+        single = next(
+            i for i, p in enumerate(patterns)
+            if p.startswith(r"\bcarregar\b") and "ficheiro" in p
+        )
         self.assertLess(compound, single)
 
     def test_plural_before_singular(self) -> None:
@@ -228,9 +260,11 @@ class TestRules(unittest.TestCase):
         self.assertLess(plural, singular)
 
     def test_all_rules_have_word_boundaries(self) -> None:
+        # context-guarded patterns use a lookahead instead of a trailing \b
         for pattern, _ in conv.SUBSTITUICOES:
-            self.assertTrue(pattern.pattern.startswith(r"\b"))
-            self.assertTrue(pattern.pattern.endswith(r"\b"))
+            self.assertTrue(pattern.pattern.startswith(r"\b"), pattern.pattern)
+            if "(?=" not in pattern.pattern:
+                self.assertTrue(pattern.pattern.endswith(r"\b"), pattern.pattern)
 
     def test_no_global_allotment_rule(self) -> None:
         for pattern, repl in conv.SUBSTITUICOES:
@@ -445,18 +479,8 @@ class TestPipeline(unittest.TestCase):
                 self.assertEqual(_clean(row[conv.COL_CORRECAO]), "", key)
                 self.assertEqual(row[conv.COL_PRIORIDADE], "P0 - dúvida PO", key)
 
-    def test_pendentes_file_contains_only_non_ok(self) -> None:
-        path = ROOT / conv.OUT_REVISAR
-        if not path.exists():
-            raise unittest.SkipTest(f"{path} not generated")
-        sheets = pd.read_excel(path, sheet_name=None)
-        total = 0
-        for name, df in sheets.items():
-            self.assertIn(conv.COL_ESTADO, df.columns, name)
-            self.assertTrue((df[conv.COL_ESTADO] != conv.ESTADO_OK).all(), name)
-            total += len(df)
-        expected = (self.all_rows[conv.COL_ESTADO] != conv.ESTADO_OK).sum()
-        self.assertEqual(total, expected)
+    def test_completa_has_no_revisar_state(self) -> None:
+        self.assertNotIn("REVISAR", set(self.all_rows[conv.COL_ESTADO]))
 
     def test_backend_csv_only_corrigido(self) -> None:
         path = ROOT / conv.OUT_CSV
