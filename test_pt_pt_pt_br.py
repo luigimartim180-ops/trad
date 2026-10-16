@@ -640,6 +640,58 @@ class TestPipeline(unittest.TestCase):
         ):
             self.assertIn("transferir", conv.converter(texto).lower())
 
+    def test_preenchido_keeps_source_workbook_structure(self) -> None:
+        from openpyxl import load_workbook
+        src = load_workbook(ROOT / conv.XLSX_IN)
+        out = load_workbook(ROOT / conv.OUT_PREENCHIDO)
+        self.assertEqual(src.sheetnames, out.sheetnames)
+        for name in src.sheetnames:
+            if name == conv.INFO_SHEET:
+                continue
+            self.assertEqual(
+                [c.value for c in src[name][1]],
+                [c.value for c in out[name][1]],
+                f"cabeçalho alterado em {name}",
+            )
+            self.assertEqual(src[name].dimensions, out[name].dimensions)
+            self.assertEqual(src[name].freeze_panes, out[name].freeze_panes)
+            src_dv = [dv.formula1 for dv in src[name].data_validations.dataValidation]
+            out_dv = [dv.formula1 for dv in out[name].data_validations.dataValidation]
+            self.assertEqual(src_dv, out_dv, f"dropdown perdido em {name}")
+
+    def test_preenchido_columns_and_states(self) -> None:
+        sheets = pd.read_excel(ROOT / conv.OUT_PREENCHIDO, sheet_name=None)
+        for name, df in sheets.items():
+            if name == conv.INFO_SHEET:
+                continue
+            self.assertIn(conv.COL_ESTADO, df.columns)
+            estados = set(df[conv.COL_ESTADO].dropna().unique())
+            self.assertTrue(
+                estados <= {"OK", conv.ESTADO_CORRIGIDO},
+                f"estados inesperados em {name}: {estados}",
+            )
+            ok = df[df[conv.COL_ESTADO] == "OK"]
+            vazias = ok[conv.COL_CORRECAO].isna() | (
+                ok[conv.COL_CORRECAO].astype(str).str.strip() == ""
+            )
+            self.assertTrue(vazias.all(), f"OK com Corrección PT em {name}")
+
+    def test_preenchido_comments_only_on_polemic_rows(self) -> None:
+        sheets = pd.read_excel(ROOT / conv.OUT_PREENCHIDO, sheet_name=None)
+        seen: set[str] = set()
+        for name, df in sheets.items():
+            if name == conv.INFO_SHEET:
+                continue
+            for _, row in df.iterrows():
+                com = row[conv.COL_COMENTARIO]
+                if pd.isna(com) or not str(com).strip():
+                    continue
+                key = next(str(row[c]) for c in conv.KEY_COLUMNS if c in df.columns)
+                # a note only ever comes from COMENTARIOS, and always the same
+                self.assertEqual(str(com).strip(), conv.COMENTARIOS[key])
+                seen.add(key)
+        self.assertEqual(seen, set(conv.COMENTARIOS))
+
     def test_final_file_has_single_text_column(self) -> None:
         sheets = pd.read_excel(ROOT / conv.OUT_FINAL, sheet_name=None)
         for df in sheets.values():

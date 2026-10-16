@@ -32,6 +32,7 @@ from pathlib import Path
 import pandas as pd
 
 XLSX_IN = "Revision_traducciones_PT.xlsx"
+OUT_PREENCHIDO = "Revision_traducciones_PT_pt-BR.xlsx"
 OUT_COMPLETA = "revisao_pt_BR_completa.xlsx"
 OUT_FINAL = "revisao_pt_BR_FINAL.xlsx"
 OUT_DUVIDAS = "duvidas_PO.xlsx"
@@ -64,8 +65,10 @@ SHEET_NAMES_PT_BR = {
 #: Estado values. ``OK`` = already valid pt-BR (nothing to patch);
 #: ``CORRIGIDO`` = validated pt-BR suggestion, exported to the backend;
 #: ``PENDENTE_PO`` = glossary decision owned by the PO, never auto-converted.
+#: The labels match the source workbook dropdown (``OK,Corregir``) so the
+#: delivered file can be filtered as-is.
 ESTADO_OK = "OK"
-ESTADO_CORRIGIDO = "CORRIGIDO"
+ESTADO_CORRIGIDO = "Corregir"
 ESTADO_PENDENTE_PO = "PENDENTE_PO"
 
 DEAD_COLUMNS = [
@@ -389,6 +392,162 @@ CORRECOES_PO: dict[str, str] = {
 }
 
 CORRECOES.update(CORRECOES_PO)
+
+#: Explanatory notes for the ``Comentario`` column. Only rows that are
+#: polemic, ambiguous or need a reason get a note; everything else stays
+#: empty on purpose (the correction itself is self-explanatory).
+COMENTARIOS: dict[str, str] = {
+    # --- glossary / PO decisions (B2B jargon, regional variants) -----------
+    "shared.forecast.nonDeductedAllotment": (
+        "Allotment mantido (decisão de glossário B2B): é termo corrente em "
+        "contratos com operadores estrangeiros. Não traduzir por cota."
+    ),
+    "apps.import.importJob.relatedMap.allotment": (
+        "Allotment mantido por consistência com a decisão de glossário B2B."
+    ),
+    "apps.integration.ulysesSync.mapping.allotment": (
+        "Allotment mantido por consistência com a decisão de glossário B2B."
+    ),
+    "apps.importJob.category.importAllotmentMapList": (
+        "Allotment mantido por consistência com a decisão de glossário B2B."
+    ),
+    "PropertyClassType t WHERE t.Code = '9'": (
+        "Pensão mantido: em pt-BR hoteleiro é a forma usada para o regime de "
+        "refeições (pensão completa / meia pensão). Não confundir com o "
+        "sentido pt-PT de casa de hóspedes."
+    ),
+    "apps.aiAssistant.label.hotel": (
+        "Propriedade (e não Hotel): o assistente cobre hotéis e outros tipos "
+        "de propriedade, seguindo o EN \"Property\". Só o ES usa \"Hotel\"."
+    ),
+    "core.label.billing": (
+        "Faturamento: em pt-BR a faturação é \"faturamento\" (o pt-PT "
+        "\"facturação/faturação\" é forma lusa)."
+    ),
+    "core.label.chain": (
+        "Rede: pt-BR usa \"rede\" para cadeia hoteleira; \"cadeia\" é "
+        "interpretado como cadeia de caracteres/produto."
+    ),
+    "core.label.billingInstruction": "Coerente com core.label.billing = Faturamento.",
+    "shared.emailTemplate.section.propertyBillingInformation": (
+        "Coerente com a decisão core.label.billing = Faturamento."
+    ),
+    "apps.profileCommissionTransaction.gridAction.offset": (
+        "Compensar: ação contabilística de compensar valores; o pt-PT "
+        "\"compensar/equilibrar\" aqui é ambíguo."
+    ),
+    # --- BR fiscal wording: anulada != cancelada --------------------------
+    "shared.radioButton.propertyEmailSchedulerEventINVCVOID.message": (
+        "Fatura anulada (VOID) mantido literal: em BR fiscal \"anulada\" "
+        "(invalidação/nulidade) é distinto de \"cancelada\". A regra genérica "
+        "anulada->cancelada NÃO se aplica aqui."
+    ),
+    "shared.radioButton.propertyEmailSchedulerEventINVCAMD.message": (
+        "Fatura alterada: evento de alteração de fatura (INVCAMD)."
+    ),
+    "shared.radioButton.propertyEmailSchedulerEventINVCISS.message": (
+        "Fatura emitida: evento de emissão de fatura (INVCISS)."
+    ),
+    # --- technical tokens kept verbatim -----------------------------------
+    "apps.chainSpaceLockType.radio.onHold": (
+        "OnHold mantido: valor técnico do sistema (estado de bloqueio). "
+        "Traduzido apenas o texto entre parênteses."
+    ),
+    "apps.chainSpaceLockType.radio.outOfOrder": (
+        "OutOfOrder mantido: valor técnico do sistema (fora de ordem). "
+        "Traduzido apenas o texto entre parênteses."
+    ),
+    "apps.chainSpaceLockType.radio.outOfService": (
+        "OutOfService mantido: valor técnico do sistema (fora de serviço). "
+        "Traduzido apenas o texto entre parênteses."
+    ),
+    # --- surgical fixes from the BR source ---------------------------------
+    "card.hojaRegistro": (
+        "Ficha de registro de hóspedes (FNRH): designação oficial brasileira "
+        "(Polícia Federal/Embratur). Não traduzir literalmente \"folha de "
+        "registo\"."
+    ),
+    "core.button.settlement": (
+        "Cobranças automáticas: o ES \"Cargos automáticos\" refere a cobrança "
+        "automática, não a liquidação de conta."
+    ),
+    "invoice.direction.label": (
+        "Endereço: pt-BR usa \"endereço\" (pt-PT \"morada\")."
+    ),
+    "core.label.taxExcludedShort": (
+        "Imposto excl.: no Brasil não existe IVA; usa-se \"imposto\"."
+    ),
+    "core.label.taxIncludedShort": (
+        "Imposto incl.: no Brasil não existe IVA; usa-se \"imposto\"."
+    ),
+    "core.label.amountPaidOut": (
+        "Valor retirado: segue o ES \"cantidad retirada\"; \"montante\" é "
+        "pt-PT."
+    ),
+    "core.label.totalAmountEntered": (
+        "Valor total informado: pt-BR prefere \"informado\" a \"introduzido\"."
+    ),
+    "core.label.amountOtherBreakdownAfterTax": (
+        "Outros valores: forma idiomática em pt-BR; evita \"montante\"."
+    ),
+    # --- "to download" -> baixar (não confundir com transferir) -----------
+    "core.button.download": (
+        "Baixar: em pt-BR \"download\" é \"baixar\". Regra aplicada só aos "
+        "botões de download, nunca às transferências de conta/folio."
+    ),
+    "core.navbar.user.logs": (
+        "Baixar logs: verbo \"baixar\" (pt-BR) em vez de \"transferir\"."
+    ),
+    "shared.modal.bulkDownloadFile.title": (
+        "Baixando arquivos em massa: gerúndio pt-BR; \"a transferir\" seria "
+        "pt-PT."
+    ),
+    "apps.report.options.information": (
+        "Baixar/baixe: mantém o sentido de descarregar o relatório, não de "
+        "transferir valores."
+    ),
+    # --- pt-PT residue in the suggestion itself ---------------------------
+    "apps.budget.importExcelModal.instructions": (
+        "Sugestão continha pt-PT residual (\"tenha em conta\") no próprio "
+        "texto de destino; corrigido para \"observe\"/\"note\"."
+    ),
+    "apps.integration.publicApiRest.refreshEventEntity.message": (
+        "Sugestão continha pt-PT residual; corrigido para pt-BR (observe/"
+        "atualizadas)."
+    ),
+    "apps.integration.publicApiRest.removeEventEntity.message": (
+        "Sugestão continha pt-PT residual; corrigido para pt-BR (observe/"
+        "atualizadas)."
+    ),
+    # --- form of address: pt-PT "tu/você" vs pt-BR "você" -----------------
+    "apps.propertyCommunicationEmailTypeConfiguration.entity.reservationGroupContract.info": (
+        "Tratamento por \"você\" (pt-BR) em vez de \"tu\"; mantidos os termos "
+        "de UI (Modelos de e-mail, Configuração da propriedade)."
+    ),
+    "before.checkout.message.intro": (
+        "Tratamento por \"você\" (pt-BR) e \"recepção\"; placeholders {0} e "
+        "HTML preservados."
+    ),
+    "apps.login.section.passwordReset.descriptionSystem": (
+        "Senha (pt-BR) em vez de palavra-passe; tratamento por \"você\"."
+    ),
+    # --- plural/spelling normalisation in this batch -----------------------
+    "shared.grid.header.overwriteAmountAfterTax": (
+        "Sobrescrita: pt-BR prefere \"sobrescrita\" a \"sobreposição\"."
+    ),
+    "apps.management.guestLedger.grid.header.totalFunctionRoomAmountAfterTax": (
+        "Salão de eventos: \"function room\" é o salão para eventos; evita o "
+        "literal \"sala de funções\"."
+    ),
+    "apps.reservationGroup.action.printDocument": (
+        "Imprimir documento: \"print\" é \"imprimir\"; \"imprimir documento\" "
+        "já é pt-BR válido."
+    ),
+    "txt.space": (
+        "Mensagens e relatórios: identificador interno da aba, preenchido "
+        "para não ficar vazio."
+    ),
+}
 
 #: Keys closed as OK by the reviewer: the term is already valid pt-BR and the
 #: "Igual a ES/EN" warning is a false positive.
@@ -1180,6 +1339,12 @@ def process_sheet(df: pd.DataFrame) -> pd.DataFrame:
                 converted if converted != texto_pt else ""
             )
         out.at[idx, COL_ESTADO] = estado
+        # Explanatory note for polemic / ambiguous rows; keep any note the
+        # source workbook already carried.
+        comentario = _clean(row.get(COL_COMENTARIO))
+        if not comentario and clave in COMENTARIOS:
+            comentario = COMENTARIOS[clave]
+        out.at[idx, COL_COMENTARIO] = comentario
         if dec is not None or clave in CORRECOES:
             # reviewed and closed by the reviewer / review agents
             out.at[idx, COL_PRIORIDADE] = "Fechado"
@@ -1328,6 +1493,75 @@ def _construir_final(processed: dict[str, pd.DataFrame]) -> dict[str, pd.DataFra
     return final
 
 
+def _write_preenchido(
+    entrada: Path, destino: Path, processed: dict[str, pd.DataFrame]
+) -> None:
+    """Write the source workbook with Estado/Corrección PT/Comentario filled.
+
+    The original file is the base: sheet order, headers, formatting, column
+    widths and the ``OK,Corregir`` dropdown are preserved. Only the three
+    review columns are written, matched by key so the row order never shifts.
+    """
+    from openpyxl import load_workbook
+
+    wb = load_workbook(entrada)
+    for sheet, df in processed.items():
+        if sheet not in wb.sheetnames:
+            continue
+        ws = wb[sheet]
+        # header row is not necessarily row 1 (the source may carry title rows)
+        header_row = 1
+        for r in range(1, min(ws.max_row, 30) + 1):
+            cells = [str(c.value).strip() for c in ws[r] if c.value is not None]
+            if any(c in cells for c in KEY_COLUMNS):
+                header_row = r
+                break
+        header = {
+            str(c.value).strip(): c.column
+            for c in ws[header_row]
+            if c.value is not None
+        }
+        cols = {name: header[name] for name in
+                (COL_ESTADO, COL_CORRECAO, COL_COMENTARIO) if name in header}
+        if COL_ESTADO not in cols:
+            continue
+        key_name = next((c for c in KEY_COLUMNS if c in header), None)
+        if key_name is None:
+            continue
+        key_col = header[key_name]
+
+        estado = df[COL_ESTADO].tolist() if COL_ESTADO in df.columns else []
+        correcao = df[COL_CORRECAO].tolist() if COL_CORRECAO in df.columns else []
+        comentario = df[COL_COMENTARIO].tolist() if COL_COMENTARIO in df.columns else []
+        # The key alone is not unique (the technical key column is truncated and
+        # repeats across rows). Both the sheet and the frame keep the source row
+        # order, so the nth occurrence of a key maps to the nth frame row.
+        pending: dict[str, list[int]] = {}
+        for i, key in enumerate(df[key_name].tolist()):
+            pending.setdefault(str(key).strip(), []).append(i)
+
+        seen: dict[str, int] = {}
+        for row in ws.iter_rows(min_row=header_row + 1):
+            key = str(row[key_col - 1].value or "").strip()
+            slots = pending.get(key)
+            if not slots:
+                continue
+            pos = seen.get(key, 0)
+            if pos >= len(slots):
+                continue
+            seen[key] = pos + 1
+            idx = slots[pos]
+            for name, col in cols.items():
+                src = {
+                    COL_ESTADO: estado,
+                    COL_CORRECAO: correcao,
+                    COL_COMENTARIO: comentario,
+                }[name]
+                value = src[idx] if idx < len(src) else ""
+                row[col - 1].value = value if value else None
+    wb.save(destino)
+
+
 def build(xlsx_in: str | None = None, out_dir: str | None = None) -> int:
     root = Path(__file__).resolve().parent
     entrada = Path(xlsx_in) if xlsx_in else root / XLSX_IN
@@ -1357,6 +1591,10 @@ def build(xlsx_in: str | None = None, out_dir: str | None = None) -> int:
     with pd.ExcelWriter(destino / OUT_COMPLETA) as writer:
         for sheet, df in processed.items():
             df.to_excel(writer, sheet_name=_pt_br_sheet(sheet)[:31], index=False)
+
+    # entrega principal: o próprio ficheiro original, preenchido nas três
+    # colunas de revisão (abas, formatação e dropdown OK/Corregir intactos)
+    _write_preenchido(entrada, destino / OUT_PREENCHIDO, processed)
 
     final = _construir_final(processed)
     with pd.ExcelWriter(destino / OUT_FINAL) as writer:

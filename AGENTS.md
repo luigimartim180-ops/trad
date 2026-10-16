@@ -16,7 +16,7 @@ python3 orquestrador.py aplicar    # regenera xlsx/csv já com decisões
 
 ## Testes e QA
 ```bash
-python3 -m unittest test_pt_pt_pt_br   # 73 testes
+python3 -m unittest test_pt_pt_pt_br   # 77 testes
 python3 qa_report.py                   # sign-off (7 checks)
 ```
 
@@ -41,9 +41,26 @@ saída**; as chaves internas do pipeline (e os testes que usam
 `_review_sheet_names`) mantêm os nomes originais.
 
 ## Estado de entrega
-Branch `feat/pt-br-conversao`. O `GITHUB_TOKEN` do ambiente é read-only/inválido
-(401 Bad credentials) → push/PR exigem credenciais de escrita fornecidas pelo
-utilizador.
+Branch `feat/pt-br-duvidas-po` (PR #4). O `GITHUB_TOKEN` do ambiente é
+read-only/inválido; push/PR usam o token de escrita que o utilizador forneceu.
+
+## Ficheiro de entrega principal
+`Revision_traducciones_PT_pt-BR.xlsx` — **o próprio original**, preenchido só nas
+três colunas de revisão (`Estado`, `Corrección PT`, `Comentario`). Preserva
+abas, cabeçalhos, formatação, larguras e o dropdown `OK,Corregir`.
+`_write_preenchido()` emparelha por **ordem de ocorrência** da chave, porque a
+chave não é única (a coluna «Clave técnica (no editar)» vem truncada e repete-se
+em 1041 linhas de «Entidades de sistema» e 102 de «Mensajes e informes»).
+
+`Estado` usa os rótulos oficiais do dropdown: **`OK`** / **`Corregir`**
+(`ESTADO_CORRIGIDO = "Corregir"`; o valor interno `PENDENTE_PO` só aparece se
+houver dúvidas abertas, e hoje não há).
+
+## Comentários
+`COMENTARIOS` (dict chave→nota) preenche a coluna `Comentario` **apenas** nos
+casos polémicos ou ambíguos (allotment, pensão, fatura anulada, tokens técnicos
+OnHold/OutOfOrder/OutOfService, IVA→imposto, baixar vs transferir, etc.). Uma
+linha sem nota fica vazia de propósito. Vão também para `correcoes_backend.csv`.
 
 ## Decisões do PO (sign-off 2026-10)
 As 62 linhas que estavam em `PENDENTE_PO` foram fechadas e vivem em
