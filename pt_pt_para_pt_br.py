@@ -31,6 +31,7 @@ import pandas as pd
 
 XLSX_IN = "Revision_traducciones_PT.xlsx"
 OUT_COMPLETA = "revisao_pt_BR_completa.xlsx"
+OUT_REVISAR = "revisao_pt_BR_REVISAR.xlsx"
 OUT_DUVIDAS = "duvidas_PO.xlsx"
 OUT_CSV = "correcoes_backend.csv"
 
@@ -40,6 +41,7 @@ COL_ESTADO = "Estado"
 COL_CORRECAO = "Corrección PT"
 COL_COMENTARIO = "Comentario"
 COL_AVISO = "Aviso"
+COL_PRIORIDADE = "Prioridade"
 INFO_SHEET = "Instrucciones"
 DUVIDAS_SHEET = "Dúvidas"
 DEAD_COLUMNS = [
@@ -76,17 +78,67 @@ WHITELIST_IGUAL_ES_EN = {
 TRADUCOES_EM_FALTA: list[str] = []
 
 #: Keys whose translation is under discussion with the PO (never converted).
+#: Grouped by the four open questions in ``glossario_pt_BR.md`` §3.
+DUVIDAS_GRUPOS: dict[str, list[str]] = {
+    "D1 pensão/regime": ["PropertyClassType t WHERE t.Code = '9'"],
+    "D2 allotment": ["shared.forecast.nonDeductedAllotment"],
+    "D3 OnHold/OutOfOrder/OutOfService": [
+        "apps.chainSpaceLockType.radio.onHold",
+        "apps.chainSpaceLockType.radio.outOfOrder",
+        "apps.chainSpaceLockType.radio.outOfService",
+    ],
+    "D4 aiAssistant hotel/property": ["apps.aiAssistant.label.hotel"],
+}
+
 DUVIDAS_KEYS = [
     "core.label.billing",
     "core.label.chain",
     "shared.forecast.nonDeductedAllotment",
 ]
 
-#: Surgical, key-scoped overrides that bypass the generic rules.
-CORRECOES = {
+#: Surgical, key-scoped overrides that bypass the generic rules. ``None``
+#: marks a key that must never be auto-converted (open PO question).
+CORRECOES: dict[str, str | None] = {
     "card.hojaRegistro": "Ficha de registro de hóspedes (FNRH)",
     "core.button.settlement": "Cobranças automáticas",
     "invoice.direction.label": "Endereço",
+    # "to download" is "baixar" in pt-BR; only the UI download buttons change,
+    # never the account/folio "transfer" actions.
+    "core.button.download": "Baixar",
+    "core.button.downloadDocument": "Baixar documento",
+    "core.button.downloadFileAutomatically": "Baixar arquivo automaticamente",
+    "core.button.downloadNDocuments": "Baixar documentos ({{n}})",
+    "core.button.downloadTemplate": "Baixar modelo",
+    "core.navbar.user.logs": "Baixar logs",
+    "apps.report.downloadCSV": "Baixar CSV",
+    "apps.report.downloadExcel": "Baixar Excel",
+    "apps.report.downloadPDF": "Baixar PDF",
+    "apps.management.button.exportExcel": "Baixar Excel",
+    "apps.management.customExcel": "Baixar Excel com fórmulas",
+    "apps.budget.importExcelModal.downloadExcel": "Baixar modelo",
+    "apps.rate.importExcelModal.downloadExcel": "Baixar modelo",
+    "apps.integration.septeoChannel.button.downloadTemplateFiles": "Baixar modelo",
+    "apps.integration.siteminder.button.downloadTemplateFiles": "Baixar modelo",
+    "apps.integration.accounting.downloadFile": "Baixar arquivos",
+    "apps.integration.nf525.action.downloadArchives": "Baixar individualmente",
+    "apps.integration.nf525.action.downloadArchivesPeriod": "Baixar agrupado",
+    "shared.modal.bulkDownloadFile.title": "Baixando arquivos em massa",
+    "shared.modal.printInvoice.downloadNInvoice": "Baixar {{count}} faturas",
+    "shared.switch.allowDownloadInvoice.title": "Baixar faturas",
+    "shared.switch.allowInHouseDownloadInvoice.title": "Baixar faturas",
+    "shared.switch.downloadReservation.title": "Baixar reserva",
+    "shared.switch.downloadReservation.message": (
+        "Ative esta opção para baixar automaticamente as reservas"
+    ),
+    # AO90 spelling -> Brazilian spelling
+    "core.button.transferEntity": "Transferir {{entity}}",
+    # open PO questions: never converted
+    "apps.profileCommissionTransaction.gridAction.offset": None,
+    "PropertyClassType t WHERE t.Code = '9'": None,
+    "apps.chainSpaceLockType.radio.onHold": None,
+    "apps.chainSpaceLockType.radio.outOfOrder": None,
+    "apps.chainSpaceLockType.radio.outOfService": None,
+    "apps.aiAssistant.label.hotel": None,
 }
 
 
@@ -102,6 +154,7 @@ def _rule(pt: str, br: str) -> tuple[re.Pattern[str], str]:
 #: before "utilizador") so the first matching rule wins.
 SUBSTITUICOES: list[tuple[re.Pattern[str], str]] = [
     # 1. compound expressions first
+    _rule("por defeito", "por padrão"),
     _rule("a carregar", "carregando"),
     _rule("a digitalizar", "digitalizando"),
     _rule("tem a certeza", "tem certeza"),
@@ -127,9 +180,14 @@ SUBSTITUICOES: list[tuple[re.Pattern[str], str]] = [
     _rule("secções", "seções"),
     _rule("demasiados", "muitos"),
     _rule("demasiadas", "muitas"),
+    _rule("contactos", "contatos"),
+    _rule("actividades", "atividades"),
+    _rule("detetados", "detectados"),
+    _rule("detetadas", "detectadas"),
     # 3. remaining single verbs / nouns
     _rule("palavra-passe", "senha"),
     _rule("secção", "seção"),
+    _rule("contacto", "contato"),
     _rule("carregar", "enviar"),
     _rule("utilizador", "usuário"),
     _rule("ficheiro", "arquivo"),
@@ -145,6 +203,7 @@ SUBSTITUICOES: list[tuple[re.Pattern[str], str]] = [
     _rule("fecho", "fechamento"),
     _rule("receção", "recepção"),
     _rule("detetada", "detectada"),
+    _rule("detetado", "detectado"),
     _rule("montante", "valor"),
     _rule("faturação", "faturamento"),
     _rule("planeamento", "planejamento"),
@@ -157,6 +216,24 @@ SUBSTITUICOES: list[tuple[re.Pattern[str], str]] = [
     _rule("Roménia", "Romênia"),
     _rule("Iémen", "Iêmen"),
     _rule("Zimbabué", "Zimbábue"),
+    # 5. AO90 -> Brazilian spelling
+    _rule("acção", "ação"),
+    _rule("acções", "ações"),
+    _rule("actividade", "atividade"),
+    _rule("actividades", "atividades"),
+    _rule("activo", "ativo"),
+    _rule("activa", "ativa"),
+    _rule("actual", "atual"),
+    _rule("objectivo", "objetivo"),
+    _rule("objectivos", "objetivos"),
+    _rule("objecto", "objeto"),
+    _rule("directo", "direto"),
+    _rule("director", "diretor"),
+    _rule("colectivo", "coletivo"),
+    _rule("protecção", "proteção"),
+    _rule("correcção", "correção"),
+    _rule("seleccionar", "selecionar"),
+    _rule("colecção", "coleção"),
 ]
 
 _PLACEHOLDER_RE = re.compile(r"\{\{.*?\}\}|\{\d+\}|<[^>]+>")
@@ -263,6 +340,16 @@ def _clean(value: object) -> str:
     return str(value)
 
 
+def _prioridade(estado: str, tem_correcao: bool, e_duvida: bool) -> str:
+    if estado == "OK":
+        return ""
+    if e_duvida:
+        return "P0 - dúvida PO"
+    if not tem_correcao:
+        return "P1 - decisão manual"
+    return "P2 - validar sugestão"
+
+
 def process_sheet(df: pd.DataFrame) -> pd.DataFrame:
     out = df.copy()
     columns = list(out.columns)
@@ -270,7 +357,7 @@ def process_sheet(df: pd.DataFrame) -> pd.DataFrame:
     pt_col = _pick(columns, PT_COLUMNS)
     aviso_col = _pick(columns, [COL_AVISO])
 
-    for col in (COL_ESTADO, COL_CORRECAO, COL_COMENTARIO):
+    for col in (COL_ESTADO, COL_CORRECAO, COL_COMENTARIO, COL_PRIORIDADE):
         if col not in out.columns:
             out[col] = ""
         out[col] = out[col].map(_clean)
@@ -280,11 +367,12 @@ def process_sheet(df: pd.DataFrame) -> pd.DataFrame:
         texto_pt = _clean(row.get(pt_col)) if pt_col else ""
         aviso = _clean(row.get(aviso_col)) if aviso_col else ""
 
-        if clave in DUVIDAS_KEYS:
+        if clave in DUVIDAS_KEYS or CORRECOES.get(clave, "") is None:
             # open question for the PO: never auto-converted, listed in
             # duvidas_PO.xlsx for a human decision
             out.at[idx, COL_ESTADO] = "REVISAR"
             out.at[idx, COL_CORRECAO] = ""
+            out.at[idx, COL_PRIORIDADE] = _prioridade("REVISAR", False, True)
             continue
 
         if clave in CORRECOES:
@@ -301,6 +389,9 @@ def process_sheet(df: pd.DataFrame) -> pd.DataFrame:
                 converted if converted != texto_pt else ""
             )
         out.at[idx, COL_ESTADO] = estado
+        out.at[idx, COL_PRIORIDADE] = _prioridade(
+            estado, bool(_clean(out.at[idx, COL_CORRECAO])), False
+        )
 
     return out.drop(columns=[c for c in DEAD_COLUMNS if c in out.columns])
 
@@ -321,6 +412,15 @@ def _review_sheet_names(xl: pd.ExcelFile) -> list[str]:
     return names
 
 
+def _duvida_grupo(clave: str) -> str:
+    for grupo, keys in DUVIDAS_GRUPOS.items():
+        if clave in keys:
+            return grupo
+    if clave in DUVIDAS_KEYS:
+        return "glossário"
+    return ""
+
+
 def _extract_duvidas(
     xl: pd.ExcelFile, processed: dict[str, pd.DataFrame]
 ) -> pd.DataFrame:
@@ -334,18 +434,22 @@ def _extract_duvidas(
         pt_col = _pick(columns, PT_COLUMNS)
         for _, row in df.iterrows():
             clave = _key_value(row, key_col)
-            if clave in DUVIDAS_KEYS:
-                rows.append(
-                    {
-                        "Clave": clave,
-                        "Hoja": sheet,
-                        "Texto PT": _clean(row.get(pt_col)) if pt_col else "",
-                        "Comentario": _clean(row.get(COL_COMENTARIO)),
-                        "Destino": "PO",
-                    }
-                )
+            grupo = _duvida_grupo(clave)
+            if not grupo:
+                continue
+            rows.append(
+                {
+                    "Clave": clave,
+                    "Hoja": sheet,
+                    "Texto PT": _clean(row.get(pt_col)) if pt_col else "",
+                    "Grupo": grupo,
+                    "Comentario": _clean(row.get(COL_COMENTARIO)),
+                    "Destino": "PO",
+                }
+            )
     return pd.DataFrame(
-        rows, columns=["Clave", "Hoja", "Texto PT", "Comentario", "Destino"]
+        rows,
+        columns=["Clave", "Hoja", "Texto PT", "Grupo", "Comentario", "Destino"],
     )
 
 
@@ -370,6 +474,12 @@ def build() -> int:
         for sheet, df in processed.items():
             df.to_excel(writer, sheet_name=sheet[:31], index=False)
 
+    with pd.ExcelWriter(root / OUT_REVISAR) as writer:
+        for sheet, df in processed.items():
+            pendentes = df[df[COL_ESTADO] != "OK"]
+            if not pendentes.empty:
+                pendentes.to_excel(writer, sheet_name=sheet[:31], index=False)
+
     duvidas = _extract_duvidas(xl, processed)
     duvidas.to_excel(root / OUT_DUVIDAS, index=False)
 
@@ -377,7 +487,9 @@ def build() -> int:
     backend = rows[rows[COL_ESTADO] != "OK"]
     with open(root / OUT_CSV, "w", newline="", encoding="utf-8") as fh:
         writer = csv.writer(fh, delimiter=";")
-        writer.writerow([KEY_COLUMNS[0], COL_ESTADO, COL_CORRECAO, COL_COMENTARIO])
+        writer.writerow(
+            [KEY_COLUMNS[0], COL_ESTADO, COL_CORRECAO, COL_COMENTARIO, COL_PRIORIDADE]
+        )
         for _, row in backend.iterrows():
             key = next(
                 (_key_value(row, c) for c in KEY_COLUMNS if c in row.index), ""
@@ -388,6 +500,7 @@ def build() -> int:
                     _clean(row.get(COL_ESTADO)),
                     _clean(row.get(COL_CORRECAO)),
                     _clean(row.get(COL_COMENTARIO)),
+                    _clean(row.get(COL_PRIORIDADE)),
                 ]
             )
 
@@ -398,6 +511,13 @@ def build() -> int:
     print(f"Total de linhas: {len(rows)}")
     print(f"Substituições distintas: {len(SUBSTITUICOES)}")
     print(f"Dúvidas (não convertidas): {len(duvidas)}")
+
+    prioridades = (
+        rows[rows[COL_ESTADO] != "OK"][COL_PRIORIDADE].value_counts().to_dict()
+    )
+    print("Prioridades dos pendentes:")
+    for prio, total in sorted(prioridades.items()):
+        print(f"  {prio}: {total}")
     return 0
 
 

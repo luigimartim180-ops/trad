@@ -14,6 +14,12 @@ ROOT = Path(__file__).resolve().parent
 PLACEHOLDER_RE = re.compile(r"\{\{.*?\}\}|\{\d+\}|<[^>]+>")
 
 
+def _clean(value: object) -> str:
+    if value is None or (isinstance(value, float) and pd.isna(value)):
+        return ""
+    return str(value)
+
+
 class TestConverter(unittest.TestCase):
     def test_utilizador_uppercase(self) -> None:
         # real case: Mensajes e informes / field.user
@@ -74,6 +80,62 @@ class TestConverter(unittest.TestCase):
                 self.assertIsNone(conv.converter(text))
             else:
                 self.assertIsInstance(conv.converter(text), str)
+
+    def test_contacto_ao90(self) -> None:
+        self.assertEqual(conv.converter("Contacto do perfil"), "Contato do perfil")
+        self.assertEqual(conv.converter("Contactos"), "Contatos")
+
+    def test_ao90_spelling(self) -> None:
+        for pt, br in [
+            ("Actividade", "Atividade"),
+            ("Acção", "Ação"),
+            ("Objectivo", "Objetivo"),
+            ("Protecção", "Proteção"),
+            ("Seleccionar", "Selecionar"),
+        ]:
+            self.assertEqual(conv.converter(pt), br)
+
+    def test_por_defeito_compound(self) -> None:
+        self.assertEqual(
+            conv.converter("por defeito, se nada for configurado"),
+            "por padrão, se nada for configurado",
+        )
+
+    def test_detetado_and_plural(self) -> None:
+        self.assertEqual(conv.converter("detetado"), "detectado")
+        self.assertEqual(conv.converter("detetados"), "detectados")
+        self.assertEqual(conv.converter("detetadas"), "detectadas")
+
+    def test_transferir_kept_for_account_actions(self) -> None:
+        # "transferir" is a real account/folio move, not a download
+        self.assertEqual(
+            conv.converter("Transferir para outra conta"),
+            "Transferir para outra conta",
+        )
+
+    def test_download_keys_use_baixar(self) -> None:
+        self.assertEqual(conv.CORRECOES["core.button.download"], "Baixar")
+        self.assertEqual(
+            conv.CORRECOES["apps.report.downloadExcel"], "Baixar Excel"
+        )
+
+    def test_duvida_keys_never_converted(self) -> None:
+        for key in [
+            "apps.aiAssistant.label.hotel",
+            "apps.chainSpaceLockType.radio.onHold",
+            "apps.chainSpaceLockType.radio.outOfOrder",
+            "apps.chainSpaceLockType.radio.outOfService",
+            "PropertyClassType t WHERE t.Code = '9'",
+        ]:
+            self.assertIsNone(conv.CORRECOES[key])
+
+    def test_pensao_kept(self) -> None:
+        self.assertEqual(conv.converter("Pensão"), "Pensão")
+
+    def test_allotment_still_kept(self) -> None:
+        self.assertEqual(
+            conv.converter("Allotment não deduzido"), "Allotment não deduzido"
+        )
 
 
 class TestRules(unittest.TestCase):
@@ -189,6 +251,47 @@ class TestPipeline(unittest.TestCase):
                 self.assertEqual(row[conv.COL_ESTADO], "OK")
             else:
                 self.assertEqual(row[conv.COL_ESTADO], "REVISAR")
+
+    def test_priority_column_present(self) -> None:
+        for df in self.processed.values():
+            self.assertIn(conv.COL_PRIORIDADE, df.columns)
+
+    def test_priority_values_consistent(self) -> None:
+        for _, row in self.all_rows.iterrows():
+            estado = row[conv.COL_ESTADO]
+            prio = row[conv.COL_PRIORIDADE]
+            if estado == "OK":
+                self.assertEqual(prio, "")
+                continue
+            self.assertIn(prio, {
+                "P0 - dúvida PO",
+                "P1 - decisão manual",
+                "P2 - validar sugestão",
+            })
+
+    def test_duvida_rows_are_p0_and_empty(self) -> None:
+        by_key = self.all_rows.groupby("Clave").first()
+        for grupo, keys in conv.DUVIDAS_GRUPOS.items():
+            for key in keys:
+                if key not in by_key.index:
+                    continue
+                row = by_key.loc[key]
+                self.assertEqual(row[conv.COL_ESTADO], "REVISAR", key)
+                self.assertEqual(_clean(row[conv.COL_CORRECAO]), "", key)
+                self.assertEqual(row[conv.COL_PRIORIDADE], "P0 - dúvida PO", key)
+
+    def test_revisar_file_contains_only_non_ok(self) -> None:
+        path = ROOT / conv.OUT_REVISAR
+        if not path.exists():
+            raise unittest.SkipTest(f"{path} not generated")
+        sheets = pd.read_excel(path, sheet_name=None)
+        total = 0
+        for name, df in sheets.items():
+            self.assertIn(conv.COL_ESTADO, df.columns, name)
+            self.assertTrue((df[conv.COL_ESTADO] != "OK").all(), name)
+            total += len(df)
+        expected = (self.all_rows[conv.COL_ESTADO] != "OK").sum()
+        self.assertEqual(total, expected)
 
 
 if __name__ == "__main__":
