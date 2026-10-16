@@ -53,6 +53,14 @@ COL_PRIORIDADE = "Prioridade"
 INFO_SHEET = "Instrucciones"
 DUVIDAS_SHEET = "Dúvidas"
 
+#: Final tab names (pt-BR) shown in the delivered workbooks; the input file
+#: keeps the legacy ES/PT labels.
+SHEET_NAMES_PT_BR = {
+    "Frontend (pantallas)": "Frontend (telas)",
+    "Entidades de sistema": "Entidades do sistema",
+    "Mensajes e informes": "Mensagens e relatórios",
+}
+
 #: Estado values. ``OK`` = already valid pt-BR (nothing to patch);
 #: ``CORRIGIDO`` = validated pt-BR suggestion, exported to the backend;
 #: ``PENDENTE_PO`` = glossary decision owned by the PO, never auto-converted.
@@ -222,7 +230,7 @@ CORRECOES: dict[str, str | None] = {
     # multiline messages with pt-PT residue
     "apps.budget.importExcelModal.instructions": (
         "Envie aqui a previsão atualizada (receita, PAX e número de acomodações). "
-        "Confirme abaixo para tornar as alterações visíveis. Tenha em conta que "
+        "Confirme abaixo para tornar as alterações visíveis. Observe que "
         "as alterações não serão salvas até clicar em Salvar na tela principal."
         "\n\nBaixe o modelo Excel caso ainda não o tenha feito."
     ),
@@ -238,13 +246,13 @@ CORRECOES: dict[str, str | None] = {
     ),
     "apps.integration.publicApiRest.refreshEventEntity.message": (
         "Aplique esta ação se deseja reenviar informações sobre a entidade de "
-        "evento selecionada.\nTenha em conta que as alterações não serão "
+        "evento selecionada.\nObserve que as alterações não serão "
         "atualizadas imediatamente; por isso, recomendamos que consulte a aba Fila "
         "de eventos para acompanhar a evolução."
     ),
     "apps.integration.publicApiRest.removeEventEntity.message": (
         "Aplique esta ação se deseja excluir informações sobre a entidade de "
-        "evento selecionada.\nTenha em conta que as alterações não serão "
+        "evento selecionada.\nObserve que as alterações não serão "
         "atualizadas imediatamente; por isso, recomendamos que consulte a aba Fila "
         "de eventos para acompanhar a evolução."
     ),
@@ -653,6 +661,40 @@ SUBSTITUICOES: list[tuple[re.Pattern[str], str]] = [
     _rule("alojamentos sujos", "acomodações sujas"),
     _rule("alojamentos", "acomodações"),
     _rule("alojamento", "acomodação"),
+    # 11. lacunas apontadas pelo painel nativo (aba Frontend)
+    # "definições" = app settings in the UI, not a mathematical definition.
+    _rule("definições", "configurações"),
+    _rule("definição", "configuração"),
+    _rule("tenha em conta que", "observe que"),
+    _rule("tenha em conta", "observe"),
+    _rule("carateres", "caracteres"),
+    _rule("caráter", "caractere"),
+    _rule("eletrónicas", "eletrônicas"),
+    _rule("eletrónicos", "eletrônicos"),
+    _rule("eletrónica", "eletrônica"),
+    _rule("eletrónico", "eletrônico"),
+    # 11b. clitic forms the bare-verb rules cannot reach
+    _rule("contactá-lo", "contatá-lo"),
+    _rule("contactá-la", "contatá-la"),
+    _rule("controlos", "controles"),
+    _rule("controlo", "controle"),
+    # 12. orthographic correction of country names
+    _rule("Arménia", "Armênia"),
+    _rule("Estónia", "Estônia"),
+    _rule("Polónia", "Polônia"),
+    _rule("logótipo", "logotipo"),
+    # 13. "anular" -> "cancelar": the blanket verb rule runs last, after the
+    # inflected forms and collocations it would otherwise mangle.
+    _rule("fatura anulada", "fatura cancelada"),
+    _rule("faturas anuladas", "faturas canceladas"),
+    _rule("anulado por", "cancelado por"),
+    _rule("anulada por", "cancelada por"),
+    _rule("anulados", "cancelados"),
+    _rule("anuladas", "canceladas"),
+    _rule("anulado", "cancelado"),
+    _rule("anulada", "cancelada"),
+    _rule("anulará", "cancelará"),
+    _rule("anular", "cancelar"),
 ]
 
 _PLACEHOLDER_RE = re.compile(r"\{\{.*?\}\}|\{\d+\}|<[^>]+>")
@@ -695,6 +737,7 @@ _ACOMODACAO_FEM = {
     "bloqueados": "bloqueadas", "bloqueado": "bloqueada",
     "ocupados": "ocupadas", "ocupado": "ocupada",
     "criados": "criadas", "criado": "criada",
+    "cancelados": "canceladas", "cancelado": "cancelada",
 }
 _MASC_ADJ_RE = re.compile(
     r"\b(" + "|".join(sorted(_ACOMODACAO_FEM, key=len, reverse=True)) + r")\b",
@@ -818,6 +861,11 @@ def _is_review_sheet(columns: list[str]) -> bool:
     has_key = any(col in columns for col in KEY_COLUMNS)
     has_pt = any(col in columns for col in PT_COLUMNS)
     return has_key and has_pt
+
+
+def _pt_br_sheet(sheet: str) -> str:
+    """pt-BR label for a source tab, keeping the internal keys untouched."""
+    return SHEET_NAMES_PT_BR.get(sheet, sheet)
 
 
 def _pick(columns: list[str], candidates: list[str]) -> str | None:
@@ -1165,12 +1213,12 @@ def build(xlsx_in: str | None = None, out_dir: str | None = None) -> int:
 
     with pd.ExcelWriter(destino / OUT_COMPLETA) as writer:
         for sheet, df in processed.items():
-            df.to_excel(writer, sheet_name=sheet[:31], index=False)
+            df.to_excel(writer, sheet_name=_pt_br_sheet(sheet)[:31], index=False)
 
     final = _construir_final(processed)
     with pd.ExcelWriter(destino / OUT_FINAL) as writer:
         for sheet, df in final.items():
-            df.to_excel(writer, sheet_name=sheet[:31], index=False)
+            df.to_excel(writer, sheet_name=_pt_br_sheet(sheet)[:31], index=False)
 
     duvidas = _extract_duvidas(xl, processed)
     duvidas.to_excel(destino / OUT_DUVIDAS, index=False)

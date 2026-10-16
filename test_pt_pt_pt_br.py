@@ -271,6 +271,36 @@ class TestRules(unittest.TestCase):
             self.assertNotEqual(repl.lower(), "cota")
             self.assertNotIn("allotment", pattern.pattern.lower())
 
+    def test_frontend_panel_gaps(self) -> None:
+        # terms the native panel reported as still pt-PT
+        self.assertEqual(conv.converter("Tenha em conta que ..."), "Observe que ...")
+        self.assertEqual(conv.converter("Tenha em conta o seguinte"), "Observe o seguinte")
+        self.assertEqual(
+            conv.converter("contêm pelo menos um caráter"),
+            "contêm pelo menos um caractere",
+        )
+        self.assertEqual(conv.converter("18 carateres"), "18 caracteres")
+        self.assertEqual(conv.converter("Definições gerais"), "Configurações gerais")
+        self.assertEqual(conv.converter("Definição de tarifa"), "Configuração de tarifa")
+        self.assertEqual(conv.converter("fatura eletrónica"), "fatura eletrônica")
+        self.assertEqual(conv.converter("chave eletrónica"), "chave eletrônica")
+        self.assertEqual(conv.converter("logótipo"), "logotipo")
+
+    def test_anular_becomes_cancelar(self) -> None:
+        self.assertEqual(conv.converter("Anular"), "Cancelar")
+        self.assertEqual(conv.converter("FATURA ANULADA"), "FATURA CANCELADA")
+        self.assertEqual(conv.converter("Modelo de fatura anulada"), "Modelo de fatura cancelada")
+        self.assertEqual(conv.converter("Anulado por"), "Cancelado por")
+        self.assertEqual(
+            conv.converter("retificar uma fatura anulará a fatura original"),
+            "retificar uma fatura cancelará a fatura original",
+        )
+
+    def test_country_names(self) -> None:
+        self.assertEqual(conv.converter("Arménia"), "Armênia")
+        self.assertEqual(conv.converter("Estónia"), "Estônia")
+        self.assertEqual(conv.converter("Polónia"), "Polônia")
+
 
 class TestPipeline(unittest.TestCase):
     @classmethod
@@ -598,8 +628,9 @@ class TestPipeline(unittest.TestCase):
 
     def test_final_file_matches_correction_or_original(self) -> None:
         original = pd.read_excel(ROOT / conv.XLSX_IN, sheet_name=None)
+        src = {v: k for k, v in conv.SHEET_NAMES_PT_BR.items()}
         for name, df in pd.read_excel(ROOT / conv.OUT_FINAL, sheet_name=None).items():
-            orig_df = original[name]
+            orig_df = original[src.get(name, name)]
             key_col = "Clave" if "Clave" in df.columns else "Código"
             orig = {
                 str(r[key_col]): str(r.get("Traducción PT actual") or "")
@@ -620,8 +651,9 @@ class TestPipeline(unittest.TestCase):
         import re
         pat = re.compile(r"\{\{.*?\}\}|\{\d+\}|<[^>]+>")
         original = pd.read_excel(ROOT / conv.XLSX_IN, sheet_name=None)
+        src = {v: k for k, v in conv.SHEET_NAMES_PT_BR.items()}
         for name, df in pd.read_excel(ROOT / conv.OUT_FINAL, sheet_name=None).items():
-            orig_df = original[name]
+            orig_df = original[src.get(name, name)]
             key_col = "Clave" if "Clave" in df.columns else "Código"
             orig_keys = orig_df[key_col].astype(str).values
             for _, row in df.iterrows():

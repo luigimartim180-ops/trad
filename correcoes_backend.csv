@@ -12,11 +12,12 @@ apps.billing.folio.reservationRoomStayTransferList;CORRIGIDO;Selecione a estadia
 apps.billing.folio.splitModal.byAmount;CORRIGIDO;Por valor;
 apps.billing.folio.splitModal.byPercentage;CORRIGIDO;Por porcentagem;
 apps.billing.folioEmail;CORRIGIDO;Informe os destinatários a quem deseja enviar o e-mail do folio;
+apps.billing.invoice.action.void;CORRIGIDO;Cancelar;
 apps.billing.invoiceEmail;CORRIGIDO;Informe os destinatários a quem deseja enviar o e-mail da fatura;
-apps.billing.noPropertySMTPAccount;CORRIGIDO;Certifique-se de que existe uma conta SMTP válida criada e atribuída na seção Fatura, em Definições da propriedade > Configuração de e-mail;
+apps.billing.noPropertySMTPAccount;CORRIGIDO;Certifique-se de que existe uma conta SMTP válida criada e atribuída na seção Fatura, em Configurações da propriedade > Configuração de e-mail;
 apps.bookingForecast.hint;CORRIGIDO;Selecione abaixo a tarifa e o par acomodação/ocupação que será apresentado como preço de referência na Previsão de Reservas. De seguida, adicione tantos serviços quantos deseje apresentar.;
 apps.budget.importExcelModal.downloadExcel;CORRIGIDO;Baixar modelo;
-apps.budget.importExcelModal.instructions;CORRIGIDO;"Envie aqui a previsão atualizada (receita, PAX e número de acomodações). Confirme abaixo para tornar as alterações visíveis. Tenha em conta que as alterações não serão salvas até clicar em Salvar na tela principal.
+apps.budget.importExcelModal.instructions;CORRIGIDO;"Envie aqui a previsão atualizada (receita, PAX e número de acomodações). Confirme abaixo para tornar as alterações visíveis. Observe que as alterações não serão salvas até clicar em Salvar na tela principal.
 
 Baixe o modelo Excel caso ainda não o tenha feito.";
 apps.chain.action.new;CORRIGIDO;Nova rede;
@@ -51,7 +52,9 @@ apps.chainRoomSubType.action.new;CORRIGIDO;Novo subtipo de acomodação;
 apps.chainRoomType.action.new;CORRIGIDO;Novo tipo de acomodação;
 apps.chainRoomTypeGroup.action.new;CORRIGIDO;Novo grupo de tipos de acomodação;
 apps.chainRoomTypeModel.action.new;CORRIGIDO;Novo tipo de acomodação;
-apps.chainServiceConsumptionControl.action.delete;CORRIGIDO;Excluir controlo de serviço;
+apps.chainServiceConsumptionControl.action.add;CORRIGIDO;Adicionar controle de serviço;
+apps.chainServiceConsumptionControl.action.delete;CORRIGIDO;Excluir controle de serviço;
+apps.chainServiceConsumptionControl.action.new;CORRIGIDO;Novo controle de serviço;
 apps.chainSpaceLockType.action.new;CORRIGIDO;Novo tipo de bloqueio de acomodação;
 apps.chainViewSetting.reservation.info;CORRIGIDO;Configure que elementos da reserva deseja ocultar para simplificar a sua utilização.;
 apps.chainViewSetting.reservationAssisted.info;CORRIGIDO;Configure que elementos do processo de reserva assistida deseja ocultar para simplificar a sua utilização.;
@@ -94,6 +97,7 @@ apps.endOfDay.process.openInvoices.description;CORRIGIDO;Reveja abaixo a lista d
 apps.endOfDay.process.reservationGroupRoomBlockWash.description;CORRIGIDO;Escolha se deseja libertar o bloqueio de acomodações.;
 apps.endOfDay.process.reservationGroupRoomBlockWash.title;CORRIGIDO;Libertação do bloqueio de acomodações do grupo de reservas;
 apps.endOfDay.process.roat.description;CORRIGIDO;Encontra abaixo os clientes que efetuaram o check-in hoje e que serão incluídos no formulário ROAT. Pode agora baixar o arquivo e submetê-lo às autoridades, se necessário.;
+apps.endOfDay.process.rollBusinessDate.preMessage;CORRIGIDO;Clique no botão abaixo para fechar a data comercial atual {{businessDate}}. Observe que este processo não pode ser revertido em momento algum. Uma vez concluído, a data avançará automaticamente.;
 apps.endOfDay.process.sef.description;CORRIGIDO;Encontra abaixo os clientes que efetuaram o check-in hoje e que serão incluídos no formulário SEF. Pode agora baixar o arquivo e submetê-lo às autoridades, se necessário.;
 apps.endOfDay.process.spanishPolice.description;CORRIGIDO;Encontra abaixo os clientes que efetuaram o check-in hoje e que serão incluídos no formulário de registro policial. Pode agora baixar o arquivo e submetê-lo às autoridades, se necessário.;
 apps.eventResource.action.newAccommodation;CORRIGIDO;Nova acomodação;
@@ -142,19 +146,21 @@ apps.integration.description.a3;CORRIGIDO;Transfira arquivos e carregue-os no si
 apps.integration.description.acibi;CORRIGIDO;Potencie a estratégia do seu hotel com a nossa integração ACI BI: analise projeções, tendências de pickup e produção em tempo real. Acesse a informação precisa para tomar decisões fundamentadas e maximizar a rentabilidade operacional.;
 apps.integration.description.agora;CORRIGIDO;Integração entre o Ágora Restaurant e o Ulyses Suite. Sincronize talões e encargos de acomodação automaticamente.;
 apps.integration.description.aiosell;CORRIGIDO;A Aiosell permite aos hoteleiros gerenciar, monitorizar e maximizar a receita do hotel através de preços dinâmicos e automatização.;
-apps.integration.description.akiles;CORRIGIDO;A Akiles é uma plataforma de controlo de acessos na cloud que permite aos hotéis gerenciar remotamente o acesso eletrónico às portas.;
+apps.integration.description.akiles;CORRIGIDO;A Akiles é uma plataforma de controle de acessos na cloud que permite aos hotéis gerenciar remotamente o acesso eletrônico às portas.;
 apps.integration.description.asksuite;CORRIGIDO;A Asksuite é líder global em Conversational Revenue e Agentic Workforce para a hotelaria, ajudando os hotéis a transformar as conversas com viajantes em receita direta com agentes de IA que apoiam as equipes 24 horas por dia, 7 dias por semana.;
 apps.integration.description.barcelo;CORRIGIDO;Integração de faturamento em lote para empresas grossistas.;
-apps.integration.description.bavel;CORRIGIDO;A Voxel desenvolve soluções de digitalização para a rede de valor. O Bavel Pay é o gestor de pagamentos B2B, o Bavel Billing é a solução líder de faturamento eletrónica e o Bavel Procurement digitaliza toda a rede de abastecimento e automatiza todos os processos relacionados.;
-apps.integration.description.bavel3xml;CORRIGIDO;A Voxel desenvolve para o México soluções de digitalização para a rede de valor. O Bavel Pay é o gestor de pagamentos B2B, o Bavel Billing é a solução líder de faturamento eletrónica e o Bavel Procurement digitaliza toda a rede de abastecimento e automatiza todos os processos relacionados.;
-apps.integration.description.becheckin;CORRIGIDO;Sabe o que a Becheckin pode fazer por si e pelos suas acomodações? Controlo de entradas e saídas, teclado anti-vandalismo, check-in online e muito mais.;
+apps.integration.description.bavel;CORRIGIDO;A Voxel desenvolve soluções de digitalização para a rede de valor. O Bavel Pay é o gestor de pagamentos B2B, o Bavel Billing é a solução líder de faturamento eletrônica e o Bavel Procurement digitaliza toda a rede de abastecimento e automatiza todos os processos relacionados.;
+apps.integration.description.bavel3xml;CORRIGIDO;A Voxel desenvolve para o México soluções de digitalização para a rede de valor. O Bavel Pay é o gestor de pagamentos B2B, o Bavel Billing é a solução líder de faturamento eletrônica e o Bavel Procurement digitaliza toda a rede de abastecimento e automatiza todos os processos relacionados.;
+apps.integration.description.becheckin;CORRIGIDO;Sabe o que a Becheckin pode fazer por si e pelos suas acomodações? Controle de entradas e saídas, teclado anti-vandalismo, check-in online e muito mais.;
 apps.integration.description.bnberry;CORRIGIDO;Ajudamos hotéis boutique e de suites a ligarem-se a uma nova base de clientes através de plataformas de acomodação de férias. Encontre os seus clientes onde preferem reservar as suas estadias.;
 apps.integration.description.bsfactura;CORRIGIDO;Adicione esta integração para ligar aos web services que permitem enviar arquivos, receber alterações de estado de faturas e receber arquivos na plataforma BS Factura.;
 apps.integration.description.canarytechnologies;CORRIGIDO;A Canary Technologies está modernizando a tecnologia hoteleira com a sua premiada Guest Management Platform baseada em IA. Ao digitalizar os pontos de contato com o hóspede, da reserva ao check-out, as soluções de ponta da Canary simplificam as operações do hotel, aumentam a receita e elevam a experiência do hóspede. Estas inovações são possíveis graças à Canary AI, o modelo de IA mais avançado desenvolvido especificamente para hotéis.;
 apps.integration.description.checkamate;CORRIGIDO;O Checkamate permite-lhe acessar a uma base de dados centralizada para a qual contribuem hostels de todo o mundo, a fim de verificar se alguém foi reportado por um hostel no passado.;
 apps.integration.description.chekin;CORRIGIDO;Aumente as suas receitas e lucros e melhore a experiência dos seus hóspedes, poupando tempo e dinheiro ao automatizar todo o processo de registro;
+apps.integration.description.cirqplus;CORRIGIDO;A Cirq Plus é um sistema tecnológico modular baseado na cloud que une o conforto e o envolvimento do hóspede ao controle energético, reduzindo os custos operacionais da propriedade.;
 apps.integration.description.civitfun;CORRIGIDO;Adicione esta integração para permitir que os hóspedes façam o check-in online. Contate a Civitfun para mais informações.;
 apps.integration.description.coolncamp;CORRIGIDO;Cool'n Camp é uma solução digital de concierge (e-concierge) e gestão de atividades, desenvolvida especificamente para parques de campismo, glampings e acomodações ao ar livre.;
+apps.integration.description.customeralliance;CORRIGIDO;A Customer Alliance dá-lhe o controle da sua reputação com uma premiada plataforma de envolvimento e marketing de hóspedes, concebida especificamente para hotéis independentes e boutique.;
 apps.integration.description.daconex;CORRIGIDO;Esta integração ajudá-lo-á a gerar os arquivos necessários para alimentar o seu sistema de contabilidade Datisa. Gere facilmente arquivos das suas receitas, faturas, pagamentos e muito mais.;
 apps.integration.description.deepupsell;CORRIGIDO;A DeepUpsell é a solução de IA especializada em upselling hoteleiro que transforma os seus dados de reservas em oportunidades reais de receita e personalização. Através de recomendações inteligentes, dota a equipe de recepção da oferta certa para cada hóspede, aumentando a receita e melhorando a experiência de cada estadia.;
 apps.integration.description.delta;CORRIGIDO;A Delta informatica é um especialista global em leitores de documentos e armazenamento. Adicione esta integração se deseja ligar o Ulyses Suite aos leitores da Delta ID.;
@@ -162,7 +168,7 @@ apps.integration.description.duetto;CORRIGIDO;A Duetto é o principal fornecedor
 apps.integration.description.easypay;CORRIGIDO;A EasyPay é uma solução de faturamento concebida especialmente para hotéis e para o setor das viagens, para recolher os dados necessários para gerar os detalhes das faturas a partir dos hóspedes.;
 apps.integration.description.easyway;CORRIGIDO;A Easyway permite que os seus hóspedes entrem em contato consigo por mensagem de texto, onde quer que estejam e quando quiserem.;
 apps.integration.description.ertzaintza;CORRIGIDO;Adicione esta integração para ativar o envio automático da informação exigida, de acordo com as obrigações das pessoas singulares ou coletivas que exercem atividades de acomodação.;
-apps.integration.description.faccl;CORRIGIDO;A Facturacion.cl é um software de faturamento eletrónica com mais de 21 anos no mercado, que oferece uma solução 100% web e uma interface simples e intuitiva.;
+apps.integration.description.faccl;CORRIGIDO;A Facturacion.cl é um software de faturamento eletrônica com mais de 21 anos no mercado, que oferece uma solução 100% web e uma interface simples e intuitiva.;
 apps.integration.description.fairmas;CORRIGIDO;A Fairmas é um fornecedor de software para a indústria hoteleira. Os seus produtos especializam-se em planejamento financeiro, relatórios financeiros, monitorização de receitas de reservas e de F&B, bem como gestão e rentabilidade das despesas com pessoal. A Fairmas foi fundada em 2003 por hoteleiros e conta com mais de 5000 hotéis e 17 000 usuários em todo o mundo.;
 apps.integration.description.fatturapa;CORRIGIDO;A FatturaPA facilita ao usuário o acesso a serviços e a informação e ajuda os participantes no processo de faturamento.;
 apps.integration.description.fideltour;CORRIGIDO;Adicione esta integração para enviar reservas à Fideltour e para resgatar o valor da reserva com os pontos acumulados pelo cliente.;
@@ -173,10 +179,10 @@ apps.integration.description.golfmanager;CORRIGIDO;O Golfmanager é o único sof
 apps.integration.description.gsp;CORRIGIDO;O Ulyses Guest Services Portal permite que os seus hóspedes façam o check-in online, consultem a sua conta, transfiram faturas e muito mais. Poupe tempo, aumente a distância e proteja a sua equipe.;
 apps.integration.description.guestmate;CORRIGIDO;O GuestMate centra-se na relação móvel Hotel-Hóspede, abrangendo todos os canais de interação com o hóspede. O hotel pode chegar diretamente aos seus clientes através do celular em todas as fases da estadia.;
 apps.integration.description.guestrevu;CORRIGIDO;A GuestRevu disponibiliza tecnologia de feedback de hóspedes para recolher sem esforço a informação de que precisa para gerenciar ativamente a sua reputação online, melhorar a experiência dos hóspedes e aumentar a receita.;
-apps.integration.description.guestsuites;CORRIGIDO;A Guest Suite recolhe as opiniões dos hóspedes do hotel para compreender, gerenciar e melhorar a reputação eletrónica.;
+apps.integration.description.guestsuites;CORRIGIDO;A Guest Suite recolhe as opiniões dos hóspedes do hotel para compreender, gerenciar e melhorar a reputação eletrônica.;
 apps.integration.description.hbenchmark;CORRIGIDO;O HBenchmark é uma plataforma de inteligência de dados para a hotelaria que ajuda hotéis e outros estabelecimentos de acomodação a analisar e comparar o seu desempenho com conjuntos concorrenciais personalizados.;
 apps.integration.description.hijiffy;CORRIGIDO;O Hotel Virtual Concierge da HiJiffy está disponível 24 horas por dia, 7 dias por semana, desde a fase pré-estadia até à saída dos hóspedes. Interaja com os seus futuros visitantes antes da chegada, ofereça serviços de check-in e check-out online e proporcione oportunidades de upselling durante a estadia para personalizar a viagem dos seus hóspedes.;
-apps.integration.description.hiopos;CORRIGIDO;O HIOPOS é a ferramenta que lhe permite gerenciar as operações diárias do seu restaurante, café, gelataria, etc., de forma fácil e eficiente. O HIOPOS inclui sistemas POS, terminais de pedidos, gestão de cozinha, pedidos online, gestão de reservas de mesas, relatórios e estatísticas, controlo de stock e muito mais.;
+apps.integration.description.hiopos;CORRIGIDO;O HIOPOS é a ferramenta que lhe permite gerenciar as operações diárias do seu restaurante, café, gelataria, etc., de forma fácil e eficiente. O HIOPOS inclui sistemas POS, terminais de pedidos, gestão de cozinha, pedidos online, gestão de reservas de mesas, relatórios e estatísticas, controle de stock e muito mais.;
 apps.integration.description.hospedaje;CORRIGIDO;Adicione esta integração para ativar o envio automático da informação exigida, de acordo com as obrigações das pessoas singulares ou coletivas que exercem atividades de acomodação.;
 apps.integration.description.hotelflex;CORRIGIDO;A HotelFlex está mudando a forma como os hotéis operam, para que os hóspedes possam fazer o check-in e o check-out à hora que quiserem, pagando em conformidade.;
 apps.integration.description.hoteligy;CORRIGIDO;Revolucione a experiência do hóspede, oferecendo acesso imediato, sem necessidade de baixar qualquer aplicação, a todos os serviços e informações do hotel. Destaca-se como a solução mais completa e versátil do mercado, melhorando a comunicação com os hóspedes e gerando um aumento das vendas durante a estadia.;
@@ -187,22 +193,27 @@ apps.integration.description.ical;CORRIGIDO;Adicione esta integração se deseja
 apps.integration.description.icar;CORRIGIDO;A Icar é líder global em verificação de identidade digital. Adicione esta integração se deseja ligar o Ulyses Suite aos leitores físicos da Icar.;
 apps.integration.description.ideas;CORRIGIDO;Ative esta integração para gerar os arquivos necessários para alimentar o RMS líder do setor. Esta integração é compatível com o IDeAS v1.0;
 apps.integration.description.insee;CORRIGIDO;"Geração e transmissão do arquivo mensal do inquérito INSEE sobre a ocupação de acomodações turísticas via Webservice (formato ""Campsite""), com acionamento manual ou automático.";
+apps.integration.description.invopop;CORRIGIDO;A Invopop oferece uma solução completa para a emissão de faturas eletrônicas em conformidade com os requisitos da Autoridade Tributária grega (AADE) através da plataforma MyDATA.;
 apps.integration.description.itpol;CORRIGIDO;Se a sua propriedade se localiza em Itália, será obrigado a enviar os dados de todos os hóspedes que efetuaram o check-in com idade superior a 16 anos. Adicione esta integração e gere o arquivo automaticamente.;
 apps.integration.description.jeevesplu;CORRIGIDO;O Jeeves.Plus é uma ferramenta de apoio ao hóspede que permite aos hotéis gerenciar várias conversas por SMS e salvar informação útil dos clientes.;
 apps.integration.description.loungeup;CORRIGIDO;O LoungeUp é uma plataforma tudo-em-um para a gestão da relação com o hóspede e das operações hoteleiras, utilizada por mais de 3000 prestadores de acomodação turística, desde hotéis de 3 estrelas a hotéis de luxo, bem como grupos e redes hoteleiras.;
 apps.integration.description.mastercamping;CORRIGIDO;Ligue o Ulyses Suite ao programa completo de gestão de campismo e sincronize reservas e operações de recepção.;
+apps.integration.description.meibit;CORRIGIDO;Controle de acesso à zona de Auto-Checkin com leitura de QR e abertura automática de portas.;
 apps.integration.description.mhi;CORRIGIDO;O Mind Hotel Insights, uma plataforma completa de análise hoteleira que abrange vendas, preços, operações, finanças, marketing e clientes, para uma visão global da rede hoteleira.;
 apps.integration.description.midni;CORRIGIDO;A identidade digital no celular desempenha no mundo digital o mesmo papel que o cartão de identificação físico no mundo físico. Serve como instrumento que comprova de forma inequívoca a identidade do cidadão, tal como reconhecido pela legislação espanhola.;
 apps.integration.description.mirai;CORRIGIDO;Motor de reservas para redes hoteleiras, hotéis independentes, apartamentos turísticos, hostels, casas de hóspedes e casas rurais;
 apps.integration.description.mossos;CORRIGIDO;Se a sua propriedade se localiza na Catalunha, será obrigado a enviar os dados de todos os hóspedes que efetuaram o check-in com idade superior a 16 anos. Adicione esta integração e gere o arquivo automaticamente.;
 apps.integration.description.navisiongsa;CORRIGIDO;Esta integração permite criar todos os arquivos necessários para carregar no Navision GSA.;
 apps.integration.description.nf525;CORRIGIDO;A certificação NF525 é um requisito legal em França que garante a integridade e a segurança dos sistemas de gestão de caixa. Esta norma, essencial para prevenir a fraude fiscal, exige que o software de faturamento cumpra critérios rigorosos de integridade, conservação e arquivo de dados.;
+apps.integration.description.omnitec;CORRIGIDO;A Omnitec Systems disponibiliza integração com cartões RFID através das suas fechaduras eletrônicas, soluções de controle de acessos e dispositivos para hotéis.;
+apps.integration.description.omnitecpin;CORRIGIDO;A Omnitec Systems disponibiliza integração através das suas fechaduras eletrônicas, soluções de controle de acessos e dispositivos para hotéis.;
 apps.integration.description.onecard;CORRIGIDO;Uma solução completa para gerenciar e proteger o acesso à sua propriedade (veículos e hóspedes) através de crachás, teclados ou reconhecimento de matrículas.;
 apps.integration.description.openkey;CORRIGIDO;A aplicação OpenKey Front Desk liga a equipe do hotel ao poder das chaves móveis, check-in remoto, notificações aos hóspedes e muito mais.;
 apps.integration.description.opertoguest;CORRIGIDO;A Guest Technology Operto oferece entrada sem chave e integra-se numa gama de soluções que proporcionam eficiência operacional e uma experiência personalizada ao hóspede, tudo gerenciado a partir de um único painel.;
 apps.integration.description.optiwatti;CORRIGIDO;A OptiWatti utiliza gestão inteligente de energia para que controle as temperaturas das acomodações e poupe nos custos de energia.;
 apps.integration.description.owner;CORRIGIDO;Com esta aplicação pode acessar aos dados de produção dos suas acomodações.;
 apps.integration.description.pace;CORRIGIDO;A Pace está revolucionando o revenue management. Agora, hotéis ou hostels podem fixar o preço perfeito de cada reserva.;
+apps.integration.description.padword;CORRIGIDO;As fechaduras eletrônicas oferecem maior segurança, conveniência e versatilidade do que as fechaduras tradicionais.;
 apps.integration.description.passportscan;CORRIGIDO;Envie reservas do Ulyses Suite para o PassportScan para registrar os seus clientes através da leitura dos seus passaportes ou cartões de identificação.;
 apps.integration.description.prinexs;CORRIGIDO;Esta integração permite criar todos os arquivos necessários para carregar no Prinex, um fornecedor especializado no setor imobiliário.;
 apps.integration.description.pui;CORRIGIDO;Ligue a sua propriedade à Plataforma Única de Identidade do México para gerenciar relatórios de pesquisa e comunicar de forma segura possíveis correspondências.;
@@ -213,7 +224,7 @@ apps.integration.description.redsys;CORRIGIDO;A Redsys é uma plataforma de paga
 apps.integration.description.redsysonline;CORRIGIDO;A Redsys é uma plataforma de pagamentos que suporta pagamentos com cartão de crédito e de débito, permitindo-lhe gerenciar os pagamentos de forma rápida, fácil e segura.;
 apps.integration.description.reputize;CORRIGIDO;A Reputize é uma plataforma completa de gestão da reputação online de hotéis. É uma start-up SaaS em Londres que ajuda o setor da hotelaria a compreender melhor e a melhorar a experiência do cliente e a gerenciar a reputação da marca;
 apps.integration.description.revenuepilot;CORRIGIDO;Revenue Pilot, o seu copiloto para maximizar a receita. Combine o poder de ferramentas inteligentes com a experiência humana para conduzir a sua estratégia de preços com confiança. Os nossos Revenue (Co)Pilots apoiam-no em cada passo: desde a configuração inicial até ao planejamento estratégico e à monitorização diária do desempenho. ;
-apps.integration.description.revo;CORRIGIDO;O Revo XEF é um software POS para a gestão integral de negócios de restauração. É composto por uma aplicação nativa iOS para uso operacional no estabelecimento e por um backoffice web para a sua configuração. Inclui, entre outras opções, registro de pedidos, organização de mesas, pedidos online, ligação à cozinha, análises, cobranças, controlo de stock e gestão de usuários. Alarga o seu poder através da integração com outras soluções de software/hardware, da REVO e de terceiros.;
+apps.integration.description.revo;CORRIGIDO;O Revo XEF é um software POS para a gestão integral de negócios de restauração. É composto por uma aplicação nativa iOS para uso operacional no estabelecimento e por um backoffice web para a sua configuração. Inclui, entre outras opções, registro de pedidos, organização de mesas, pedidos online, ligação à cozinha, análises, cobranças, controle de stock e gestão de usuários. Alarga o seu poder através da integração com outras soluções de software/hardware, da REVO e de terceiros.;
 apps.integration.description.rexel;CORRIGIDO;A Rexel é um dos principais fornecedores de automatização de edifícios a nível mundial. Esta integração permite ativar os modos de acomodação do Ulyses Suite com a solução da Rexel.;
 apps.integration.description.roat;CORRIGIDO;Ative esta integração para gerar o arquivo que tem de ser enviado à polícia de Andorra;
 apps.integration.description.roatws;CORRIGIDO;Envio automático de dados dos hóspedes ao ROAT de Andorra via webservice para cumprir os regulamentos de registro de viajantes;
@@ -225,7 +236,7 @@ apps.integration.description.sage200;CORRIGIDO;O Sage 200 é um conjunto de prod
 apps.integration.description.sage50;CORRIGIDO;Esta integração ajudá-lo-á a gerar os arquivos necessários para alimentar o seu sistema de contabilidade Sage 50. Gere facilmente arquivos das suas receitas, faturas, pagamentos e muito mais.;
 apps.integration.description.sapaccounting;CORRIGIDO;Esta integração ajudá-lo-á a gerar os arquivos necessários para alimentar o seu sistema de contabilidade SAP. Gere facilmente arquivos das suas receitas, faturas, pagamentos e muito mais.;
 apps.integration.description.sef;CORRIGIDO;Ative esta integração para gerar o arquivo que tem de ser enviado à polícia portuguesa;
-apps.integration.description.septeokeycard;CORRIGIDO;Ligue o Ulyses Suite a vários parceiros de fechaduras eletrónicas e controlo de acessos para gerenciar cartões-chave, códigos PIN e acesso digital diretamente a partir do PMS graças ao SepteoKeyCard.;
+apps.integration.description.septeokeycard;CORRIGIDO;Ligue o Ulyses Suite a vários parceiros de fechaduras eletrônicas e controle de acessos para gerenciar cartões-chave, códigos PIN e acesso digital diretamente a partir do PMS graças ao SepteoKeyCard.;
 apps.integration.description.sfkaizenmkt;CORRIGIDO;Adapte-se às mudanças no comportamento dos seus clientes acelerando a adoção de canais digitais e envie mensagens a públicos específicos no momento certo. Lance campanhas rapidamente, colabore com as suas equipes através de aplicações móveis e mantenha os seus clientes envolvidos, estejam em casa ou no escritório.;
 apps.integration.description.sii;CORRIGIDO;Envie automaticamente um arquivo que contém todas as faturas ao cliente SII da Tesipro, para que possam ser gerenciadas pelo sistema tributário espanhol.;
 apps.integration.description.smartrevenue;CORRIGIDO;O Smart Revenue é o software de revenue management da Keytel para otimizar as decisões de preços, bem como a automatização com base em análise preditiva da procura. Tecnologia revolucionária concebida para que as suas decisões sejam corretas: simplifique a tomada de decisões na comercialização do seu hotel, integre processos e relatórios de dados de forma rápida e ágil, aumente o NetRevpar do hotel, maximize a rentabilidade e otimize a eficiência da equipe de revenue management.;
@@ -234,11 +245,14 @@ apps.integration.description.sppol;CORRIGIDO;Se a sua propriedade se localiza em
 apps.integration.description.spyro;CORRIGIDO;Concepção e desenvolvimento do nosso próprio software de gestão (SPYRO ERP) destinado a empresas industriais, comerciais e de serviços, bem como prestação de serviços de consultoria.;
 apps.integration.description.stripe;CORRIGIDO;Milhões de empresas de todas as dimensões, desde start-ups a grandes empresas, utilizam o software e as APIs da Stripe para aceitar pagamentos, enviar transferências e gerenciar o seu negócio online.;
 apps.integration.description.sunway;CORRIGIDO;Hotéis e apartamentos Sunway, acomodações turísticas em Sitges e Formentera.;
+apps.integration.description.takhys;CORRIGIDO;O Takhys for Management é uma ferramenta de apoio operacional para as operações diárias do hotel: gestão de incidentes, gestão de processos legais (Legionella, HACCP...), gestão de housekeeping, controle de qualidade, controle de consumos... Tudo acessível a partir do navegador e de dispositivos móveis.;
 apps.integration.description.tbai;CORRIGIDO;O TicketBAI é um projeto compartilhado entre as três Deputações Provinciais e o Governo Basco que visa estabelecer uma série de obrigações legais e técnicas.;
 apps.integration.description.tesa;CORRIGIDO;Ative esta integração para adicionar a possível abertura e gestão de acessos via smartphone ou através de dispositivos com teclado que permitem um check-in autónomo sem recepção 24 horas.;
 apps.integration.description.tesapin;CORRIGIDO;Os hóspedes acessam aos seus quartos e às zonas comuns através de um código PIN único, sem necessidade de recepção 24 horas por dia. Uma solução simples e segura que agiliza o check-in em hotéis e apartamentos.;
+apps.integration.description.touch;CORRIGIDO;O TouchExpress é uma solução completa de gestão de Food & Beverage (F&B) para hotéis, que combina ponto de venda (POS), compras e controle de inventário numa única plataforma. A sua integração fluida com os sistemas de gestão hoteleira permite operações eficientes e ligadas, otimizando a gestão diária de restaurantes, bares, armazéns e consumos dos hóspedes.;
+apps.integration.description.travlet;CORRIGIDO;Um guia local e motor de comércio eletrônico que impulsiona receitas, reservas diretas e ajuda os seus hóspedes durante a estadia.;
 apps.integration.description.trevenque;CORRIGIDO;Esta integração ajudá-lo-á a gerar os arquivos necessários para alimentar o seu sistema de contabilidade Grupo Trevenque. Gere facilmente arquivos das suas receitas, faturas, pagamentos e muito mais.;
-apps.integration.description.unielectrico;CORRIGIDO;Controlo remoto dos contadores elétricos instalados nas parcelas e nas acomodações.;
+apps.integration.description.unielectrico;CORRIGIDO;Controle remoto dos contadores elétricos instalados nas parcelas e nas acomodações.;
 apps.integration.description.unit4;CORRIGIDO;Ligue facilmente a sua contabilidade no Unit4 e o Ulyses Suite através desta integração. Gere os arquivos necessários para alimentar a sua contabilidade, incluindo produção, faturas, lançamentos contabilísticos e muito mais.;
 apps.integration.description.unixdata;CORRIGIDO;Ligue o Ulyses Suite ao ecossistema de soluções Unicamp Camping e sincronize reservas e operações de recepção.;
 apps.integration.description.uplaan;CORRIGIDO;Empresa especializada na digitalização de parques de campismo, resorts e acomodações turísticas através de uma aplicação totalmente personalizada para cada estabelecimento. A nossa plataforma permite aos hóspedes acessar a toda a informação, reservar atividades e serviços e receber comunicações segmentadas para desfrutarem de uma estadia mais fluida e ligada. Além disso, ajudamos a aumentar a receita, a melhorar a fidelização de clientes e a otimizar as operações diárias.;
@@ -247,19 +261,20 @@ apps.integration.description.volo;CORRIGIDO;Envolva e encante os seus hóspedes 
 apps.integration.description.whatsapp;CORRIGIDO;Adicione esta integração se deseja enviar as suas comunicações através do WhatsApp, como confirmações de reserva, pré-estadia e pedidos de pagamento. Configure, autentique e desenvolva a lógica para enviar e gerenciar mensagens de forma eficiente.;
 apps.integration.description.wifipro;CORRIGIDO;A Plataforma Wi-Fi.PRO permite gerenciar todas as redes Wi-Fi a diferentes níveis e perfis de usuário, adaptando-se automaticamente a cada ambiente.;
 apps.integration.description.witbooking;CORRIGIDO;Motor de reservas para redes hoteleiras, hotéis independentes, apartamentos de férias, hostels, acomodações locais e casas rurais;
+apps.integration.description.yacan;CORRIGIDO;Incorporar fechaduras eletrônicas, domótica e dispositivos de controle de acessos nos serviços aos hóspedes garante maior segurança, satisfação e conforto durante a sua estadia.;
 apps.integration.dialogfy.entity.BEOReport.info;CORRIGIDO;Ative esta opção se deseja enviar uma mensagem de ordem de evento de banquete.;
-apps.integration.dialogfy.entity.afterCheckin.info;CORRIGIDO;Ative esta automatização se deseja que a nossa plataforma envie comunicações pós-check-in aos seus hóspedes. <br> Caso deseje personalizar a sua comunicação pós-check-in, acesse os modelos do Dialogfy através das Definições da propriedade.;
-apps.integration.dialogfy.entity.beforeCheckout.info;CORRIGIDO;Ative esta automatização se deseja que a nossa plataforma envie comunicações de check-out online aos seus hóspedes. <br> Caso deseje personalizar a sua comunicação de check-out, acesse os modelos do Dialogfy através das Definições da propriedade.;
-apps.integration.dialogfy.entity.cancellation.info;CORRIGIDO;Ao ativar esta opção, os seus usuários poderão enviar comunicações de cancelamento aos seus clientes. <br> Caso deseje personalizar a comunicação da reserva, acesse os modelos do Dialogfy através das Definições da propriedade.;
+apps.integration.dialogfy.entity.afterCheckin.info;CORRIGIDO;Ative esta automatização se deseja que a nossa plataforma envie comunicações pós-check-in aos seus hóspedes. <br> Caso deseje personalizar a sua comunicação pós-check-in, acesse os modelos do Dialogfy através das Configurações da propriedade.;
+apps.integration.dialogfy.entity.beforeCheckout.info;CORRIGIDO;Ative esta automatização se deseja que a nossa plataforma envie comunicações de check-out online aos seus hóspedes. <br> Caso deseje personalizar a sua comunicação de check-out, acesse os modelos do Dialogfy através das Configurações da propriedade.;
+apps.integration.dialogfy.entity.cancellation.info;CORRIGIDO;Ao ativar esta opção, os seus usuários poderão enviar comunicações de cancelamento aos seus clientes. <br> Caso deseje personalizar a comunicação da reserva, acesse os modelos do Dialogfy através das Configurações da propriedade.;
 apps.integration.dialogfy.entity.guestRegistrationCardSigned.info;CORRIGIDO;Ative esta opção para enviar uma mensagem de ficha de registro do hóspede assinada.;
 apps.integration.dialogfy.entity.guestRegistrationCardSigned.title;CORRIGIDO;Ficha de registro do hóspede assinada;
 apps.integration.dialogfy.entity.postStay.info;CORRIGIDO;Ative esta automatização se deseja que a nossa plataforma envie comunicações pós-estadia aos seus hóspedes.;
 apps.integration.dialogfy.entity.preStay.info;CORRIGIDO;Ative esta automatização se deseja que a nossa plataforma envie comunicações pré-estadia aos seus hóspedes.;
 apps.integration.dialogfy.entity.proposal.info;CORRIGIDO;Ative esta opção se deseja configurar o envio destas mensagens de proposta.;
-apps.integration.dialogfy.entity.reservation.info;CORRIGIDO;Ative esta opção se deseja que os seus usuários possam enviar confirmações de reserva aos seus clientes. <br> Caso deseje personalizar a comunicação da reserva, acesse os modelos do Dialogfy através das Definições da propriedade.;
-apps.integration.dialogfy.entity.reservationGroup.info;CORRIGIDO;Ative este Dialogfy se deseja que os seus usuários possam enviar comunicações de estadia aos seus clientes. <br> Caso deseje personalizar a comunicação da reserva, acesse os modelos do Dialogfy através das Definições da propriedade.;
-apps.integration.dialogfy.entity.reservationRoomStay.info;CORRIGIDO;Ative este Dialogfy se deseja que os seus usuários possam enviar comunicações de estadia aos seus clientes. <br> Caso deseje personalizar a comunicação da reserva, acesse os modelos do Dialogfy através das Definições da propriedade.;
-apps.integration.dialogfy.entity.reservationRoomStayCancellation.info;CORRIGIDO;Ative este Dialogfy se deseja que os seus usuários possam enviar cancelamentos de estadia aos seus clientes. <br> Caso deseje personalizar a comunicação da reserva, acesse os modelos do Dialogfy através das Definições da propriedade.;
+apps.integration.dialogfy.entity.reservation.info;CORRIGIDO;Ative esta opção se deseja que os seus usuários possam enviar confirmações de reserva aos seus clientes. <br> Caso deseje personalizar a comunicação da reserva, acesse os modelos do Dialogfy através das Configurações da propriedade.;
+apps.integration.dialogfy.entity.reservationGroup.info;CORRIGIDO;Ative este Dialogfy se deseja que os seus usuários possam enviar comunicações de estadia aos seus clientes. <br> Caso deseje personalizar a comunicação da reserva, acesse os modelos do Dialogfy através das Configurações da propriedade.;
+apps.integration.dialogfy.entity.reservationRoomStay.info;CORRIGIDO;Ative este Dialogfy se deseja que os seus usuários possam enviar comunicações de estadia aos seus clientes. <br> Caso deseje personalizar a comunicação da reserva, acesse os modelos do Dialogfy através das Configurações da propriedade.;
+apps.integration.dialogfy.entity.reservationRoomStayCancellation.info;CORRIGIDO;Ative este Dialogfy se deseja que os seus usuários possam enviar cancelamentos de estadia aos seus clientes. <br> Caso deseje personalizar a comunicação da reserva, acesse os modelos do Dialogfy através das Configurações da propriedade.;
 apps.integration.edm.credentialsInfo.message;CORRIGIDO;"Configuração necessária
 
 Para acessar a todas as funcionalidades da integração eSeason Digital Marketing (Fila, Registro de mensagens, atualização de mapeamentos, etc.), tem de concluir os seguintes passos:
@@ -269,7 +284,7 @@ Para acessar a todas as funcionalidades da integração eSeason Digital Marketin
 3. Informe o nome de usuário e a senha fornecidos pela eSeason Digital Marketing";
 apps.integration.edm.inactive;CORRIGIDO;A integração eSeason Digital Marketing não está configurada. Contate o suporte do Ulyses Suite para utilizar esta integração.;
 apps.integration.edm.refreshMapping;CORRIGIDO;"Utilize esta ação se deseja reenviar informações sobre as entidades da propriedade ou as estadias da reserva.
-Tenha em conta que as alterações não serão aplicadas imediatamente; por isso, recomendamos consultar o aba ""Fila"" para acompanhar o progresso.";
+Observe que as alterações não serão aplicadas imediatamente; por isso, recomendamos consultar o aba ""Fila"" para acompanhar o progresso.";
 apps.integration.facturacionCL.invoiceTypeTab.description;CORRIGIDO;Indique aqui se deseja substituir o valor padrão por um mapeamento de tipo de fatura.;
 apps.integration.fatturaPA.mappingTab.description;CORRIGIDO;Indique aqui se deseja substituir o valor padrão por um mapeamento de pagamento;
 apps.integration.fatturaPA.mappingTab.headers.chainProductCode;CORRIGIDO;Código de produto da rede;
@@ -311,17 +326,18 @@ apps.integration.publicApiPush.mapping.entity.productMapping;CORRIGIDO;Mapeament
 apps.integration.publicApiPush.mapping.entity.roomMapping;CORRIGIDO;Mapeamento de acomodação;
 apps.integration.publicApiPush.mapping.notMappingRoom;CORRIGIDO;Tem de mapear a acomodação;
 apps.integration.publicApiPush.modal.changeCredentials;CORRIGIDO;Altere as credenciais de acesso desta integração. Caso deseje utilizar as credenciais padrão, deixe os campos vazios e reenvie o pedido.;
-apps.integration.publicApiPush.newRoomMapping.step1;CORRIGIDO;Indique primeiro o código e o nome da acomodação correspondentes no Channel Manager. Tenha em conta que, para obter esta informação, terá de a consultar no seu Channel Manager ou contactá-lo.;
+apps.integration.publicApiPush.newRoomMapping.step1;CORRIGIDO;Indique primeiro o código e o nome da acomodação correspondentes no Channel Manager. Observe que, para obter esta informação, terá de a consultar no seu Channel Manager ou contatá-lo.;
 apps.integration.publicApiPush.newRoomMapping.step2;CORRIGIDO;Selecione a acomodação no seu PMS com o qual deseja fazer o mapeamento.;
-apps.integration.publicApiPush.publicApiPushDefaultValues;CORRIGIDO;Indique o valor padrão a mostrar nas reservas caso não tenha sido feito um mapeamento. Tenha em conta que será apresentado um alerta na reserva sempre que isto ocorrer.;
+apps.integration.publicApiPush.publicApiPushDefaultValues;CORRIGIDO;Indique o valor padrão a mostrar nas reservas caso não tenha sido feito um mapeamento. Observe que será apresentado um alerta na reserva sempre que isto ocorrer.;
 apps.integration.publicApiPush.refreshMapping;CORRIGIDO;"Aplique esta ação se deseja reenviar informações sobre o seu inventário, preços ou restrições para um período específico, tipos de acomodação ou tarifas.
-Tenha em conta que as alterações não serão atualizadas imediatamente; por isso, recomendamos que consulte o aba Fila para acompanhar a evolução.";
+Observe que as alterações não serão atualizadas imediatamente; por isso, recomendamos que consulte o aba Fila para acompanhar a evolução.";
 apps.integration.publicApiPush.roomRateMappingCreate.step1;CORRIGIDO;"Na lista abaixo, selecione a acomodação do Channel Manager. A lista contém os nomes das acomodações do channel manager mapeados no seu sistema; se o sua acomodação não aparecer na lista, pode criar um novo mapeamento de acomodação.";
+apps.integration.publicApiPush.roomRateMappingCreate.step2;CORRIGIDO;Indique o código e o nome da tarifa correspondentes no Channel Manager. Observe que, para obter esta informação, terá de a consultar no seu Channel Manager ou contatá-lo.;
 apps.integration.publicApiPush.roomRateMappingCreate.step3;CORRIGIDO;"Selecione a ocupação e a tarifa no seu PMS com as quais deseja fazer o mapeamento; pode também selecionar a aplicação de oferta e promoção.";
 apps.integration.publicApiPush.roomRateMappingImport.step1;CORRIGIDO;"Na lista abaixo, selecione a acomodação do Channel Manager. A lista contém os nomes das acomodações do channel manager mapeados no seu sistema; se o sua acomodação não aparecer na lista, pode criar um novo mapeamento de acomodação.";
-apps.integration.publicApiPush.uploadRestricted;CORRIGIDO;Tenha em conta que terá de ativar o envio de restrições nas definições gerais se deseja enviar os seus preços para o Channel Manager.;
-apps.integration.publicApiPush.uploadRestrictedInventory;CORRIGIDO;Tenha em conta que terá de ativar o envio de inventário nas definições gerais se deseja enviar os seus preços para o Channel Manager.;
-apps.integration.publicApiPush.uploadRestrictedPrice;CORRIGIDO;Tenha em conta que terá de ativar o envio de preços nas definições gerais se deseja enviar os seus preços para o Channel Manager.;
+apps.integration.publicApiPush.uploadRestricted;CORRIGIDO;Observe que terá de ativar o envio de restrições nas configurações gerais se deseja enviar os seus preços para o Channel Manager.;
+apps.integration.publicApiPush.uploadRestrictedInventory;CORRIGIDO;Observe que terá de ativar o envio de inventário nas configurações gerais se deseja enviar os seus preços para o Channel Manager.;
+apps.integration.publicApiPush.uploadRestrictedPrice;CORRIGIDO;Observe que terá de ativar o envio de preços nas configurações gerais se deseja enviar os seus preços para o Channel Manager.;
 apps.integration.publicApiRest.overview.info;CORRIGIDO;"Bem-vindo ao Ulyses Connections, a API aberta do Ulyses Suite!
 O Ulyses Connections ajudará o Ulyses Suite e os seus fornecedores a comunicar facilmente. Para iniciar uma nova integração, certifique-se do seguinte:
 1- Compartilhe o URL abaixo com a empresa com a qual precisa de se ligar. 
@@ -329,9 +345,9 @@ O Ulyses Connections ajudará o Ulyses Suite e os seus fornecedores a comunicar 
 ";
 apps.integration.publicApiRest.recoveryPassword.message;CORRIGIDO;Enviaremos um e-mail para repor a senha do seu fornecedor. Verifique a sua caixa de entrada para confirmar que o recebeu corretamente. Caso não tenha recebido nada, não se esqueça de verificar a pasta de spam.;
 apps.integration.publicApiRest.refreshEventEntity.message;CORRIGIDO;"Aplique esta ação se deseja reenviar informações sobre a entidade de evento selecionada.
-Tenha em conta que as alterações não serão atualizadas imediatamente; por isso, recomendamos que consulte a aba Fila de eventos para acompanhar a evolução.";
+Observe que as alterações não serão atualizadas imediatamente; por isso, recomendamos que consulte a aba Fila de eventos para acompanhar a evolução.";
 apps.integration.publicApiRest.removeEventEntity.message;CORRIGIDO;"Aplique esta ação se deseja excluir informações sobre a entidade de evento selecionada.
-Tenha em conta que as alterações não serão atualizadas imediatamente; por isso, recomendamos que consulte a aba Fila de eventos para acompanhar a evolução.";
+Observe que as alterações não serão atualizadas imediatamente; por isso, recomendamos que consulte a aba Fila de eventos para acompanhar a evolução.";
 apps.integration.retailForce.mapping.entity.businessTransactionType;CORRIGIDO;"Apenas os produtos do tipo acomodação e serviço; caso não sejam mapeados, o valor padrão será REVENUE";
 apps.integration.septeoBill.invoiceTypeTab.description;CORRIGIDO;Indique aqui se deseja substituir o valor padrão por um mapeamento de tipo de fatura;
 apps.integration.septeoChannel.button.downloadTemplateFiles;CORRIGIDO;Baixar modelo;
@@ -342,17 +358,18 @@ apps.integration.septeoChannel.mapping.button.mapRoom;CORRIGIDO;Clique para mape
 apps.integration.septeoChannel.mapping.button.rateMapping;CORRIGIDO;Acomodação - Tarifa;
 apps.integration.septeoChannel.mapping.entity.roomMapping;CORRIGIDO;Mapeamento de acomodação;
 apps.integration.septeoChannel.mapping.notMappingRoom;CORRIGIDO;Tem de mapear a acomodação;
-apps.integration.septeoChannel.newRoomMapping.step1;CORRIGIDO;Indique primeiro o código e o nome da acomodação correspondentes no Channel Manager. Tenha em conta que, para obter esta informação, terá de a consultar no seu Channel Manager ou contactá-lo.;
+apps.integration.septeoChannel.newRoomMapping.step1;CORRIGIDO;Indique primeiro o código e o nome da acomodação correspondentes no Channel Manager. Observe que, para obter esta informação, terá de a consultar no seu Channel Manager ou contatá-lo.;
 apps.integration.septeoChannel.newRoomMapping.step2;CORRIGIDO;Selecione a acomodação no seu PMS com o qual deseja fazer o mapeamento.;
 apps.integration.septeoChannel.refreshMapping;CORRIGIDO;"Aplique esta ação se deseja reenviar informações sobre o seu inventário, preços ou restrições para um período específico, tipos de acomodação ou tarifas. 
- Tenha em conta que as alterações não serão atualizadas imediatamente; por isso, recomendamos que consulte o aba Fila para acompanhar a evolução.";
+ Observe que as alterações não serão atualizadas imediatamente; por isso, recomendamos que consulte o aba Fila para acompanhar a evolução.";
 apps.integration.septeoChannel.roomRateMappingCreate.step1;CORRIGIDO;"Na lista abaixo, selecione a acomodação do Channel Manager. A lista contém os nomes das acomodações do channel manager mapeados no seu sistema; se o sua acomodação não aparecer na lista, pode criar um novo mapeamento de acomodação.";
+apps.integration.septeoChannel.roomRateMappingCreate.step2;CORRIGIDO;Indique o código e o nome da tarifa correspondentes no Channel Manager. Observe que, para obter esta informação, terá de a consultar no seu Channel Manager ou contatá-lo.;
 apps.integration.septeoChannel.roomRateMappingCreate.step3;CORRIGIDO;"Selecione a ocupação e a tarifa no seu PMS com as quais deseja fazer o mapeamento; pode também selecionar a aplicação de oferta e promoção.";
 apps.integration.septeoChannel.roomRateMappingImport.step1;CORRIGIDO;"Na lista abaixo, selecione a acomodação do Channel Manager. A lista contém os nomes das acomodações do channel manager mapeados no seu sistema; se o sua acomodação não aparecer na lista, pode criar um novo mapeamento de acomodação.";
-apps.integration.septeoChannel.siteMinderDefaultValues;CORRIGIDO;Indique o valor padrão a mostrar nas reservas caso não tenha sido feito um mapeamento. Tenha em conta que será apresentado um alerta na reserva sempre que isto ocorrer.;
-apps.integration.septeoChannel.uploadRestricted;CORRIGIDO;Tenha em conta que terá de ativar o envio de restrições nas definições gerais se deseja enviar os seus preços para o Channel Manager.;
-apps.integration.septeoChannel.uploadRestrictedInventory;CORRIGIDO;Tenha em conta que terá de ativar o envio de inventário nas definições gerais se deseja enviar os seus preços para o Channel Manager.;
-apps.integration.septeoChannel.uploadRestrictedPrice;CORRIGIDO;Tenha em conta que terá de ativar o envio de preços nas definições gerais se deseja enviar os seus preços para o Channel Manager.;
+apps.integration.septeoChannel.siteMinderDefaultValues;CORRIGIDO;Indique o valor padrão a mostrar nas reservas caso não tenha sido feito um mapeamento. Observe que será apresentado um alerta na reserva sempre que isto ocorrer.;
+apps.integration.septeoChannel.uploadRestricted;CORRIGIDO;Observe que terá de ativar o envio de restrições nas configurações gerais se deseja enviar os seus preços para o Channel Manager.;
+apps.integration.septeoChannel.uploadRestrictedInventory;CORRIGIDO;Observe que terá de ativar o envio de inventário nas configurações gerais se deseja enviar os seus preços para o Channel Manager.;
+apps.integration.septeoChannel.uploadRestrictedPrice;CORRIGIDO;Observe que terá de ativar o envio de preços nas configurações gerais se deseja enviar os seus preços para o Channel Manager.;
 apps.integration.septeoPayment.defaultValues;CORRIGIDO;Indique o valor padrão a adicionar ao pagamento caso não tenha sido feito um mapeamento.;
 apps.integration.sii.invoiceTypeTab.description;CORRIGIDO;Indique aqui se deseja substituir o valor padrão por um mapeamento de tipo de fatura;
 apps.integration.siteminder.button.downloadTemplateFiles;CORRIGIDO;Baixar modelo;
@@ -363,17 +380,18 @@ apps.integration.siteminder.mapping.button.mapRoom;CORRIGIDO;Clique para mapear 
 apps.integration.siteminder.mapping.button.rateMapping;CORRIGIDO;Acomodação - Tarifa;
 apps.integration.siteminder.mapping.entity.roomMapping;CORRIGIDO;Mapeamento de acomodação;
 apps.integration.siteminder.mapping.notMappingRoom;CORRIGIDO;Tem de mapear a acomodação;
-apps.integration.siteminder.newRoomMapping.step1;CORRIGIDO;Indique primeiro o código e o nome da acomodação correspondentes no Channel Manager. Tenha em conta que, para obter esta informação, terá de a consultar no seu Channel Manager ou contactá-lo.;
+apps.integration.siteminder.newRoomMapping.step1;CORRIGIDO;Indique primeiro o código e o nome da acomodação correspondentes no Channel Manager. Observe que, para obter esta informação, terá de a consultar no seu Channel Manager ou contatá-lo.;
 apps.integration.siteminder.newRoomMapping.step2;CORRIGIDO;Selecione a acomodação no seu PMS com o qual deseja fazer o mapeamento.;
 apps.integration.siteminder.refreshMapping;CORRIGIDO;"Aplique esta ação se deseja reenviar informações sobre o seu inventário, preços ou restrições para um período específico, tipos de acomodação ou tarifas.
-Tenha em conta que as alterações não serão atualizadas imediatamente; por isso, recomendamos que consulte o aba Fila para acompanhar a evolução.";
+Observe que as alterações não serão atualizadas imediatamente; por isso, recomendamos que consulte o aba Fila para acompanhar a evolução.";
 apps.integration.siteminder.roomRateMappingCreate.step1;CORRIGIDO;"Na lista abaixo, selecione a acomodação do Channel Manager. A lista contém os nomes das acomodações do channel manager mapeados no seu sistema; se o sua acomodação não aparecer na lista, pode criar um novo mapeamento de acomodação.";
+apps.integration.siteminder.roomRateMappingCreate.step2;CORRIGIDO;Indique o código e o nome da tarifa correspondentes no Channel Manager. Observe que, para obter esta informação, terá de a consultar no seu Channel Manager ou contatá-lo.;
 apps.integration.siteminder.roomRateMappingCreate.step3;CORRIGIDO;"Selecione a ocupação e a tarifa no seu PMS com as quais deseja fazer o mapeamento; pode também selecionar a aplicação de oferta e promoção.";
 apps.integration.siteminder.roomRateMappingImport.step1;CORRIGIDO;"Na lista abaixo, selecione a acomodação do Channel Manager. A lista contém os nomes das acomodações do channel manager mapeados no seu sistema; se o sua acomodação não aparecer na lista, pode criar um novo mapeamento de acomodação.";
-apps.integration.siteminder.siteMinderDefaultValues;CORRIGIDO;Indique o valor padrão a mostrar nas reservas caso não tenha sido feito um mapeamento. Tenha em conta que será apresentado um alerta na reserva sempre que isto ocorrer.;
-apps.integration.siteminder.uploadRestricted;CORRIGIDO;Tenha em conta que terá de ativar o envio de restrições nas definições gerais se deseja enviar os seus preços para o Channel Manager.;
-apps.integration.siteminder.uploadRestrictedInventory;CORRIGIDO;Tenha em conta que terá de ativar o envio de inventário nas definições gerais se deseja enviar os seus preços para o Channel Manager.;
-apps.integration.siteminder.uploadRestrictedPrice;CORRIGIDO;Tenha em conta que terá de ativar o envio de preços nas definições gerais se deseja enviar os seus preços para o Channel Manager.;
+apps.integration.siteminder.siteMinderDefaultValues;CORRIGIDO;Indique o valor padrão a mostrar nas reservas caso não tenha sido feito um mapeamento. Observe que será apresentado um alerta na reserva sempre que isto ocorrer.;
+apps.integration.siteminder.uploadRestricted;CORRIGIDO;Observe que terá de ativar o envio de restrições nas configurações gerais se deseja enviar os seus preços para o Channel Manager.;
+apps.integration.siteminder.uploadRestrictedInventory;CORRIGIDO;Observe que terá de ativar o envio de inventário nas configurações gerais se deseja enviar os seus preços para o Channel Manager.;
+apps.integration.siteminder.uploadRestrictedPrice;CORRIGIDO;Observe que terá de ativar o envio de preços nas configurações gerais se deseja enviar os seus preços para o Channel Manager.;
 apps.integration.stripe.stripeDefaultValues;CORRIGIDO;Indique o valor padrão a adicionar ao pagamento caso não tenha sido feito um mapeamento.;
 apps.integration.tesiproPBX.defaultValue;CORRIGIDO;Indique o valor padrão necessário para lançar o produto no folio;
 apps.integration.ticketBAI.invoiceTypeTab.description;CORRIGIDO;Indique aqui se deseja substituir o valor padrão por um mapeamento de tipo de fatura.;
@@ -390,21 +408,23 @@ apps.integration.webcamp.mapping.entity.productMapping;CORRIGIDO;Mapeamento de a
 apps.integration.webcamp.mapping.entity.roomMapping;CORRIGIDO;Mapeamento de acomodação;
 apps.integration.webcamp.mapping.notMappingRoom;CORRIGIDO;Tem de mapear a acomodação;
 apps.integration.webcamp.modal.changeCredentials;CORRIGIDO;Altere as credenciais de acesso desta integração. Caso deseje utilizar as credenciais padrão, deixe os campos vazios e reenvie o pedido.;
-apps.integration.webcamp.newRoomMapping.step1;CORRIGIDO;Indique primeiro o código e o nome da acomodação correspondentes no Channel Manager. Tenha em conta que, para obter esta informação, terá de a consultar no seu Channel Manager ou contactá-lo.;
+apps.integration.webcamp.newRoomMapping.step1;CORRIGIDO;Indique primeiro o código e o nome da acomodação correspondentes no Channel Manager. Observe que, para obter esta informação, terá de a consultar no seu Channel Manager ou contatá-lo.;
 apps.integration.webcamp.newRoomMapping.step2;CORRIGIDO;Selecione a acomodação no seu PMS com o qual deseja fazer o mapeamento.;
 apps.integration.webcamp.refreshMapping;CORRIGIDO;"Aplique esta ação se deseja reenviar informações sobre o seu inventário, preços ou restrições para um período específico, tipos de acomodação ou tarifas.
-Tenha em conta que as alterações não serão atualizadas imediatamente; por isso, recomendamos que consulte o aba Fila para acompanhar a evolução.";
+Observe que as alterações não serão atualizadas imediatamente; por isso, recomendamos que consulte o aba Fila para acompanhar a evolução.";
 apps.integration.webcamp.roomRateMappingCreate.step1;CORRIGIDO;"Na lista abaixo, selecione a acomodação do Channel Manager. A lista contém os nomes das acomodações do channel manager mapeados no seu sistema; se o sua acomodação não aparecer na lista, pode criar um novo mapeamento de acomodação.";
+apps.integration.webcamp.roomRateMappingCreate.step2;CORRIGIDO;Indique o código e o nome da tarifa correspondentes no Channel Manager. Observe que, para obter esta informação, terá de a consultar no seu Channel Manager ou contatá-lo.;
 apps.integration.webcamp.roomRateMappingCreate.step3;CORRIGIDO;"Selecione a ocupação e a tarifa no seu PMS com as quais deseja fazer o mapeamento; pode também selecionar a aplicação de oferta e promoção.";
 apps.integration.webcamp.roomRateMappingImport.step1;CORRIGIDO;"Na lista abaixo, selecione a acomodação do Channel Manager. A lista contém os nomes das acomodações do channel manager mapeados no seu sistema; se o sua acomodação não aparecer na lista, pode criar um novo mapeamento de acomodação.";
-apps.integration.webcamp.uploadRestricted;CORRIGIDO;Tenha em conta que terá de ativar o envio de restrições nas definições gerais se deseja enviar os seus preços para o Channel Manager.;
-apps.integration.webcamp.uploadRestrictedInventory;CORRIGIDO;Tenha em conta que terá de ativar o envio de inventário nas definições gerais se deseja enviar os seus preços para o Channel Manager.;
-apps.integration.webcamp.uploadRestrictedPrice;CORRIGIDO;Tenha em conta que terá de ativar o envio de preços nas definições gerais se deseja enviar os seus preços para o Channel Manager.;
-apps.integration.webcamp.webcampDefaultValues;CORRIGIDO;Indique o valor padrão a mostrar nas reservas caso não tenha sido feito um mapeamento. Tenha em conta que será apresentado um alerta na reserva sempre que isto ocorrer.;
+apps.integration.webcamp.uploadRestricted;CORRIGIDO;Observe que terá de ativar o envio de restrições nas configurações gerais se deseja enviar os seus preços para o Channel Manager.;
+apps.integration.webcamp.uploadRestrictedInventory;CORRIGIDO;Observe que terá de ativar o envio de inventário nas configurações gerais se deseja enviar os seus preços para o Channel Manager.;
+apps.integration.webcamp.uploadRestrictedPrice;CORRIGIDO;Observe que terá de ativar o envio de preços nas configurações gerais se deseja enviar os seus preços para o Channel Manager.;
+apps.integration.webcamp.webcampDefaultValues;CORRIGIDO;Indique o valor padrão a mostrar nas reservas caso não tenha sido feito um mapeamento. Observe que será apresentado um alerta na reserva sempre que isto ocorrer.;
 apps.integration.yacan.login;CORRIGIDO;Fazer login no Yacan;
 apps.integration.yacan.loginInfo;CORRIGIDO;Para começar a utilizar o Yacan, tem de obter o token de autorização. Para isso, tem de se registrar na plataforma Yacan.;
 apps.integration.yacan.mapping.addIntegrationRoomTypeMapping;CORRIGIDO;Clique para mapear tipo de acomodação;
 apps.integration.yacan.mapping.info;CORRIGIDO;A integração classifica as reservas em diferentes tipos de acomodação. Para classificar as nossas reservas nestes diferentes grupos, precisamos de mapear as acomodações da nossa propriedade.;
+apps.invoice.voidModal.withDepositApplied;CORRIGIDO;"Esta fatura tem depósitos aplicados; cancelar esta fatura irá gerar um depósito negativo.";
 apps.invoiceType.modal.addRequiredFieldCountry.info;CORRIGIDO;Selecione todos os campos necessários para registrar novos perfis provenientes do país selecionado;
 apps.invoiceVoidReason.action.new;CORRIGIDO;Novo motivo de cancelamento de fatura;
 apps.item.action.new;CORRIGIDO;Novo item;
@@ -531,8 +551,9 @@ apps.multimedia.favicon.hintBE;CORRIGIDO;Carregue a imagem que será enviada no 
 apps.multimedia.faviconBE.hint;CORRIGIDO;Carregue a imagem que será enviada como favicon no motor de reservas.;
 apps.multimedia.header.hintBE;CORRIGIDO;Carregue a imagem que será enviada no cabeçalho do motor de reservas.;
 apps.multimedia.headerBE.hint;CORRIGIDO;Carregue a imagem que será enviada no cabeçalho do motor de reservas.;
-apps.multimedia.logo.hintBE;CORRIGIDO;Carregue a imagem que será enviada no logótipo do motor de reservas.;
-apps.multimedia.logoBE.hint;CORRIGIDO;Carregue a imagem que será enviada como logótipo no motor de reservas.;
+apps.multimedia.logo.hint;CORRIGIDO;Carregue a imagem que será utilizada como logotipo.;
+apps.multimedia.logo.hintBE;CORRIGIDO;Carregue a imagem que será enviada no logotipo do motor de reservas.;
+apps.multimedia.logoBE.hint;CORRIGIDO;Carregue a imagem que será enviada como logotipo no motor de reservas.;
 apps.noConnection.section;CORRIGIDO;Precisa de ligação à Internet para acessar à página;
 apps.offer.titleSection.historyLog;CORRIGIDO;Registro do histórico;
 apps.paymentScheduler.actionType.processPaymentReservationBalance;CORRIGIDO;Processar o pagamento do valor total da reserva (com base no saldo da reserva, solicitar o valor de pagamento pendente);
@@ -549,6 +570,8 @@ apps.planning.functionSpaceLockMenu.delete;CORRIGIDO;Excluir;
 apps.planning.functionSpaceMenu.delete;CORRIGIDO;Excluir;
 apps.planning.noRoomPendingAssign;CORRIGIDO;Não há acomodações pendentes de atribuição;
 apps.planning.reservationRoomStayMenu.changeRoom;CORRIGIDO;Alterar acomodação;
+apps.planning.reservationRoomStayMenu.copyElectronicLock;CORRIGIDO;Copiar chave eletrônica;
+apps.planning.reservationRoomStayMenu.generateElectronicLock;CORRIGIDO;Gerar chave eletrônica;
 apps.planning.roomSortingSelector.byRoomType;CORRIGIDO;Por tipo de acomodação;
 apps.planning.sidebarDateDisplay;CORRIGIDO;Acomodações por atribuir em {{date}};
 apps.planning.spaceLockMenu.delete;CORRIGIDO;Excluir;
@@ -582,6 +605,7 @@ apps.property.preferences.ageLimit;CORRIGIDO;Informe um limite de idade para cad
 apps.property.preferences.info;CORRIGIDO;Configure aqui as preferências da sua propriedade. Poderá selecionar valores padrão nas suas reservas, escolher se deseja automatizar processos e muito mais. Acesse a cada seção e complete a seleção de acordo com as necessidades da sua propriedade.;
 apps.property.preferences.occupancy;CORRIGIDO;Selecione a ocupação que deseja gerenciar na sua propriedade;
 apps.property.titlesSetting.contact;CORRIGIDO;Contato;
+apps.propertyAutomatedCheckInScheduler.actionType.hint;CORRIGIDO;Configurações de execução;
 apps.propertyAvailabilityRule.includes.limit.hint;CORRIGIDO;Informe o valor que determinará quando a venda fechará automaticamente de acordo com as condições e o período definidos.;
 apps.propertyAvailabilityRule.ruleType.description;CORRIGIDO;Selecione o tipo de regra de disponibilidade que deseja configurar;
 apps.propertyAvailabilityRule.summary.description;CORRIGIDO;Verifique a configuração da regra antes de a salvar.;
@@ -593,9 +617,9 @@ apps.propertyCommunicationEmailType.entity.moveSection;CORRIGIDO;Mover seção p
 apps.propertyCommunicationEmailType.entity.retrySendModal.message;CORRIGIDO;Tem certeza de que deseja tentar enviar novamente?;
 apps.propertyCommunicationEmailType.entity.titleSection;CORRIGIDO;Seção;
 apps.propertyCommunicationEmailTypeConfiguration.entity.ARTransaction.info;CORRIGIDO;Ative esta opção para enviar extratos de contas a receber por e-mail. Se o fizer, selecione a conta SMTP que deseja utilizar e as contas CC e/ou BCC.;
-apps.propertyCommunicationEmailTypeConfiguration.entity.afterCheckin.info;CORRIGIDO;Ative esta automatização se deseja que a nossa plataforma envie comunicações pós-check-in aos seus hóspedes. <br> Caso deseje personalizar a sua comunicação pós-check-in, acesse os modelos de e-mail através das Definições do hotel.;
-apps.propertyCommunicationEmailTypeConfiguration.entity.beforeCheckout.info;CORRIGIDO;Ative esta automatização se deseja que a nossa plataforma envie comunicações de check-out online aos seus hóspedes. <br> Caso deseje personalizar a sua comunicação de check-out, acesse os modelos de e-mail através das Definições do hotel.;
-apps.propertyCommunicationEmailTypeConfiguration.entity.cancellation.info;CORRIGIDO;Ative estes e-mails se deseja que os seus usuários possam enviar comunicações de cancelamento aos seus clientes. <br> Caso deseje personalizar a comunicação da reserva, acesse os modelos de e-mail através das Definições do hotel.;
+apps.propertyCommunicationEmailTypeConfiguration.entity.afterCheckin.info;CORRIGIDO;Ative esta automatização se deseja que a nossa plataforma envie comunicações pós-check-in aos seus hóspedes. <br> Caso deseje personalizar a sua comunicação pós-check-in, acesse os modelos de e-mail através das Configurações do hotel.;
+apps.propertyCommunicationEmailTypeConfiguration.entity.beforeCheckout.info;CORRIGIDO;Ative esta automatização se deseja que a nossa plataforma envie comunicações de check-out online aos seus hóspedes. <br> Caso deseje personalizar a sua comunicação de check-out, acesse os modelos de e-mail através das Configurações do hotel.;
+apps.propertyCommunicationEmailTypeConfiguration.entity.cancellation.info;CORRIGIDO;Ative estes e-mails se deseja que os seus usuários possam enviar comunicações de cancelamento aos seus clientes. <br> Caso deseje personalizar a comunicação da reserva, acesse os modelos de e-mail através das Configurações do hotel.;
 apps.propertyCommunicationEmailTypeConfiguration.entity.deposit.info;CORRIGIDO;Ative esta opção para enviar um lembrete de depósito por e-mail. Se o fizer, selecione a conta SMTP que deseja utilizar e as contas CC e/ou BCC.;
 apps.propertyCommunicationEmailTypeConfiguration.entity.depositPaid.info;CORRIGIDO;Ative esta opção para enviar um lembrete de depósito pago por e-mail. Se o fizer, selecione a conta SMTP que deseja utilizar e as contas CC e/ou BCC.;
 apps.propertyCommunicationEmailTypeConfiguration.entity.guestContractSigned.info;CORRIGIDO;Ative esta opção para enviar uma mensagem de contrato do hóspede assinado. Se o fizer, selecione a conta SMTP que deseja utilizar e as contas CC e/ou BCC.;
@@ -604,20 +628,20 @@ apps.propertyCommunicationEmailTypeConfiguration.entity.guestRegistrationCardSig
 apps.propertyCommunicationEmailTypeConfiguration.entity.guestRegistrationCardSigned.title;CORRIGIDO;Ficha de registro do hóspede assinada;
 apps.propertyCommunicationEmailTypeConfiguration.entity.guestWelcomeSigned.info;CORRIGIDO;Ative esta opção para enviar uma mensagem de boas-vindas do hóspede assinada. Se o fizer, selecione a conta SMTP que deseja utilizar e as contas CC e/ou BCC.;
 apps.propertyCommunicationEmailTypeConfiguration.entity.invoice.info;CORRIGIDO;Ative esta opção para enviar faturas aos seus clientes por e-mail. Se o fizer, selecione a conta SMTP que deseja utilizar e as contas CC e/ou BCC.;
-apps.propertyCommunicationEmailTypeConfiguration.entity.postStay.info;CORRIGIDO;Ative esta automatização se deseja que a nossa plataforma envie comunicações pós-estadia aos seus hóspedes. Defina primeiro a conta SMTP e informe os dias em que deseja que a comunicação seja enviada após a saída dos seus hóspedes. Opcionalmente, pode informar contas CC e CCO!<br>Caso deseje personalizar a sua comunicação pós-estadia, acesse os modelos de e-mail através das Definições do hotel.;
-apps.propertyCommunicationEmailTypeConfiguration.entity.preStay.info;CORRIGIDO;Ative esta automatização se deseja que a nossa plataforma envie comunicações pré-estadia aos seus hóspedes. Defina primeiro a conta SMTP e informe os dias em que deseja que a comunicação seja enviada antes da chegada dos seus hóspedes. Opcionalmente, pode informar contas CC e CCO!<br>Caso deseje personalizar a sua comunicação pré-estadia, acesse os modelos de e-mail através das Definições do hotel.;
+apps.propertyCommunicationEmailTypeConfiguration.entity.postStay.info;CORRIGIDO;Ative esta automatização se deseja que a nossa plataforma envie comunicações pós-estadia aos seus hóspedes. Defina primeiro a conta SMTP e informe os dias em que deseja que a comunicação seja enviada após a saída dos seus hóspedes. Opcionalmente, pode informar contas CC e CCO!<br>Caso deseje personalizar a sua comunicação pós-estadia, acesse os modelos de e-mail através das Configurações do hotel.;
+apps.propertyCommunicationEmailTypeConfiguration.entity.preStay.info;CORRIGIDO;Ative esta automatização se deseja que a nossa plataforma envie comunicações pré-estadia aos seus hóspedes. Defina primeiro a conta SMTP e informe os dias em que deseja que a comunicação seja enviada antes da chegada dos seus hóspedes. Opcionalmente, pode informar contas CC e CCO!<br>Caso deseje personalizar a sua comunicação pré-estadia, acesse os modelos de e-mail através das Configurações do hotel.;
 apps.propertyCommunicationEmailTypeConfiguration.entity.proposal.info;CORRIGIDO;Ative esta opção se deseja configurar o envio destes e-mails de proposta.;
 apps.propertyCommunicationEmailTypeConfiguration.entity.requestCard.info;CORRIGIDO;Ative esta opção para enviar um lembrete de pedido de cartão de crédito por e-mail. Se o fizer, selecione a conta SMTP que deseja utilizar e as contas CC e/ou BCC;
 apps.propertyCommunicationEmailTypeConfiguration.entity.requestCardAuthorization.info;CORRIGIDO;Ative esta opção para enviar o pedido de autorização do cartão por e-mail. Selecione a conta SMTP que deseja utilizar, bem como as contas CC e BCC.;
-apps.propertyCommunicationEmailTypeConfiguration.entity.reservation.info;CORRIGIDO;Ative estes e-mails se deseja que os seus usuários possam enviar confirmações de reserva aos seus clientes. <br> Caso deseje personalizar a comunicação da reserva, acesse os modelos de e-mail através das Definições do hotel.;
-apps.propertyCommunicationEmailTypeConfiguration.entity.reservationCancellationQuoter.info;CORRIGIDO;Ative esta opção se deseja que os seus usuários possam enviar um e-mail quando um orçamento de reserva for cancelado. Para personalizar a comunicação, acesse a Modelos de e-mail nas Definições da propriedade.;
-apps.propertyCommunicationEmailTypeConfiguration.entity.reservationEvent.info;CORRIGIDO;Ative estes e-mails se deseja que os seus usuários possam enviar comunicações de eventos da reserva aos seus clientes. <br> Caso deseje personalizar a comunicação da reserva, acesse os modelos de e-mail através das Definições do hotel.;
-apps.propertyCommunicationEmailTypeConfiguration.entity.reservationGroup.info;CORRIGIDO;Ative estes e-mails se deseja que os seus usuários possam enviar comunicações de grupo de reservas aos seus clientes. <br> Caso deseje personalizar a comunicação da reserva, acesse os modelos de e-mail através das Definições do hotel.;
+apps.propertyCommunicationEmailTypeConfiguration.entity.reservation.info;CORRIGIDO;Ative estes e-mails se deseja que os seus usuários possam enviar confirmações de reserva aos seus clientes. <br> Caso deseje personalizar a comunicação da reserva, acesse os modelos de e-mail através das Configurações do hotel.;
+apps.propertyCommunicationEmailTypeConfiguration.entity.reservationCancellationQuoter.info;CORRIGIDO;Ative esta opção se deseja que os seus usuários possam enviar um e-mail quando um orçamento de reserva for cancelado. Para personalizar a comunicação, acesse a Modelos de e-mail nas Configurações da propriedade.;
+apps.propertyCommunicationEmailTypeConfiguration.entity.reservationEvent.info;CORRIGIDO;Ative estes e-mails se deseja que os seus usuários possam enviar comunicações de eventos da reserva aos seus clientes. <br> Caso deseje personalizar a comunicação da reserva, acesse os modelos de e-mail através das Configurações do hotel.;
+apps.propertyCommunicationEmailTypeConfiguration.entity.reservationGroup.info;CORRIGIDO;Ative estes e-mails se deseja que os seus usuários possam enviar comunicações de grupo de reservas aos seus clientes. <br> Caso deseje personalizar a comunicação da reserva, acesse os modelos de e-mail através das Configurações do hotel.;
 apps.propertyCommunicationEmailTypeConfiguration.entity.reservationQuote.info;CORRIGIDO;Ative esta opção para enviar ao hóspede a informação do orçamento de reserva. Se o fizer, selecione a conta SMTP que deseja utilizar e as contas CC e/ou BCC.;
 apps.propertyCommunicationEmailTypeConfiguration.entity.reservationQuoteCancellation.info;CORRIGIDO;Ative esta opção para enviar ao hóspede a informação do cancelamento do orçamento de reserva. Se o fizer, selecione a conta SMTP que deseja utilizar e as contas CC e/ou BCC.;
-apps.propertyCommunicationEmailTypeConfiguration.entity.reservationQuoter.info;CORRIGIDO;Ative esta opção se deseja enviar um e-mail de orçamento de reserva aos seus clientes. Se deseja personalizar a comunicação, acesse a Modelos de e-mail nas Definições da propriedade.;
-apps.propertyCommunicationEmailTypeConfiguration.entity.reservationRoomStay.info;CORRIGIDO;Ative estes e-mails se deseja que os seus usuários possam enviar comunicações de estadia aos seus clientes. <br> Caso deseje personalizar a comunicação da reserva, acesse os modelos de e-mail através das Definições do hotel.;
-apps.propertyCommunicationEmailTypeConfiguration.entity.reservationRoomStayCancellation.info;CORRIGIDO;Ative estes e-mails se deseja que os seus usuários possam enviar cancelamentos de estadia aos seus clientes. <br> Se quiser personalizar a comunicação das reservas, acesse os modelos de e-mail através das Definições do hotel.;
+apps.propertyCommunicationEmailTypeConfiguration.entity.reservationQuoter.info;CORRIGIDO;Ative esta opção se deseja enviar um e-mail de orçamento de reserva aos seus clientes. Se deseja personalizar a comunicação, acesse a Modelos de e-mail nas Configurações da propriedade.;
+apps.propertyCommunicationEmailTypeConfiguration.entity.reservationRoomStay.info;CORRIGIDO;Ative estes e-mails se deseja que os seus usuários possam enviar comunicações de estadia aos seus clientes. <br> Caso deseje personalizar a comunicação da reserva, acesse os modelos de e-mail através das Configurações do hotel.;
+apps.propertyCommunicationEmailTypeConfiguration.entity.reservationRoomStayCancellation.info;CORRIGIDO;Ative estes e-mails se deseja que os seus usuários possam enviar cancelamentos de estadia aos seus clientes. <br> Se quiser personalizar a comunicação das reservas, acesse os modelos de e-mail através das Configurações do hotel.;
 apps.propertyEmailScheduler.wizard.communicationTypeEventIntro;CORRIGIDO;Selecione a entidade para a qual deseja automatizar a comunicação e o evento que a desencadeará.;
 apps.propertyEmailScheduler.wizard.deliveryConfigurationScopeInfo;CORRIGIDO;Apenas serão mostrados os modelos disponíveis para o tipo e o âmbito selecionados. Como esta automatização está sendo configurada ao nível da propriedade, apenas são apresentados os modelos da propriedade.;
 apps.propertyEmailScheduler.wizard.reviewHeading;CORRIGIDO;Reveja a configuração da automatização antes de salvar.;
@@ -634,6 +658,7 @@ apps.propertyHome.propertyRoomSubType;CORRIGIDO;Dê mais detalhe sobre os tipos 
 apps.propertyHome.propertyRoomType;CORRIGIDO;Os tipos de acomodação são a classificação principal do seu inventário de acomodações;
 apps.propertyHome.room;CORRIGIDO;As acomodações são as unidades físicas que compõem o seu inventário. As acomodações podem ser formados por 1 ou mais espaços;
 apps.propertyKSK.availability.message;CORRIGIDO;Esta seção permite-lhe selecionar os itens que deseja que sejam apresentados apenas na disponibilidade do quiosque. Se não adicionar nenhum item, o sistema aplicará a configuração padrão;
+apps.propertyKSK.label.homeTitle;CORRIGIDO;Configurações da propriedade;
 apps.propertyKioskStaticReport.name.registrationCard;CORRIGIDO;Ficha de registro;
 apps.propertyPreference.billingInfoHint;CORRIGIDO;Indique abaixo a empresa registrada padrão que será apresentada nas suas faturas, bem como o tipo de faturas utilizado nas diferentes ações.;
 apps.propertyPreference.modal.addGuestRegistrationFieldCountry.info;CORRIGIDO;Selecione todos os campos necessários para registrar novos perfis originários do país selecionado;
@@ -649,15 +674,17 @@ apps.propertyRoomSubType.action.new;CORRIGIDO;Novo subtipo de acomodação;
 apps.propertyRoomType.action.add;CORRIGIDO;Adicionar tipo de acomodação;
 apps.propertyRoomType.action.delete;CORRIGIDO;Excluir tipo de acomodação;
 apps.propertyRoomType.action.new;CORRIGIDO;Novo tipo de acomodação;
-apps.propertyServiceConsumptionControl.action.delete;CORRIGIDO;Excluir controlo de consumo;
+apps.propertyServiceConsumptionControl.action.add;CORRIGIDO;Adicionar controle de consumo;
+apps.propertyServiceConsumptionControl.action.delete;CORRIGIDO;Excluir controle de consumo;
+apps.propertyServiceConsumptionControl.action.new;CORRIGIDO;Novo controle de consumo;
 apps.propertySettingHome.propertyGSPProductService;CORRIGIDO;Os serviços do GSP devem ter um nome traduzido e uma imagem definidos para serem apresentados corretamente ao usuário final;
 apps.propertySettingHome.propertyGSPThemeMedia;CORRIGIDO;O tema do GSP deve ter algumas imagens definidas para ser apresentado corretamente ao usuário final;
 apps.propertySettingHome.propertyRoomType;CORRIGIDO;Os tipos de acomodação devem ter um nome traduzido e uma imagem definidos para serem apresentados corretamente ao usuário final;
 apps.rate.amountAfterTax;CORRIGIDO;Abra para definir as relações entre os tipos de acomodação e as suas ocupações com o preço base;
 apps.rate.button.importFromSpreadsheet;CORRIGIDO;Importar de planilha;
-apps.rate.createNewDerivedRatePlan;CORRIGIDO;Ative esta opção se deseja associar esta tarifa a outra tarifa e definir um desconto fixo e/ou variável (%) para as relacionar. Tenha em conta que associar tarifas definirá automaticamente os preços dos produtos nesta tarifa no aba de disponibilidade. Certifique-se também de que as datas desta tarifa estão dentro do intervalo da sua tarifa principal.;
+apps.rate.createNewDerivedRatePlan;CORRIGIDO;Ative esta opção se deseja associar esta tarifa a outra tarifa e definir um desconto fixo e/ou variável (%) para as relacionar. Observe que associar tarifas definirá automaticamente os preços dos produtos nesta tarifa no aba de disponibilidade. Certifique-se também de que as datas desta tarifa estão dentro do intervalo da sua tarifa principal.;
 apps.rate.importExcelModal.downloadExcel;CORRIGIDO;Baixar modelo;
-apps.rate.importExcelModal.securityControl.hint;CORRIGIDO;"Utilize o controlo de segurança se deseja verificar o Excel importado; não preencha os campos se não querer qualquer validação";
+apps.rate.importExcelModal.securityControl.hint;CORRIGIDO;"Utilize o controle de segurança se deseja verificar o Excel importado; não preencha os campos se não querer qualquer validação";
 apps.rate.importExcelModal.warningMinAmountExceeded;CORRIGIDO;Algumas alterações excederam o valor mínimo configurado para o respetiva acomodação.;
 apps.rateAvailability.action.addAccommodation;CORRIGIDO;Adicionar acomodação;
 apps.rateAvailability.action.deleteAccommodation;CORRIGIDO;Excluir acomodação;
@@ -665,7 +692,7 @@ apps.rebuild.typeInstructions.Room;CORRIGIDO;Acomodação, consectetur adipiscin
 apps.report.downloadCSV;CORRIGIDO;Baixar CSV;
 apps.report.downloadExcel;CORRIGIDO;Baixar Excel;
 apps.report.downloadPDF;CORRIGIDO;Baixar PDF;
-apps.report.noPropertySMTPAccount;CORRIGIDO;Certifique-se de que existe uma conta SMTP válida e que está atribuída na seção Fatura, em Definições da propriedade > Configuração de e-mail;
+apps.report.noPropertySMTPAccount;CORRIGIDO;Certifique-se de que existe uma conta SMTP válida e que está atribuída na seção Fatura, em Configurações da propriedade > Configuração de e-mail;
 apps.report.options.information;CORRIGIDO;"Selecione como deseja gerar o seu relatório:
 
 Baixar agora: obtenha o seu relatório imediatamente.
@@ -677,7 +704,7 @@ apps.reportChartValue.chainSegmentName;CORRIGIDO;Nome do segmento da rede;
 apps.reservation.confirmation.title;CORRIGIDO;Reserva salva;
 apps.reservation.meter.turnOffMeter.message;CORRIGIDO;Confirme que deseja definir o estado deste contador como OFF;
 apps.reservation.meter.turnOnMeter.message;CORRIGIDO;Confirme que deseja definir o estado deste contador como ON;
-apps.reservation.noPropertySMTPAccount;CORRIGIDO;Certifique-se de que existe uma conta SMTP válida e que está atribuída na seção Reserva, em Definições da propriedade > Configuração de e-mail;
+apps.reservation.noPropertySMTPAccount;CORRIGIDO;Certifique-se de que existe uma conta SMTP válida e que está atribuída na seção Reserva, em Configurações da propriedade > Configuração de e-mail;
 apps.reservation.reservationCancellationFee.balance;CORRIGIDO;Para prosseguir com este cancelamento, o valor abaixo tem de ser pago;
 apps.reservation.reservationEmail;CORRIGIDO;Informe os destinatários a quem deseja enviar o e-mail de confirmação;
 apps.reservation.reservationProforma.accommodation;CORRIGIDO;Acomodação;
@@ -697,9 +724,11 @@ apps.reservation.reservationRoomStayRoute.modalRoute.targetInfo.anotherRoomStay;
 apps.reservation.reservationRoomStayRoute.modalRoute.targetInfo.extra;CORRIGIDO;Os encargos selecionados nos passos anteriores serão enviados para um dos folios extra desta acomodação;
 apps.reservation.reservationRoomStayRoute.modalRoute.targetInfo.main;CORRIGIDO;Os encargos selecionados nos passos anteriores serão enviados para o folio principal desta acomodação;
 apps.reservation.reservationRoomStayRoute.modalRoute.targetInfo.reservation;CORRIGIDO;Os encargos selecionados nos passos anteriores serão enviados para um folio principal compartilhado por todas as estadias desta reserva;
+apps.reservation.reservationSerie.copyElectronicLock;CORRIGIDO;Copiar chave eletrônica;
+apps.reservation.reservationSerie.generateElectronicLock;CORRIGIDO;Gerar chave eletrônica;
 apps.reservation.reservationSerie.reservation;CORRIGIDO;Utilize esta opção se deseja criar uma cópia desta reserva, incluindo todos os suas acomodações e serviços.;
-apps.reservation.reservationSerie.reservationDifference;CORRIGIDO;Tenha em conta que, caso as datas de chegada e saída das estadias incluídas nesta reserva não coincidam, não poderá selecionar a data de saída.;
-apps.reservation.reservationSerie.reservationRoomStay;CORRIGIDO;Utilize esta opção se deseja criar uma cópia desta acomodação. Para tal, informe a quantidade de acomodações que deseja criar para além desta reserva. Tenha em conta que, se adicionar mais de 1 acomodação, terá de indicar a separação em dias entre acomodações consecutivas.;
+apps.reservation.reservationSerie.reservationDifference;CORRIGIDO;Observe que, caso as datas de chegada e saída das estadias incluídas nesta reserva não coincidam, não poderá selecionar a data de saída.;
+apps.reservation.reservationSerie.reservationRoomStay;CORRIGIDO;Utilize esta opção se deseja criar uma cópia desta acomodação. Para tal, informe a quantidade de acomodações que deseja criar para além desta reserva. Observe que, se adicionar mais de 1 acomodação, terá de indicar a separação em dias entre acomodações consecutivas.;
 apps.reservation.reservationSerie.reservationRoomStaySeries;CORRIGIDO;Nova série de acomodações;
 apps.reservation.reservationSerie.toggleBillable;CORRIGIDO;Excluir acomodação da faturamento;
 apps.reservation.reservationSerie.toggleBillableOff;CORRIGIDO;Desativar faturamento;
@@ -764,7 +793,10 @@ core.button.scanning;CORRIGIDO;Digitalizando;
 core.button.selectFromStored;CORRIGIDO;Selecionar dos salvos;
 core.button.settlement;CORRIGIDO;Cobranças automáticas;
 core.button.transferUserData;CORRIGIDO;Transferir dados do usuário;
+core.button.unAssign;CORRIGIDO;Cancelar atribuição;
+core.button.unselect;CORRIGIDO;Cancelar seleção;
 core.button.upload;CORRIGIDO;Enviar;
+core.button.void;CORRIGIDO;Cancelar;
 core.entity.entity.genericAccountingFileAddToName;CORRIGIDO;Acrescentar ao nome do arquivo;
 core.label.accommodation;CORRIGIDO;Acomodação;
 core.label.accommodationAmount;CORRIGIDO;Valor acomodação;
@@ -845,7 +877,8 @@ core.label.boardAmountJunior;CORRIGIDO;Valor do regime júnior;
 core.label.boardAmountQuantity;CORRIGIDO;Quantidade do valor do regime;
 core.label.boardMinimumAmountAfterTaxInfant;CORRIGIDO;Preço mínimo bebê;
 core.label.boardPriceInfant;CORRIGIDO;Preço do regime bebê;
-core.label.bookingEngineChainSettingGeneral;CORRIGIDO;Definições gerais do motor de reservas da rede;
+core.label.bookingEngineChainSettingGeneral;CORRIGIDO;Configurações gerais do motor de reservas da rede;
+core.label.bookingEnginePropertySettingGeneral;CORRIGIDO;Configurações gerais do motor de reservas da propriedade;
 core.label.bookingForecastBillToDaily;CORRIGIDO;Previsão diária a faturar para;
 core.label.bookingForecastRoomTypeGroupDaily;CORRIGIDO;Previsão diária por grupo de tipos de acomodação;
 core.label.bookingForecastRoomTypeRoomSubTypeDaily;CORRIGIDO;Previsão diária por subtipo de acomodação;
@@ -872,19 +905,19 @@ core.label.chainRoomFeatureType;CORRIGIDO;Tipo de característica de acomodaçã
 core.label.chainRoomSubType;CORRIGIDO;Subtipo de acomodação;
 core.label.chainRoomType;CORRIGIDO;Tipo de acomodação da rede;
 core.label.chainRoomTypeGroup;CORRIGIDO;Grupo de tipos de acomodação;
-core.label.chainSetting;CORRIGIDO;Definições da rede;
-core.label.chainSettingBilling;CORRIGIDO;Definições de faturamento da rede;
-core.label.chainSettingEmail;CORRIGIDO;Definições de e-mail da rede;
-core.label.chainSettingFunctionRoom;CORRIGIDO;Definições de salas de eventos da rede;
-core.label.chainSettingGeneral;CORRIGIDO;Definições gerais da rede;
-core.label.chainSettingMore;CORRIGIDO;Definições avançadas da rede;
-core.label.chainSettingProduct;CORRIGIDO;Definições de produtos da rede;
-core.label.chainSettingProfile;CORRIGIDO;Definições de perfis da rede;
-core.label.chainSettingRate;CORRIGIDO;Definições de tarifas da rede;
-core.label.chainSettingReservation;CORRIGIDO;Definições de reservas da rede;
-core.label.chainSettingRoom;CORRIGIDO;Definições de quartos da rede;
-core.label.chainSettingStatistic;CORRIGIDO;Definições de estatísticas da rede;
-core.label.chainSettingTool;CORRIGIDO;Definições de ferramentas da rede;
+core.label.chainSetting;CORRIGIDO;Configurações da rede;
+core.label.chainSettingBilling;CORRIGIDO;Configurações de faturamento da rede;
+core.label.chainSettingEmail;CORRIGIDO;Configurações de e-mail da rede;
+core.label.chainSettingFunctionRoom;CORRIGIDO;Configurações de salas de eventos da rede;
+core.label.chainSettingGeneral;CORRIGIDO;Configurações gerais da rede;
+core.label.chainSettingMore;CORRIGIDO;Configurações avançadas da rede;
+core.label.chainSettingProduct;CORRIGIDO;Configurações de produtos da rede;
+core.label.chainSettingProfile;CORRIGIDO;Configurações de perfis da rede;
+core.label.chainSettingRate;CORRIGIDO;Configurações de tarifas da rede;
+core.label.chainSettingReservation;CORRIGIDO;Configurações de reservas da rede;
+core.label.chainSettingRoom;CORRIGIDO;Configurações de quartos da rede;
+core.label.chainSettingStatistic;CORRIGIDO;Configurações de estatísticas da rede;
+core.label.chainSettingTool;CORRIGIDO;Configurações de ferramentas da rede;
 core.label.chainSource;CORRIGIDO;Origem da rede;
 core.label.chainSpaceLockType;CORRIGIDO;Tipo de bloqueio de espaço da rede;
 core.label.changeCompaniesTab;CORRIGIDO;Alterar aba de empresas;
@@ -914,6 +947,7 @@ core.label.departureTo;CORRIGIDO;Saída até;
 core.label.departures;CORRIGIDO;Saídas;
 core.label.departuresLeft;CORRIGIDO;Saídas pendentes;
 core.label.doNotRegister;CORRIGIDO;Não registrar;
+core.label.electronicKey;CORRIGIDO;Chave eletrônica;
 core.label.endOfDayHourBeforeCloseDay;CORRIGIDO;Horas antes do fechamento do dia;
 core.label.endOfFileFlag;CORRIGIDO;Indicador de fim de arquivo;
 core.label.endTime;CORRIGIDO;Horário de término;
@@ -942,8 +976,10 @@ core.label.grid;CORRIGIDO;Grade;
 core.label.grossAmount;CORRIGIDO;Valor bruto;
 core.label.groupBoardInAccommodation;CORRIGIDO;Agrupar regime na acomodação;
 core.label.guestRegistrationCardSigned;CORRIGIDO;Ficha de registro do hóspede assinada;
+core.label.guestServicePortalPropertySettingGeneral;CORRIGIDO;Configurações gerais da propriedade do GSP;
 core.label.hospedajeParteViajerosRegistration;CORRIGIDO;Registro de parte de viajantes;
 core.label.hospedajeReservaHospedajeRegistration;CORRIGIDO;Registro de reserva;
+core.label.housekeepingPropertySettingGeneral;CORRIGIDO;Configurações gerais de housekeeping;
 core.label.httpTraces;CORRIGIDO;Registros HTTP;
 core.label.infant;CORRIGIDO;Bebê;
 core.label.infants;CORRIGIDO;Bebês;
@@ -953,8 +989,10 @@ core.label.integrationISTACRoomType;CORRIGIDO;Acomodação padrão;
 core.label.integrationISTACSegmentType;CORRIGIDO;Grupo estatístico padrão;
 core.label.interfaceFileName;CORRIGIDO;Nome do arquivo de interface;
 core.label.invoiceBilling;CORRIGIDO;Fatura de faturamento;
+core.label.invoiceTypeVoid;CORRIGIDO;Modelo de fatura cancelada;
 core.label.invoiceVoidReasonType;CORRIGIDO;Tipo de motivo de cancelamento;
 core.label.item;CORRIGIDO;Item;
+core.label.kioskPropertySettingGeneral;CORRIGIDO;Configurações gerais da propriedade do quiosque;
 core.label.lastName;CORRIGIDO;Sobrenome;
 core.label.limitedToRooms;CORRIGIDO;Limitado a {{rooms}} acomodações;
 core.label.logLevel;CORRIGIDO;Nível de registro;
@@ -971,6 +1009,7 @@ core.label.nonPhysicalRoom;CORRIGIDO;Acomodação não física;
 core.label.notDisturbEndTime;CORRIGIDO;Horário de término de Não incomodar;
 core.label.notDisturbStartTime;CORRIGIDO;Horário de início de Não incomodar;
 core.label.numRep;CORRIGIDO;Número de registro comercial;
+core.label.numberElectronicKey;CORRIGIDO;Número da chave eletrônica;
 core.label.numberSeparator;CORRIGIDO;Aba numérico;
 core.label.oldPassword;CORRIGIDO;Senha antiga;
 core.label.onDeparture;CORRIGIDO;À saída;
@@ -999,12 +1038,25 @@ core.label.propertyReceptionBook;CORRIGIDO;Livro de recepção;
 core.label.propertyRegisteredCompany;CORRIGIDO;Empresa registrada;
 core.label.propertyRoomSubType;CORRIGIDO;Subtipo de acomodação;
 core.label.propertyRoomType;CORRIGIDO;Tipo de acomodação;
-core.label.propertySettingBilling;CORRIGIDO;Definições de faturamento da propriedade;
+core.label.propertySetting;CORRIGIDO;Configurações da propriedade;
+core.label.propertySettingBilling;CORRIGIDO;Configurações de faturamento da propriedade;
+core.label.propertySettingEmail;CORRIGIDO;Configurações de e-mail da propriedade;
+core.label.propertySettingFunctionRoom;CORRIGIDO;Configurações de salas de eventos da propriedade;
+core.label.propertySettingGeneral;CORRIGIDO;Configurações gerais da propriedade;
+core.label.propertySettingMore;CORRIGIDO;Configurações avançadas da propriedade;
+core.label.propertySettingProduct;CORRIGIDO;Configurações de produtos da propriedade;
+core.label.propertySettingProfile;CORRIGIDO;Configurações de perfis da propriedade;
+core.label.propertySettingReservation;CORRIGIDO;Configurações de reservas da propriedade;
+core.label.propertySettingRoom;CORRIGIDO;Configurações de quartos da propriedade;
+core.label.propertySettingSecurity;CORRIGIDO;Configurações de segurança da propriedade;
+core.label.propertySettingStatistic;CORRIGIDO;Configurações de estatísticas da propriedade;
+core.label.propertySettingTool;CORRIGIDO;Configurações de ferramentas da propriedade;
 core.label.propertySpaceRack;CORRIGIDO;Mapa de acomodações;
 core.label.proposalSection;CORRIGIDO;Seção da proposta;
 core.label.protectRoom;CORRIGIDO;Proteger acomodação;
 core.label.quantityConsumedInfant;CORRIGIDO;Bebê consumido;
 core.label.rangeDepartureDate;CORRIGIDO;Intervalo de datas de saída;
+core.label.rateSetting;CORRIGIDO;Configuração de tarifa;
 core.label.receiverHash;CORRIGIDO;Hash do receptor;
 core.label.receiverType;CORRIGIDO;Tipo de receptor;
 core.label.recordSeparator;CORRIGIDO;Aba de registros;
@@ -1051,10 +1103,15 @@ core.label.scanning;CORRIGIDO;Digitalizando;
 core.label.secondSurName;CORRIGIDO;Segundo sobrenome;
 core.label.section;CORRIGIDO;Seção;
 core.label.selectRoom;CORRIGIDO;Selecionar acomodação;
+core.label.serviceConsumptionControl;CORRIGIDO;Controle de consumos de serviços;
+core.label.setting;CORRIGIDO;Configuração;
+core.label.settings;CORRIGIDO;Configurações;
 core.label.shareAvailability;CORRIGIDO;Compartilhar disponibilidade;
 core.label.shareOfAmount;CORRIGIDO;Parte do valor;
 core.label.showAccommodationPrice;CORRIGIDO;Mostrar preço da acomodação;
 core.label.showContractSignaturePDF;CORRIGIDO;Ver PDF do contrato no tela;
+core.label.showOnPropertyServiceConsumptionControl;CORRIGIDO;Mostrar no controle de consumo de serviços;
+core.label.showOnServiceConsumptionControl;CORRIGIDO;Mostrar no controle de consumo de serviços;
 core.label.showRegistrationPDF;CORRIGIDO;Ver PDF de viajantes no tela;
 core.label.showWelcomePDF;CORRIGIDO;Ver PDF de boas-vindas no tela;
 core.label.showWelcomeSignaturePDF;CORRIGIDO;Ver PDF de boas-vindas no tela;
@@ -1078,6 +1135,7 @@ core.label.taxNumber;CORRIGIDO;CPF/CNPJ;
 core.label.totalAmount;CORRIGIDO;Valor total;
 core.label.totalAmountEntered;CORRIGIDO;Valor total informado;
 core.label.totalAmountError;CORRIGIDO;Erro no valor total;
+core.label.unassign;CORRIGIDO;Cancelar atribuição;
 core.label.unprotectRoom;CORRIGIDO;Desproteger acomodação;
 core.label.updateBillTo;CORRIGIDO;Atualizar Faturar para;
 core.label.user;CORRIGIDO;Usuário;
@@ -1093,7 +1151,7 @@ core.label.voidReasonType;CORRIGIDO;Tipo de motivo de cancelamento;
 core.label.webServiceLogin;CORRIGIDO;Usuário do WebService;
 core.label.webServicePassword;CORRIGIDO;Senha do WebService;
 core.modal.actionToEntity;CORRIGIDO;Tem certeza de que deseja {{action}} este(a) {{entity}}?;
-core.modal.derivedRatePlanInformation;CORRIGIDO;Ative esta opção se quiser associar esta tarifa a outra e definir um desconto fixo e/ou variável (%) para as relacionar. Tenha em conta que associar tarifas configura automaticamente os preços dos produtos desta tarifa no aba de disponibilidade. Certifique-se também de que as datas desta tarifa estão dentro do intervalo da sua tarifa principal.;
+core.modal.derivedRatePlanInformation;CORRIGIDO;Ative esta opção se quiser associar esta tarifa a outra e definir um desconto fixo e/ou variável (%) para as relacionar. Observe que associar tarifas configura automaticamente os preços dos produtos desta tarifa no aba de disponibilidade. Certifique-se também de que as datas desta tarifa estão dentro do intervalo da sua tarifa principal.;
 core.modal.endOfDayMarkRoomStayAsNoShow.message;CORRIGIDO;Tem certeza de que deseja cancelar esta estadia e marcá-la como no-show?;
 core.modal.endOfDayWashReservationGroupRoomBlock.message;CORRIGIDO;Tem certeza de que deseja libertar este bloqueio de acomodações?;
 core.modal.endOfDayWashReservationGroupRoomBlock.title;CORRIGIDO;Libertar bloqueio de acomodações;
@@ -1119,10 +1177,15 @@ core.navbar.navigation.pms.frontdesk.subtitle.planning;CORRIGIDO;Planejamento;
 core.navbar.navigation.pms.frontdesk.subtitle.receptionBook;CORRIGIDO;Livro de recepção;
 core.navbar.navigation.pms.frontdesk.subtitle.storedIdentityDocument;CORRIGIDO;Documento de identificação salvo;
 core.navbar.navigation.pms.frontdesk.title;CORRIGIDO;Recepção;
-core.navbar.property.chainSetting;CORRIGIDO;Definições da rede;
+core.navbar.property.appSetting;CORRIGIDO;Configurações da aplicação;
+core.navbar.property.chainSetting;CORRIGIDO;Configurações da rede;
+core.navbar.property.propertySetting;CORRIGIDO;Configurações da propriedade;
+core.navbar.property.setting;CORRIGIDO;Configurações;
+core.navbar.property.systemSetting;CORRIGIDO;Configurações do sistema;
 core.navbar.user.activityStream;CORRIGIDO;Registro de atividade;
 core.navbar.user.closeSession;CORRIGIDO;Sair;
 core.navbar.user.logs;CORRIGIDO;Baixar logs;
+core.navbar.user.profileSetting;CORRIGIDO;Configurações do perfil;
 core.object.entity.accommodation;CORRIGIDO;Acomodação;
 core.object.entity.accommodationType;CORRIGIDO;Tipo de acomodação;
 core.object.entity.accountReceivableAddress;CORRIGIDO;Endereço da conta a receber;
@@ -1169,6 +1232,8 @@ core.object.entity.chainRoomSubtype;CORRIGIDO;Subtipo de acomodação;
 core.object.entity.chainRoomType;CORRIGIDO;Tipo de acomodação;
 core.object.entity.chainRoomTypeDistinct;CORRIGIDO;Tipo de acomodação da rede;
 core.object.entity.chainRoomTypeGroup;CORRIGIDO;Grupo de tipos de acomodação;
+core.object.entity.chainServiceConsumptionControl;CORRIGIDO;Controle de consumo de serviços;
+core.object.entity.chainSettingView;CORRIGIDO;Configuração de vista;
 core.object.entity.communicationEmailSection;CORRIGIDO;Seção de e-mail de comunicação;
 core.object.entity.communicationEmailSectionType;CORRIGIDO;Tipo de seção de e-mail de comunicação;
 core.object.entity.communicationEmailTypeCommunicationEmailSectionType;CORRIGIDO;Tipo de e-mail e tipo de seção;
@@ -1221,6 +1286,8 @@ core.object.entity.propertyRoomSubType;CORRIGIDO;Subtipo de acomodação;
 core.object.entity.propertyRoomType;CORRIGIDO;Tipo de acomodação;
 core.object.entity.propertyRoomTypeCombined;CORRIGIDO;Tipo de acomodação combinada;
 core.object.entity.propertyRoomTypeRoomSubType;CORRIGIDO;Tipo de acomodação / subtipo de acomodação;
+core.object.entity.propertyServiceConsumptionControl;CORRIGIDO;Controle de consumo de serviços;
+core.object.entity.propertySetting;CORRIGIDO;Configuração da propriedade;
 core.object.entity.rateProductOccupancyAvailabilityLog;CORRIGIDO;Registro de disponibilidade da ocupação do produto da tarifa;
 core.object.entity.rateProductOccupancySpreadsheet;CORRIGIDO;Planilha da ocupação do produto da tarifa;
 core.object.entity.receptionBookCategory;CORRIGIDO;Categoria do livro de recepção;
@@ -1277,6 +1344,8 @@ core.userMessage.internal.cancellationZeroAmount;CORRIGIDO;O valor de cancelamen
 core.userMessage.internal.depositRemainingExceeded;CORRIGIDO;O valor excede o saldo restante do depósito;
 core.userMessage.internal.discountIncorrect;CORRIGIDO;Desconto incorreto: não pode ser superior a 100% nem o valor pode exceder o valor total;
 core.userMessage.internal.errorSortGrid;CORRIGIDO;Não foi possível ordenar os dados da grade;
+core.userMessage.internal.facturacionCLOverwriteLocator;CORRIGIDO;A referência da reserva excede o limite de 18 caracteres de facturación.cl. Observe que não será enviada na totalidade.;
+core.userMessage.internal.facturacionCLRemark;CORRIGIDO;Os comentários excedem o limite de 90 caracteres. Observe que não serão enviados na totalidade.;
 core.userMessage.internal.maxSizeUpload;CORRIGIDO;Arquivo muito grande para carregar (tamanho máx. 20MB);
 core.userMessage.internal.noBilling;CORRIGIDO;Não foi encontrada informação de faturamento!;
 core.userMessage.internal.noChangeInEntity;CORRIGIDO;Não foi possível salvar as alterações!;
@@ -1293,10 +1362,14 @@ core.userMessage.internal.userNotPermissionException;CORRIGIDO;"Não tem permiss
 Contate o seu administrador de sistemas.";
 core.userMessage.internal.userRoleHasNotPermission;CORRIGIDO;A função do seu usuário não tem permissão;
 core.userMessage.server.accessdenied.delete;CORRIGIDO;Acesso negado: não tem permissões para excluir {{entity}}.;
+core.userMessage.server.allowrefundaccountreceivablepaymentaftercloseday.default;CORRIGIDO;Não foi possível concluir esta ação. As configurações da propriedade não permitem reembolsos após a data comercial da propriedade.;
+core.userMessage.server.amendalreadydone.default;CORRIGIDO;Esta fatura já foi cancelada.;
 core.userMessage.server.amountinferiorthanboardpricing.default;CORRIGIDO;O valor é inferior ao preço total do regime;
 core.userMessage.server.amountmustbeequalorlowerthanbalance.default;CORRIGIDO;O valor tem de ser igual ou inferior ao saldo;
+core.userMessage.server.billzoneconfigurecurrencyexchange.default;CORRIGIDO;Verifique as configurações de câmbio, pois a fatura não contém a taxa de câmbio.;
 core.userMessage.server.cannotrevertcheckoutwithassignedroom.default;CORRIGIDO;Não foi possível concluir a ação. Faça o check-out da acomodação e tente novamente;
 core.userMessage.server.cashiernotselected.default;CORRIGIDO;O seu usuário não tem uma caixa selecionada. Selecione uma para continuar.;
+core.userMessage.server.changepaymentnotallowedvoidinvoice.default;CORRIGIDO;Troco dos pagamentos: não permitido numa fatura cancelada;
 core.userMessage.server.checkinrevert.default;CORRIGIDO;Não foi possível concluir o check-in, contate o Ulyses Suite.;
 core.userMessage.server.departureisbeforearrival.default;CORRIGIDO;A data de saída é anterior à data de chegada. Altere-a e tente novamente;
 core.userMessage.server.departureisequalorbeforearrival.default;CORRIGIDO;A data de saída é anterior à data de chegada. Altere-a e tente novamente;
@@ -1335,8 +1408,10 @@ core.userMessage.server.paynopain.redsys.501;CORRIGIDO;A conciliação não foi 
 core.userMessage.server.paynopain.redsys.503;CORRIGIDO;A conciliação não foi aceite porque a operação original não foi localizada ou porque o banco emissor não respondeu dentro do tempo limite padrão.;
 core.userMessage.server.paynopain.redsys.904;CORRIGIDO;Comércio não registrado no FUC.;
 core.userMessage.server.paynopain.redsys.916;CORRIGIDO;Não é possível operar com este valor.;
+core.userMessage.server.paynopain.redsys.9253;CORRIGIDO;O cartão não cumpre o dígito de controle.;
+core.userMessage.server.paynopain.redsys.9261;CORRIGIDO;Operação interrompida por não passar o controle de restrições na entrada do SIS.;
 core.userMessage.server.paynopain.redsys.928;CORRIGIDO;O banco emissor não responde ao pedido de autorização dentro do tempo limite padrão.;
-core.userMessage.server.paynopain.redsys.940;CORRIGIDO;Está sendo pedida uma cancelamento ou devolução parcial de uma transação que já tinha sido anulada.;
+core.userMessage.server.paynopain.redsys.940;CORRIGIDO;Está sendo pedida uma cancelamento ou devolução parcial de uma transação que já tinha sido cancelada.;
 core.userMessage.server.paynopain.redsys.943;CORRIGIDO;Está sendo pedida uma confirmação errada.;
 core.userMessage.server.paynopain.redsys.946;CORRIGIDO;Foi pedida a cancelamento ou devolução parcial de uma transação original que ainda está em processamento e a aguardar resposta.;
 core.userMessage.server.paynopain.redsys.947;CORRIGIDO;Está tentando processar uma transação com o mesmo número de encomenda (DS_MERCHANT_OORDER) de outra que ainda aguarda resposta.;
@@ -1355,20 +1430,24 @@ core.userMessage.server.paynopain.redsys.sis0198;CORRIGIDO;Erro: o valor excede 
 core.userMessage.server.paynopain.redsys.sis0200;CORRIGIDO;ERRO: o valor acumulado excede o limite permitido para o comércio.;
 core.userMessage.server.paynopain.redsys.sis0220;CORRIGIDO;Erro: o valor acumulado do cartão excede o limite permitido para o comércio.;
 core.userMessage.server.paynopain.redsys.sis0222;CORRIGIDO;Já existe uma cancelamento associada à pré-autorização.;
-core.userMessage.server.paynopain.redsys.sis0223;CORRIGIDO;A pré-autorização que se deseja anular não está autorizada.;
+core.userMessage.server.paynopain.redsys.sis0223;CORRIGIDO;A pré-autorização que se deseja cancelar não está autorizada.;
 core.userMessage.server.paynopain.redsys.sis0224;CORRIGIDO;O comércio não permite cancelamentos por não ter assinatura alargada.;
 core.userMessage.server.paynopain.redsys.sis0225;CORRIGIDO;Erro: não existe operação sobre a qual efetuar a cancelamento.;
 core.userMessage.server.paynopain.redsys.sis0226;CORRIGIDO;Inconsistência de dados na validação de uma cancelamento.;
+core.userMessage.server.paynopain.redsys.sis0253;CORRIGIDO;O cartão não cumpre o dígito de controle.;
 core.userMessage.server.paynopain.redsys.sis0255;CORRIGIDO;O valor acumulado pelo IP excede o limite permitido pelo comércio.;
+core.userMessage.server.paynopain.redsys.sis0261;CORRIGIDO;Operação interrompida por não passar o controle de restrições na entrada do SIS.;
 core.userMessage.server.paynopain.redsys.sis0296;CORRIGIDO;Erro ao validar os dados da operação de cartão em arquivo inicial.;
 core.userMessage.server.paynopain.redsys.sis0297;CORRIGIDO;Número de operações sucessivas de cartão em arquivo excedido.;
 core.userMessage.server.paynopain.redsys.sis0298;CORRIGIDO;O comércio não permite operações de cartão em arquivo ou pagamento por referência.;
 core.userMessage.server.paynopain.redsys.sis0325;CORRIGIDO;Foi pedido para não mostrar telas, mas não foi enviada nenhuma referência de cartão.;
+core.userMessage.server.paynopain.redsys.sis0334;CORRIGIDO;Operação interrompida por não passar o controle de restrições de segurança do TPV Virtual.;
 core.userMessage.server.paynopain.redsys.sis0444;CORRIGIDO;Erro produzido ao acessar por um sistema de assinatura antigo tendo configurado o tipo de chave HMAC SHA256.;
 core.userMessage.server.paynopain.redsys.sis0448;CORRIGIDO;Foi realizada uma operação com cartão Diners, mas o comércio não tem este tipo de cartão ativado. Para o ativar, deve contatar diretamente a Diners Club.;
 core.userMessage.server.paynopain.redsys.sis0457;CORRIGIDO;Foi utilizado um cartão empresarial e o comércio não suporta este tipo de cartão. Para o ativar, deve contatar o seu balcão de gestão.;
 core.userMessage.server.paynopain.redsys.sis0458;CORRIGIDO;Foi utilizado um cartão empresarial e o comércio não suporta este tipo de cartão. Para o ativar, deve contatar o seu balcão de gestão.;
 core.userMessage.server.paynopain.redsys.sis0464;CORRIGIDO;Foi utilizado um cartão empresarial e o comércio não suporta este tipo de cartão. Para o ativar, deve contatar o seu balcão de gestão.;
+core.userMessage.server.paynopain.redsys.sis0469;CORRIGIDO;Erro: o processo de controle de fraude não foi ultrapassado.;
 core.userMessage.server.priceisgreaterthanremainingdeposit.default;CORRIGIDO;O valor informado é superior ao valor restante do depósito. Altere-o e tente novamente;
 core.userMessage.server.pricemustbegreaterthanzero.default;CORRIGIDO;O preço informado tem de ser superior a zero. Altere-o e tente novamente;
 core.userMessage.server.producttypemustbeaccommodationorservice.default;CORRIGIDO;O produto selecionado tem de ser uma acomodação ou um serviço. Altere-o e tente novamente.;
@@ -1376,7 +1455,7 @@ core.userMessage.server.propertynotregistercompany.default;CORRIGIDO;Esta propri
 core.userMessage.server.quantitymustbeone.default;CORRIGIDO;A quantidade informada tem de ser 1. Altere-a e tente novamente;
 core.userMessage.server.quantitymustbeoverone.default;CORRIGIDO;A quantidade informada tem de ser 1 ou superior. Altere-a e tente novamente;
 core.userMessage.server.registeredcompanyprotectedbynf525.default;CORRIGIDO;"A empresa registrada não pode ser atualizada; contate a UlysesCloud";
-core.userMessage.server.reservationcannotbecancelled.default;CORRIGIDO;Não foi possível concluir a ação. Certifique-se de que a acomodação não está cancelado e tente novamente;
+core.userMessage.server.reservationcannotbecancelled.default;CORRIGIDO;Não foi possível concluir a ação. Certifique-se de que a acomodação não está cancelada e tente novamente;
 core.userMessage.server.reservationmustbeinhouse.default;CORRIGIDO;Não foi possível concluir a ação. Certifique-se de que a acomodação está in house e tente novamente;
 core.userMessage.server.reservationroomstaydoesnothaveavailabilityforthisroomtype.default;CORRIGIDO;Não há disponibilidade para o tipo de acomodação e a quantidade pedidos;
 core.userMessage.server.reservationroomstayiscancelled.default;CORRIGIDO;Não foi possível concluir a operação. A estadia que está tentando modificar está cancelada;
@@ -1417,16 +1496,22 @@ core.userMessage.server.stripe.coupon_expired;CORRIGIDO;"Erro do Stripe:
 O cupão indicado para uma assinatura ou encomenda expirou. Crie um novo cupão ou utilize um existente que seja válido.";
 core.userMessage.server.stripe.customer_max_subscriptions;CORRIGIDO;"Erro do Stripe:
 Foi atingido o número máximo de assinaturas para um cliente. Contate-nos se estiver a receber este erro.";
+core.userMessage.server.stripe.email_invalid;CORRIGIDO;"Erro do Stripe:
+O endereço de e-mail é inválido (por exemplo, não está formatado corretamente). Verifique se o endereço de e-mail está formatado corretamente e inclui apenas caracteres permitidos.";
 core.userMessage.server.stripe.idempotency_key_in_use;CORRIGIDO;"Erro do Stripe:
 A chave de idempotência indicada está sendo utilizada noutro pedido. Isto ocorre se a sua integração estiver a fazer pedidos duplicados em simultâneo.";
 core.userMessage.server.stripe.incorrect_zip;CORRIGIDO;"Erro do Stripe:
 O CEP do cartão está incorreto. Verifique o CEP do cartão ou utilize outro cartão.";
+core.userMessage.server.stripe.invalid_characters;CORRIGIDO;"Erro do Stripe:
+O valor indicado no campo contém caracteres que não são suportados pelo campo.";
 core.userMessage.server.stripe.invalid_charge_amount;CORRIGIDO;"Erro do Stripe:
 O valor especificado é inválido. O valor da cobrança tem de ser um número inteiro positivo na menor unidade da moeda e não pode exceder o valor mínimo ou máximo.";
 core.userMessage.server.stripe.invalid_source_usage;CORRIGIDO;"Erro do Stripe:
 A origem não pode ser utilizada porque não está no estado correto (por exemplo, um pedido de cobrança tenta utilizar uma origem pendente, falhada ou já consumida). Verifique o estado da origem que está tentando utilizar.";
 core.userMessage.server.stripe.invoice_no_customer_line_items;CORRIGIDO;"Erro do Stripe:
 Não é possível gerar uma fatura para o cliente especificado porque não existem itens de fatura pendentes. Verifique se está especificando o cliente correto ou crie primeiro os itens de fatura necessários.";
+core.userMessage.server.stripe.invoice_no_payment_method_types;CORRIGIDO;"Erro do Stripe:
+Não é possível finalizar uma fatura porque não existem tipos de método de pagamento disponíveis para processar o pagamento. As configurações do modelo de fatura ou o payment_settings da fatura podem estar a restringir os métodos de pagamento disponíveis, ou pode ser necessário ativar mais métodos de pagamento no painel.";
 core.userMessage.server.stripe.invoice_no_subscription_line_items;CORRIGIDO;"Erro do Stripe:
 Não é possível gerar uma fatura para a assinatura especificada porque não existem itens de fatura pendentes. Verifique se está especificando a assinatura correta ou crie primeiro os itens de fatura necessários.";
 core.userMessage.server.stripe.invoice_not_editable;CORRIGIDO;"Erro do Stripe:
@@ -1439,6 +1524,8 @@ core.userMessage.server.stripe.lock_timeout;CORRIGIDO;"Erro do Stripe:
 Não é possível acessar a este objeto neste momento porque outro pedido de API ou processo do Stripe está acessando-lhe. Se vir este erro de forma intermitente, repita o pedido. Se o vir com frequência e estiver a fazer vários pedidos em simultâneo a um único objeto, faça os pedidos em série ou a uma cadência inferior. Consulte a documentação do limite de pedidos para mais detalhes.";
 core.userMessage.server.stripe.missing;CORRIGIDO;"Erro do Stripe:
 Foram indicados um ID de cliente e um ID de origem, mas a origem não foi salva no cliente. Para criar uma cobrança para um cliente com uma origem especificada, tem primeiro de salvar os dados do cartão.";
+core.userMessage.server.stripe.parameter_invalid_string_empty;CORRIGIDO;"Erro do Stripe:
+Um ou mais valores de texto obrigatórios estão vazios. Certifique-se de que os valores de texto contêm pelo menos um caractere.";
 core.userMessage.server.stripe.payment_intent_unexpected_state;CORRIGIDO;"Erro do Stripe:
 O estado do PaymentIntent era incompatível com a operação que estava tentando executar.";
 core.userMessage.server.stripe.payment_method_bank_account_blocked;CORRIGIDO;"Erro do Stripe:
@@ -1480,6 +1567,8 @@ core.userMessage.server.usercannotsavereportpivotconfiguration.default;CORRIGIDO
 core.userMessage.server.userdoesnothaveintegration.default;CORRIGIDO;Não foi possível concluir a ação. Certifique-se de que este usuário tem uma integração adicionada.;
 core.userMessage.server.userisnotinproperty.default;CORRIGIDO;Não foi possível concluir a ação. O seu usuário não tem permissões para acessar a esta propriedade;
 core.userMessage.server.userneedsauthorizationoftypeintegration.default;CORRIGIDO;Não foi possível concluir a ação. Certifique-se de que adicionou um usuário válido no Ulyses Connections;
+core.userMessage.server.voidalreadydone.default;CORRIGIDO;Esta fatura já foi cancelada.;
+core.userMessage.server.voidnotallowed.default;CORRIGIDO;O tipo de fatura não permite cancelar a fatura.;
 core.userMessage.server.voidnotalloweddeposit.default;CORRIGIDO;A fatura de depósito não permite cancelamento.;
 core.userPreferences.activeBookingForecastSumAsPhysicalRoom.name;CORRIGIDO;Soma ativa da previsão de reservas como acomodação física;
 core.userPreferences.activeBudgetRoom.name;CORRIGIDO;Acomodação orçamentado ativo;
@@ -1544,6 +1633,7 @@ shared.aggregateGrid.empty.propertyIntegrationSAFTPT.noInvoiceType;CORRIGIDO;Adi
 shared.aggregateGrid.empty.propertyIntegrationSalesforceKaizen.emptyProductBreakfast;CORRIGIDO;Adicione cafés da manhã;
 shared.aggregateGrid.empty.propertyIntegrationYacan.emptyRoomMapLock;CORRIGIDO;Adicione as fechaduras que deseja incluir;
 shared.aggregateGrid.empty.propertyKioskCustomField.noPropertyKioskCustomField;CORRIGIDO;Adicione os campos personalizados que deseja solicitar ao cliente;
+shared.aggregateGrid.empty.propertyKioskDevicePropertyServiceConsumptionControl.noPropertyServiceConsumptionControl;CORRIGIDO;"Adicione controles de serviço para este dispositivo; se não adicionar nenhum, serão apresentados todos";
 shared.aggregateGrid.empty.propertyKioskWalkingCheckinBoard.noBoards;CORRIGIDO;Adicione os regimes que deseja mostrar apenas na disponibilidade do quiosque;
 shared.aggregateGrid.empty.propertyKioskWalkingCheckinOffer.noOffers;CORRIGIDO;Adicione as ofertas que deseja mostrar apenas na disponibilidade do quiosque;
 shared.aggregateGrid.empty.propertyKioskWalkingCheckinProductAccommodation.noProductAccommodations;CORRIGIDO;Adicione as acomodações que deseja mostrar apenas na disponibilidade do quiosque;
@@ -1583,12 +1673,14 @@ shared.assistant.customField.step2;CORRIGIDO;Adicionar valores padrão;
 shared.assistant.deposit.step1;CORRIGIDO;Informar valor;
 shared.assistant.importRoom.step1;CORRIGIDO;Confirmar acomodações;
 shared.assistant.importSpreadsheetRate.step1;CORRIGIDO;Enviar planilha;
+shared.assistant.invoiceType.step0;CORRIGIDO;Configurações da fatura;
 shared.assistant.paymentAuthorization.step1;CORRIGIDO;Informar valor;
 shared.assistant.paymentAuthorization.step2;CORRIGIDO;Informar detalhes;
 shared.assistant.productTypeCancellationFee.step0;CORRIGIDO;Valor a cobrar;
 shared.assistant.propertyIntegrationChannelManagerRoomMap.step0;CORRIGIDO;Selecionar acomodação do canal;
-shared.assistant.propertyIntegrationChannelManagerRoomMap.step1;CORRIGIDO;Definição da acomodação;
+shared.assistant.propertyIntegrationChannelManagerRoomMap.step1;CORRIGIDO;Configuração da acomodação;
 shared.assistant.propertyIntegrationChannelManagerRoomRateMap.step0;CORRIGIDO;Selecionar acomodação do canal;
+shared.assistant.propertyIntegrationChannelManagerRoomRateMap.step2;CORRIGIDO;Configuração da tarifa;
 shared.availability.closedAndMinimumAmountApplied;CORRIGIDO;"Fechado
 Valor mínimo aplicado";
 shared.availability.minimumAmountApplied;CORRIGIDO;Valor mínimo aplicado;
@@ -1608,9 +1700,9 @@ shared.component.linkProfile.weFound;CORRIGIDO;Encontramos;
 shared.component.multimedia.charkey.hint;CORRIGIDO;Carregue o vídeo que será apresentado aos usuários como guia.;
 shared.component.multimedia.docreader.hint;CORRIGIDO;Carregue o vídeo que será apresentado aos usuários como guia na utilização do scanner.;
 shared.component.multimedia.header.hint;CORRIGIDO;Carregue a imagem que será enviada na seção de cabeçalho dos seus e-mails.;
-shared.component.multimedia.logo.hint;CORRIGIDO;Carregue a imagem que será enviada na seção de logótipo dos seus e-mails e das suas faturas.;
+shared.component.multimedia.logo.hint;CORRIGIDO;Carregue a imagem que será enviada na seção de logotipo dos seus e-mails e das suas faturas.;
 shared.component.receptionBook.response.deleteSuccess;CORRIGIDO;Mensagem excluída com sucesso;
-shared.component.storeHttpTrace.info;CORRIGIDO;"O HttpTrace do pedido está desativado; acesse as definições do sistema para ativar o trace http, tenha em conta que o desempenho será afetado";
+shared.component.storeHttpTrace.info;CORRIGIDO;"O HttpTrace do pedido está desativado; acesse as configurações do sistema para ativar o trace http, observe que o desempenho será afetado";
 shared.component.ucTwoFAActivate.info.step1;CORRIGIDO;Instale uma aplicação de autenticação no seu celular.;
 shared.component.ucTwoFAActivate.info.step3;CORRIGIDO;"Informe o código fornecido pela aplicação e selecione ""Confirmar.""";
 shared.component.ucTwoFAActivate.infoMail;CORRIGIDO;Para utilizar o sistema de verificação em dois passos, enviaremos um e-mail para a sua conta de usuário para o ativar.;
@@ -1619,6 +1711,7 @@ shared.emailTemplate.section.htmlGuestContractSignature;CORRIGIDO;Seção HTML;
 shared.emailTemplate.section.htmlGuestRegistrationCard;CORRIGIDO;Seção HTML;
 shared.emailTemplate.section.htmlGuestRegistrationCardSigned;CORRIGIDO;HTML de ficha de registro do hóspede assinada;
 shared.emailTemplate.section.htmlGuestWelcomeSignature;CORRIGIDO;Seção HTML;
+shared.emailTemplate.section.logo;CORRIGIDO;Logotipo;
 shared.emailTemplate.section.proposalAccommodationEventResource;CORRIGIDO;Recurso de evento da acomodação da proposta;
 shared.emailTemplate.section.proposalAccommodationEventResourceSummary;CORRIGIDO;Resumo do recurso de evento da acomodação da proposta;
 shared.emailTemplate.section.proposalAccommodationImage;CORRIGIDO;Imagem da acomodação da proposta;
@@ -1719,6 +1812,7 @@ shared.grid.header.accommodation;CORRIGIDO;Acomodação;
 shared.grid.header.accommodationAmount;CORRIGIDO;Valor da acomodação;
 shared.grid.header.accommodationList;CORRIGIDO;Lista de acomodações;
 shared.grid.header.address;CORRIGIDO;Endereço;
+shared.grid.header.allowVoid;CORRIGIDO;Permitir cancelar;
 shared.grid.header.amount;CORRIGIDO;Valor;
 shared.grid.header.amountEntered;CORRIGIDO;Valor informado.;
 shared.grid.header.archiveByUser;CORRIGIDO;Arquivado pelo usuário;
@@ -1892,6 +1986,8 @@ shared.information.notFound.message;CORRIGIDO;A página a que está tentando ace
 shared.information.upgradeEdition.message;CORRIGIDO;"Está tentando acessar a elementos de uma versão superior à contratada.
 
 Contate a UlysesCloud para poder alargar a sua assinatura e usufruir de mais funcionalidades.";
+shared.input.error.maxlength;CORRIGIDO;O valor do campo deve ter menos de {{requiredLength}} caracteres;
+shared.input.error.minlength;CORRIGIDO;O valor do campo deve ter pelo menos {{requiredLength}} caracteres;
 shared.input.error.pattern.emailList;CORRIGIDO;"Este campo não cumpre o padrão de e-mail necessário.
 Informe uma lista de e-mails válidos separados por ponto e vírgula";
 shared.input.error.pattern.password;CORRIGIDO;"Este campo está incorreto. Informe a senha
@@ -1924,7 +2020,7 @@ shared.modal.applyReservationCancellation.message.chargeManual;CORRIGIDO;Os valo
 shared.modal.applyReservationCancellation.message.chargePolicyConfiguration;CORRIGIDO;O valor a cobrar é calculado segundo a política de cancelamento.;
 shared.modal.applyReservationCancellation.message.grouped;CORRIGIDO;"O valor total será agrupado numa única linha ""Taxa de cancelamento"".";
 shared.modal.applyReservationCancellation.message.refundExceedsAvailable;CORRIGIDO;O valor a reembolsar não pode exceder o excesso de pagamento disponível.;
-shared.modal.applyReservationCancellation.message.separated;CORRIGIDO;"Os elementos selecionados serão agrupados numa linha ""Taxa de cancelamento"". Os restantes permanecerão detalhados. Tenha em conta que um produto de acomodação liquidada individualmente afetará os indicadores de ocupação (ADR, taxa de ocupação, RevPAR).";
+shared.modal.applyReservationCancellation.message.separated;CORRIGIDO;"Os elementos selecionados serão agrupados numa linha ""Taxa de cancelamento"". Os restantes permanecerão detalhados. Observe que um produto de acomodação liquidada individualmente afetará os indicadores de ocupação (ADR, taxa de ocupação, RevPAR).";
 shared.modal.applyReservationCancellation.process.chargeAll;CORRIGIDO;Valor total da estadia;
 shared.modal.billing.title;CORRIGIDO;Informação de faturamento;
 shared.modal.blockLockSpaceLock.error;CORRIGIDO;Encontramos alguns erros ao bloquear determinadas acomodações, verifique-os abaixo;
@@ -1962,7 +2058,7 @@ shared.modal.bulkUpdatePromotion.error;CORRIGIDO;Encontramos alguns erros ao atu
 shared.modal.bulkUpdateRate.error;CORRIGIDO;Encontramos alguns erros ao atualizar determinadas tarifas, verifique-os abaixo;
 shared.modal.calculatedEventChangeModal.message;CORRIGIDO;"Deseja aplicar as alterações?
 
- - Clique em Cancelar se deseja anular a alteração.
+ - Clique em Cancelar se deseja cancelar a alteração.
  - Clique em Ignorar se deseja continuar sem aplicar a sugestão de alterações.
  - Clique em Confirmar se deseja continuar e aplicar as alterações selecionadas.";
 shared.modal.cancelDeviceProcess.message;CORRIGIDO;Tem certeza de que deseja cancelar este processo neste dispositivo?;
@@ -2009,9 +2105,9 @@ shared.modal.copyToChain.hint;CORRIGIDO;Selecione as seções para as quais dese
 shared.modal.copyToChain.selectOne;CORRIGIDO;Tem de selecionar pelo menos uma seção para continuar;
 shared.modal.copyToChain.title;CORRIGIDO;Copiar para a rede;
 shared.modal.copyToProperty.error;CORRIGIDO;Encontramos alguns erros ao atualizar determinadas propriedades, verifique-os abaixo;
-shared.modal.copyToProperty.hint;CORRIGIDO;Selecione as propriedades para as quais deseja copiar os dados deste(a) {{entity}}. Tenha em conta que, se já existir em alguma das propriedades selecionadas, será substituído;
+shared.modal.copyToProperty.hint;CORRIGIDO;Selecione as propriedades para as quais deseja copiar os dados deste(a) {{entity}}. Observe que, se já existir em alguma das propriedades selecionadas, será substituído;
 shared.modal.createDeposit.billTo;CORRIGIDO;Faturar para;
-shared.modal.createDeposit.paymentInfo;CORRIGIDO;Clique em salvar para criar o depósito. Tenha em conta que o Ulyses Suite não está solicitando o pagamento a ninguém neste momento. Para o fazer, não se esqueça de enviar um e-mail de lembrete para poder liquidar o depósito;
+shared.modal.createDeposit.paymentInfo;CORRIGIDO;Clique em salvar para criar o depósito. Observe que o Ulyses Suite não está solicitando o pagamento a ninguém neste momento. Para o fazer, não se esqueça de enviar um e-mail de lembrete para poder liquidar o depósito;
 shared.modal.createDeposit.split.info;CORRIGIDO;Escolha uma opção para gerar o número de depósitos que querer;
 shared.modal.createOrAddEntity.notPermission;CORRIGIDO;Não tem permissões para criar dados na rede;
 shared.modal.createOrAddEntity.property;CORRIGIDO;Adicionar a partir da configuração da rede;
@@ -2024,8 +2120,8 @@ shared.modal.dailyTaskDownloadPdfOptions.information;CORRIGIDO;Selecione se dese
 shared.modal.deleteEntityDependent.infoAction;CORRIGIDO;Selecione a ação que deseja executar.;
 shared.modal.deleteEntityDependent.infoDependency;CORRIGIDO;Detectamos que esta entidade tem as seguintes dependências:;
 shared.modal.deleteEntityDependent.loading;CORRIGIDO;Carregando dependências...;
-shared.modal.deleteEntityDependent.message.active.ok;CORRIGIDO;Tenha em conta que a ativação deste valor pode ter efeitos noutras partes do seu software de gestão. Tem certeza de que deseja efetuar esta operação?;
-shared.modal.deleteEntityDependent.message.delete.ok;CORRIGIDO;Tenha em conta que a exclusão de um valor não pode ser revertida. ;
+shared.modal.deleteEntityDependent.message.active.ok;CORRIGIDO;Observe que a ativação deste valor pode ter efeitos noutras partes do seu software de gestão. Tem certeza de que deseja efetuar esta operação?;
+shared.modal.deleteEntityDependent.message.delete.ok;CORRIGIDO;Observe que a exclusão de um valor não pode ser revertida. ;
 shared.modal.deleteEntityDependent.message.inactive.ok;CORRIGIDO;Indique o motivo pelo qual deseja desativar este valor;
 shared.modal.deleteEntityDependent.message.noAction.message;CORRIGIDO;Não pode executar nenhuma das ações desejadas nesta entidade.;
 shared.modal.deleteEntityDependent.message.replace.ok;CORRIGIDO;Selecione o valor pelo qual deseja substituí-lo;
@@ -2048,7 +2144,7 @@ shared.modal.functionRoomAssign.lastRoomAssigned;CORRIGIDO;Última acomodação 
 shared.modal.functionRoomAssign.noPreviouslyFunctionRooms;CORRIGIDO;Sem acomodações atribuídas anteriormente;
 shared.modal.functionRoomAssign.unassign;CORRIGIDO;Desatribuir acomodação;
 shared.modal.generateBEO.viewAmount;CORRIGIDO;Ver valor;
-shared.modal.generateElectronicLockModal.selectGuestsInfo;CORRIGIDO;Selecione os hóspedes para os quais deseja gerar a chave eletrónica;
+shared.modal.generateElectronicLockModal.selectGuestsInfo;CORRIGIDO;Selecione os hóspedes para os quais deseja gerar a chave eletrônica;
 shared.modal.grid.changeLog.allotment;CORRIGIDO;Registro de alterações do allotment;
 shared.modal.grid.changeLog.boardAvailability;CORRIGIDO;Registro de alterações da disponibilidade de regime;
 shared.modal.grid.changeLog.offer;CORRIGIDO;Registro de alterações da oferta;
@@ -2062,8 +2158,10 @@ shared.modal.grid.changeLog.rateProductDailyPrice;CORRIGIDO;Registro de alteraç
 shared.modal.grid.changeLog.rateProductPackage;CORRIGIDO;Registro de alterações do pacote de produtos;
 shared.modal.grid.changeLog.roomBlock;CORRIGIDO;Registro de alterações do bloqueio de acomodação;
 shared.modal.groupCheckin.error;CORRIGIDO;Encontramos alguns erros durante o check-in do grupo e não foi possível concluir o processo. Reveja os erros abaixo e aplique as alterações necessárias para concluir o processo de check-in;
+shared.modal.groupCheckin.info;CORRIGIDO;Está prestes a iniciar o check-in de um grupo de estadias. Observe que este processo pode demorar algum tempo. Será notificado dos erros caso o processo não possa ser concluído. Se tal acontecer, recomendamos que aplique as alterações e reinicie o processo de check-in;
 shared.modal.groupCheckin.summary;CORRIGIDO;Parabéns! Concluiu o check-in do grupo com sucesso. Agora pode acessar individualmente a todas as reservas e gerenciar os respetivos detalhes;
 shared.modal.groupCheckout.error;CORRIGIDO;Encontramos alguns erros durante o check-out do grupo e não foi possível concluir o processo. Reveja os erros abaixo e aplique as alterações necessárias para concluir o processo de check-out;
+shared.modal.groupCheckout.info;CORRIGIDO;Está prestes a iniciar o check-out de um grupo de estadias. Observe que este processo pode demorar algum tempo. Será notificado dos erros caso o processo não possa ser concluído. Se tal acontecer, recomendamos que aplique as alterações e reinicie o processo de check-out;
 shared.modal.groupCheckout.summary;CORRIGIDO;Parabéns! Concluiu o check-out do grupo com sucesso. Agora pode acessar individualmente a todas as reservas e gerenciar os respetivos detalhes;
 shared.modal.groupFolioProduct.auto;CORRIGIDO;Agrupar por acomodação e data;
 shared.modal.guestCheckin.addressSynced;CORRIGIDO;A endereço está sincronizada com {{guestName}};
@@ -2080,10 +2178,12 @@ shared.modal.importProductExcel.importExcel;CORRIGIDO;Transfira o seguinte arqui
 shared.modal.importRoomExcel.confirmExcel;CORRIGIDO;Reveja a lista abaixo para confirmar que todas as acomodações estão corretos antes de serem criados no Ulyses PMS.;
 shared.modal.importRoomExcel.downloadExcel;CORRIGIDO;Clique aqui para baixar o arquivo de exemplo;
 shared.modal.importRoomExcel.importExcel;CORRIGIDO;Transfira o seguinte arquivo, defina os suas acomodações com os respetivos tipos de acomodação e carregue-o para criar a estrutura de acomodações da sua propriedade.;
-shared.modal.importRoomingList.info;CORRIGIDO;Confirme a informação abaixo antes de as acomodações serem adicionados a este grupo. Tenha em conta que apenas serão adicionados as acomodações ao grupo, mas não serão geradas as estadias, que terão de ser geradas posteriormente.;
+shared.modal.importRoomingList.info;CORRIGIDO;Confirme a informação abaixo antes de as acomodações serem adicionados a este grupo. Observe que apenas serão adicionados as acomodações ao grupo, mas não serão geradas as estadias, que terão de ser geradas posteriormente.;
 shared.modal.importTranslateExcel.importExcel;CORRIGIDO;Transfira o seguinte arquivo, defina os suas acomodações com os respetivos tipos de acomodação e carregue-o para criar a estrutura de acomodações da sua propriedade.;
 shared.modal.information.accommodationTypeChange.message;CORRIGIDO;O tipo de acomodação da estadia foi alterado. Esta estadia já tem um acesso. Lembre-se de atualizar as áreas de acesso autorizadas, se necessário.;
 shared.modal.information.accommodationTypeChange.title;CORRIGIDO;Alteração do tipo de acomodação;
+shared.modal.information.addElectronicLock.message;CORRIGIDO;Adicionar fechadura eletrônica no dispositivo de escrita.;
+shared.modal.information.addElectronicLock.title;CORRIGIDO;Adicionar fechadura eletrônica;
 shared.modal.information.anonymize.message;CORRIGIDO;Este processo excluirá todos os dados pessoais deste cliente para torná-los anônimos. Tem certeza de que deseja continuar?;
 shared.modal.information.applyVipInCustomer.message;CORRIGIDO;Deseja atualizar os hóspedes com o nível VIP da reserva?;
 shared.modal.information.apps.planning.swap.confirmSwap.message;CORRIGIDO;"Deseja trocar as acomodações entre estas duas estadias?
@@ -2153,7 +2253,7 @@ shared.modal.information.convertNonTaxable.message;CORRIGIDO;Tem certeza de que 
 shared.modal.information.copyToChain.message;CORRIGIDO;Tem certeza de que deseja copiar esta entidade para a rede?;
 shared.modal.information.copyToChain.title;CORRIGIDO;Copiar para a rede;
 shared.modal.information.createAccount.message;CORRIGIDO;Deseja criar uma nova conta para esta estadia?;
-shared.modal.information.createCutOff.message;CORRIGIDO;Vai executar o processo de Cut-Off. Após este processo, as definições e o bloqueio de acomodação ficarão bloqueadas. Pode revertê-lo eliminando o Cut-Off.;
+shared.modal.information.createCutOff.message;CORRIGIDO;Vai executar o processo de Cut-Off. Após este processo, as configurações e o bloqueio de acomodação ficarão bloqueadas. Pode revertê-lo eliminando o Cut-Off.;
 shared.modal.information.createEntityProperty.message;CORRIGIDO;Tem certeza de que deseja criar na propriedade?;
 shared.modal.information.createEntityProperty.submitted;CORRIGIDO;Salvar;
 shared.modal.information.createEntityProperty.title;CORRIGIDO;Salvar na propriedade;
@@ -2257,7 +2357,7 @@ shared.modal.information.deleteRoomingList.message;CORRIGIDO;Tem certeza de que 
 shared.modal.information.deleteRoomingList.submitted;CORRIGIDO;Excluir;
 shared.modal.information.deleteRoomingList.title;CORRIGIDO;Excluir acomodações;
 shared.modal.information.deleteSectionCommunicationEmailType.message;CORRIGIDO;"Tem certeza de que deseja excluir esta seção?
-Tenha em conta que a exclusão desta seção apagará o conteúdo que introduziu.
+Observe que a exclusão desta seção apagará o conteúdo que introduziu.
 ";
 shared.modal.information.deleteSectionCommunicationEmailType.submitted;CORRIGIDO;Excluir;
 shared.modal.information.deleteSectionCommunicationEmailType.title;CORRIGIDO;Excluir seção;
@@ -2298,6 +2398,7 @@ shared.modal.information.errorRoomingListUpdate.title;CORRIGIDO;Não é possíve
 shared.modal.information.excludeAutomaticCharge.message;CORRIGIDO;Tem certeza de que deseja excluir esta entidade da cobrança automática?;
 shared.modal.information.exportNotToView.message;CORRIGIDO;Os filtros do relatório a executar são diferentes dos que está vendo no tela.;
 shared.modal.information.extendSpaceLockOneDay.message;CORRIGIDO;Tem certeza de que deseja prolongar o bloqueio da acomodação por um dia?;
+shared.modal.information.folioActions.noAllowUpdateName.message;CORRIGIDO;As configurações do produto não permitem atualizar o campo do nome. Altere esta configuração na gestão de produtos.;
 shared.modal.information.folioInvoiceNumber.message;CORRIGIDO;Não pode excluir este folio porque tem um número de fatura atribuído;
 shared.modal.information.folioProductUngroupSelect.message;CORRIGIDO;Tem certeza de que deseja desagrupar o produto?;
 shared.modal.information.forcedEndOfDayTask.message;CORRIGIDO;O processo de fim de dia selecionado será executado. Tem certeza de que deseja executá-lo?;
@@ -2310,7 +2411,9 @@ shared.modal.information.includeAutomaticCharge.message;CORRIGIDO;Tem certeza de
 shared.modal.information.invoiceAmend.message;CORRIGIDO;"Tem certeza de que deseja retificar esta fatura?
 Ao retificar, será gerada uma fatura de pagamento e uma fatura corretiva.";
 shared.modal.information.invoiceReopen.message;CORRIGIDO;Tem certeza de que deseja reabrir esta fatura?;
-shared.modal.information.invoiceVoid.message;CORRIGIDO;Tem certeza de que deseja anular esta fatura?;
+shared.modal.information.invoiceVoid.message;CORRIGIDO;Tem certeza de que deseja cancelar esta fatura?;
+shared.modal.information.invoiceVoid.submitted;CORRIGIDO;Cancelar;
+shared.modal.information.invoiceVoid.title;CORRIGIDO;Cancelar fatura;
 shared.modal.information.invopopResend.message;CORRIGIDO;Tem certeza de que deseja reenviar esta fatura para a Invopop?;
 shared.modal.information.kioskDeviceMissing.message;CORRIGIDO;"Não foram detectados dispositivos de quiosque; verifique se estão online e tente novamente";
 shared.modal.information.limitDashboard.message;CORRIGIDO;Olá! Atingiu o número máximo de painéis. Contate o seu administrador para atualizar a sua conta;
@@ -2364,7 +2467,7 @@ shared.modal.information.removeAccountFolio.message;CORRIGIDO;Tem certeza de que
 shared.modal.information.removeAccountFolio.title;CORRIGIDO;Excluir folio;
 shared.modal.information.removeAllCache.message;CORRIGIDO;Tem certeza de que deseja excluir toda a cache?;
 shared.modal.information.removeCache.message;CORRIGIDO;Tem certeza de que deseja excluir a cache selecionada?;
-shared.modal.information.removeCutOff.message;CORRIGIDO;Vai excluir o Cut-Off aplicado. Depois de revertido o processo, poderá voltar a alterar a definição e o bloqueio de acomodações.;
+shared.modal.information.removeCutOff.message;CORRIGIDO;Vai excluir o Cut-Off aplicado. Depois de revertido o processo, poderá voltar a alterar a configuração e o bloqueio de acomodações.;
 shared.modal.information.removeCutOff.submitted;CORRIGIDO;Excluir;
 shared.modal.information.removeCutOff.title;CORRIGIDO;Excluir Cut-Off;
 shared.modal.information.removeDepartmentSubordinate.message;CORRIGIDO;Tem certeza de que deseja excluir este subordinado do departamento?;
@@ -2381,10 +2484,10 @@ shared.modal.information.reservationGroup.roomBlockWash.message;CORRIGIDO;Esta a
 shared.modal.information.reservationGroup.roomBlockWash.title;CORRIGIDO;Libertação do bloqueio de acomodações;
 shared.modal.information.reservationGroupRoomBlockModified.message;CORRIGIDO;"As datas de chegada ou de saída desta reserva de grupo foram modificadas. Verifique as seções ""Bloqueio de acomodações"" e ""Serviços"" para detectar eventuais alterações.";
 shared.modal.information.reservationGuaranteeCardDelete.message;CORRIGIDO;"Tem certeza de que deseja excluir esta garantia?
-Tenha em conta que a exclusão desta garantia será aplicada a todas as estadias.";
+Observe que a exclusão desta garantia será aplicada a todas as estadias.";
 shared.modal.information.reservationGuaranteeCardDelete.title;CORRIGIDO;Excluir cartão de garantia da reserva;
 shared.modal.information.reservationGuaranteeVoucherDelete.message;CORRIGIDO;"Tem certeza de que deseja excluir esta garantia?
-Tenha em conta que a exclusão desta garantia será aplicada a todas as estadias.";
+Observe que a exclusão desta garantia será aplicada a todas as estadias.";
 shared.modal.information.reservationGuaranteeVoucherDelete.title;CORRIGIDO;Excluir voucher de garantia da reserva;
 shared.modal.information.reservationRoomStayCancelQuote.message;CORRIGIDO;Tem certeza de que deseja cancelar este orçamento?;
 shared.modal.information.reservationRoomStayConfirmQuote.message;CORRIGIDO;Tem certeza de que deseja confirmar este orçamento?;
@@ -2411,7 +2514,7 @@ shared.modal.information.revertCancelReservationGroup.message;CORRIGIDO;"Reverte
 shared.modal.information.revertCancelReservationRoomStay.message;CORRIGIDO;"Reverter o cancelamento irá definir a acomodação selecionada como reservada. 
  Confirme para prosseguir ou cancele para descartar a operação.";
 shared.modal.information.revertNonTaxable.message;CORRIGIDO;Tem certeza de que deseja converter esta entidade em sujeita a imposto?;
-shared.modal.information.revokeUserPassword.message;CORRIGIDO;Está prestes a revogar a senha de {{count}} usuário(es) selecionado(s). Esta ação não pode ser anulada. Cada usuário afetado receberá um e-mail para definir uma nova senha.;
+shared.modal.information.revokeUserPassword.message;CORRIGIDO;Está prestes a revogar a senha de {{count}} usuário(es) selecionado(s). Esta ação não pode ser cancelada. Cada usuário afetado receberá um e-mail para definir uma nova senha.;
 shared.modal.information.revokeUserPassword.title;CORRIGIDO;Revogar senha;
 shared.modal.information.roomProtected.message;CORRIGIDO;"Esta acomodação está protegido 
  Verifique a observação de proteção e desproteja a acomodação antes de prosseguir.";
@@ -2427,7 +2530,7 @@ shared.modal.information.siteminderImportReservation.message;CORRIGIDO;"Tem cert
 
 Este processo irá pedir ao Channel Manager que volte a baixar todas as reservas, tanto atuais como futuras. Como resultado, todas as reservas geradas pelo Channel Manager serão transferidas novamente e as reservas existentes serão atualizadas em conformidade.
 
-Tenha em conta que este processo é irreversível.";
+Observe que este processo é irreversível.";
 shared.modal.information.skipImport.message;CORRIGIDO;Tem certeza de que deseja ignorar a importação? Ainda faltam dados por importar?;
 shared.modal.information.syncPassportScan.message;CORRIGIDO;Deseja recuperar do PassportScan as alterações sobre os hóspedes?;
 shared.modal.information.takeAction.message;CORRIGIDO;Tem certeza de que deseja executar esta ação?;
@@ -2482,11 +2585,11 @@ shared.modal.propertyBreakdown.oneTab;CORRIGIDO;Aba atual;
 shared.modal.protectEntity.protect;CORRIGIDO;Ative esta opção para impedir que os usuários façam alterações neste(a) {{entity}};
 shared.modal.protectEntity.unprotect;CORRIGIDO;Ative esta opção para impedir que os usuários façam alterações neste(a) {{entity}};
 shared.modal.publicAPIEventQueueStatusType.error;CORRIGIDO;"Encontramos alguns erros ao atualizar determinadas propriedades; consulte-os abaixo";
-shared.modal.publicApiPush.automapping;CORRIGIDO;Encontra abaixo todas as sugestões de mapeamento para cada acomodação e tarifa, para que não tenha de as criar individualmente. Tenha em conta que as sugestões podem ser removidas clicando no ícone à direita.;
+shared.modal.publicApiPush.automapping;CORRIGIDO;Encontra abaixo todas as sugestões de mapeamento para cada acomodação e tarifa, para que não tenha de as criar individualmente. Observe que as sugestões podem ser removidas clicando no ícone à direita.;
 shared.modal.publicApiPush.preautomapping;CORRIGIDO;Nesta seção pode mapear os códigos do Ulyses Suite para códigos externos. Se forem iguais, não precisa de executar este passo e pode avançar para o passo seguinte.;
 shared.modal.rebuildOrReorganize.error;CORRIGIDO;"Encontramos alguns erros ao atualizar determinadas propriedades; consulte-os abaixo";
 shared.modal.replicateEntity.error;CORRIGIDO;"Encontramos alguns erros ao atualizar determinadas propriedades; consulte-os abaixo";
-shared.modal.replicateEntity.hint;CORRIGIDO;Selecione as propriedades nas quais deseja replicar os dados deste(a) {{entity}}. Tenha em conta que, se já existir em alguma das propriedades selecionadas, será substituído(a);
+shared.modal.replicateEntity.hint;CORRIGIDO;Selecione as propriedades nas quais deseja replicar os dados deste(a) {{entity}}. Observe que, se já existir em alguma das propriedades selecionadas, será substituído(a);
 shared.modal.resendQueueErrors.message;CORRIGIDO;Selecione as opções com as quais deseja reenviar os erros dessas filas;
 shared.modal.reservationEventBulkUpdate.step0.info;CORRIGIDO;Selecione os eventos que deseja atualizar;
 shared.modal.reservationEventBulkUpdate.step1.info;CORRIGIDO;Selecione o tipo de dados do evento que deseja atualizar;
@@ -2525,7 +2628,9 @@ shared.modal.reservationRoomStayBulkUpdate.step2.removeWakeUpCall.info;CORRIGIDO
 shared.modal.revertActionReservation.messages.checkIn.ok;CORRIGIDO;Reverter o check-in removerá a conta associada a esta estadia e libertará o(a) {{productTypeName}}. Tem certeza de que deseja executar esta operação?;
 shared.modal.revertActionReservation.messages.checkOut.ok;CORRIGIDO;Reverter o check-out repõe a conta tal como estava antes do check-out e ocupará o(a) {{productTypeName}}. Tem certeza de que deseja executar esta ação?;
 shared.modal.revertCheckinBulk.error;CORRIGIDO;Encontramos alguns erros durante a reversão de alguns check-ins e não foi possível concluir o processo. Reveja os erros abaixo e aplique as alterações necessárias para concluir o processo de reversão;
+shared.modal.revertCheckinBulk.info;CORRIGIDO;Está prestes a reverter o check-in de um grupo de estadias. Observe que este processo pode demorar algum tempo. Será notificado dos erros caso o processo não possa ser concluído. Se tal acontecer, recomendamos que aplique as alterações e reinicie o processo de reversão;
 shared.modal.revertCheckoutBulk.error;CORRIGIDO;Encontramos alguns erros durante a reversão de alguns check-outs e não foi possível concluir o processo. Reveja os erros abaixo e aplique as alterações necessárias para concluir o processo de reversão;
+shared.modal.revertCheckoutBulk.info;CORRIGIDO;Está prestes a reverter o check-out de um grupo de estadias. Observe que este processo pode demorar algum tempo. Será notificado dos erros caso o processo não possa ser concluído. Se tal acontecer, recomendamos que aplique as alterações e reinicie o processo de reversão;
 shared.modal.rooming.confirmExcel;CORRIGIDO;Verificar acomodações;
 shared.modal.rooming.downloadExcel.roomingListType3;CORRIGIDO;Transferir bloqueio de acomodações;
 shared.modal.rooming.downloadExcel.roomingListType4;CORRIGIDO;Transferir bloqueio de acomodações alargado;
@@ -2544,7 +2649,7 @@ shared.modal.sendCommunication.config.emailSMTPConfig;CORRIGIDO;Selecione se des
 shared.modal.sendCommunication.config.selectTemplate;CORRIGIDO;Selecione o modelo com o qual deseja enviar a comunicação. Se não selecionar nenhum, será enviada com o modelo padrão.;
 shared.modal.sendCommunication.config.sendFiles;CORRIGIDO;Adicione aqui os arquivos que deseja enviar ao cliente. Estes arquivos só serão enviados para este e-mail.;
 shared.modal.sendCommunication.config.titleSendFiles;CORRIGIDO;Enviar arquivos;
-shared.modal.siteminder.automapping;CORRIGIDO;Encontra abaixo todas as sugestões de mapeamento para cada acomodação e tarifa, para que não tenha de as criar individualmente. Tenha em conta que as sugestões podem ser removidas clicando no ícone à direita.;
+shared.modal.siteminder.automapping;CORRIGIDO;Encontra abaixo todas as sugestões de mapeamento para cada acomodação e tarifa, para que não tenha de as criar individualmente. Observe que as sugestões podem ser removidas clicando no ícone à direita.;
 shared.modal.siteminder.preautomapping;CORRIGIDO;Nesta seção pode mapear os códigos do Ulyses Suite para códigos externos. Se forem iguais, não precisa de executar este passo e pode avançar para o passo seguinte.;
 shared.modal.spaceLockBulk.error;CORRIGIDO;Encontramos alguns erros durante o processo em massa. Pode consultar o registro abaixo para aplicar as alterações necessárias e tentar novamente mais tarde.;
 shared.modal.splitReservationRoomStay.error;CORRIGIDO;Encontramos alguns erros durante a divisão de algumas estadias de reserva.;
@@ -2607,6 +2712,8 @@ shared.sectionPanel.files;CORRIGIDO;Arquivos;
 shared.sectionPanel.frontdesk;CORRIGIDO;Recepção;
 shared.sectionPanel.guestRegistration;CORRIGIDO;Registro de hóspedes;
 shared.sectionPanel.historyLog;CORRIGIDO;Registro de histórico;
+shared.sectionPanel.insurerSettings;CORRIGIDO;Configurações da seguradora;
+shared.sectionPanel.logo;CORRIGIDO;Logotipo;
 shared.sectionPanel.notAvailableConsolidated;CORRIGIDO;A seção atual não está disponível no Consolidado;
 shared.sectionPanel.planning;CORRIGIDO;Planejamento;
 shared.sectionPanel.propertyDefaultParameters;CORRIGIDO;Parâmetros padrão da propriedade;
@@ -2620,7 +2727,9 @@ shared.sectionPanel.roomBlockAndEvent;CORRIGIDO;Bloqueios de acomodações e eve
 shared.sectionPanel.roomDetails;CORRIGIDO;Detalhes da acomodação;
 shared.sectionPanel.roomFeatureType;CORRIGIDO;Tipo de característica da acomodação;
 shared.sectionPanel.roomMode;CORRIGIDO;Modo de  acomodação;
+shared.sectionPanel.securityControl;CORRIGIDO;Controle de segurança;
 shared.sectionPanel.selectOptionsToCopy;CORRIGIDO;Selecione as opções que deseja copiar;
+shared.sectionPanel.settings;CORRIGIDO;Configurações;
 shared.sectionPanel.syncInfoBetweenPropertyAndChain;CORRIGIDO;Sincronizar informação entre propriedade e rede;
 shared.sectionPanel.tokensByUser;CORRIGIDO;Tokens por usuário;
 shared.sectionPanel.userBreakdown;CORRIGIDO;Discriminação por usuário;
@@ -2629,8 +2738,8 @@ shared.switch.addCommissionTaxIncluded.message;CORRIGIDO;Ative esta opção se a
 shared.switch.addDiscountTaxIncluded.message;CORRIGIDO;Ative esta opção se a porcentagem de desconto for aplicada após o valor do imposto;
 shared.switch.additionalDeposit.message;CORRIGIDO;Ative a opção «Saldo total» se quiser solicitar o pagamento da totalidade do valor pendente. Caso contrário, pode configurar um valor específico ou uma porcentagem do preço total;
 shared.switch.afterCheckinEnable.message;CORRIGIDO;Ative esta opção se quiser permitir iniciar o processo através do PMS após efetuar um check-in;
-shared.switch.allotmentInventoryUpload.message;CORRIGIDO;Ative esta opção se quiser enviar o seu inventário de allotment (número de acomodações) para o channel manager através do PMS. Tenha em conta que terá de mapear todas as acomodações ativando esta opção em cada um deles.;
-shared.switch.allowAmend.message;CORRIGIDO;Ative esta opção para permitir retificar este tipo de fatura. Tenha em conta que retificar uma fatura anulará a fatura original e criará um novo folio para lançar/excluir encargos.;
+shared.switch.allotmentInventoryUpload.message;CORRIGIDO;Ative esta opção se quiser enviar o seu inventário de allotment (número de acomodações) para o channel manager através do PMS. Observe que terá de mapear todas as acomodações ativando esta opção em cada um deles.;
+shared.switch.allowAmend.message;CORRIGIDO;Ative esta opção para permitir retificar este tipo de fatura. Observe que retificar uma fatura cancelará a fatura original e criará um novo folio para lançar/excluir encargos.;
 shared.switch.allowAssignRoom.message;CORRIGIDO;Ative esta opção para permitir atribuir acomodação;
 shared.switch.allowAssignRoom.title;CORRIGIDO;Permitir atribuir acomodação;
 shared.switch.allowCheckoutPayment.message;CORRIGIDO;Ative esta opção para permitir que os usuários paguem os folios abertos associados à sua estadia;
@@ -2646,10 +2755,14 @@ shared.switch.allowOccupancyBreakdown.message;CORRIGIDO;Ative esta opção para 
 shared.switch.allowRefundAccountReceivablePaymentAfterCloseDay.message;CORRIGIDO;Ative esta opção para permitir o reembolso do pagamento de contas a receber após o fechamento do dia;
 shared.switch.allowRegisterGuest.message;CORRIGIDO;Ative esta opção para permitir que os seus clientes registrem os seus dados;
 shared.switch.allowRegisterGuest.title;CORRIGIDO;Registrar hóspede;
-shared.switch.allowReopen.message;CORRIGIDO;Ative esta opção para permitir reabrir este tipo de fatura. Tenha em conta que reabrir faturas repõe a fatura original como folio. Esta operação só pode ser efetuada durante o mesmo dia em que o folio original foi fechado. Esta ação só será possível em determinados destinos com faturamento eletrónica.;
+shared.switch.allowReopen.message;CORRIGIDO;Ative esta opção para permitir reabrir este tipo de fatura. Observe que reabrir faturas repõe a fatura original como folio. Esta operação só pode ser efetuada durante o mesmo dia em que o folio original foi fechado. Esta ação só será possível em determinados destinos com faturamento eletrônica.;
 shared.switch.allowRoomingList.message;CORRIGIDO;Ative esta opção para permitir que os usuários preencham a rooming list;
 shared.switch.allowThirdParty.message;CORRIGIDO;Ative esta opção se quiser compartilhar os dados pessoais deste cliente com outros fornecedores terceiros;
 shared.switch.allowViewAccount.message;CORRIGIDO;Ative esta opção para permitir que os usuários consultem o estado da sua conta;
+shared.switch.allowVoid.message;CORRIGIDO;Ative para permitir cancelar este tipo de fatura. Observe que cancelar uma fatura criará uma nova fatura de valor negativo.;
+shared.switch.allowVoid.title;CORRIGIDO;Cancelar;
+shared.switch.allowVoidInvoiceWithDeposit.message;CORRIGIDO;Ative para permitir cancelar esta fatura com depósito.;
+shared.switch.allowVoidInvoiceWithDeposit.title;CORRIGIDO;Cancelar com depósito;
 shared.switch.alwaysConsiderCleanAtCheckout.message;CORRIGIDO;Ative esta opção para indicar que este tipo de acomodação deve ser sempre considerado «Limpo» após um fechamento diário ou um check-out;
 shared.switch.amountIncluded.message;CORRIGIDO;Ative para incluir o valor deste produto no valor definido em cada acomodação no aba Disponibilidade;
 shared.switch.amountIncluded.title;CORRIGIDO;Valor incluído;
@@ -2674,7 +2787,7 @@ shared.switch.beforeCheckinEnable.message;CORRIGIDO;Ative esta opção se quiser
 shared.switch.boardAmountIncluded.message;CORRIGIDO;Ative esta opção para incluir o valor dos regimes selecionados acima no valor de acomodação informado no aba Disponibilidade;
 shared.switch.boardAmountIncluded.title;CORRIGIDO;Valor incluído na acomodação;
 shared.switch.boardPriceUpload.message;CORRIGIDO;Ative esta opção se quiser forçar os preços de regime do Ulyses PMS para o channel manager. Deve mapear todos os regimes ativando esta opção em cada um deles;
-shared.switch.boardRestrictionUpload.message;CORRIGIDO;Ative esta opção se quiser forçar a sua disponibilidade (encerramentos, estadia mínima, estadia máxima, fechado à chegada e fechado à saída) para o channel manager a partir do Ulyses PMS. Tenha em conta que deve mapear os regimes ativando esta opção em cada um deles.;
+shared.switch.boardRestrictionUpload.message;CORRIGIDO;Ative esta opção se quiser forçar a sua disponibilidade (encerramentos, estadia mínima, estadia máxima, fechado à chegada e fechado à saída) para o channel manager a partir do Ulyses PMS. Observe que deve mapear os regimes ativando esta opção em cada um deles.;
 shared.switch.cardSeriesCode.message;CORRIGIDO;Ative esta opção se quiser solicitar o CVV/CVC nas garantias de cartão de crédito;
 shared.switch.chainItemShowInMenuCourse.message;CORRIGIDO;Ative esta opção para apresentar o item na configuração dos pratos dos menus de eventos;
 shared.switch.chainItemShowInProductService.message;CORRIGIDO;Ative esta opção para apresentar o item na configuração de produtos do tipo serviço;
@@ -2728,7 +2841,7 @@ shared.switch.generateRoomingListByBlock.message;CORRIGIDO;Ative esta opção se
 shared.switch.generateSeparateFiles.message;CORRIGIDO;Ative esta opção para gerar dois arquivos separados (vendas e pagamentos) compactados num arquivo ZIP. Caso contrário, será gerado um único arquivo.;
 shared.switch.generateSeparateFiles.title;CORRIGIDO;Gerar arquivos separados;
 shared.switch.googleGmail.message;CORRIGIDO;"Ative esta opção se quiser utilizar o Google Gmail.
-Importante: se ativar ou desativar esta definição, deve rever a configuração da conta.";
+Importante: se ativar ou desativar esta configuração, deve rever a configuração da conta.";
 shared.switch.groupBoardInAccommodation.message;CORRIGIDO;Ative esta opção para agrupar automaticamente este regime em todos os folios com os respetivos encargos de acomodação;
 shared.switch.groupBoardInAccommodation.title;CORRIGIDO;Agrupar automaticamente com a acomodação;
 shared.switch.hasCopyNameDescription.message;CORRIGIDO;Deseja copiar o nome e a descrição em todos os hotéis que utilizam esta entidade?;
@@ -2736,7 +2849,8 @@ shared.switch.includeFeeBalance.message;CORRIGIDO;Ative esta opção para inclui
 shared.switch.includeFeeInTotalAmount.message;CORRIGIDO;Ative esta opção se quiser incluir a taxa no valor total;
 shared.switch.includeFeeInTotalAmount.title;CORRIGIDO;Incluir taxa no valor total;
 shared.switch.includedFeeSuggestedDeposit.message;CORRIGIDO;Ative esta opção para incluir o valor da taxa no cálculo do depósito sugerido;
-shared.switch.inventoryUpload.message;CORRIGIDO;Ative esta opção se quiser enviar o seu inventário (número de acomodações) para o channel manager através do PMS. Tenha em conta que terá de mapear todas as acomodações ativando esta opção em cada um deles.;
+shared.switch.insurerSettingsIntegrationTransmission.message;CORRIGIDO;Ative esta opção para transmitir as configurações deste seguro de cancelamento a uma seguradora através de uma integração;
+shared.switch.inventoryUpload.message;CORRIGIDO;Ative esta opção se quiser enviar o seu inventário (número de acomodações) para o channel manager através do PMS. Observe que terá de mapear todas as acomodações ativando esta opção em cada um deles.;
 shared.switch.inventoryUploadModal.message;CORRIGIDO;Ative esta opção se quiser enviar o seu inventário (número de acomodações) para o channel manager através do PMS.;
 shared.switch.licensePlate.message;CORRIGIDO;Ative esta opção se gerenciar o sistema de registro de veículos com OneCard.;
 shared.switch.limitByProperty.message;CORRIGIDO;Ative esta opção se quiser limitar o crédito às propriedades selecionadas.;
@@ -2757,9 +2871,9 @@ shared.switch.onlyArchive.message;CORRIGIDO;Ative esta opção se quiser que o B
 shared.switch.orphanRemoval.message;CORRIGIDO;Ative esta opção caso deseje remover os elementos que não são utilizados em nenhuma propriedade.;
 shared.switch.overwriteBreakdown.message;CORRIGIDO;Ative esta opção para permitir que os usuários informem discriminações de F&B;
 shared.switch.policyUpload.message;CORRIGIDO;Ative esta opção se quiser enviar as suas políticas para o channel manager através do PMS. Certifique-se de que o seu channel manager permite o envio desta informação.;
-shared.switch.priceUpload.message;CORRIGIDO;Ative esta opção se quiser enviar os seus preços do channel manager para o PMS. Tenha em conta que terá de mapear todas as tarifas em cada acomodação ativando esta opção em cada um deles.;
+shared.switch.priceUpload.message;CORRIGIDO;Ative esta opção se quiser enviar os seus preços do channel manager para o PMS. Observe que terá de mapear todas as tarifas em cada acomodação ativando esta opção em cada um deles.;
 shared.switch.priceUploadModal.message;CORRIGIDO;Ative esta opção se quiser enviar os seus preços para o channel manager através do PMS. Certifique-se de que o seu channel manager permite o envio desta informação.;
-shared.switch.productBoardPriceIncluded.message;CORRIGIDO;Ative esta opção se quiser incluir um regime neste controlo. Nesse caso, indique o regime e se este está incluído no preço original.;
+shared.switch.productBoardPriceIncluded.message;CORRIGIDO;Ative esta opção se quiser incluir um regime neste controle. Nesse caso, indique o regime e se este está incluído no preço original.;
 shared.switch.productionSepteoBill.message;CORRIGIDO;Ative esta opção para que o Septeo Bill funcione em modo de produção e indique uma data se quiser agendá-lo (entretanto, utilizará o ambiente de teste);
 shared.switch.profileMappingRefundDeposit.message;CORRIGIDO;Ative esta opção se quiser reembolsar o depósito automaticamente;
 shared.switch.propertyAllowMiDNI.message;CORRIGIDO;Ative esta opção se quiser permitir que o hóspede utilize a câmara do celular para digitalizar documentos MiDNI;
@@ -2788,7 +2902,7 @@ shared.switch.propertyIntegrationISTACSendAvailableRoom.message;CORRIGIDO;Se ati
 shared.switch.propertyIntegrationISTACSendAvailableRoom.title;CORRIGIDO;Enviar acomodações disponíveis;
 shared.switch.propertyIntegrationInfrasysAllowAddPayment.message;CORRIGIDO;Ative esta opção se quiser adicionar o pagamento recebido da Infrasys;
 shared.switch.propertyIntegrationPBXDefaultValue.message;CORRIGIDO;Indique o valor padrão necessário para lançar o produto no folio;
-shared.switch.propertyIntegrationPBXSendRequest.message;CORRIGIDO;Ative esta opção se quiser notificar alterações (check-in, check-out, pré-atribuição ou desatribuição, bloqueio ou desbloqueio) nas acomodações. Tenha em conta que pode acompanhar as alterações das acomodações no aba da fila.;
+shared.switch.propertyIntegrationPBXSendRequest.message;CORRIGIDO;Ative esta opção se quiser notificar alterações (check-in, check-out, pré-atribuição ou desatribuição, bloqueio ou desbloqueio) nas acomodações. Observe que pode acompanhar as alterações das acomodações no aba da fila.;
 shared.switch.propertyIntegrationSTRCurrentDailyStatistics.message;CORRIGIDO;Ative esta opção se quiser enviar as estatísticas atuais para a STR;
 shared.switch.propertyIntegrationSTRPastDailyStatistics.message;CORRIGIDO;Ative esta opção se quiser enviar as estatísticas passadas para a STR;
 shared.switch.propertyPreferenceAccountReceivableTransactionSendScheduled.message;CORRIGIDO;Ative esta opção se quiser que as transações de contas a receber sejam enviadas automaticamente;
@@ -2808,10 +2922,13 @@ shared.switch.removeFromInventoryBACKUP.title;CORRIGIDO;Deduz das acomodações 
 shared.switch.requestRegistrationSignature.message;CORRIGIDO;Ative esta opção para solicitar aos seus hóspedes que assinem a ficha de registro;
 shared.switch.requestRegistrationSignature.title;CORRIGIDO;Assinatura do registro;
 shared.switch.requiredFieldReservationGroupCheckin.title;CORRIGIDO;Coleta de dados de grupos ;
-shared.switch.reservationRoomStayUpload.message;CORRIGIDO;Ative esta opção se quiser enviar as suas reservas para o channel manager através do PMS. Tenha em conta que terá de mapear todas as acomodações ativando esta opção em cada um deles.;
+shared.switch.reservationRetrieve.message;CORRIGIDO;"Ative esta opção para enviar reservas ao seu fornecedor. Observe que os dados recolhidos das reservas serão utilizados como fonte primária de informação para todos eles. Tenha também presente que nem todos os detalhes diários da reserva podem ser suportados, pelo que poderá encontrar algumas diferenças entre os dados apresentados no Ulyses PMS e no fornecedor.
+Esta opção será desativada automaticamente em caso de erros de entrega contínuos.";
+shared.switch.reservationRoomStayUpload.message;CORRIGIDO;Ative esta opção se quiser enviar as suas reservas para o channel manager através do PMS. Observe que terá de mapear todas as acomodações ativando esta opção em cada um deles.;
 shared.switch.reservationUpload.message;CORRIGIDO;Ative esta opção se quiser obter reservas, modificações e cancelamentos do channel manager. Certifique-se de que as acomodações e as tarifas estão corretamente mapeados.;
-shared.switch.restrictionUpload.message;CORRIGIDO;Ative esta opção se quiser enviar a sua disponibilidade (fechado, estadia mínima, estadia máxima, fechado à chegada e fechado à saída) para o channel manager através do PMS. Tenha em conta que terá de mapear todas as tarifas em cada acomodação ativando esta opção em cada um deles.;
+shared.switch.restrictionUpload.message;CORRIGIDO;Ative esta opção se quiser enviar a sua disponibilidade (fechado, estadia mínima, estadia máxima, fechado à chegada e fechado à saída) para o channel manager através do PMS. Observe que terá de mapear todas as tarifas em cada acomodação ativando esta opção em cada um deles.;
 shared.switch.restrictionUploadModal.message;CORRIGIDO;Ative esta opção se quiser enviar a sua disponibilidade (fechado, estadia mínima, estadia máxima, fechado à chegada e fechado à saída) para o channel manager através do PMS.;
+shared.switch.rollBusinessDate.description;CORRIGIDO;A data comercial coincide com a data atual ({{date}}). Recomendamos que não feche o dia, a menos que tenha absoluta certeza. Observe que, depois de fechar o dia, não é possível reverter a operação.;
 shared.switch.roomAvailabilityUpload.message;CORRIGIDO;Ative esta opção se quiser enviar as suas políticas para o channel manager através do PMS. Certifique-se de que o seu channel manager permite o envio desta informação.;
 shared.switch.roomAvailabilityUpload.title;CORRIGIDO;Envio de disponibilidade de acomodações;
 shared.switch.roomStaySeriesUpdateRate.title;CORRIGIDO;Atualizar valor;
@@ -2820,22 +2937,22 @@ shared.switch.selfCheckinEnable.message;CORRIGIDO;Ative esta opção se quiser p
 shared.switch.selfCheckoutEnable.message;CORRIGIDO;Ative esta opção se quiser permitir que o cliente efetue o check-out através do quiosque;
 shared.switch.sendByEmail.message;CORRIGIDO;Informe abaixo a conta SMTP e todos os endereços de e-mail para os quais deseja enviar a informação necessária para submissão diária;
 shared.switch.septeoPaymentsAsDefault.message;CORRIGIDO;Ative esta opção se quiser substituir o Datatrans pelo Septeo payments.;
-shared.switch.serviceInventoryUpload.message;CORRIGIDO;Ative esta opção se quiser enviar o seu inventário (número de serviços) para o channel manager através do PMS. Tenha em conta que terá de mapear todos os serviços ativando esta opção em cada um deles.;
-shared.switch.servicePriceUpload.message;CORRIGIDO;Ative esta opção se quiser enviar os preços dos seus serviços do channel manager para o PMS. Tenha em conta que terá de mapear todos os serviços em cada acomodação ativando esta opção em cada um deles.;
-shared.switch.serviceRestrictionUpload.message;CORRIGIDO;Ative esta opção se quiser enviar a sua disponibilidade (fechado, estadia mínima, estadia máxima, fechado à chegada e fechado à saída) para o channel manager através do PMS. Tenha em conta que terá de mapear todos os serviços ativando esta opção em cada um deles.;
+shared.switch.serviceInventoryUpload.message;CORRIGIDO;Ative esta opção se quiser enviar o seu inventário (número de serviços) para o channel manager através do PMS. Observe que terá de mapear todos os serviços ativando esta opção em cada um deles.;
+shared.switch.servicePriceUpload.message;CORRIGIDO;Ative esta opção se quiser enviar os preços dos seus serviços do channel manager para o PMS. Observe que terá de mapear todos os serviços em cada acomodação ativando esta opção em cada um deles.;
+shared.switch.serviceRestrictionUpload.message;CORRIGIDO;Ative esta opção se quiser enviar a sua disponibilidade (fechado, estadia mínima, estadia máxima, fechado à chegada e fechado à saída) para o channel manager através do PMS. Observe que terá de mapear todos os serviços ativando esta opção em cada um deles.;
 shared.switch.showUnavailableRoom.message;CORRIGIDO;"Mostrar na lista as acomodações indisponíveis, mesmo que não tenham disponibilidade.
 Estas acomodações aparecerão a cinzento e desativados.";
 shared.switch.showUnavailableRoom.title;CORRIGIDO;Mostrar acomodação indisponível;
 shared.switch.staffCheckinEnable.message;CORRIGIDO;Ative esta opção se quiser permitir que o pessoal efetue o check-in através do quiosque;
 shared.switch.staffCheckoutEnable.message;CORRIGIDO;Ative esta opção se quiser permitir que o pessoal efetue o check-out através do quiosque;
 shared.switch.staffConsumptionEnable.message;CORRIGIDO;Ative esta opção se quiser permitir que o pessoal registre consumos de serviços através do quiosque;
-shared.switch.storeHttpTrace.message;CORRIGIDO;Ative esta opção se quiser salvar os httpTraces da API pública. Tenha em conta que tem um impacto negativo no desempenho;
+shared.switch.storeHttpTrace.message;CORRIGIDO;Ative esta opção se quiser salvar os httpTraces da API pública. Observe que tem um impacto negativo no desempenho;
 shared.switch.storeHttpTrace.title;CORRIGIDO;Salvar http trace;
-shared.switch.storeLogLevel.message;CORRIGIDO;Ative esta opção se quiser salvar os registros do Ulyses Suite. Tenha em conta que tem um impacto negativo no desempenho;
+shared.switch.storeLogLevel.message;CORRIGIDO;Ative esta opção se quiser salvar os registros do Ulyses Suite. Observe que tem um impacto negativo no desempenho;
 shared.switch.storeLogLevel.title;CORRIGIDO;Salvar nível de registro;
 shared.switch.storeReservationSnapshot.message;CORRIGIDO;Ative esta opção se quiser salvar o snapshot da reserva;
 shared.switch.storeReservationSnapshot.title;CORRIGIDO;Salvar snapshot da reserva;
-shared.switch.sumAsAccommodationRevenue.message;CORRIGIDO;Ative esta opção para contabilizar as receitas geradas por este serviço como acomodação. Tenha em conta que isto afetará diretamente o ADR e o RevPAR da sua propriedade;
+shared.switch.sumAsAccommodationRevenue.message;CORRIGIDO;Ative esta opção para contabilizar as receitas geradas por este serviço como acomodação. Observe que isto afetará diretamente o ADR e o RevPAR da sua propriedade;
 shared.switch.sumAsAccommodationRevenue.title;CORRIGIDO;Somar receitas à acomodação;
 shared.switch.sumAsPhysicalRoom.message;CORRIGIDO;Ative esta opção para somar a acomodação como acomodação física;
 shared.switch.sumAsPhysicalRoom.title;CORRIGIDO;Somar como acomodação física;
@@ -2843,8 +2960,9 @@ shared.switch.taskDailyReportFormat.message;CORRIGIDO;Ative este parâmetro se q
 shared.switch.taxableAlternative.title;CORRIGIDO;Faturamento com impostos alternativos;
 shared.switch.transferUserData.message;CORRIGIDO;Ative esta opção se quiser transferir dados passados;
 shared.switch.updateByRequestDate.message;CORRIGIDO;Assinale esta caixa se quiser atualizar os preços com base na data de criação da reserva;
-shared.switch.updateFromPropertyToChain.message;CORRIGIDO;Ative esta opção para permitir que o Ulyses Suite atualize a configuração de produtos, tarifas, ofertas, promoções e allotments na configuração da rede à medida que são utilizados na configuração da propriedade. Tenha em conta que esta opção é acionada sempre que qualquer um destes (produtos, tarifas, ofertas e/ou promoções) seja utilizado em apenas 1 propriedade do grupo de propriedades;
+shared.switch.updateFromPropertyToChain.message;CORRIGIDO;Ative esta opção para permitir que o Ulyses Suite atualize a configuração de produtos, tarifas, ofertas, promoções e allotments na configuração da rede à medida que são utilizados na configuração da propriedade. Observe que esta opção é acionada sempre que qualquer um destes (produtos, tarifas, ofertas e/ou promoções) seja utilizado em apenas 1 propriedade do grupo de propriedades;
 shared.switch.validateDocumentNumber.message;CORRIGIDO;Ative esta opção para garantir que o Ulyses Suite não permite aos usuários fechar folios enquanto o documento de identificação não tiver sido validado.;
+shared.switch.validateDocumentNumber.title;CORRIGIDO;Controle do documento de identificação;
 shared.switch.vehicleManagement.message;CORRIGIDO;Ative esta opção para gerenciar veículos a partir do perfil do cliente. Poderá selecioná-los ao associar uma estadia.;
 shared.switch.walkingEnable.message;CORRIGIDO;Ative esta opção se quiser permitir o processo de walk-in através do quiosque;
 shared.tab.billing;CORRIGIDO;Faturamento;
@@ -2859,6 +2977,7 @@ shared.tab.roomSubTypes;CORRIGIDO;Subtipos de acomodação;
 shared.tab.roomType;CORRIGIDO;Tipo de acomodação;
 shared.tab.roomTypes;CORRIGIDO;Tipos de acomodação;
 shared.tab.rooms;CORRIGIDO;Acomodações;
+shared.tab.setting;CORRIGIDO;Configuração;
 shared.tab.user;CORRIGIDO;Usuários;
 shared.widget.activity.description;CORRIGIDO;Obtenha, graças a este widget, uma lista das atividades de hoje atribuídas ao seu usuário;
 shared.widget.beconversionfunnel.levels.availability.subtitle;CORRIGIDO;Consulte a disponibilidade, veja acomodações e tarifas;
@@ -2875,21 +2994,33 @@ shared.widget.gspconversioncheckoutfunnel.levels.checkoutbilling.subtitle;CORRIG
 shared.widget.gspconversioncheckoutfunnel.levels.checkoutbilling.title;CORRIGIDO;Faturamento;
 shared.widget.gspdailystatistics.labels.billing;CORRIGIDO;Faturamento;
 shared.widget.hktaskdsum.title;CORRIGIDO;Evolução das tarefas de acomodação;
+shared.widget.hq.noData;CORRIGIDO;"Não existe classificação social para a propriedade atual; talvez queira configurar as configurações deste widget.";
 shared.widget.mracksum.description;CORRIGIDO;Obtenha um resumo rápido do estado e da situação de todos os suas acomodações graças a este widget;
 shared.widget.mulforecast.title;CORRIGIDO;Previsão da rede;
+shared.widget.noSettings;CORRIGIDO;Não existem configurações para este widget;
+shared.widget.rbc.noData;CORRIGIDO;"Os dados não estão disponíveis; tente ajustar as configurações deste widget.";
 shared.widget.rebook.description;CORRIGIDO;Tenha acesso rápido ao livro de recepção e comece a comunicar facilmente com os seus colegas;
 shared.widget.rebook.title;CORRIGIDO;Livro de recepção;
 shared.widget.res.description;CORRIGIDO;Efetue o check-in de acomodações, acesse as contas das acomodações e inicie check-outs de acomodações a partir deste widget;
+shared.widget.resfil.noData;CORRIGIDO;"Os dados não estão disponíveis; tente ajustar as configurações deste widget.";
+shared.widget.rlc.noData;CORRIGIDO;"Os dados não estão disponíveis; tente ajustar as configurações deste widget.";
+shared.widget.rpc.noData;CORRIGIDO;"Os dados não estão disponíveis; tente ajustar as configurações deste widget.";
+shared.widget.social.noData;CORRIGIDO;"Não existe classificação social para a propriedade atual; talvez queira configurar as configurações deste widget.";
 ;CORRIGIDO;Integração padrão;
 ;CORRIGIDO;Por unidade de acomodação;
 ;CORRIGIDO;Vista de tarifas em abas;
 ;CORRIGIDO;Valor;
 ;CORRIGIDO;Faturamento central;
+;CORRIGIDO;Armênia;
+;CORRIGIDO;Estônia;
 ;CORRIGIDO;Letônia;
+;CORRIGIDO;Polônia;
 ;CORRIGIDO;Romênia;
 ;CORRIGIDO;Iêmen;
 ;CORRIGIDO;Zimbábue;
+;CORRIGIDO;Fatura cancelada;
 ;CORRIGIDO;Data relativa à data de saída;
+;CORRIGIDO;Fatura cancelada;
 ;CORRIGIDO;Intervalo de datas por data de saída;
 ;CORRIGIDO;Saídas sem check-out;
 ;CORRIGIDO;Tarefas diárias do planejamento de housekeeping;
@@ -2904,6 +3035,7 @@ shared.widget.res.description;CORRIGIDO;Efetue o check-in de acomodações, aces
 ;CORRIGIDO;Cancelado pelo usuário;
 ;CORRIGIDO;Transação autorizada para cancelamentos;
 ;CORRIGIDO;Comerciante não registrado no FUC;
+;CORRIGIDO;O cartão falha no dígito de controle;
 ;CORRIGIDO;Pagamento cancelado a pedido do usuário;
 ;CORRIGIDO;Utilizado quando se retira dinheiro da caixa registradora.;
 ;CORRIGIDO;Utilizado para imprimir recibos não fiscais ou documentos sem linhas de itens.;
@@ -2914,7 +3046,16 @@ shared.widget.res.description;CORRIGIDO;Efetue o check-in de acomodações, aces
 ;CORRIGIDO;Fechamento diário da caixa registradora.;
 ;CORRIGIDO;Fechamento do dia;
 ;CORRIGIDO;Faturar para;
+;CORRIGIDO;Cancelar;
+;CORRIGIDO;Cancelado por;
 ;CORRIGIDO;Agrupar por acomodação, mês e produto;
+;CORRIGIDO;Fatura de exportação eletrônica;
+;CORRIGIDO;Nota de crédito de exportação eletrônica;
+;CORRIGIDO;Fatura eletrônica;
+;CORRIGIDO;Fatura isenta eletrônica;
+;CORRIGIDO;Boleta eletrônica;
+;CORRIGIDO;Boleta isenta eletrônica;
+;CORRIGIDO;Nota de crédito eletrônica;
 ;CORRIGIDO;Item de conjunto;
 ;CORRIGIDO;Item de escolha;
 ;CORRIGIDO;Item único;
@@ -2923,6 +3064,7 @@ shared.widget.res.description;CORRIGIDO;Efetue o check-in de acomodações, aces
 ;CORRIGIDO;Recepção;
 ;CORRIGIDO;Configuração geral da rede do motor de reservas;
 ;CORRIGIDO;Integração da rede;
+;CORRIGIDO;Cancelar fatura;
 ;CORRIGIDO;Contato do perfil;
 ;CORRIGIDO;Allotment da rede;
 ;CORRIGIDO;Oferta da rede;
@@ -2944,6 +3086,7 @@ shared.widget.res.description;CORRIGIDO;Efetue o check-in de acomodações, aces
 ;CORRIGIDO;Configuração geral da rede;
 ;CORRIGIDO;Configuração da rede: produtos;
 ;CORRIGIDO;Configuração da rede: reservas;
+;CORRIGIDO;Cancelar fatura;
 ;CORRIGIDO;Planejamento do estabelecimento;
 ;CORRIGIDO;Contato do perfil;
 ;CORRIGIDO;Configuração da rede: email;
@@ -2964,6 +3107,7 @@ shared.widget.res.description;CORRIGIDO;Efetue o check-in de acomodações, aces
 ;CORRIGIDO;Faturamento;
 ;CORRIGIDO;Orçamento de faturamento;
 ;CORRIGIDO;Faturamento: atualizar pagamento da fatura;
+;CORRIGIDO;Cancelar fatura;
 ;CORRIGIDO;Fechamento do dia do estabelecimento;
 ;CORRIGIDO;Planejamento do estabelecimento;
 ;CORRIGIDO;Livro de recepção do estabelecimento;
@@ -2986,6 +3130,7 @@ shared.widget.res.description;CORRIGIDO;Efetue o check-in de acomodações, aces
 ;CORRIGIDO;Faturamento: contas a receber;
 ;CORRIGIDO;Faturamento: pagamento de contas a receber;
 ;CORRIGIDO;Faturamento: transação de contas a receber;
+;CORRIGIDO;Cancelar fatura;
 ;CORRIGIDO;Contato do perfil;
 ;CORRIGIDO;Allotment da rede;
 ;CORRIGIDO;Oferta da rede;
@@ -3010,6 +3155,7 @@ shared.widget.res.description;CORRIGIDO;Efetue o check-in de acomodações, aces
 ;CORRIGIDO;Configuração geral da rede;
 ;CORRIGIDO;Configuração da rede: produtos;
 ;CORRIGIDO;Configuração da rede: reservas;
+;CORRIGIDO;Cancelar fatura;
 ;CORRIGIDO;Planejamento do estabelecimento;
 ;CORRIGIDO;Contato do perfil;
 ;CORRIGIDO;Configuração da rede: email;
@@ -3034,6 +3180,7 @@ shared.widget.res.description;CORRIGIDO;Efetue o check-in de acomodações, aces
 ;CORRIGIDO;Faturamento: transação de contas a receber;
 ;CORRIGIDO;Orçamento de faturamento;
 ;CORRIGIDO;Faturamento: atualizar pagamento da fatura;
+;CORRIGIDO;Cancelar fatura;
 ;CORRIGIDO;Fechamento do dia do estabelecimento;
 ;CORRIGIDO;Planejamento do estabelecimento;
 ;CORRIGIDO;Livro de recepção do estabelecimento;
@@ -3295,7 +3442,7 @@ shared.widget.res.description;CORRIGIDO;Efetue o check-in de acomodações, aces
 ;CORRIGIDO;Oferece uma análise mensal das tendências de reservas, fundamental para o planejamento a longo prazo e os ajustes sazonais.;
 ;CORRIGIDO;Resume os dados mensais de reservas por canal, útil para o planejamento estratégico.;
 ;CORRIGIDO;Oferece uma divisão mensal das reservas por tipo de quarto, ajudando no planejamento da capacidade.;
-;CORRIGIDO;Lista todas as transações de lançamentos por valores e datas, fundamental para o controlo e a exatidão financeira.;
+;CORRIGIDO;Lista todas as transações de lançamentos por valores e datas, fundamental para o controle e a exatidão financeira.;
 ;CORRIGIDO;Descreve as correções efetuadas nos registros financeiros.;
 ;CORRIGIDO;Divide a receita por produto, ajudando a avaliar a rentabilidade e a gerenciar o inventário.;
 ;CORRIGIDO;Lançamentos por data de produção com os valores sem impostos, impostos e com impostos agrupados por período;
@@ -3377,6 +3524,7 @@ shared.widget.res.description;CORRIGIDO;Efetue o check-in de acomodações, aces
 ;CORRIGIDO;Acompanhe o desempenho do segmento em cada tarifa num determinado período e compare-o com o mesmo período de um ano anterior ou com períodos personalizados. Isto ajudará a determinar se os objetivos estão sendo cumpridos ou se é necessário tomar outras ações;
 ;CORRIGIDO;Acompanhe o desempenho do segmento em cada origem num determinado período e compare-o com o mesmo período de um ano anterior ou com períodos personalizados. Isto ajudará a determinar se os objetivos estão sendo cumpridos ou se é necessário tomar outras ações;
 ;CORRIGIDO;Ordena os serviços por reservas de grupo para ajudar a gerenciar e adaptar os serviços para grupos.;
+;CORRIGIDO;Relatório detalhado do controle de consumo de serviços por hóspede, incluindo detalhes do quarto, regime e produto.;
 ;CORRIGIDO;Oferece uma previsão da procura de serviços para ajudar no planejamento e na gestão de recursos.;
 ;CORRIGIDO;Oferece uma previsão da procura de serviços para ajudar no planejamento e na gestão de recursos. Este relatório está agrupado por dia e zona;
 ;CORRIGIDO;Compreenda o desempenho de cada origem em cada canal. Isto ajudará a determinar os esforços da sua equipe e a identificar potenciais áreas de melhoria.;
@@ -3485,6 +3633,7 @@ shared.widget.res.description;CORRIGIDO;Efetue o check-in de acomodações, aces
 ;CORRIGIDO;Relatório de taxas por data de faturamento;
 ;CORRIGIDO;Relatório de taxas por unidade declarativa e data de faturamento;
 ;CORRIGIDO;Relatório de grupos de reservas por data de saída;
+;CORRIGIDO;Controle de consumo de serviços;
 ;CORRIGIDO;Itens de talões por data de criação;
 ;CORRIGIDO;Itens de talões por data de criação agrupados por item;
 ;CORRIGIDO;Itens de talões por data de fatura;
@@ -4266,8 +4415,11 @@ card.numRegistro;CORRIGIDO;Nº de registro;
 field.user;CORRIGIDO;USUÁRIO:;
 invoice.direction.label;CORRIGIDO;Endereço;
 invoice.to.label;CORRIGIDO;Faturar para;
+invoice.void.invoice;CORRIGIDO;FATURA CANCELADA;
+invoice.void.invoicenumber.source;CORRIGIDO;NÚMERO DA FATURA CANCELADA;
 invoice.void.reason;CORRIGIDO;MOTIVO DE CANCELAMENTO;
 invoice.void.reason.type;CORRIGIDO;TIPO DE MOTIVO DE CANCELAMENTO;
+invoice.void.serie.source;CORRIGIDO;SÉRIE CANCELADA;
 wellcome.title;CORRIGIDO;FICHA DE REGISTRO;
 after.checkin.contact;CORRIGIDO;Entretanto, não hesite em contatar-nos para qualquer questão;
 after.checkin.message;CORRIGIDO;Obrigado por ter feito o check-in em {0}. Desejamos-lhe uma estadia agradável conosco. Se deseja melhorar a sua estadia, recomendamos que visite o nosso portal de hóspedes. A partir daí, pode consultar o estado da sua conta, adicionar serviços extra e muito mais.;
@@ -4349,8 +4501,11 @@ card.numRegistro;CORRIGIDO;Nº de registro;
 field.user;CORRIGIDO;USUÁRIO:;
 invoice.direction.label;CORRIGIDO;Endereço;
 invoice.to.label;CORRIGIDO;Faturar para;
+invoice.void.invoice;CORRIGIDO;FATURA CANCELADA;
+invoice.void.invoicenumber.source;CORRIGIDO;NÚMERO DA FATURA CANCELADA;
 invoice.void.reason;CORRIGIDO;MOTIVO DE CANCELAMENTO;
 invoice.void.reason.type;CORRIGIDO;TIPO DE MOTIVO DE CANCELAMENTO;
+invoice.void.serie.source;CORRIGIDO;SÉRIE CANCELADA;
 wellcome.title;CORRIGIDO;FICHA DE REGISTRO;
 BEOReport.amount;CORRIGIDO;Valor;
 BEOReport.roomBlock.amount;CORRIGIDO;Valor;
@@ -4361,6 +4516,9 @@ card.numRegistro;CORRIGIDO;Nº de registro;
 field.user;CORRIGIDO;USUÁRIO:;
 invoice.direction.label;CORRIGIDO;Endereço;
 invoice.to.label;CORRIGIDO;Faturar para;
+invoice.void.invoice;CORRIGIDO;FATURA CANCELADA;
+invoice.void.invoicenumber.source;CORRIGIDO;NÚMERO DA FATURA CANCELADA;
 invoice.void.reason;CORRIGIDO;MOTIVO DE CANCELAMENTO;
 invoice.void.reason.type;CORRIGIDO;TIPO DE MOTIVO DE CANCELAMENTO;
+invoice.void.serie.source;CORRIGIDO;SÉRIE CANCELADA;
 wellcome.title;CORRIGIDO;FICHA DE REGISTRO;
