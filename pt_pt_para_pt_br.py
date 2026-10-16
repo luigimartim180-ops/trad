@@ -33,9 +33,15 @@ import pandas as pd
 
 XLSX_IN = "Revision_traducciones_PT.xlsx"
 OUT_COMPLETA = "revisao_pt_BR_completa.xlsx"
+OUT_FINAL = "revisao_pt_BR_FINAL.xlsx"
 OUT_DUVIDAS = "duvidas_PO.xlsx"
 OUT_CSV = "correcoes_backend.csv"
 OUT_DECISOES = "decisoes_revisao.jsonl"
+
+#: colunas com texto em pt-PT que NÃO podem aparecer no ficheiro de entrega
+_PT_SOURCE_COLUMNS = ("Traducción PT actual", "Texto origen (IA)")
+#: coluna única com o texto final, no ficheiro de entrega limpo
+COL_FINAL = "Texto final pt-BR"
 
 KEY_COLUMNS = ["Clave", "Clave técnica (no editar)", "Código"]
 PT_COLUMNS = ["Traducción PT actual", "Texto PT", "Traducción PT"]
@@ -233,13 +239,13 @@ CORRECOES: dict[str, str | None] = {
     "apps.integration.publicApiRest.refreshEventEntity.message": (
         "Aplique esta ação se deseja reenviar informações sobre a entidade de "
         "evento selecionada.\nTenha em conta que as alterações não serão "
-        "atualizadas de imediato; por isso, recomendamos que consulte a aba Fila "
+        "atualizadas imediatamente; por isso, recomendamos que consulte a aba Fila "
         "de eventos para acompanhar a evolução."
     ),
     "apps.integration.publicApiRest.removeEventEntity.message": (
         "Aplique esta ação se deseja excluir informações sobre a entidade de "
         "evento selecionada.\nTenha em conta que as alterações não serão "
-        "atualizadas de imediato; por isso, recomendamos que consulte a aba Fila "
+        "atualizadas imediatamente; por isso, recomendamos que consulte a aba Fila "
         "de eventos para acompanhar a evolução."
     ),
     # translations missing in the source workbook
@@ -415,6 +421,16 @@ SUBSTITUICOES: list[tuple[re.Pattern[str], str]] = [
     _rule("receção", "recepção"),
     _rule("detetada", "detectada"),
     _rule("detetado", "detectado"),
+    _rule("deteção", "detecção"),
+    _rule("conceção", "concepção"),
+    _rule("recetivo", "receptivo"),
+    _rule("recetiva", "receptiva"),
+    _rule("infetado", "infectado"),
+    _rule("infetada", "infectada"),
+    _rule("infeção", "infecção"),
+    _rule("infetar", "infectar"),
+    _rule("recetor", "receptor"),
+    _rule("recetores", "receptores"),
     _rule("montante", "valor"),
     _rule("faturação", "faturamento"),
     _rule("planeamento", "planejamento"),
@@ -889,6 +905,75 @@ def _extract_duvidas(
     )
 
 
+def _tem_residuo_pt_pt(texto: str) -> bool:
+    """True quando ``texto`` ainda contém pt-PT que não foi convertido.
+
+    Serve a porta do ficheiro de entrega: uma linha ``PENDENTE_PO`` que não
+    tenha tradução (ou que conserve pt-PT) não pode aparecer como texto final.
+    """
+    if not texto:
+        return False
+    if _PT_PT_MARKER.search(texto):
+        return True
+    # A rule whose replacement equals what it matched (e.g. transferir->
+    # transferir, kept on purpose) changes nothing and is not residue.
+    # Case is compared loosely: rules that only re-case a word (Transferir ->
+    # transferir) are not residue either.
+    return any(
+        pat.sub(r, texto).lower() != texto.lower() for pat, r in SUBSTITUICOES
+    )
+
+
+def _construir_final(processed: dict[str, pd.DataFrame]) -> dict[str, pd.DataFrame]:
+    """Constrói o ficheiro de entrega: uma única coluna de texto final em pt-BR.
+
+    Elimina as colunas de texto pt-PT (`Traducción PT actual`, `Texto origen
+    (IA)`) e as colunas de trabalho (`Estado`, `Corrección PT`, `Comentario`,
+    `Prioridade`), deixando o texto final consolidado numa única coluna
+    `Texto final pt-BR`. Assim não há forma de alguém entregar, por engano,
+    a coluna pt-PT antiga.
+
+    O texto final é: `Corrección PT` quando existe, senão `Traducción PT actual`
+    (linhas OK, já válidas em pt-BR). Fica vazio quando não há texto de origem
+    ou quando o texto conserva pt-PT que não foi possível converter — nesses
+    casos a decisão pertence ao PO (`duvidas_PO.xlsx`).
+    """
+    final: dict[str, pd.DataFrame] = {}
+    for sheet, df in processed.items():
+        out = df.copy()
+        pt_col = next((c for c in _PT_SOURCE_COLUMNS if c in out.columns), None)
+        if pt_col is None:
+            pt_col = next((c for c in PT_COLUMNS if c in out.columns), None)
+        pt_original = out[pt_col].map(_clean) if pt_col else ""
+        correcao = out[COL_CORRECAO].map(_clean) if COL_CORRECAO in out.columns else ""
+        estado = out[COL_ESTADO].map(_clean) if COL_ESTADO in out.columns else ""
+
+        def _final(p: str, c: str, e: str) -> str:
+            if c:
+                return c
+            if not p:
+                return ""
+            # Only unresolved rows are gated on pt-PT residue; OK/CORRIGIDO text
+            # is already validated and must never be blanked by a false positive.
+            if e == ESTADO_PENDENTE_PO and _tem_residuo_pt_pt(p):
+                return ""
+            return p
+
+        out[COL_FINAL] = [
+            _final(p, c, e) for p, c, e in zip(pt_original, correcao, estado)
+        ]
+        out = out.drop(
+            columns=[
+                c
+                for c in (*_PT_SOURCE_COLUMNS, *PT_COLUMNS,
+                          COL_ESTADO, COL_CORRECAO, COL_COMENTARIO, COL_PRIORIDADE)
+                if c in out.columns
+            ]
+        )
+        final[sheet] = out
+    return final
+
+
 def build(xlsx_in: str | None = None, out_dir: str | None = None) -> int:
     root = Path(__file__).resolve().parent
     entrada = Path(xlsx_in) if xlsx_in else root / XLSX_IN
@@ -917,6 +1002,11 @@ def build(xlsx_in: str | None = None, out_dir: str | None = None) -> int:
 
     with pd.ExcelWriter(destino / OUT_COMPLETA) as writer:
         for sheet, df in processed.items():
+            df.to_excel(writer, sheet_name=sheet[:31], index=False)
+
+    final = _construir_final(processed)
+    with pd.ExcelWriter(destino / OUT_FINAL) as writer:
+        for sheet, df in final.items():
             df.to_excel(writer, sheet_name=sheet[:31], index=False)
 
     duvidas = _extract_duvidas(xl, processed)

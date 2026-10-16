@@ -46,17 +46,28 @@ Saídas geradas na mesma pasta:
 
 | Ficheiro | Para que serve |
 | --- | --- |
-| `revisao_pt_BR_completa.xlsx` | Todas as abas, com Estado/Corrección PT/Comentario. **É o ficheiro final para revisão humana.** |
+| **`revisao_pt_BR_FINAL.xlsx`** | **O ficheiro que se entrega.** Uma única coluna de texto, `Texto final pt-BR`, sem a coluna pt-PT antiga. |
+| `revisao_pt_BR_completa.xlsx` | Todas as abas, com `Estado`/`Corrección PT`/`Comentario`. **Para revisão técnica**, não para entrega. |
 | `duvidas_PO.xlsx` | Dúvidas que só o Product Owner pode decidir (glossário, regime de refeição, etc.). |
 | `correcoes_backend.csv` | Lista `Clave;Estado;Corrección PT;Comentario` só das linhas `CORRIGIDO`, para aplicar no backend. |
 
+### Qual ficheiro entregar
+
+Entrega **`revisao_pt_BR_FINAL.xlsx`**. Ele já não tem a coluna
+`Traducción PT actual` (a antiga, em pt-PT): o texto final está todo numa única
+coluna **`Texto final pt-BR`**. Assim não há forma de se entregar, por engano,
+o pt-PT antigo. As linhas sem tradução ou com questão de glossário em aberto
+ficam com a célula **vazia** e constam em `duvidas_PO.xlsx`.
+
+Os três (`revisao_pt_BR_completa.xlsx`, `correcoes_backend.csv`, `duvidas_PO.xlsx`)
+continuam a ser gerados, para auditoria e para o backend.
+
 ### Onde baixar
 
-Os três ficheiros ficam na raiz do repositório/projeto, na mesma pasta do
+Os ficheiros ficam na raiz do repositório/projeto, na mesma pasta do
 `pt_pt_para_pt_br.py`. No GitHub, abre o repositório
 [`luigimartim180-ops/trad`](https://github.com/luigimartim180-ops/trad), entra
-no branch `feat/pt-br-conversao` (ou `main` depois do merge) e descarrega cada
-ficheiro com o botão **Download raw file**.
+no branch `main` e descarrega cada ficheiro com o botão **Download raw file**.
 
 ---
 
