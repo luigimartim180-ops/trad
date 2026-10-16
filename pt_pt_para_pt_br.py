@@ -150,23 +150,11 @@ NOT_OK_IGUAL_ES_EN = {
 TRADUCOES_EM_FALTA: list[str] = []
 
 #: Keys whose translation is under discussion with the PO (never converted).
-#: Grouped by the four open questions in ``glossario_pt_BR.md`` §3.
-DUVIDAS_GRUPOS: dict[str, list[str]] = {
-    "D1 pensão/regime": ["PropertyClassType t WHERE t.Code = '9'"],
-    "D2 allotment": ["shared.forecast.nonDeductedAllotment"],
-    "D3 OnHold/OutOfOrder/OutOfService": [
-        "apps.chainSpaceLockType.radio.onHold",
-        "apps.chainSpaceLockType.radio.outOfOrder",
-        "apps.chainSpaceLockType.radio.outOfService",
-    ],
-    "D4 aiAssistant hotel/property": ["apps.aiAssistant.label.hotel"],
-}
+#: Every question was closed by the PO sign-off (see ``CORRECOES_PO``), so the
+#: maps below stay empty; they are kept as hooks for future rounds.
+DUVIDAS_GRUPOS: dict[str, list[str]] = {}
 
-DUVIDAS_KEYS = [
-    "core.label.billing",
-    "core.label.chain",
-    "shared.forecast.nonDeductedAllotment",
-]
+DUVIDAS_KEYS: list[str] = []
 
 #: Surgical, key-scoped overrides that bypass the generic rules. ``None``
 #: marks a key that must never be auto-converted (open PO question).
@@ -269,14 +257,138 @@ CORRECOES: dict[str, str | None] = {
     "shared.aggregateGrid.empty.chainProductTaxIncluded.noIncludedProductTax": (
         "Adicione os produtos que podem ser utilizados neste produto."
     ),
-    # open PO questions: never converted
-    "apps.profileCommissionTransaction.gridAction.offset": None,
-    "PropertyClassType t WHERE t.Code = '9'": None,
-    "apps.chainSpaceLockType.radio.onHold": None,
-    "apps.chainSpaceLockType.radio.outOfOrder": None,
-    "apps.chainSpaceLockType.radio.outOfService": None,
-    "apps.aiAssistant.label.hotel": None,
 }
+
+#: PO sign-off (2026-10): every previously open question is now a binding
+#: glossary decision, so the ``None`` markers above are superseded here. These
+#: entries also close rows that the source flags as "Sin traducción PT" /
+#: "Igual a ES/EN": an explicit override is the decision and wins over the
+#: warning.
+CORRECOES_PO: dict[str, str] = {
+    # A. glossary decisions
+    "apps.aiAssistant.label.hotel": "Propriedade",
+    "apps.profileCommissionTransaction.gridAction.offset": "Compensar",
+    "core.label.billing": "Faturamento",
+    "core.label.chain": "Rede",
+    "shared.forecast.nonDeductedAllotment": "Allotment não deduzido",
+    "apps.chainSpaceLockType.radio.onHold": (
+        "OnHold (Ative esta opção para bloquear a acomodação)"
+    ),
+    "apps.chainSpaceLockType.radio.outOfOrder": (
+        "OutOfOrder (Ative esta opção para permitir retirar a acomodação "
+        "do inventário)"
+    ),
+    "apps.chainSpaceLockType.radio.outOfService": (
+        "OutOfService (Ative esta opção para permitir retirar a acomodação "
+        "da disponibilidade)"
+    ),
+    "PropertyClassType t WHERE t.Code = '9'": "Pensão",
+    # B. translations missing in the source workbook
+    "apps.billing.folio.refund.paymentMethod": "Método de pagamento do reembolso",
+    "apps.import.importJob.relatedMap.accountReceivableStatementSendType": (
+        "Forma de envio do extrato de contas a receber"
+    ),
+    "apps.import.importJob.relatedMap.allotment": "Allotment",
+    "apps.import.importJob.relatedMap.cardStatusType": "Status do cartão",
+    "apps.import.importJob.relatedMap.chainContactCategory": "Categoria de contato",
+    "apps.import.importJob.relatedMap.chainLoyalty": (
+        "Fidelização - Programa de afiliação"
+    ),
+    "apps.import.importJob.relatedMap.chainProductGroup": "Grupo de produtos",
+    "apps.import.importJob.relatedMap.chainProductSubGroup": "Subgrupo de produtos",
+    "apps.import.importJob.relatedMap.chainVIPLevel": "Nível VIP",
+    "apps.import.importJob.relatedMap.communicationLocationType": "Tipo de contato",
+    "apps.import.importJob.relatedMap.depositStatusType": "Status do depósito",
+    "apps.import.importJob.relatedMap.emailAddressType": "Tipo de e-mail",
+    "apps.import.importJob.relatedMap.familyRelationship": "Parentesco",
+    "apps.import.importJob.relatedMap.genderType": "Gênero",
+    "apps.import.importJob.relatedMap.municipality": "Município",
+    "apps.import.importJob.relatedMap.phoneTechType": (
+        "Tipo de tecnologia telefônica"
+    ),
+    "apps.import.importJob.relatedMap.productDeposit": "Produto - depósito",
+    "apps.import.importJob.relatedMap.productPayment": "Produto - pagamento",
+    "apps.import.importJob.relatedMap.propertyRoomFeatureType": (
+        "Característica de acomodação"
+    ),
+    "apps.import.importJob.relatedMap.propertyRoomType": "Tipologia",
+    "apps.import.importJob.relatedMap.reservationPriceModelType": (
+        "Tipo de modelo de preços de reserva"
+    ),
+    "apps.import.importJob.relatedMap.reservationStatusType": (
+        "Tipo de status da estadia"
+    ),
+    "apps.import.importJob.relatedMap.spaceStatusType": "Tipo de status dos espaços",
+    "apps.import.importJob.relatedMap.stateProv": "Estado/província",
+    "apps.import.importJob.relatedMap.webSiteLocationType": (
+        "Tipo de localização do site"
+    ),
+    "apps.management.guestLedger.grid.header.totalFunctionRoomAmountAfterTax": (
+        "Salão de eventos"
+    ),
+    "apps.propertyCommunicationEmailTypeConfiguration.entity.reservationGroupContract.info": (
+        "Ative esta opção se você quiser que seus usuários possam enviar "
+        "comunicações de contratos de reservas de grupo aos seus clientes. "
+        "Se quiser personalizar a comunicação, acesse Modelos de e-mail na "
+        "Configuração da propriedade."
+    ),
+    "apps.propertyCommunicationEmailTypeConfiguration.entity.reservationGroupContract.title": (
+        "Contrato de reserva de grupo"
+    ),
+    "apps.reservationGroup.action.printDocument": "Imprimir documento",
+    "apps.reservationGroup.action.sendConfirmation": "Enviar confirmação",
+    "apps.reservationGroup.action.sendContract": "Enviar contrato",
+    "apps.reservationGroup.action.sendProposal": "Enviar proposta",
+    "core.label.billingInstruction": "Instruções de faturamento",
+    "core.object.entity.propertyCheckInAutomationScheduler": "Check-in automático",
+    "core.object.entity.reservationGroupContract": "Contrato de reserva de grupo",
+    "core.userMessage.server.ratediscountnotallowedforpricemodeltype.default": (
+        "Não é permitido aplicar desconto ao modelo de preços desta tarifa"
+    ),
+    "core.userMessage.server.rateoverwritenotallowedforpricemodeltype.default": (
+        "Não é permitido sobrescrever o preço no modelo de preços desta tarifa"
+    ),
+    "shared.aggregateGrid.empty.chainProductTaxIncluded.noIncludedProductTax": (
+        "Adicione os produtos que podem ser utilizados neste produto."
+    ),
+    "shared.aggregateGrid.empty.product.noProductTaxIncluded": (
+        "Adicione os impostos aplicáveis a este produto"
+    ),
+    "shared.aggregateGrid.empty.propertyKioskDevic ePropertyServiceConsumptionControl.noPropertyServiceConsumptionControl": (
+        "Adicione controles de serviços para este dispositivo; caso não "
+        "adicione nenhum, todos serão exibidos"
+    ),
+    "shared.assistant.propertyAutomatedCheckinScheduler.step0": "Resumo",
+    "shared.assistant.propertyAutomatedCheckinScheduler.step1": "Filtros",
+    "shared.assistant.propertyAutomatedCheckinScheduler.step2": "Ação",
+    "shared.assistant.propertyAutomatedCheckinScheduler.step3": "Revisão",
+    "shared.emailTemplate.section.holderBillToGroupContract": (
+        "Detalhe do titular e faturamento"
+    ),
+    "shared.emailTemplate.section.htmlReservationGroupContract": (
+        "Contrato de reserva de grupo HTML"
+    ),
+    "shared.emailTemplate.section.propertyBillingInformation": (
+        "Dados de faturamento da propriedade"
+    ),
+    "shared.emailTemplate.section.textReservationGroupContract": (
+        "Texto do contrato de reserva de grupo"
+    ),
+    "shared.grid.header.overwriteAmountAfterTax": "Sobrescrita",
+    # C. empty in the source workbook, closed by the PO (BR fiscal wording)
+    "shared.radioButton.propertyEmailSchedulerEventINVCAMD.message": (
+        "Fatura alterada"
+    ),
+    "shared.radioButton.propertyEmailSchedulerEventINVCISS.message": (
+        "Fatura emitida"
+    ),
+    "shared.radioButton.propertyEmailSchedulerEventINVCVOID.message": (
+        "Fatura anulada"
+    ),
+    "txt.space": "Mensagens e relatórios",
+}
+
+CORRECOES.update(CORRECOES_PO)
 
 #: Keys closed as OK by the reviewer: the term is already valid pt-BR and the
 #: "Igual a ES/EN" warning is a false positive.
@@ -684,9 +796,9 @@ SUBSTITUICOES: list[tuple[re.Pattern[str], str]] = [
     _rule("Polónia", "Polônia"),
     _rule("logótipo", "logotipo"),
     # 13. "anular" -> "cancelar": the blanket verb rule runs last, after the
-    # inflected forms and collocations it would otherwise mangle.
-    _rule("fatura anulada", "fatura cancelada"),
-    _rule("faturas anuladas", "faturas canceladas"),
+    # inflected forms and collocations it would otherwise mangle. The
+    # "fatura anulada(s)" collocations are NOT converted: the PO keeps the BR
+    # fiscal distinction "fatura anulada" (void) vs "fatura cancelada".
     _rule("anulado por", "cancelado por"),
     _rule("anulada por", "cancelada por"),
     _rule("anulados", "cancelados"),
@@ -882,6 +994,15 @@ def _key_value(row: pd.Series, key_col: str | None) -> str:
     return "" if pd.isna(value) else str(value).strip()
 
 
+#: Keys whose approved pt-BR text legitimately contains a substring that the
+#: generic rules would rewrite, so the automatic residue gate must skip them.
+#: ``propertyEmailSchedulerEventINVCVOID.message`` is "Fatura anulada": BR
+#: fiscal wording keeps "anulada" (void) distinct from "cancelada".
+FALSE_POSITIVOS_PT_PT: set[str] = {
+    "shared.radioButton.propertyEmailSchedulerEventINVCVOID.message",
+}
+
+
 def _resolve_estado(aviso: str, pt: str, converted: str) -> str:
     """Estado for a row whose pt-BR text is ``converted``.
 
@@ -1031,15 +1152,26 @@ def process_sheet(df: pd.DataFrame) -> pd.DataFrame:
             continue
 
         dec = DECISOES.get((clave, texto_pt))
-        if dec is not None:
+        if clave in CORRECOES_PO:
+            # binding PO decision: wins over both the source warning ("Sin
+            # traducción PT" / "Igual a ES/EN") and the review agents, so the
+            # row closes as CORRIGIDO.
+            converted = CORRECOES_PO[clave]
+            estado = (
+                ESTADO_OK
+                if converted == texto_pt
+                else ESTADO_CORRIGIDO
+            )
+        elif dec is not None:
             # validated by the review agents: accept their pt-BR verbatim
             converted = dec
+            estado = _resolve_estado(aviso, texto_pt, converted)
         elif clave in CORRECOES:
             converted = CORRECOES[clave]
+            estado = _resolve_estado(aviso, texto_pt, converted)
         else:
             converted = converter(texto_pt)
-
-        estado = _resolve_estado(aviso, texto_pt, converted)
+            estado = _resolve_estado(aviso, texto_pt, converted)
 
         if estado == ESTADO_OK:
             out.at[idx, COL_CORRECAO] = ""
@@ -1158,20 +1290,31 @@ def _construir_final(processed: dict[str, pd.DataFrame]) -> dict[str, pd.DataFra
         pt_original = out[pt_col].map(_clean) if pt_col else ""
         correcao = out[COL_CORRECAO].map(_clean) if COL_CORRECAO in out.columns else ""
         estado = out[COL_ESTADO].map(_clean) if COL_ESTADO in out.columns else ""
+        chave_col = next((c for c in KEY_COLUMNS if c in out.columns), None)
+        chave = (
+            out[chave_col].map(_clean)
+            if chave_col
+            else pd.Series([""] * len(out), index=out.index)
+        )
 
-        def _final(p: str, c: str, e: str) -> str:
+        def _final(p: str, c: str, e: str, k: str) -> str:
             if c:
                 return c
             if not p:
                 return ""
             # Only unresolved rows are gated on pt-PT residue; OK/CORRIGIDO text
             # is already validated and must never be blanked by a false positive.
-            if e == ESTADO_PENDENTE_PO and _tem_residuo_pt_pt(p):
+            if (
+                e == ESTADO_PENDENTE_PO
+                and k not in FALSE_POSITIVOS_PT_PT
+                and _tem_residuo_pt_pt(p)
+            ):
                 return ""
             return p
 
         out[COL_FINAL] = [
-            _final(p, c, e) for p, c, e in zip(pt_original, correcao, estado)
+            _final(p, c, e, k)
+            for p, c, e, k in zip(pt_original, correcao, estado, chave)
         ]
         out = out.drop(
             columns=[

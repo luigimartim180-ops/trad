@@ -44,3 +44,18 @@ saída**; as chaves internas do pipeline (e os testes que usam
 Branch `feat/pt-br-conversao`. O `GITHUB_TOKEN` do ambiente é read-only/inválido
 (401 Bad credentials) → push/PR exigem credenciais de escrita fornecidas pelo
 utilizador.
+
+## Decisões do PO (sign-off 2026-10)
+As 62 linhas que estavam em `PENDENTE_PO` foram fechadas e vivem em
+`CORRECOES_PO`. Regras de precedência em `process_sheet`:
+
+1. `CORRECOES_PO` (decisão do PO) — vence aviso da fonte e agentes.
+2. `DECISOES` (agentes) — `_resolve_estado` normal.
+3. `CORRECOES` — override cirúrgico.
+4. `converter()` — regras genéricas.
+
+`FALSE_POSITIVOS_PT_PT` isenta chaves cujo texto aprovado contém substring que
+as regras reescreveriam (`INVCVOID` = "Fatura anulada", distinto de
+"cancelada" em BR fiscal). Se acrescentares uma decisão dessas, adiciona-a lá,
+senão `_tem_residuo_pt_pt` esvazia a linha no ficheiro final.
+`DUVIDAS_KEYS`/`DUVIDAS_GRUPOS` estão vazios; `duvidas_PO.xlsx` sai sem linhas.

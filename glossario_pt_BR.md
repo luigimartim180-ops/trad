@@ -70,41 +70,64 @@ regras que faltavam. O resíduo pt-PT real encontrado era:
 `transferência`. Não acrescentar regras para estes.
 
 
-## 3. Dúvidas para o PO
+## 3. Dúvidas para o PO — FECHADAS
 
-Cada linha precisa de decisão. As chaves correspondentes ficam com
-`Estado=REVISAR` e `Corrección PT` vazia — **nunca convertidas automaticamente**.
-Estão listadas em `duvidas_PO.xlsx` (coluna `Grupo`).
+Todas as 62 linhas que estavam em `PENDENTE_PO` foram decididas pelo PO
+(sign-off 2026-10) e vivem em `CORRECOES_PO` (`pt_pt_para_pt_br.py`). Uma
+decisão de PO é vinculativa: vence o aviso da fonte ("Sin traducción PT" /
+"Igual a ES/EN") e as decisões dos agentes, e fecha a linha como `CORRIGIDO`.
+`duvidas_PO.xlsx` fica vazio; `DUVIDAS_KEYS`/`DUVIDAS_GRUPOS` ficam como hooks
+para rondas futuras.
 
-### Dúvida 1 — "pensão" (board / meal plan)
+### Decisões (resumo)
+
+| Tema | Decisão |
+| --- | --- |
+| `apps.aiAssistant.label.hotel` | **Propriedade** (segue o EN; sistema multi-property/CRS) |
+| `PropertyClassType` Code 9 | **Pensão** (jargão hoteleiro BR: pensão completa / meia pensão) |
+| `core.label.billing` | **Faturamento** |
+| `core.label.chain` | **Rede** |
+| `shared.forecast.nonDeductedAllotment` | **Allotment não deduzido** (mantém em B2B) |
+| `apps.profileCommissionTransaction.gridAction.offset` | **Compensar** |
+| OnHold / OutOfOrder / OutOfService | manter os tokens técnicos; `alojamento`→`acomodação` |
+| Wizard `propertyAutomatedCheckinScheduler.step0-3` | Resumo / Filtros / Ação / Revisão |
+| `INVCAMD` / `INVCISS` / `INVCVOID` | **Fatura alterada** / **Fatura emitida** / **Fatura anulada** |
+
+> `Fatura anulada` (VOID) mantém-se literal e distinto de "cancelada" (BR
+> fiscal). Como a regra genérica `anulada→cancelada` a reescreveria, a chave
+> está em `FALSE_POSITIVOS_PT_PT` para a porta automática de resíduo a ignorar.
+> As restantes 49 linhas (sem tradução na fonte) foram traduzidas de ES/EN e
+> estão também em `CORRECOES_PO`.
+
+### Decisão 1 (histórico) — "pensão" (board / meal plan) → **manter "Pensão"**
 Contexto: `apps.board.*`, `apps.rate.titleSection.boardAllowed`, `core.label.board*`, `PropertyClassType` Code 9.
 
 - O que está hoje: "pensão" (pt-PT). EN: board, full board, half board.
 - Problema: "pensão" em pt-BR é casa de hóspedes, não plano de refeição.
 - Opções: **(a)** "plano de refeição"; **(b)** manter "pensão" como jargão interno;
   **(c)** "pensão completa" / "meia pensão" (usado pelas cadeias internacionais em BR).
-- **Recomendação: (c)**; trocar "pensão" isolada por "plano de refeição".
+- **Decisão do PO: manter "Pensão"** (jargão hoteleiro BR).
 
-### Dúvida 2 — "allotment"
+### Decisão 2 (histórico) — "allotment" → **manter "allotment"**
 Contexto: `apps.allotment.*`, `core.label.allotment*`, `apps.chainAllotment.*`.
 
 - O que está hoje: "allotment" (anglicismo). EN: allotment.
 - Opções: **(a)** "cota" (Microsoft Language Portal); **(b)** manter "allotment".
-- **Recomendação: (b)** para B2B com operadores estrangeiros; (a) se a UI for para gestor júnior.
+- **Decisão do PO: (b) manter "allotment"** em B2B.
 
-### Dúvida 3 — OnHold / OutOfOrder / OutOfService
+### Decisão 3 (histórico) — OnHold / OutOfOrder / OutOfService → **manter tokens técnicos**
 Contexto: `apps.chainSpaceLockType.radio.*`.
 
 - O que está hoje: "OnHold (…)", "OutOfOrder (…)", "OutOfService (…)".
 - Opções: **(a)** traduzir ("Em espera", "Fora de ordem", "Fora de serviço");
   **(b)** manter como código.
-- **Recomendação: (a)** se aparecer na UI; (b) se for só em logs.
+- **Decisão do PO: (b) manter os tokens técnicos** (OnHold/OutOfOrder/OutOfService).
 
-### Dúvida 4 — `apps.aiAssistant.label.hotel`
+### Decisão 4 (histórico) — `apps.aiAssistant.label.hotel` → **"Propriedade"**
 Contexto: `apps.aiAssistant.label.hotel` = "Hotel" (ES) / "Property" (EN).
 
 - Opções: **(a)** "Hotel" (segue o ES); **(b)** "Propriedade" (segue o EN).
-- **Recomendação: (a)** se o público é hoteleiro; (b) se é multi-property/CRS.
+- **Decisão do PO: (b) "Propriedade"** (multi-property/CRS).
 
 ## 4. Correções cirúrgicas (fonte oficial BR)
 

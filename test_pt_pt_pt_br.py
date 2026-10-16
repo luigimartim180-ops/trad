@@ -147,15 +147,22 @@ class TestConverter(unittest.TestCase):
             conv.CORRECOES["apps.report.downloadExcel"], "Baixar Excel"
         )
 
-    def test_duvida_keys_never_converted(self) -> None:
-        for key in [
-            "apps.aiAssistant.label.hotel",
-            "apps.chainSpaceLockType.radio.onHold",
-            "apps.chainSpaceLockType.radio.outOfOrder",
-            "apps.chainSpaceLockType.radio.outOfService",
-            "PropertyClassType t WHERE t.Code = '9'",
-        ]:
-            self.assertIsNone(conv.CORRECOES[key])
+    def test_duvida_keys_closed_by_po(self) -> None:
+        # every former open question is now a binding PO decision
+        for key in conv.CORRECOES_PO:
+            self.assertIsInstance(conv.CORRECOES_PO[key], str)
+        self.assertEqual(conv.CORRECOES_PO["apps.aiAssistant.label.hotel"], "Propriedade")
+        self.assertEqual(
+            conv.CORRECOES_PO["PropertyClassType t WHERE t.Code = '9'"], "Pensão"
+        )
+        self.assertEqual(
+            conv.CORRECOES_PO[
+                "shared.radioButton.propertyEmailSchedulerEventINVCVOID.message"
+            ],
+            "Fatura anulada",
+        )
+        self.assertFalse(conv.DUVIDAS_KEYS)
+        self.assertFalse(conv.DUVIDAS_GRUPOS)
 
     def test_pensao_kept(self) -> None:
         self.assertEqual(conv.converter("Pensão"), "Pensão")
@@ -296,6 +303,13 @@ class TestRules(unittest.TestCase):
             "retificar uma fatura cancelará a fatura original",
         )
 
+    def test_void_invoice_override_kept(self) -> None:
+        # the PO keeps "Fatura anulada" (void) as the INVCVOID label, distinct
+        # from "cancelada"; the automatic residue gate must not blank it.
+        key = "shared.radioButton.propertyEmailSchedulerEventINVCVOID.message"
+        self.assertEqual(conv.CORRECOES_PO[key], "Fatura anulada")
+        self.assertIn(key, conv.FALSE_POSITIVOS_PT_PT)
+
     def test_country_names(self) -> None:
         self.assertEqual(conv.converter("Arménia"), "Armênia")
         self.assertEqual(conv.converter("Estónia"), "Estônia")
@@ -388,6 +402,15 @@ class TestPipeline(unittest.TestCase):
         for _, row in igual.iterrows():
             pt = conv._clean(row["Traducción PT actual"])
             clave = row["Clave"]
+            if clave in conv.CORRECOES_PO:
+                # binding PO decision: closes as CORRIGIDO (or OK if unchanged)
+                expected = (
+                    conv.ESTADO_OK
+                    if conv.CORRECOES_PO[clave] == pt
+                    else conv.ESTADO_CORRIGIDO
+                )
+                self.assertEqual(row[conv.COL_ESTADO], expected)
+                continue
             if (
                 not pt
                 or clave in conv.DUVIDAS_KEYS
@@ -641,6 +664,8 @@ class TestPipeline(unittest.TestCase):
                 if pd.isna(final) or not str(final).strip():
                     continue
                 key = str(row[key_col])
+                if key in conv.FALSE_POSITIVOS_PT_PT:
+                    continue
                 if str(final) != orig.get(key, ""):
                     self.assertFalse(
                         conv._tem_residuo_pt_pt(str(final)),
@@ -675,13 +700,16 @@ class TestPipeline(unittest.TestCase):
 
     def test_final_file_has_no_pt_pt_in_pending_rows(self) -> None:
         for name, df in pd.read_excel(ROOT / conv.OUT_FINAL, sheet_name=None).items():
+            key_col = "Clave" if "Clave" in df.columns else "Código"
             for _, row in df.iterrows():
                 final = row[conv.COL_FINAL]
                 if pd.isna(final):
                     continue
+                if str(row.get(key_col)) in conv.FALSE_POSITIVOS_PT_PT:
+                    continue
                 self.assertFalse(
                     conv._tem_residuo_pt_pt(str(final)),
-                    f"{name}/{row.get('Clave', row.get('Código'))} tem pt-PT",
+                    f"{name}/{row.get(key_col)} tem pt-PT",
                 )
 
     def test_cli_accepts_custom_output_dir(self) -> None:
