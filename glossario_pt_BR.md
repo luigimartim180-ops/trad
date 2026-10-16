@@ -89,6 +89,52 @@ Contexto: `apps.aiAssistant.label.hotel` = "Hotel" (ES) / "Property" (EN).
 | `card.hojaRegistro` | Folha de registo | Ficha de registro de hóspedes (FNRH) | FNRH — Polícia Federal/Embratur |
 | `core.button.settlement` | Liquidação | Cobranças automáticas | ES "Cargos automáticos" |
 | `invoice.direction.label` | Morada | Endereço | — |
+| `core.label.taxExcludedShort` | IVA excl. | Imposto excl. | IVA não existe no Brasil |
+| `core.label.taxIncludedShort` | IVA incl. | Imposto incl. | IVA não existe no Brasil |
+| `core.label.amountOtherBreakdownAfterTax` | Montante outros | Outros valores | idiomático |
+| `core.label.amountPaidOut` | Montante pago | Valor retirado | ES "cantidad retirada" |
+| `core.label.totalAmountEntered` | Valor total introduzido | Valor total informado | pt-PT "introduzido" |
+
+### Verbo `to download` -> `baixar`
+
+Correções por chave nos botões de download (`core.button.download`,
+`apps.report.downloadExcel`, `shared.switch.allowDownloadInvoice.title`, ...).
+Nunca aplicar a regra global: `transferir` também significa mover conta/folio.
+
+### 4.1 Regras de formas verbais / plurais
+
+| pt-PT | pt-BR |
+| --- | --- |
+| `pretende` / `pretender` / `pretenda` | `deseja` / `querer` / `deseje` |
+| `se pretender` | `se quiser` |
+| `de que pretende` | `de que deseja` |
+| `encontrámos`, `detetámos`, `enviámos` | `encontramos`, `detectamos`, `enviamos` |
+| `guardado(s)/guardada(s)` | `salvo(s)/salva(s)` |
+| `eliminado(s)/eliminada(s)` | `excluído(s)/excluída(s)` |
+| `introduzido/a`, `introduzir`, `introduza` | `informado/a`, `informar`, `informe` |
+| `anulação`, `anulações` | `cancelamento`, `cancelamentos` |
+| `eliminação` | `exclusão` |
+| `detetar`, `detetados` | `detectar`, `detectados` |
+| `carregada(s)` (upload) | `enviada(s)` |
+| `bebé(s)` | `bebê(s)` |
+| `cómodo(s)/cómoda(s)` | `cômodo(s)/cômoda(s)` |
+| `separador(es)` | `aba(s)` |
+| `todos os separadores` | `todas as abas` |
+
+### 4.2 Decisões P1 fechadas como OK
+
+Termos idênticos a ES/EN mas já válidos em pt-BR (falso positivo do aviso
+"Igual a ES/EN"). Ver `OK_MANUAL` em `pt_pt_para_pt_br.py`: Notas, Ofertas,
+Reembolso, Filtros, Destino, Total, ADR total, Mix, Menu, Método, IBAN, IATA,
+ICAL, Id, Ideas, ISTAT, INE, Consulta, In house, Incompleto, Manualmente,
+Ticket inicial/final, TPV, TPV PC, TVA, MCR Melia, Tema, Confirmar, Exportar,
+Agrupar, Importar, Reembolsar, Tipo de documento, "Picked up", etc.
+
+### 4.3 Traduções em falta preenchidas
+
+Chaves sem `Traducción PT actual` no ficheiro original
+(`propertyAutomatedCheckinScheduler.step0..3`, `relatedMap.*`,
+`propertyCheckInAutomationScheduler`, `noIncludedProductTax`).
 
 ## 5. Termos protegidos (whitelist)
 

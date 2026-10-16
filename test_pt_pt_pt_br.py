@@ -41,7 +41,7 @@ class TestConverter(unittest.TestCase):
     def test_tem_a_certeza(self) -> None:
         self.assertEqual(
             conv.converter("Tem a certeza de que pretende…?"),
-            "Tem certeza de que pretende…?",
+            "Tem certeza de que deseja…?",
         )
 
     def test_enviamos(self) -> None:
@@ -135,6 +135,34 @@ class TestConverter(unittest.TestCase):
     def test_allotment_still_kept(self) -> None:
         self.assertEqual(
             conv.converter("Allotment não deduzido"), "Allotment não deduzido"
+        )
+
+    def test_verb_forms_pt_pt_to_pt_br(self) -> None:
+        cases = {
+            "de que pretende prosseguir": "de que deseja prosseguir",
+            "opção se pretender tentar": "opção se quiser tentar",
+            "opção se pretende": "opção se deseja",
+            "Encontrámos alguns erros": "Encontramos alguns erros",
+            "detetámos": "detectamos",
+            "Reserva guardada": "Reserva salva",
+            "Mensagem eliminada": "Mensagem excluída",
+            "O código introduzido": "O código informado",
+            "Permitir bebé": "Permitir bebê",
+            "mais cómoda": "mais cômoda",
+            "Todos os separadores": "Todas as abas",
+        }
+        for pt, br in cases.items():
+            self.assertEqual(conv.converter(pt), br, pt)
+
+    def test_anulacao_and_eliminacao(self) -> None:
+        self.assertEqual(conv.converter("anulação"), "cancelamento")
+        self.assertEqual(conv.converter("anulações"), "cancelamentos")
+        self.assertEqual(conv.converter("eliminação"), "exclusão")
+
+    def test_detetar_and_carregada(self) -> None:
+        self.assertEqual(conv.converter("detetar"), "detectar")
+        self.assertEqual(
+            conv.converter("será carregada na seção"), "será enviada na seção"
         )
 
 
@@ -247,7 +275,7 @@ class TestPipeline(unittest.TestCase):
         self.assertFalse(igual.empty)
         for _, row in igual.iterrows():
             pt = str(row["Traducción PT actual"]).strip().lower()
-            if pt in conv.WHITELIST_IGUAL_ES_EN:
+            if pt in conv.WHITELIST_IGUAL_ES_EN or row["Clave"] in conv.OK_MANUAL:
                 self.assertEqual(row[conv.COL_ESTADO], "OK")
             else:
                 self.assertEqual(row[conv.COL_ESTADO], "REVISAR")
@@ -261,13 +289,79 @@ class TestPipeline(unittest.TestCase):
             estado = row[conv.COL_ESTADO]
             prio = row[conv.COL_PRIORIDADE]
             if estado == "OK":
-                self.assertEqual(prio, "")
+                self.assertIn(prio, {"", "Fechado"})
                 continue
             self.assertIn(prio, {
                 "P0 - dúvida PO",
                 "P1 - decisão manual",
                 "P2 - validar sugestão",
+                "Fechado",
             })
+
+    def test_ok_manual_closed_as_ok(self) -> None:
+        by_key = self.all_rows.groupby("Clave").first()
+        for key in ("core.label.total", "core.label.inHouse"):
+            self.assertEqual(by_key.loc[key, conv.COL_ESTADO], "OK", key)
+            self.assertEqual(_clean(by_key.loc[key, conv.COL_CORRECAO]), "", key)
+            self.assertEqual(by_key.loc[key, conv.COL_PRIORIDADE], "Fechado", key)
+
+    def test_reviewed_corrections_marked_fechado(self) -> None:
+        by_key = self.all_rows.groupby("Clave").first()
+        for key in (
+            "core.label.taxExcludedShort",
+            "shared.modal.information.anonymize.message",
+            "before.checkout.message.intro",
+        ):
+            self.assertEqual(by_key.loc[key, conv.COL_PRIORIDADE], "Fechado", key)
+        self.assertEqual(
+            by_key.loc["core.label.taxExcludedShort", conv.COL_CORRECAO],
+            "Imposto excl.",
+        )
+
+    def test_missing_translations_filled(self) -> None:
+        by_key = self.all_rows.groupby("Clave").first()
+        for key, expected in {
+            "shared.assistant.propertyAutomatedCheckinScheduler.step0": "Resumo",
+            "shared.assistant.propertyAutomatedCheckinScheduler.step2": "Ação",
+            "core.object.entity.propertyCheckInAutomationScheduler": (
+                "Check-in automático"
+            ),
+        }.items():
+            self.assertEqual(by_key.loc[key, conv.COL_CORRECAO], expected, key)
+
+    def test_anonymize_restores_es_question(self) -> None:
+        by_key = self.all_rows.groupby("Clave").first()
+        value = by_key.loc[
+            "shared.modal.information.anonymize.message", conv.COL_CORRECAO
+        ]
+        self.assertTrue(value.endswith("deseja continuar?"))
+
+    def test_budget_instructions_multiline_placeholders(self) -> None:
+        by_key = self.all_rows.groupby("Clave").first()
+        value = by_key.loc[
+            "apps.budget.importExcelModal.instructions", conv.COL_CORRECAO
+        ]
+        self.assertIn("acomodações", value)
+        self.assertIn("Salvar na tela principal", value)
+        self.assertIn("Baixe o modelo Excel", value)
+
+    def test_no_pt_pt_residue_in_suggestions(self) -> None:
+        residue = re.compile(
+            r"\b(pretend\w+|encontrámos|guardad\w+|eliminad\w+|separador\w*|bebé\w*"
+            r"|cómod\w+|detet\w+|morad\w+|cadeia\w*|faturação|receção|ecrã\w*"
+            r"|ficheiro\w*|palavra-passe\w*|montant\w+|planeament\w*|registo\w*"
+            r"|activ\w+|acç\w+|objectiv\w+|contacto\w*)\b",
+            re.IGNORECASE,
+        )
+        for _, row in self.all_rows.iterrows():
+            suggestion = _clean(row[conv.COL_CORRECAO])
+            if not suggestion:
+                continue
+            match = residue.search(suggestion)
+            self.assertIsNone(
+                match,
+                None if match is None else f"{row['Clave']}: resíduo {match.group(0)!r}",
+            )
 
     def test_duvida_rows_are_p0_and_empty(self) -> None:
         by_key = self.all_rows.groupby("Clave").first()

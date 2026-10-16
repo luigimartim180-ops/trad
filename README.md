@@ -9,7 +9,7 @@ Conversão automática do ficheiro de revisão de traduções `Revision_traducci
 | --- | --- |
 | `pt_pt_para_pt_br.py` | Pipeline principal (lê o xlsx, converte, escreve as saídas). |
 | `glossario_pt_BR.md` | Glossário oficial pt-BR (vinculativo) + dúvidas para o PO. |
-| `test_pt_pt_pt_br.py` | Testes unitários com casos reais do ficheiro (37 testes). |
+| `test_pt_pt_pt_br.py` | Testes unitários com casos reais do ficheiro (46 testes). |
 | `revisao_pt_BR_completa.xlsx` | Saída: todas as abas (Estado / Corrección PT / Comentario / Prioridade). |
 | `revisao_pt_BR_REVISAR.xlsx` | Saída: **só as linhas REVISAR**, para percorrer mais depressa. |
 | `duvidas_PO.xlsx` | Saída: dúvidas para o PO (coluna `Grupo`), nunca convertidas. |
@@ -20,7 +20,7 @@ Conversão automática do ficheiro de revisão de traduções `Revision_traducci
 ```bash
 pip install pandas openpyxl
 python3 pt_pt_para_pt_br.py            # gera as 4 saídas
-python3 -m unittest test_pt_pt_pt_br   # 37 testes
+python3 -m unittest test_pt_pt_pt_br   # 46 testes
 ```
 
 ## Prioridades (coluna `Prioridade`)
@@ -30,6 +30,7 @@ python3 -m unittest test_pt_pt_pt_br   # 37 testes
 | `P0 - dúvida PO` | Dúvida aberta (§3 do glossário) — nunca convertida. |
 | `P1 - decisão manual` | Sem sugestão automática (texto igual a ES/EN, sem tradução PT). |
 | `P2 - validar sugestão` | Conversão automática sugerida — só validar. |
+| `Fechado` | Linha revista e fechada pelo revisor (correção aplicada ou termo já válido). |
 
 ## Estrutura do ficheiro (detetada automaticamente)
 

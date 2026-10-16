@@ -132,6 +132,63 @@ CORRECOES: dict[str, str | None] = {
     ),
     # AO90 spelling -> Brazilian spelling
     "core.button.transferEntity": "Transferir {{entity}}",
+    # refined pt-BR wording (pt-PT residue or idiom fixes in the suggestion)
+    "core.label.amountOtherBreakdownAfterTax": "Outros valores",
+    "core.label.amountPaidOut": "Valor retirado",
+    "core.label.totalAmountEntered": "Valor total informado",
+    "core.label.taxExcludedShort": "Imposto excl.",
+    "core.label.taxIncludedShort": "Imposto incl.",
+    "apps.integration.accounting.trevenque.check": "Tem certeza de que deseja verificar?",
+    "apps.import.importJob.import.error": (
+        "Existem alguns registros que não puderam ser importados. "
+        "Utilize esta opção se quiser tentar novamente."
+    ),
+    "shared.modal.information.anonymize.message": (
+        "Este processo excluirá todos os dados pessoais deste cliente para "
+        "torná-los anônimos. Tem certeza de que deseja continuar?"
+    ),
+    # multiline messages with pt-PT residue
+    "apps.budget.importExcelModal.instructions": (
+        "Envie aqui a previsão atualizada (receita, PAX e número de acomodações). "
+        "Confirme abaixo para tornar as alterações visíveis. Tenha em conta que "
+        "as alterações não serão salvas até clicar em Salvar na tela principal."
+        "\n\nBaixe o modelo Excel caso ainda não o tenha feito."
+    ),
+    "before.checkout.message.intro": (
+        "Esperamos que tenha gostado da sua estadia em {0}. Para tornar a sua "
+        "partida mais cômoda, sem contato e sem passar pela recepção amanhã, "
+        "você já pode fazer o check-out online."
+    ),
+    "apps.login.section.passwordReset.descriptionSystem": (
+        "Por motivos de segurança, a senha do Ulyses Suite tem de ser atualizada "
+        "a cada 90 dias. Lembre-se de não reutilizar nenhuma das últimas 4 senhas "
+        "que utilizou para iniciar sessão no Ulyses Suite."
+    ),
+    "apps.integration.publicApiRest.refreshEventEntity.message": (
+        "Aplique esta ação se deseja reenviar informações sobre a entidade de "
+        "evento selecionada.\nTenha em conta que as alterações não serão "
+        "atualizadas de imediato; por isso, recomendamos que consulte a aba Fila "
+        "de eventos para acompanhar a evolução."
+    ),
+    "apps.integration.publicApiRest.removeEventEntity.message": (
+        "Aplique esta ação se deseja excluir informações sobre a entidade de "
+        "evento selecionada.\nTenha em conta que as alterações não serão "
+        "atualizadas de imediato; por isso, recomendamos que consulte a aba Fila "
+        "de eventos para acompanhar a evolução."
+    ),
+    # translations missing in the source workbook
+    "shared.assistant.propertyAutomatedCheckinScheduler.step0": "Resumo",
+    "shared.assistant.propertyAutomatedCheckinScheduler.step1": "Filtros",
+    "shared.assistant.propertyAutomatedCheckinScheduler.step2": "Ação",
+    "shared.assistant.propertyAutomatedCheckinScheduler.step3": "Revisão",
+    "core.object.entity.propertyCheckInAutomationScheduler": "Check-in automático",
+    "apps.import.importJob.relatedMap.chainProductSubGroup": "Subgrupo de produtos",
+    "apps.import.importJob.relatedMap.chainVIPLevel": "Nível VIP",
+    "apps.import.importJob.relatedMap.communicationLocationType": "Tipo de contato",
+    "apps.import.importJob.relatedMap.depositStatusType": "Status do depósito",
+    "shared.aggregateGrid.empty.chainProductTaxIncluded.noIncludedProductTax": (
+        "Adicione os produtos que podem ser utilizados neste produto."
+    ),
     # open PO questions: never converted
     "apps.profileCommissionTransaction.gridAction.offset": None,
     "PropertyClassType t WHERE t.Code = '9'": None,
@@ -139,6 +196,51 @@ CORRECOES: dict[str, str | None] = {
     "apps.chainSpaceLockType.radio.outOfOrder": None,
     "apps.chainSpaceLockType.radio.outOfService": None,
     "apps.aiAssistant.label.hotel": None,
+}
+
+#: Keys closed as OK by the reviewer: the term is already valid pt-BR and the
+#: "Igual a ES/EN" warning is a false positive.
+OK_MANUAL: set[str] = {
+    # core.label
+    "core.label.total",
+    "core.label.totalADR",
+    "core.label.totalPriceConsumed",
+    "core.label.tpv",
+    "core.label.tpvpc",
+    "core.label.tvaCode",
+    "core.label.manually",
+    "core.label.maximumTicketNumber",
+    "core.label.minimumTicketNumber",
+    "core.label.mix",
+    "core.label.menu",
+    "core.label.method",
+    "core.label.iata",
+    "core.label.iban",
+    "core.label.ical",
+    "core.label.id",
+    "core.label.ideas",
+    "core.label.iistat",
+    "core.label.ine",
+    "core.label.inquiry",
+    "core.label.inHouse",
+    "core.label.incomplete",
+    "core.label.mcrMelia",
+    # shared.sectionPanel / shared.assistant / shared.switch / apps
+    "shared.sectionPanel.notes",
+    "shared.sectionPanel.offer",
+    "shared.assistant.productTypeCancellationFee.step2",
+    "shared.assistant.propertyAutomatedCheckInScheduler.step1",
+    "shared.assistant.propertyPaymentScheduler.step1",
+    "shared.switch.amountIncluded.title",
+    "apps.cache.headers.lastStatus",
+    "apps.availability.footer.confirm",
+    "apps.billing.folio.action.export",
+    "apps.billing.folio.action.group",
+    "apps.billing.folio.action.import",
+    "apps.billing.folio.action.refund",
+    "apps.integration.retailForce.mapping.button.documentTypeMapping",
+    "core.object.entity.propertyBENotice",
+    "core.object.entity.propertyBETheme",
 }
 
 
@@ -234,6 +336,49 @@ SUBSTITUICOES: list[tuple[re.Pattern[str], str]] = [
     _rule("correcção", "correção"),
     _rule("seleccionar", "selecionar"),
     _rule("colecção", "coleção"),
+    # 6. pt-PT verb forms / participles that leak into the suggestions
+    _rule("de que pretende", "de que deseja"),
+    _rule("se pretender", "se quiser"),
+    _rule("se pretende", "se deseja"),
+    _rule("pretendidos", "desejados"),
+    _rule("pretendidas", "desejadas"),
+    _rule("pretendido", "desejado"),
+    _rule("pretendida", "desejada"),
+    _rule("pretender", "querer"),
+    _rule("pretenda", "deseje"),
+    _rule("pretende", "deseja"),
+    _rule("encontrámos", "encontramos"),
+    _rule("detetámos", "detectamos"),
+    _rule("guardados", "salvos"),
+    _rule("guardadas", "salvas"),
+    _rule("guardado", "salvo"),
+    _rule("guardada", "salva"),
+    _rule("eliminados", "excluídos"),
+    _rule("eliminadas", "excluídas"),
+    _rule("eliminado", "excluído"),
+    _rule("eliminada", "excluída"),
+    _rule("introduzidos", "informados"),
+    _rule("introduzidas", "informadas"),
+    _rule("introduzido", "informado"),
+    _rule("introduzida", "informada"),
+    _rule("introduzir", "informar"),
+    _rule("introduzam", "informem"),
+    _rule("introduza", "informe"),
+    _rule("bebés", "bebês"),
+    _rule("bebé", "bebê"),
+    _rule("cómodos", "cômodos"),
+    _rule("cómodas", "cômodas"),
+    _rule("cómodo", "cômodo"),
+    _rule("cómoda", "cômoda"),
+    _rule("anulações", "cancelamentos"),
+    _rule("anulação", "cancelamento"),
+    _rule("eliminação", "exclusão"),
+    _rule("detetar", "detectar"),
+    _rule("carregadas", "enviadas"),
+    _rule("carregada", "enviada"),
+    _rule("todos os separadores", "todas as abas"),
+    _rule("separadores", "abas"),
+    _rule("separador", "aba"),
 ]
 
 _PLACEHOLDER_RE = re.compile(r"\{\{.*?\}\}|\{\d+\}|<[^>]+>")
@@ -367,6 +512,14 @@ def process_sheet(df: pd.DataFrame) -> pd.DataFrame:
         texto_pt = _clean(row.get(pt_col)) if pt_col else ""
         aviso = _clean(row.get(aviso_col)) if aviso_col else ""
 
+        if clave in OK_MANUAL:
+            # closed by the reviewer: already-valid pt-BR term, warning is a
+            # false positive
+            out.at[idx, COL_ESTADO] = "OK"
+            out.at[idx, COL_CORRECAO] = ""
+            out.at[idx, COL_PRIORIDADE] = "Fechado"
+            continue
+
         if clave in DUVIDAS_KEYS or CORRECOES.get(clave, "") is None:
             # open question for the PO: never auto-converted, listed in
             # duvidas_PO.xlsx for a human decision
@@ -389,9 +542,13 @@ def process_sheet(df: pd.DataFrame) -> pd.DataFrame:
                 converted if converted != texto_pt else ""
             )
         out.at[idx, COL_ESTADO] = estado
-        out.at[idx, COL_PRIORIDADE] = _prioridade(
-            estado, bool(_clean(out.at[idx, COL_CORRECAO])), False
-        )
+        if clave in CORRECOES:
+            # reviewed and closed by the reviewer
+            out.at[idx, COL_PRIORIDADE] = "Fechado"
+        else:
+            out.at[idx, COL_PRIORIDADE] = _prioridade(
+                estado, bool(_clean(out.at[idx, COL_CORRECAO])), False
+            )
 
     return out.drop(columns=[c for c in DEAD_COLUMNS if c in out.columns])
 
