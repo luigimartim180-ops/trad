@@ -46,6 +46,30 @@
 - **`transferir` mantém-se** nas ações de conta/folio; só os botões de download
   viram `Baixar` (correções cirúrgicas por chave).
 
+### 2.1 Regras acrescentadas na auditoria de out/2026
+
+Depois de varrer **todas** as 19 639 linhas (não só as `CORRIGIDO`), juntaram-se
+regras que faltavam. O resíduo pt-PT real encontrado era:
+
+| pt-PT | pt-BR | onde aparecia |
+| --- | --- | --- |
+| `connosco` | conosco | mensagens de estadia (2 linhas) |
+| `contacte` / `contactar` / `contacto` | contate / contatar / contato | erros de login e suporte (17+) |
+| `pequeno-almoço` | café da manhã | ofertas e regimes (9) |
+| `registar` / `registe` / `registado` / `registadora` | registrar / registre / registrado / registradora | setup e fecho de caixa (5) |
+| `apelido` / `apelidos` | sobrenome / sobrenomes | busca de cliente (2) |
+| `casa de banho` | banheiro | tipo de quarto (1) |
+| `predefinido` / `predefinida` | padrão (invariável) | mapeamentos de integração (20+) |
+
+**Atenção ao efeito colateral**: `predefinido` → `padrão` é invariável em pt-BR
+(não existe "padrões" para o adjetivo), por isso os plurais `predefinidos`/
+`predefinidas` também mapeiam para `padrão`.
+
+**Falsos positivos que NÃO se traduzem** (são válidos em pt-BR): `utilizar`,
+`utilização`, `acesso`, `acesse`, `ligar`, `numa`, `cujo/cuja`, `gestor`,
+`transferência`. Não acrescentar regras para estes.
+
+
 ## 3. Dúvidas para o PO
 
 Cada linha precisa de decisão. As chaves correspondentes ficam com
