@@ -504,10 +504,72 @@ class TestPipeline(unittest.TestCase):
 
     def test_audit_new_rules_meal_and_register(self) -> None:
         self.assertEqual(conv.converter("pequeno-almoço"), "café da manhã")
-        self.assertEqual(conv.converter("alojamento e pequeno-almoço"), "alojamento e café da manhã")
+        self.assertEqual(conv.converter("alojamento e pequeno-almoço"), "acomodação e café da manhã")
         self.assertEqual(conv.converter("por se registar"), "por se registrar")
         self.assertEqual(conv.converter("o pessoal registe"), "o pessoal registre")
         self.assertEqual(conv.converter("caixa registadora"), "caixa registradora")
+
+    def test_cross_audit_lexical_gaps(self) -> None:
+        self.assertEqual(conv.converter("Novo artigo"), "Novo item")
+        self.assertEqual(conv.converter("Artigos de faturamento"), "Itens de faturamento")
+        self.assertEqual(conv.converter("Código postal"), "CEP")
+        self.assertEqual(conv.converter("NIF da filial"), "CPF/CNPJ da filial")
+        self.assertEqual(conv.converter("Faturar a"), "Faturar para")
+        self.assertEqual(conv.converter("Iniciar sessão"), "Fazer login")
+        self.assertEqual(conv.converter("Menu de bar"), "Cardápio do bar")
+        self.assertEqual(conv.converter("Lavandaria"), "Lavanderia")
+        self.assertEqual(conv.converter("Hora de fim"), "Horário de término")
+        self.assertEqual(conv.converter("informação bancária"), "informações bancárias")
+        self.assertEqual(conv.converter("desportivos"), "esportivos")
+        self.assertEqual(conv.converter("Descarregue o anexo"), "Baixe o anexo")
+
+    def test_cross_audit_partida_and_alojamento_gender(self) -> None:
+        self.assertEqual(conv.converter("Partida"), "Saída")
+        self.assertEqual(conv.converter("Data de partida"), "Data de saída")
+        self.assertEqual(conv.converter("Novo alojamento"), "Nova acomodação")
+        self.assertEqual(conv.converter("bloquear o alojamento"), "bloquear a acomodação")
+        self.assertEqual(conv.converter("os alojamentos"), "as acomodações")
+        self.assertEqual(conv.converter("todos os alojamentos"), "todas as acomodações")
+
+    def test_cross_audit_alojamento_agreement(self) -> None:
+        expected = {
+            "Não tem nenhum alojamento atribuído": "Não tem nenhuma acomodação atribuída",
+            "Tem este alojamento atribuído": "Tem esta acomodação atribuída",
+            "Alojamentos reservados": "Acomodações reservadas",
+            "Aplicar aos alojamentos selecionados": "Aplicar às acomodações selecionadas",
+            "Nenhum dos alojamentos selecionados está bloqueado":
+                "Nenhuma das acomodações selecionadas está bloqueada",
+            "Todos os alojamentos foram bloqueados com sucesso":
+                "Todas as acomodações foram bloqueadas com sucesso",
+            "Alojamento não físico": "Acomodação não física",
+            "Esta ocupação não existe para esta propriedade e para o alojamento selecionado":
+                "Esta ocupação não existe para esta propriedade e para a acomodação selecionada",
+            "certifique-se de que o alojamento não está sujo nem ocupado":
+                "certifique-se de que a acomodação não está suja nem ocupada",
+            "Reverter o cancelamento irá definir o alojamento selecionado como reservado":
+                "Reverter o cancelamento irá definir a acomodação selecionada como reservada",
+        }
+        for pt, br in expected.items():
+            self.assertEqual(conv.converter(pt), br)
+
+    def test_cross_audit_agreement_does_not_overreach(self) -> None:
+        # "consumido" agrees with "Bloqueio", not with "acomodação".
+        self.assertEqual(
+            conv.converter("Bloqueio de alojamento provisório consumido"),
+            "Bloqueio de acomodação provisória consumido",
+        )
+        # "reservado" agrees with "grupo", not with "acomodação".
+        self.assertEqual(
+            conv.converter(
+                "definir o alojamento selecionado como grupo reservado"
+            ),
+            "definir a acomodação selecionada como grupo reservado",
+        )
+
+    def test_cross_audit_no_pt_pt_left_in_new_terms(self) -> None:
+        for term in ("alojamento", "partida", "artigo", "iniciar sessão",
+                     "código postal", "NIF", "lavandaria", "desportivo"):
+            self.assertNotIn(term, conv.converter(term))
 
     def test_audit_new_rules_default_and_housekeeping(self) -> None:
         self.assertEqual(conv.converter("valor predefinido"), "valor padrão")

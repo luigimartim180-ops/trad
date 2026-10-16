@@ -228,13 +228,13 @@ CORRECOES: dict[str, str | None] = {
     ),
     "before.checkout.message.intro": (
         "Esperamos que tenha gostado da sua estadia em {0}. Para tornar a sua "
-        "partida mais cômoda, sem contato e sem passar pela recepção amanhã, "
+        "saída mais confortável, sem contato e sem passar pela recepção amanhã, "
         "você já pode fazer o check-out online."
     ),
     "apps.login.section.passwordReset.descriptionSystem": (
         "Por motivos de segurança, a senha do Ulyses Suite tem de ser atualizada "
         "a cada 90 dias. Lembre-se de não reutilizar nenhuma das últimas 4 senhas "
-        "que utilizou para iniciar sessão no Ulyses Suite."
+        "que utilizou para fazer login no Ulyses Suite."
     ),
     "apps.integration.publicApiRest.refreshEventEntity.message": (
         "Aplique esta ação se deseja reenviar informações sobre a entidade de "
@@ -566,6 +566,93 @@ SUBSTITUICOES: list[tuple[re.Pattern[str], str]] = [
     _rule("prémio", "prêmio"),
     _rule("quilómetros", "quilômetros"),
     _rule("quilómetro", "quilômetro"),
+    # 10. lacunas encontradas na auditoria cruzada (relatório do painel nativo)
+    # "folha de registo" must run before the "registo"->"registro" rule, so both
+    # the pt-PT and the already-converted spelling are mapped.
+    _rule("folha de registo", "ficha de registro"),
+    _rule("folha de registro", "ficha de registro"),
+    _rule("faturar a", "faturar para"),
+    _rule("NIF", "CPF/CNPJ"),
+    _rule("código postal", "CEP"),
+    _rule("códigos postais", "CEPs"),
+    _rule("hora de fim", "horário de término"),
+    _rule("hora de início", "horário de início"),
+    _rule("informação bancária", "informações bancárias"),
+    _rule("informação fiscal", "informações fiscais"),
+    _rule("iniciar sessão", "fazer login"),
+    _rule("iniciar a sessão", "fazer o login"),
+    _rule("terminar sessão", "sair"),
+    _rule("encerrar sessão", "sair"),
+    _rule("menu de bar", "cardápio do bar"),
+    _rule("menu de restaurante", "cardápio do restaurante"),
+    _rule("lavandaria", "lavanderia"),
+    _rule("artigos", "itens"),
+    _rule("artigo", "item"),
+    _rule("desportivos", "esportivos"),
+    _rule("desportivas", "esportivas"),
+    _rule("desportivo", "esportivo"),
+    _rule("desportiva", "esportiva"),
+    _rule("descarregue", "baixe"),
+    _rule("descarregar", "baixar"),
+    _rule("partidas", "saídas"),
+    _rule("partida", "saída"),
+    # "alojamento(s)" -> "acomodação(ões)" changes gender (masc -> fem), so the
+    # determiner and the adjective must change with it. Every phrase below was
+    # measured in the workbook; the bare word is converted last. Longer
+    # determiner phrases must precede the shorter ones that they contain
+    # ("todos os alojamentos" before "os alojamentos").
+    _rule("todo o alojamento", "toda a acomodação"),
+    _rule("todos os alojamentos", "todas as acomodações"),
+    _rule("o alojamento", "a acomodação"),
+    _rule("os alojamentos", "as acomodações"),
+    _rule("um alojamento", "uma acomodação"),
+    _rule("uns alojamentos", "umas acomodações"),
+    _rule("do alojamento", "da acomodação"),
+    _rule("dos alojamentos", "das acomodações"),
+    _rule("no alojamento", "na acomodação"),
+    _rule("nos alojamentos", "nas acomodações"),
+    _rule("ao alojamento", "à acomodação"),
+    _rule("aos alojamentos", "às acomodações"),
+    _rule("deste alojamento", "desta acomodação"),
+    _rule("destes alojamentos", "destas acomodações"),
+    _rule("neste alojamento", "nesta acomodação"),
+    _rule("nestes alojamentos", "nestas acomodações"),
+    _rule("este alojamento", "esta acomodação"),
+    _rule("estes alojamentos", "estas acomodações"),
+    _rule("esse alojamento", "essa acomodação"),
+    _rule("esses alojamentos", "essas acomodações"),
+    _rule("aquele alojamento", "aquela acomodação"),
+    _rule("aqueles alojamentos", "aquelas acomodações"),
+    _rule("seu alojamento", "sua acomodação"),
+    _rule("seus alojamentos", "suas acomodações"),
+    _rule("novo alojamento", "nova acomodação"),
+    _rule("novos alojamentos", "novas acomodações"),
+    _rule("último alojamento", "última acomodação"),
+    _rule("últimos alojamentos", "últimas acomodações"),
+    _rule("determinado alojamento", "determinada acomodação"),
+    _rule("determinados alojamentos", "determinadas acomodações"),
+    _rule("respetivo alojamento", "respetiva acomodação"),
+    _rule("respetivos alojamentos", "respetivas acomodações"),
+    _rule("nenhum alojamento", "nenhuma acomodação"),
+    _rule("alojamento atribuído", "acomodação atribuída"),
+    _rule("alojamentos atribuídos", "acomodações atribuídas"),
+    _rule("alojamento selecionado", "acomodação selecionada"),
+    _rule("alojamentos selecionados", "acomodações selecionadas"),
+    _rule("alojamento físico", "acomodação física"),
+    _rule("alojamento combinado", "acomodação combinada"),
+    _rule("alojamento reservado", "acomodação reservada"),
+    _rule("alojamento provisório", "acomodação provisória"),
+    _rule("alojamentos provisórios", "acomodações provisórias"),
+    _rule("alojamento turístico", "acomodação turística"),
+    _rule("alojamentos turísticos", "acomodações turísticas"),
+    _rule("alojamento consumido", "acomodação consumida"),
+    _rule("alojamento dedicado", "acomodação dedicada"),
+    _rule("alojamento associado", "acomodação associada"),
+    _rule("alojamento liquidado", "acomodação liquidada"),
+    _rule("alojamentos consecutivos", "acomodações consecutivas"),
+    _rule("alojamentos sujos", "acomodações sujas"),
+    _rule("alojamentos", "acomodações"),
+    _rule("alojamento", "acomodação"),
 ]
 
 _PLACEHOLDER_RE = re.compile(r"\{\{.*?\}\}|\{\d+\}|<[^>]+>")
@@ -586,6 +673,81 @@ def _fix_progressive(text: str) -> str:
         return f"{aux} {verb}ndo"
 
     return _PROGRESSIVE_RE.sub(_repl, text)
+
+
+#: "acomodação/acomodações" is feminine, but the pt-PT wording it replaces
+#: ("alojamento") was masculine, and some source strings already paired
+#: "acomodações" with a masculine adjective. Fix the agreement after the fact,
+#: whatever order the substitution rules ran in.
+_ACOMODACAO_FEM = {
+    "provisórios": "provisórias", "provisório": "provisória",
+    "selecionados": "selecionadas", "selecionado": "selecionada",
+    "atribuídos": "atribuídas", "atribuído": "atribuída",
+    "consumidos": "consumidas", "consumido": "consumida",
+    "combinados": "combinadas", "combinado": "combinada",
+    "reservados": "reservadas", "reservado": "reservada",
+    "turísticos": "turísticas", "turístico": "turística",
+    "físicos": "físicas", "físico": "física",
+    "sujos": "sujas", "sujo": "suja", "consecutivos": "consecutivas",
+    "dedicados": "dedicadas", "dedicado": "dedicada",
+    "associados": "associadas", "associado": "associada",
+    "liquidados": "liquidadas", "liquidado": "liquidada",
+    "bloqueados": "bloqueadas", "bloqueado": "bloqueada",
+    "ocupados": "ocupadas", "ocupado": "ocupada",
+    "criados": "criadas", "criado": "criada",
+}
+_MASC_ADJ_RE = re.compile(
+    r"\b(" + "|".join(sorted(_ACOMODACAO_FEM, key=len, reverse=True)) + r")\b",
+    re.IGNORECASE,
+)
+_ACOMODACAO_COMO_RESERVADO_RE = re.compile(
+    r"(a\s+acomodaç(?:ão|ões)\b[^.]*?\bcomo\s+)reservado\b", re.IGNORECASE
+)
+#: Determiner disagreement: "Nenhum das acomodações".
+_ACOMODACAO_DET_RE = re.compile(r"\b(Nenh)um(\s+das\s+acomodaç)", re.IGNORECASE)
+#: Agreement window: after "acomodação(s)", walk over words that can only
+#: belong to its own noun phrase (articles, prepositions, auxiliaries,
+#: negations, conjunctions) and re-gender every masculine adjective found.
+#: The walk stops at the first other word, so an adjective that agrees with a
+#: different noun ("Bloqueio de acomodação provisória consumido") is left
+#: untouched.
+_ACOM_FILLER_WORDS = (
+    "não", "nao", "nem", "já", "ja", "ainda", "estão", "estao", "está", "esta",
+    "estavam", "estava", "são", "sao", "é", "eram", "era", "foram", "serão",
+    "serao", "seria", "ficarão", "ficarao", "ficaram", "ficam", "fica", "têm",
+    "tem", "de", "da", "do", "das", "dos", "com", "para", "em", "no", "na",
+    "nos", "nas", "uns", "umas", "um", "uma", "seu", "sua", "seus", "suas",
+    "este", "esta", "estes", "estas", "esse", "essa", "esses", "essas",
+    "todo", "toda", "todos", "todas", "ou", "os", "as", "o", "a", "e",
+)
+#: Words the window may walk over: fillers and the masculine adjectives being
+#: fixed. Feminine adjectives are NOT transparent, so a participle that agrees
+#: with another head noun ("Bloqueio de acomodação provisória consumido") is
+#: left alone. Boundaries are enforced so "de" does not swallow the "de" of
+#: "dedicado".
+_ACOM_WORD_ALT = "|".join(
+    re.escape(w)
+    for w in sorted(
+        set(_ACOM_FILLER_WORDS) | set(_ACOMODACAO_FEM), key=len, reverse=True
+    )
+)
+_ACOMODACAO_WINDOW_RE = re.compile(
+    r"\bacomodaç(?:ão|ões)\b((?:\s+(?:" + _ACOM_WORD_ALT + r")\b)*)",
+    re.IGNORECASE,
+)
+
+
+def _fix_agreement(text: str) -> str:
+    def _window(match: re.Match[str]) -> str:
+        head = match.group(0)[: len(match.group(0)) - len(match.group(1))]
+        tail = _MASC_ADJ_RE.sub(
+            lambda m: _ACOMODACAO_FEM[m.group(1).lower()], match.group(1)
+        )
+        return head + tail
+
+    text = _ACOMODACAO_WINDOW_RE.sub(_window, text)
+    text = _ACOMODACAO_COMO_RESERVADO_RE.sub(r"\1reservada", text)
+    return _ACOMODACAO_DET_RE.sub(r"Nenhuma\2", text)
 
 
 def _adapt_case(template: str, source: str) -> str:
@@ -630,6 +792,7 @@ def converter(texto: str) -> str:
     # Runs after SUBSTITUICOES so a lemma rule ("gerir"->"gerenciar") is applied
     # first; the gerund is then derived from the pt-BR stem ("gerenciando").
     protected = _fix_progressive(protected)
+    protected = _fix_agreement(protected)
 
     return _restore(protected, saved)
 
