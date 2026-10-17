@@ -32,6 +32,7 @@ from pathlib import Path
 import pandas as pd
 
 XLSX_IN = "Revision_traducciones_PT.xlsx"
+OUT_PREENCHIDO = "Revision_traducciones_PT_pt-BR.xlsx"
 OUT_COMPLETA = "revisao_pt_BR_completa.xlsx"
 OUT_FINAL = "revisao_pt_BR_FINAL.xlsx"
 OUT_DUVIDAS = "duvidas_PO.xlsx"
@@ -53,11 +54,21 @@ COL_PRIORIDADE = "Prioridade"
 INFO_SHEET = "Instrucciones"
 DUVIDAS_SHEET = "Dúvidas"
 
+#: Final tab names (pt-BR) shown in the delivered workbooks; the input file
+#: keeps the legacy ES/PT labels.
+SHEET_NAMES_PT_BR = {
+    "Frontend (pantallas)": "Frontend (telas)",
+    "Entidades de sistema": "Entidades do sistema",
+    "Mensajes e informes": "Mensagens e relatórios",
+}
+
 #: Estado values. ``OK`` = already valid pt-BR (nothing to patch);
 #: ``CORRIGIDO`` = validated pt-BR suggestion, exported to the backend;
 #: ``PENDENTE_PO`` = glossary decision owned by the PO, never auto-converted.
+#: The labels match the source workbook dropdown (``OK,Corregir``) so the
+#: delivered file can be filtered as-is.
 ESTADO_OK = "OK"
-ESTADO_CORRIGIDO = "CORRIGIDO"
+ESTADO_CORRIGIDO = "Corregir"
 ESTADO_PENDENTE_PO = "PENDENTE_PO"
 
 DEAD_COLUMNS = [
@@ -142,23 +153,11 @@ NOT_OK_IGUAL_ES_EN = {
 TRADUCOES_EM_FALTA: list[str] = []
 
 #: Keys whose translation is under discussion with the PO (never converted).
-#: Grouped by the four open questions in ``glossario_pt_BR.md`` §3.
-DUVIDAS_GRUPOS: dict[str, list[str]] = {
-    "D1 pensão/regime": ["PropertyClassType t WHERE t.Code = '9'"],
-    "D2 allotment": ["shared.forecast.nonDeductedAllotment"],
-    "D3 OnHold/OutOfOrder/OutOfService": [
-        "apps.chainSpaceLockType.radio.onHold",
-        "apps.chainSpaceLockType.radio.outOfOrder",
-        "apps.chainSpaceLockType.radio.outOfService",
-    ],
-    "D4 aiAssistant hotel/property": ["apps.aiAssistant.label.hotel"],
-}
+#: Every question was closed by the PO sign-off (see ``CORRECOES_PO``), so the
+#: maps below stay empty; they are kept as hooks for future rounds.
+DUVIDAS_GRUPOS: dict[str, list[str]] = {}
 
-DUVIDAS_KEYS = [
-    "core.label.billing",
-    "core.label.chain",
-    "shared.forecast.nonDeductedAllotment",
-]
+DUVIDAS_KEYS: list[str] = []
 
 #: Surgical, key-scoped overrides that bypass the generic rules. ``None``
 #: marks a key that must never be auto-converted (open PO question).
@@ -222,29 +221,29 @@ CORRECOES: dict[str, str | None] = {
     # multiline messages with pt-PT residue
     "apps.budget.importExcelModal.instructions": (
         "Envie aqui a previsão atualizada (receita, PAX e número de acomodações). "
-        "Confirme abaixo para tornar as alterações visíveis. Tenha em conta que "
+        "Confirme abaixo para tornar as alterações visíveis. Observe que "
         "as alterações não serão salvas até clicar em Salvar na tela principal."
         "\n\nBaixe o modelo Excel caso ainda não o tenha feito."
     ),
     "before.checkout.message.intro": (
         "Esperamos que tenha gostado da sua estadia em {0}. Para tornar a sua "
-        "partida mais cômoda, sem contato e sem passar pela recepção amanhã, "
+        "saída mais confortável, sem contato e sem passar pela recepção amanhã, "
         "você já pode fazer o check-out online."
     ),
     "apps.login.section.passwordReset.descriptionSystem": (
         "Por motivos de segurança, a senha do Ulyses Suite tem de ser atualizada "
         "a cada 90 dias. Lembre-se de não reutilizar nenhuma das últimas 4 senhas "
-        "que utilizou para iniciar sessão no Ulyses Suite."
+        "que utilizou para fazer login no Ulyses Suite."
     ),
     "apps.integration.publicApiRest.refreshEventEntity.message": (
         "Aplique esta ação se deseja reenviar informações sobre a entidade de "
-        "evento selecionada.\nTenha em conta que as alterações não serão "
+        "evento selecionada.\nObserve que as alterações não serão "
         "atualizadas imediatamente; por isso, recomendamos que consulte a aba Fila "
         "de eventos para acompanhar a evolução."
     ),
     "apps.integration.publicApiRest.removeEventEntity.message": (
         "Aplique esta ação se deseja excluir informações sobre a entidade de "
-        "evento selecionada.\nTenha em conta que as alterações não serão "
+        "evento selecionada.\nObserve que as alterações não serão "
         "atualizadas imediatamente; por isso, recomendamos que consulte a aba Fila "
         "de eventos para acompanhar a evolução."
     ),
@@ -261,13 +260,557 @@ CORRECOES: dict[str, str | None] = {
     "shared.aggregateGrid.empty.chainProductTaxIncluded.noIncludedProductTax": (
         "Adicione os produtos que podem ser utilizados neste produto."
     ),
-    # open PO questions: never converted
-    "apps.profileCommissionTransaction.gridAction.offset": None,
-    "PropertyClassType t WHERE t.Code = '9'": None,
-    "apps.chainSpaceLockType.radio.onHold": None,
-    "apps.chainSpaceLockType.radio.outOfOrder": None,
-    "apps.chainSpaceLockType.radio.outOfService": None,
-    "apps.aiAssistant.label.hotel": None,
+}
+
+#: PO sign-off (2026-10): every previously open question is now a binding
+#: glossary decision, so the ``None`` markers above are superseded here. These
+#: entries also close rows that the source flags as "Sin traducción PT" /
+#: "Igual a ES/EN": an explicit override is the decision and wins over the
+#: warning.
+CORRECOES_PO: dict[str, str] = {
+    # A. glossary decisions
+    "apps.aiAssistant.label.hotel": "Propriedade",
+    "apps.profileCommissionTransaction.gridAction.offset": "Compensar",
+    "core.label.billing": "Faturamento",
+    "core.label.chain": "Rede",
+    "shared.forecast.nonDeductedAllotment": "Allotment não deduzido",
+    "apps.chainSpaceLockType.radio.onHold": (
+        "OnHold (Ative esta opção para bloquear a acomodação)"
+    ),
+    "apps.chainSpaceLockType.radio.outOfOrder": (
+        "OutOfOrder (Ative esta opção para permitir retirar a acomodação "
+        "do inventário)"
+    ),
+    "apps.chainSpaceLockType.radio.outOfService": (
+        "OutOfService (Ative esta opção para permitir retirar a acomodação "
+        "da disponibilidade)"
+    ),
+    "PropertyClassType t WHERE t.Code = '9'": "Pensão",
+    # B. translations missing in the source workbook
+    "apps.billing.folio.refund.paymentMethod": "Método de pagamento do reembolso",
+    "apps.import.importJob.relatedMap.accountReceivableStatementSendType": (
+        "Forma de envio do extrato de contas a receber"
+    ),
+    "apps.import.importJob.relatedMap.allotment": "Allotment",
+    "apps.import.importJob.relatedMap.cardStatusType": "Status do cartão",
+    "apps.import.importJob.relatedMap.chainContactCategory": "Categoria de contato",
+    "apps.import.importJob.relatedMap.chainLoyalty": (
+        "Fidelização - Programa de afiliação"
+    ),
+    "apps.import.importJob.relatedMap.chainProductGroup": "Grupo de produtos",
+    "apps.import.importJob.relatedMap.chainProductSubGroup": "Subgrupo de produtos",
+    "apps.import.importJob.relatedMap.chainVIPLevel": "Nível VIP",
+    "apps.import.importJob.relatedMap.communicationLocationType": "Tipo de contato",
+    "apps.import.importJob.relatedMap.depositStatusType": "Status do depósito",
+    "apps.import.importJob.relatedMap.emailAddressType": "Tipo de e-mail",
+    "apps.import.importJob.relatedMap.familyRelationship": "Parentesco",
+    "apps.import.importJob.relatedMap.genderType": "Gênero",
+    "apps.import.importJob.relatedMap.municipality": "Município",
+    "apps.import.importJob.relatedMap.phoneTechType": (
+        "Tipo de tecnologia telefônica"
+    ),
+    "apps.import.importJob.relatedMap.productDeposit": "Produto - depósito",
+    "apps.import.importJob.relatedMap.productPayment": "Produto - pagamento",
+    "apps.import.importJob.relatedMap.propertyRoomFeatureType": (
+        "Característica de acomodação"
+    ),
+    "apps.import.importJob.relatedMap.propertyRoomType": "Tipologia",
+    "apps.import.importJob.relatedMap.reservationPriceModelType": (
+        "Tipo de modelo de preços de reserva"
+    ),
+    "apps.import.importJob.relatedMap.reservationStatusType": (
+        "Tipo de status da estadia"
+    ),
+    "apps.import.importJob.relatedMap.spaceStatusType": "Tipo de status dos espaços",
+    "apps.import.importJob.relatedMap.stateProv": "Estado/província",
+    "apps.import.importJob.relatedMap.webSiteLocationType": (
+        "Tipo de localização do site"
+    ),
+    "apps.management.guestLedger.grid.header.totalFunctionRoomAmountAfterTax": (
+        "Salão de eventos"
+    ),
+    "apps.propertyCommunicationEmailTypeConfiguration.entity.reservationGroupContract.info": (
+        "Ative esta opção se você quiser que seus usuários possam enviar "
+        "comunicações de contratos de reservas de grupo aos seus clientes. "
+        "Se quiser personalizar a comunicação, acesse Modelos de e-mail na "
+        "Configuração da propriedade."
+    ),
+    "apps.propertyCommunicationEmailTypeConfiguration.entity.reservationGroupContract.title": (
+        "Contrato de reserva de grupo"
+    ),
+    "apps.reservationGroup.action.printDocument": "Imprimir documento",
+    "apps.reservationGroup.action.sendConfirmation": "Enviar confirmação",
+    "apps.reservationGroup.action.sendContract": "Enviar contrato",
+    "apps.reservationGroup.action.sendProposal": "Enviar proposta",
+    "core.label.billingInstruction": "Instruções de faturamento",
+    "core.object.entity.propertyCheckInAutomationScheduler": "Check-in automático",
+    "core.object.entity.reservationGroupContract": "Contrato de reserva de grupo",
+    "core.userMessage.server.ratediscountnotallowedforpricemodeltype.default": (
+        "Não é permitido aplicar desconto ao modelo de preços desta tarifa"
+    ),
+    "core.userMessage.server.rateoverwritenotallowedforpricemodeltype.default": (
+        "Não é permitido sobrescrever o preço no modelo de preços desta tarifa"
+    ),
+    "shared.aggregateGrid.empty.chainProductTaxIncluded.noIncludedProductTax": (
+        "Adicione os produtos que podem ser utilizados neste produto."
+    ),
+    "shared.aggregateGrid.empty.product.noProductTaxIncluded": (
+        "Adicione os impostos aplicáveis a este produto"
+    ),
+    "shared.aggregateGrid.empty.propertyKioskDevic ePropertyServiceConsumptionControl.noPropertyServiceConsumptionControl": (
+        "Adicione controles de serviços para este dispositivo; caso não "
+        "adicione nenhum, todos serão exibidos"
+    ),
+    "shared.assistant.propertyAutomatedCheckinScheduler.step0": "Resumo",
+    "shared.assistant.propertyAutomatedCheckinScheduler.step1": "Filtros",
+    "shared.assistant.propertyAutomatedCheckinScheduler.step2": "Ação",
+    "shared.assistant.propertyAutomatedCheckinScheduler.step3": "Revisão",
+    "shared.emailTemplate.section.holderBillToGroupContract": (
+        "Detalhe do titular e faturamento"
+    ),
+    "shared.emailTemplate.section.htmlReservationGroupContract": (
+        "Contrato de reserva de grupo HTML"
+    ),
+    "shared.emailTemplate.section.propertyBillingInformation": (
+        "Dados de faturamento da propriedade"
+    ),
+    "shared.emailTemplate.section.textReservationGroupContract": (
+        "Texto do contrato de reserva de grupo"
+    ),
+    "shared.grid.header.overwriteAmountAfterTax": "Sobrescrita",
+    # C. empty in the source workbook, closed by the PO (BR fiscal wording)
+    "shared.radioButton.propertyEmailSchedulerEventINVCAMD.message": (
+        "Fatura alterada"
+    ),
+    "shared.radioButton.propertyEmailSchedulerEventINVCISS.message": (
+        "Fatura emitida"
+    ),
+    "shared.radioButton.propertyEmailSchedulerEventINVCVOID.message": (
+        "Fatura anulada"
+    ),
+    "txt.space": "Mensagens e relatórios",
+}
+
+CORRECOES.update(CORRECOES_PO)
+
+#: Correções descobertas na auditoria BR (2026-10): pt-PT que passou intacto,
+#: sobretudo "Descargar/Download" traduzido como "Transferir/Transfira" (o pt-BR
+#: usa "Baixar"), além de "eliminá-lo"->"excluí-lo" e "A aguardar"->"Aguardando".
+#: Têm precedência sobre as regras genéricas; não colidem com decisões dos agentes.
+CORRECOES_BR: dict[str, str] = {
+    "apps.accountReceivableTransaction.gridAction.download": "Baixar",
+    "apps.endOfDay.process.emergencyReports.description": (
+        "Baixe os relatórios de emergência e, caso ocorra uma falha generalizada, estará preparado para gerenciar a sua propriedade temporariamente sem o Ulyses Suite."
+    ),
+    "apps.integration.barcelo.downloadInvoice": "Baixar fatura",
+    "apps.integration.bavel.downloadInvoice": "Baixar fatura",
+    "apps.integration.description.a3": (
+        "Baixe arquivos e carregue-os no sistema de contabilidade A3Con. Poupe tempo e analise dados com esta solução da Wolters Kluwer."
+    ),
+    "apps.integration.description.gsp": (
+        "O Ulyses Guest Services Portal permite que os seus hóspedes façam o check-in online, consultem a sua conta, baixem faturas e muito mais. Poupe tempo, aumente a distância e proteja a sua equipe."
+    ),
+    "apps.integration.description.sage200": (
+        "O Sage 200 é um conjunto de produtos de contabilidade e gestão desenvolvido pelo Sage Group, destinado a médias empresas. Baixe os arquivos necessários e carregue-os no seu sistema de contabilidade."
+    ),
+    "apps.integration.ertzaintza.button.downloadParteViajerosXML": "Baixar XML de partes de viajantes",
+    "apps.integration.ertzaintza.button.downloadReservationXML": "Baixar XML de reservas",
+    "apps.integration.fatturaPA.downloadInvoice": "Baixar faturas",
+    "apps.rate.importExcelModal.instructions": (
+        "Carregue o documento preenchido com todas as condições do contrato atualizadas (Preços, Encerramentos, CTA, CTD, Estadia máx./mín.). Baixe o modelo Excel caso ainda não o tenha feito."
+    ),
+    "apps.report.options.downloadNow": "Baixar agora",
+    "apps.reservation.reservationRoomStaySidebar.await": "Aguardando localizador",
+    "apps.reservationGroup.event.await": "Aguardando localizador",
+    "apps.reservationGroupInquiry.await": "Aguardando localizador",
+    "apps.rooming.importExcel": (
+        "Baixe o modelo abaixo e preencha-o com toda a informação necessária para criar todas as acomodações. Pode compartilhar este arquivo com outras empresas, pelo que deve garantir que o carrega quando o rooming estiver confirmado."
+    ),
+    "apps.systemSettings.import.downloadTemplate": (
+        "Baixe o seguinte arquivo, preencha os seus dados e carregue-o para importar dados para o UlysesCloud"
+    ),
+    "core.button.downloadExcel": "Baixar Excel",
+    "core.button.downloadExcelWithAllMappings": "Baixar todos os mapeamentos Excel",
+    "core.button.downloadInvoice": "Baixar fatura",
+    "core.label.waitingFor": "Aguardando desde",
+    "core.userMessage.server.paynopain.credorax.pending_3ds_response": "Aguardando processamento da resposta em 3DS",
+    "core.userMessage.server.paynopain.credorax.pending_confirmation": "Aguardando confirmação",
+    "core.userMessage.server.paynopain.credorax.pending_processor_response": "Resposta aguardando processamento",
+    "shared.grid.noViewAllDataInGridReport": (
+        "O resultado tem mais de 5000 linhas, altere os filtros aplicados ou baixe o relatório em PDF, Excel ou CSV."
+    ),
+    "shared.modal.bulkAssign.importExcel.instructions": (
+        "Carregue o documento preenchido com todas as estadias atualizadas. Baixe o modelo Excel caso ainda não o tenha feito."
+    ),
+    "shared.modal.importAccountingMappingExcel.importExcel": (
+        "Baixe o seguinte arquivo, defina as suas acomodações com os respetivos tipos de acomodação e carregue-o para criar a estrutura de acomodações da sua propriedade."
+    ),
+    "shared.modal.importItemExcel.importExcel": (
+        "Baixe o seguinte arquivo, defina os seus produtos com os respetivos tipos de itens e carregue-o para criar a estrutura de itens da sua propriedade."
+    ),
+    "shared.modal.importMeterExcel.importExcel": (
+        "Baixe o arquivo, especifique os contadores com os respetivos tipos e carregue-o para criar a estrutura de contadores do seu estabelecimento."
+    ),
+    "shared.modal.importProductExcel.importExcel": (
+        "Baixe o seguinte arquivo, defina os seus produtos com os respetivos tipos de produto e carregue-o para criar a estrutura de produtos da sua propriedade."
+    ),
+    "shared.modal.importRoomExcel.importExcel": (
+        "Baixe o seguinte arquivo, defina as suas acomodações com os respetivos tipos de acomodação e carregue-o para criar a estrutura de acomodações da sua propriedade."
+    ),
+    "shared.modal.importTranslateExcel.importExcel": (
+        "Baixe o seguinte arquivo, defina as suas acomodações com os respetivos tipos de acomodação e carregue-o para criar a estrutura de acomodações da sua propriedade."
+    ),
+    "shared.modal.information.createCutOff.message": (
+        "Vai executar o processo de Cut-Off. Após este processo, as configurações e o bloqueio de acomodação ficarão bloqueadas. Pode revertê-lo excluindo o Cut-Off."
+    ),
+    "shared.modal.information.deleteMeterNotAllowed.message": (
+        "Este contador tem leituras adicionadas e não é possível excluá-lo"
+    ),
+    "shared.modal.information.genericAccountingAlreadyExported.title": "Período baixado",
+    "shared.modal.information.siteminderImportReservation.message": (
+        "Tem certeza de que deseja prosseguir com esta ação?\n\nEste processo irá pedir ao Channel Manager que volte a baixar todas as reservas, tanto atuais como futuras. Como resultado, todas as reservas geradas pelo Channel Manager serão baixadas novamente e as reservas existentes serão atualizadas em conformidade.\n\nObserve que este processo é irreversível."
+    ),
+    "shared.modal.propagateVehicle.deleteMessage": (
+        "Este veículo é utilizado em {{count}} estadias atuais ou futuras. Deseja também excluí-lo dessas estadias?"
+    ),
+    "shared.modal.rooming.downloadExcel.roomingListType1": "Baixar atual",
+    "shared.modal.rooming.downloadExcel.roomingListType2": "Baixar exemplo",
+    "shared.modal.rooming.downloadExcel.roomingListType3": "Baixar bloqueio de acomodações",
+    "shared.modal.rooming.downloadExcel.roomingListType4": "Baixar bloqueio de acomodações alargado",
+    "shared.modal.rooming.importExcel": (
+        "Baixe o modelo abaixo e preencha-o com todas as informações necessárias para criar todas as acomodações. Pode compartilhar este arquivo com outras empresas, mas certifique-se de que o carrega quando a rooming list estiver confirmada."
+    ),
+    "shared.switch.allowDownloadInvoice.message": (
+        "Ative esta opção para permitir que os usuários baixem as faturas relacionadas com as suas reservas"
+    ),
+    "shared.switch.allowInHouseDownloadInvoice.message": (
+        "Ative esta opção para permitir que os usuários baixem as faturas relacionadas com as suas reservas"
+    ),
+    "shared.switch.generateRoomingListByBlock.message": (
+        "Ative esta opção se quiser que o arquivo a baixar tenha as rooming lists separadas por data e blocos de quantidade, em vez do mínimo possível de rooming lists"
+    ),
+    "shared.switch.profileMappingAllowAddDeposit.message": (
+        "Ative esta opção para permitir a criação de depósitos quando são baixados na reserva."
+    ),
+}
+
+CORRECOES.update(CORRECOES_BR)
+
+#: Explanatory notes for the ``Comentario`` column. Only rows that are
+#: polemic, ambiguous or need a reason get a note; everything else stays
+#: empty on purpose (the correction itself is self-explanatory).
+COMENTARIOS: dict[str, str] = {
+    # --- glossary / PO decisions (B2B jargon, regional variants) -----------
+    "shared.forecast.nonDeductedAllotment": (
+        "Allotment mantido (decisão de glossário B2B): é termo corrente em "
+        "contratos com operadores estrangeiros. Não traduzir por cota."
+    ),
+    "apps.import.importJob.relatedMap.allotment": (
+        "Allotment mantido por consistência com a decisão de glossário B2B."
+    ),
+    "apps.integration.ulysesSync.mapping.allotment": (
+        "Allotment mantido por consistência com a decisão de glossário B2B."
+    ),
+    "apps.importJob.category.importAllotmentMapList": (
+        "Allotment mantido por consistência com a decisão de glossário B2B."
+    ),
+    "PropertyClassType t WHERE t.Code = '9'": (
+        "Pensão mantido: em pt-BR hoteleiro é a forma usada para o regime de "
+        "refeições (pensão completa / meia pensão). Não confundir com o "
+        "sentido pt-PT de casa de hóspedes."
+    ),
+    "apps.aiAssistant.label.hotel": (
+        "Propriedade (e não Hotel): o assistente cobre hotéis e outros tipos "
+        "de propriedade, seguindo o EN \"Property\". Só o ES usa \"Hotel\"."
+    ),
+    "core.label.billing": (
+        "Faturamento: em pt-BR a faturação é \"faturamento\" (o pt-PT "
+        "\"facturação/faturação\" é forma lusa)."
+    ),
+    "core.label.chain": (
+        "Rede: pt-BR usa \"rede\" para cadeia hoteleira; \"cadeia\" é "
+        "interpretado como cadeia de caracteres/produto."
+    ),
+    "core.label.billingInstruction": "Coerente com core.label.billing = Faturamento.",
+    "shared.emailTemplate.section.propertyBillingInformation": (
+        "Coerente com a decisão core.label.billing = Faturamento."
+    ),
+    "apps.profileCommissionTransaction.gridAction.offset": (
+        "Compensar: ação contabilística de compensar valores; o pt-PT "
+        "\"compensar/equilibrar\" aqui é ambíguo."
+    ),
+    # --- BR fiscal wording: anulada != cancelada --------------------------
+    "shared.radioButton.propertyEmailSchedulerEventINVCVOID.message": (
+        "Fatura anulada (VOID) mantido literal: em BR fiscal \"anulada\" "
+        "(invalidação/nulidade) é distinto de \"cancelada\". A regra genérica "
+        "anulada->cancelada NÃO se aplica aqui."
+    ),
+    "shared.radioButton.propertyEmailSchedulerEventINVCAMD.message": (
+        "Fatura alterada: evento de alteração de fatura (INVCAMD)."
+    ),
+    "shared.radioButton.propertyEmailSchedulerEventINVCISS.message": (
+        "Fatura emitida: evento de emissão de fatura (INVCISS)."
+    ),
+    # --- technical tokens kept verbatim -----------------------------------
+    "apps.chainSpaceLockType.radio.onHold": (
+        "OnHold mantido: valor técnico do sistema (estado de bloqueio). "
+        "Traduzido apenas o texto entre parênteses."
+    ),
+    "apps.chainSpaceLockType.radio.outOfOrder": (
+        "OutOfOrder mantido: valor técnico do sistema (fora de ordem). "
+        "Traduzido apenas o texto entre parênteses."
+    ),
+    "apps.chainSpaceLockType.radio.outOfService": (
+        "OutOfService mantido: valor técnico do sistema (fora de serviço). "
+        "Traduzido apenas o texto entre parênteses."
+    ),
+    # --- surgical fixes from the BR source ---------------------------------
+    "card.hojaRegistro": (
+        "Ficha de registro de hóspedes (FNRH): designação oficial brasileira "
+        "(Polícia Federal/Embratur). Não traduzir literalmente \"folha de "
+        "registo\"."
+    ),
+    "core.button.settlement": (
+        "Cobranças automáticas: o ES \"Cargos automáticos\" refere a cobrança "
+        "automática, não a liquidação de conta."
+    ),
+    "invoice.direction.label": (
+        "Endereço: pt-BR usa \"endereço\" (pt-PT \"morada\")."
+    ),
+    "core.label.taxExcludedShort": (
+        "Imposto excl.: no Brasil não existe IVA; usa-se \"imposto\"."
+    ),
+    "core.label.taxIncludedShort": (
+        "Imposto incl.: no Brasil não existe IVA; usa-se \"imposto\"."
+    ),
+    "core.label.amountPaidOut": (
+        "Valor retirado: segue o ES \"cantidad retirada\"; \"montante\" é "
+        "pt-PT."
+    ),
+    "core.label.totalAmountEntered": (
+        "Valor total informado: pt-BR prefere \"informado\" a \"introduzido\"."
+    ),
+    "core.label.amountOtherBreakdownAfterTax": (
+        "Outros valores: forma idiomática em pt-BR; evita \"montante\"."
+    ),
+    # --- "to download" -> baixar (não confundir com transferir) -----------
+    "core.button.download": (
+        "Baixar: em pt-BR \"download\" é \"baixar\". Regra aplicada só aos "
+        "botões de download, nunca às transferências de conta/folio."
+    ),
+    "core.button.downloadExcel": (
+        "Baixar: \"Descargar\" é \"baixar\" em pt-BR, não \"transferir\" "
+        "(transferir = mover entre contas/folios)."
+    ),
+    "core.button.downloadInvoice": (
+        "Baixar fatura: \"Download invoice\" é descarregar o PDF, não "
+        "transferir valores."
+    ),
+    "shared.modal.rooming.downloadExcel.roomingListType1": (
+        "Baixar atual: botão de descarregar a rooming list; ES \"Descargar\"."
+    ),
+    "shared.modal.rooming.downloadExcel.roomingListType2": (
+        "Baixar exemplo: botão de descarregar o modelo; ES \"Descargar\"."
+    ),
+    "shared.modal.rooming.downloadExcel.roomingListType3": (
+        "Baixar bloqueio de acomodações: ES \"Descargar roomblock\"; é "
+        "descarregar o ficheiro, não transferir."
+    ),
+    "shared.modal.rooming.downloadExcel.roomingListType4": (
+        "Baixar bloqueio de acomodações alargado: ES \"Descargar roomblock "
+        "extendido\"; é descarregar o ficheiro."
+    ),
+    "apps.report.options.downloadNow": (
+        "Baixar agora: opção de descarregar o relatório imediatamente."
+    ),
+    "shared.switch.profileMappingAllowAddDeposit.message": (
+        "Baixados: os depósitos são descarregados (ES \"descargados\"), não "
+        "transferidos entre contas."
+    ),
+    "shared.modal.information.genericAccountingAlreadyExported.title": (
+        "Período baixado: ES \"Periodo descargado\"; refere a exportação/"
+        "descarga do período contabilístico."
+    ),
+    "shared.switch.generateRoomingListByBlock.message": (
+        "Arquivo a baixar: ES \"que se descargue el archivo\"; é descarregar, "
+        "não transferir."
+    ),
+    "shared.switch.allowDownloadInvoice.message": (
+        "Baixem: ES \"la descarga de facturas\"; os clientes descarregam as "
+        "faturas."
+    ),
+    "shared.switch.allowInHouseDownloadInvoice.message": (
+        "Baixem: ES \"la descarga de facturas\"; os clientes descarregam as "
+        "faturas."
+    ),
+    "shared.modal.information.siteminderImportReservation.message": (
+        "Baixar novamente: ES \"vuelva a descargar\"; o Channel Manager volta "
+        "a descarregar as reservas (não as transfere)."
+    ),
+    "shared.grid.noViewAllDataInGridReport": (
+        "Baixe o relatório: ES \"descargue el report\"; acima de 5000 linhas "
+        "é preciso descarregar."
+    ),
+    "apps.rate.importExcelModal.instructions": (
+        "Baixe o modelo: ES \"descargar la plantilla\"."
+    ),
+    "shared.modal.bulkAssign.importExcel.instructions": (
+        "Baixe o modelo: ES \"Descarga el modelo Excel\"."
+    ),
+    "apps.integration.description.a3": (
+        "Baixe arquivos: ES \"Descarga asientos contables y expórtalos\"; "
+        "refere a exportação de ficheiros para o sistema A3Con."
+    ),
+    "apps.integration.description.sage200": (
+        "Baixe os arquivos: ES \"Descarga los ficheros necesarios\"."
+    ),
+    "apps.integration.description.gsp": (
+        "Baixem faturas: ES \"descargar sus facturas\"; os hóspedes "
+        "descarregam as suas faturas."
+    ),
+    "apps.endOfDay.process.emergencyReports.description": (
+        "Baixe os relatórios: ES \"Descarga los informes de emergencia\"; é "
+        "descarregar para uso offline, não transferir."
+    ),
+    "apps.rooming.importExcel": (
+        "Baixe o modelo: ES \"Descargue la plantilla a continuación\"."
+    ),
+    "shared.modal.rooming.importExcel": (
+        "Baixe o modelo: ES \"Descarga la plantilla y rellénala\"."
+    ),
+    "apps.systemSettings.import.downloadTemplate": (
+        "Baixe o ficheiro: ES \"Descarga el siguiente fichero\"; descarregar "
+        "o modelo, não transferir."
+    ),
+    "shared.modal.importItemExcel.importExcel": (
+        "Baixe o arquivo: ES \"Descarga el fichero\"; descarregar o modelo."
+    ),
+    "shared.modal.importMeterExcel.importExcel": (
+        "Baixe o arquivo: ES \"Descargue el archivo\"; descarregar o modelo."
+    ),
+    "shared.modal.importProductExcel.importExcel": (
+        "Baixe o arquivo: ES \"Descarga el fichero\"; descarregar o modelo."
+    ),
+    "shared.modal.importRoomExcel.importExcel": (
+        "Baixe o arquivo: ES \"Descarga el fichero\"; descarregar o modelo."
+    ),
+    "shared.modal.importTranslateExcel.importExcel": (
+        "Baixe o arquivo: ES \"Descargue el siguiente archivo\"; descarregar "
+        "o modelo."
+    ),
+    "shared.modal.importAccountingMappingExcel.importExcel": (
+        "Baixe o arquivo: ES \"Descarga el siguiente archivo\"; descarregar o "
+        "modelo."
+    ),
+    "apps.accountReceivableTransaction.gridAction.download": (
+        "Baixar: ação de descarregar o extrato (ES \"Descargar\"). O "
+        "genérico \"Transferir\" era erro; existe outra chave .transfer para "
+        "a transferência real entre contas."
+    ),
+    "apps.integration.barcelo.downloadInvoice": (
+        "Baixar fatura: ES \"Descargar factura\"; é descarregar o PDF."
+    ),
+    "apps.integration.bavel.downloadInvoice": (
+        "Baixar fatura: ES \"Descargar factura\"; é descarregar o PDF."
+    ),
+    "apps.integration.fatturaPA.downloadInvoice": (
+        "Baixar faturas: ES \"Descargar facturas\"; é descarregar os PDF."
+    ),
+    "apps.integration.ertzaintza.button.downloadParteViajerosXML": (
+        "Baixar XML: ES \"Descarga parte viajeros XML\"; é descarregar o "
+        "ficheiro."
+    ),
+    "apps.integration.ertzaintza.button.downloadReservationXML": (
+        "Baixar XML: ES \"Descarga reservation XML\"; é descarregar o "
+        "ficheiro."
+    ),
+    "core.button.downloadExcelWithAllMappings": (
+        "Baixar todos os mapeamentos Excel: ES \"Descargar Excel de mapeos\"; "
+        "é descarregar o ficheiro."
+    ),
+    "apps.reservation.reservationRoomStaySidebar.await": (
+        "Aguardando: em pt-BR usa-se o gerúndio (\"Aguardando\"), não \"A "
+        "aguardar\"; ES \"Esperando\"."
+    ),
+    "apps.reservationGroup.event.await": (
+        "Aguardando: em pt-BR usa-se o gerúndio; ES \"Esperando\"."
+    ),
+    "apps.reservationGroupInquiry.await": (
+        "Aguardando: em pt-BR usa-se o gerúndio; ES \"Esperando\"."
+    ),
+    "core.label.waitingFor": (
+        "Aguardando: em pt-BR usa-se o gerúndio; ES \"Esperando desde\"."
+    ),
+    "core.userMessage.server.paynopain.credorax.pending_3ds_response": (
+        "Aguardando: gerúndio pt-BR para \"Pendiente de\"."
+    ),
+    "core.userMessage.server.paynopain.credorax.pending_confirmation": (
+        "Aguardando: gerúndio pt-BR para \"Pendiente de\"."
+    ),
+    "core.userMessage.server.paynopain.credorax.pending_processor_response": (
+        "Aguardando: gerúndio pt-BR para \"pending\"."
+    ),
+    "shared.modal.information.deleteMeterNotAllowed.message": (
+        "Excluí-lo: pt-BR usa \"excluir\" para delete; \"eliminar\" é pt-PT."
+    ),
+    "shared.modal.propagateVehicle.deleteMessage": (
+        "Excluí-lo: pt-BR usa \"excluir\" para delete; \"eliminar\" é pt-PT."
+    ),
+    "shared.modal.information.createCutOff.message": (
+        "Excluindo: pt-BR usa \"excluir\" para delete; \"eliminar\" é pt-PT."
+    ),
+    "core.navbar.user.logs": (
+        "Baixar logs: verbo \"baixar\" (pt-BR) em vez de \"transferir\"."
+    ),
+    "shared.modal.bulkDownloadFile.title": (
+        "Baixando arquivos em massa: gerúndio pt-BR; \"a transferir\" seria "
+        "pt-PT."
+    ),
+    "apps.report.options.information": (
+        "Baixar/baixe: mantém o sentido de descarregar o relatório, não de "
+        "transferir valores."
+    ),
+    # --- pt-PT residue in the suggestion itself ---------------------------
+    "apps.budget.importExcelModal.instructions": (
+        "Sugestão continha pt-PT residual (\"tenha em conta\") no próprio "
+        "texto de destino; corrigido para \"observe\"/\"note\"."
+    ),
+    "apps.integration.publicApiRest.refreshEventEntity.message": (
+        "Sugestão continha pt-PT residual; corrigido para pt-BR (observe/"
+        "atualizadas)."
+    ),
+    "apps.integration.publicApiRest.removeEventEntity.message": (
+        "Sugestão continha pt-PT residual; corrigido para pt-BR (observe/"
+        "atualizadas)."
+    ),
+    # --- form of address: pt-PT "tu/você" vs pt-BR "você" -----------------
+    "apps.propertyCommunicationEmailTypeConfiguration.entity.reservationGroupContract.info": (
+        "Tratamento por \"você\" (pt-BR) em vez de \"tu\"; mantidos os termos "
+        "de UI (Modelos de e-mail, Configuração da propriedade)."
+    ),
+    "before.checkout.message.intro": (
+        "Tratamento por \"você\" (pt-BR) e \"recepção\"; placeholders {0} e "
+        "HTML preservados."
+    ),
+    "apps.login.section.passwordReset.descriptionSystem": (
+        "Senha (pt-BR) em vez de palavra-passe; tratamento por \"você\"."
+    ),
+    # --- plural/spelling normalisation in this batch -----------------------
+    "shared.grid.header.overwriteAmountAfterTax": (
+        "Sobrescrita: pt-BR prefere \"sobrescrita\" a \"sobreposição\"."
+    ),
+    "apps.management.guestLedger.grid.header.totalFunctionRoomAmountAfterTax": (
+        "Salão de eventos: \"function room\" é o salão para eventos; evita o "
+        "literal \"sala de funções\"."
+    ),
+    "apps.reservationGroup.action.printDocument": (
+        "Imprimir documento: \"print\" é \"imprimir\"; \"imprimir documento\" "
+        "já é pt-BR válido."
+    ),
+    "txt.space": (
+        "Mensagens e relatórios: identificador interno da aba, preenchido "
+        "para não ficar vazio."
+    ),
 }
 
 #: Keys closed as OK by the reviewer: the term is already valid pt-BR and the
@@ -566,6 +1109,127 @@ SUBSTITUICOES: list[tuple[re.Pattern[str], str]] = [
     _rule("prémio", "prêmio"),
     _rule("quilómetros", "quilômetros"),
     _rule("quilómetro", "quilômetro"),
+    # 10. lacunas encontradas na auditoria cruzada (relatório do painel nativo)
+    # "folha de registo" must run before the "registo"->"registro" rule, so both
+    # the pt-PT and the already-converted spelling are mapped.
+    _rule("folha de registo", "ficha de registro"),
+    _rule("folha de registro", "ficha de registro"),
+    _rule("faturar a", "faturar para"),
+    _rule("NIF", "CPF/CNPJ"),
+    _rule("código postal", "CEP"),
+    _rule("códigos postais", "CEPs"),
+    _rule("hora de fim", "horário de término"),
+    _rule("hora de início", "horário de início"),
+    _rule("informação bancária", "informações bancárias"),
+    _rule("informação fiscal", "informações fiscais"),
+    _rule("iniciar sessão", "fazer login"),
+    _rule("iniciar a sessão", "fazer o login"),
+    _rule("terminar sessão", "sair"),
+    _rule("encerrar sessão", "sair"),
+    _rule("menu de bar", "cardápio do bar"),
+    _rule("menu de restaurante", "cardápio do restaurante"),
+    _rule("lavandaria", "lavanderia"),
+    _rule("artigos", "itens"),
+    _rule("artigo", "item"),
+    _rule("desportivos", "esportivos"),
+    _rule("desportivas", "esportivas"),
+    _rule("desportivo", "esportivo"),
+    _rule("desportiva", "esportiva"),
+    _rule("descarregue", "baixe"),
+    _rule("descarregar", "baixar"),
+    _rule("partidas", "saídas"),
+    _rule("partida", "saída"),
+    # "alojamento(s)" -> "acomodação(ões)" changes gender (masc -> fem), so the
+    # determiner and the adjective must change with it. Every phrase below was
+    # measured in the workbook; the bare word is converted last. Longer
+    # determiner phrases must precede the shorter ones that they contain
+    # ("todos os alojamentos" before "os alojamentos").
+    _rule("todo o alojamento", "toda a acomodação"),
+    _rule("todos os alojamentos", "todas as acomodações"),
+    _rule("o alojamento", "a acomodação"),
+    _rule("os alojamentos", "as acomodações"),
+    _rule("um alojamento", "uma acomodação"),
+    _rule("uns alojamentos", "umas acomodações"),
+    _rule("do alojamento", "da acomodação"),
+    _rule("dos alojamentos", "das acomodações"),
+    _rule("no alojamento", "na acomodação"),
+    _rule("nos alojamentos", "nas acomodações"),
+    _rule("ao alojamento", "à acomodação"),
+    _rule("aos alojamentos", "às acomodações"),
+    _rule("deste alojamento", "desta acomodação"),
+    _rule("destes alojamentos", "destas acomodações"),
+    _rule("neste alojamento", "nesta acomodação"),
+    _rule("nestes alojamentos", "nestas acomodações"),
+    _rule("este alojamento", "esta acomodação"),
+    _rule("estes alojamentos", "estas acomodações"),
+    _rule("esse alojamento", "essa acomodação"),
+    _rule("esses alojamentos", "essas acomodações"),
+    _rule("aquele alojamento", "aquela acomodação"),
+    _rule("aqueles alojamentos", "aquelas acomodações"),
+    _rule("seu alojamento", "sua acomodação"),
+    _rule("seus alojamentos", "suas acomodações"),
+    _rule("novo alojamento", "nova acomodação"),
+    _rule("novos alojamentos", "novas acomodações"),
+    _rule("último alojamento", "última acomodação"),
+    _rule("últimos alojamentos", "últimas acomodações"),
+    _rule("determinado alojamento", "determinada acomodação"),
+    _rule("determinados alojamentos", "determinadas acomodações"),
+    _rule("respetivo alojamento", "respetiva acomodação"),
+    _rule("respetivos alojamentos", "respetivas acomodações"),
+    _rule("nenhum alojamento", "nenhuma acomodação"),
+    _rule("alojamento atribuído", "acomodação atribuída"),
+    _rule("alojamentos atribuídos", "acomodações atribuídas"),
+    _rule("alojamento selecionado", "acomodação selecionada"),
+    _rule("alojamentos selecionados", "acomodações selecionadas"),
+    _rule("alojamento físico", "acomodação física"),
+    _rule("alojamento combinado", "acomodação combinada"),
+    _rule("alojamento reservado", "acomodação reservada"),
+    _rule("alojamento provisório", "acomodação provisória"),
+    _rule("alojamentos provisórios", "acomodações provisórias"),
+    _rule("alojamento turístico", "acomodação turística"),
+    _rule("alojamentos turísticos", "acomodações turísticas"),
+    _rule("alojamento consumido", "acomodação consumida"),
+    _rule("alojamento dedicado", "acomodação dedicada"),
+    _rule("alojamento associado", "acomodação associada"),
+    _rule("alojamento liquidado", "acomodação liquidada"),
+    _rule("alojamentos consecutivos", "acomodações consecutivas"),
+    _rule("alojamentos sujos", "acomodações sujas"),
+    _rule("alojamentos", "acomodações"),
+    _rule("alojamento", "acomodação"),
+    # 11. lacunas apontadas pelo painel nativo (aba Frontend)
+    # "definições" = app settings in the UI, not a mathematical definition.
+    _rule("definições", "configurações"),
+    _rule("definição", "configuração"),
+    _rule("tenha em conta que", "observe que"),
+    _rule("tenha em conta", "observe"),
+    _rule("carateres", "caracteres"),
+    _rule("caráter", "caractere"),
+    _rule("eletrónicas", "eletrônicas"),
+    _rule("eletrónicos", "eletrônicos"),
+    _rule("eletrónica", "eletrônica"),
+    _rule("eletrónico", "eletrônico"),
+    # 11b. clitic forms the bare-verb rules cannot reach
+    _rule("contactá-lo", "contatá-lo"),
+    _rule("contactá-la", "contatá-la"),
+    _rule("controlos", "controles"),
+    _rule("controlo", "controle"),
+    # 12. orthographic correction of country names
+    _rule("Arménia", "Armênia"),
+    _rule("Estónia", "Estônia"),
+    _rule("Polónia", "Polônia"),
+    _rule("logótipo", "logotipo"),
+    # 13. "anular" -> "cancelar": the blanket verb rule runs last, after the
+    # inflected forms and collocations it would otherwise mangle. The
+    # "fatura anulada(s)" collocations are NOT converted: the PO keeps the BR
+    # fiscal distinction "fatura anulada" (void) vs "fatura cancelada".
+    _rule("anulado por", "cancelado por"),
+    _rule("anulada por", "cancelada por"),
+    _rule("anulados", "cancelados"),
+    _rule("anuladas", "canceladas"),
+    _rule("anulado", "cancelado"),
+    _rule("anulada", "cancelada"),
+    _rule("anulará", "cancelará"),
+    _rule("anular", "cancelar"),
 ]
 
 _PLACEHOLDER_RE = re.compile(r"\{\{.*?\}\}|\{\d+\}|<[^>]+>")
@@ -580,12 +1244,122 @@ _PROGRESSIVE_RE = re.compile(
 )
 
 
+#: pt-PT "bare" progressive ("A processar...") -> pt-BR gerund ("Processando...").
+#: Only the leading position is rewritten, and only for known verbs: matching
+#: any word would corrupt proper nouns ("A Cuiner", "A Icar") and prepositional
+#: phrases ("a partir de", "a receber"). Auxiliary forms ("está a carregar")
+#: are handled by _PROGRESSIVE_RE, which is safe because of the auxiliary.
+_BARE_PROGRESSIVE_VERBS = frozenset(
+    """
+    processar verificar reconstruir expirar enviar atualizar transferir gerar
+    validar executar carregar bloquear desbloquear excluir reverter mostrar
+    aplicar adicionar criar cancelar redirecionar selecionar mapear reenviar
+    resolver dividir guardar importar exportar sincronizar digitalizar preparar
+    converter apagar duplicar imprimir calcular gravar
+    """.split()
+)
+_BARE_PROGRESSIVE_RE = re.compile(
+    r"^(\s*)a\s+(" + "|".join(sorted(_BARE_PROGRESSIVE_VERBS, key=len, reverse=True)) + r")\b",
+    re.IGNORECASE,
+)
+
+
+def _fix_bare_progressive(text: str) -> str:
+    """Rewrite a leading pt-PT "A <verbo>r" as the pt-BR gerund.
+
+    The match is anchored to the start of the string, so the gerund always
+    opens the sentence and is therefore capitalised.
+    """
+    match = _BARE_PROGRESSIVE_RE.match(text)
+    if match is None:
+        return text
+    lead, verb = match.group(1), match.group(2)
+    gerund = verb[:-1] + "ndo"
+    return lead + gerund[:1].upper() + gerund[1:] + text[match.end():]
+
+
 def _fix_progressive(text: str) -> str:
     def _repl(match: re.Match[str]) -> str:
         aux, verb = match.group(1), match.group(2)
         return f"{aux} {verb}ndo"
 
     return _PROGRESSIVE_RE.sub(_repl, text)
+
+
+#: "acomodação/acomodações" is feminine, but the pt-PT wording it replaces
+#: ("alojamento") was masculine, and some source strings already paired
+#: "acomodações" with a masculine adjective. Fix the agreement after the fact,
+#: whatever order the substitution rules ran in.
+_ACOMODACAO_FEM = {
+    "provisórios": "provisórias", "provisório": "provisória",
+    "selecionados": "selecionadas", "selecionado": "selecionada",
+    "atribuídos": "atribuídas", "atribuído": "atribuída",
+    "consumidos": "consumidas", "consumido": "consumida",
+    "combinados": "combinadas", "combinado": "combinada",
+    "reservados": "reservadas", "reservado": "reservada",
+    "turísticos": "turísticas", "turístico": "turística",
+    "físicos": "físicas", "físico": "física",
+    "sujos": "sujas", "sujo": "suja", "consecutivos": "consecutivas",
+    "dedicados": "dedicadas", "dedicado": "dedicada",
+    "associados": "associadas", "associado": "associada",
+    "liquidados": "liquidadas", "liquidado": "liquidada",
+    "bloqueados": "bloqueadas", "bloqueado": "bloqueada",
+    "ocupados": "ocupadas", "ocupado": "ocupada",
+    "criados": "criadas", "criado": "criada",
+    "cancelados": "canceladas", "cancelado": "cancelada",
+}
+_MASC_ADJ_RE = re.compile(
+    r"\b(" + "|".join(sorted(_ACOMODACAO_FEM, key=len, reverse=True)) + r")\b",
+    re.IGNORECASE,
+)
+_ACOMODACAO_COMO_RESERVADO_RE = re.compile(
+    r"(a\s+acomodaç(?:ão|ões)\b[^.]*?\bcomo\s+)reservado\b", re.IGNORECASE
+)
+#: Determiner disagreement: "Nenhum das acomodações".
+_ACOMODACAO_DET_RE = re.compile(r"\b(Nenh)um(\s+das\s+acomodaç)", re.IGNORECASE)
+#: Agreement window: after "acomodação(s)", walk over words that can only
+#: belong to its own noun phrase (articles, prepositions, auxiliaries,
+#: negations, conjunctions) and re-gender every masculine adjective found.
+#: The walk stops at the first other word, so an adjective that agrees with a
+#: different noun ("Bloqueio de acomodação provisória consumido") is left
+#: untouched.
+_ACOM_FILLER_WORDS = (
+    "não", "nao", "nem", "já", "ja", "ainda", "estão", "estao", "está", "esta",
+    "estavam", "estava", "são", "sao", "é", "eram", "era", "foram", "serão",
+    "serao", "seria", "ficarão", "ficarao", "ficaram", "ficam", "fica", "têm",
+    "tem", "de", "da", "do", "das", "dos", "com", "para", "em", "no", "na",
+    "nos", "nas", "uns", "umas", "um", "uma", "seu", "sua", "seus", "suas",
+    "este", "esta", "estes", "estas", "esse", "essa", "esses", "essas",
+    "todo", "toda", "todos", "todas", "ou", "os", "as", "o", "a", "e",
+)
+#: Words the window may walk over: fillers and the masculine adjectives being
+#: fixed. Feminine adjectives are NOT transparent, so a participle that agrees
+#: with another head noun ("Bloqueio de acomodação provisória consumido") is
+#: left alone. Boundaries are enforced so "de" does not swallow the "de" of
+#: "dedicado".
+_ACOM_WORD_ALT = "|".join(
+    re.escape(w)
+    for w in sorted(
+        set(_ACOM_FILLER_WORDS) | set(_ACOMODACAO_FEM), key=len, reverse=True
+    )
+)
+_ACOMODACAO_WINDOW_RE = re.compile(
+    r"\bacomodaç(?:ão|ões)\b((?:\s+(?:" + _ACOM_WORD_ALT + r")\b)*)",
+    re.IGNORECASE,
+)
+
+
+def _fix_agreement(text: str) -> str:
+    def _window(match: re.Match[str]) -> str:
+        head = match.group(0)[: len(match.group(0)) - len(match.group(1))]
+        tail = _MASC_ADJ_RE.sub(
+            lambda m: _ACOMODACAO_FEM[m.group(1).lower()], match.group(1)
+        )
+        return head + tail
+
+    text = _ACOMODACAO_WINDOW_RE.sub(_window, text)
+    text = _ACOMODACAO_COMO_RESERVADO_RE.sub(r"\1reservada", text)
+    return _ACOMODACAO_DET_RE.sub(r"Nenhuma\2", text)
 
 
 def _adapt_case(template: str, source: str) -> str:
@@ -630,6 +1404,8 @@ def converter(texto: str) -> str:
     # Runs after SUBSTITUICOES so a lemma rule ("gerir"->"gerenciar") is applied
     # first; the gerund is then derived from the pt-BR stem ("gerenciando").
     protected = _fix_progressive(protected)
+    protected = _fix_bare_progressive(protected)
+    protected = _fix_agreement(protected)
 
     return _restore(protected, saved)
 
@@ -657,6 +1433,11 @@ def _is_review_sheet(columns: list[str]) -> bool:
     return has_key and has_pt
 
 
+def _pt_br_sheet(sheet: str) -> str:
+    """pt-BR label for a source tab, keeping the internal keys untouched."""
+    return SHEET_NAMES_PT_BR.get(sheet, sheet)
+
+
 def _pick(columns: list[str], candidates: list[str]) -> str | None:
     for name in candidates:
         if name in columns:
@@ -669,6 +1450,15 @@ def _key_value(row: pd.Series, key_col: str | None) -> str:
         return ""
     value = row.get(key_col)
     return "" if pd.isna(value) else str(value).strip()
+
+
+#: Keys whose approved pt-BR text legitimately contains a substring that the
+#: generic rules would rewrite, so the automatic residue gate must skip them.
+#: ``propertyEmailSchedulerEventINVCVOID.message`` is "Fatura anulada": BR
+#: fiscal wording keeps "anulada" (void) distinct from "cancelada".
+FALSE_POSITIVOS_PT_PT: set[str] = {
+    "shared.radioButton.propertyEmailSchedulerEventINVCVOID.message",
+}
 
 
 def _resolve_estado(aviso: str, pt: str, converted: str) -> str:
@@ -820,15 +1610,36 @@ def process_sheet(df: pd.DataFrame) -> pd.DataFrame:
             continue
 
         dec = DECISOES.get((clave, texto_pt))
-        if dec is not None:
+        if clave in CORRECOES_PO:
+            # binding PO decision: wins over both the source warning ("Sin
+            # traducción PT" / "Igual a ES/EN") and the review agents, so the
+            # row closes as CORRIGIDO.
+            converted = CORRECOES_PO[clave]
+            estado = (
+                ESTADO_OK
+                if converted == texto_pt
+                else ESTADO_CORRIGIDO
+            )
+        elif clave in CORRECOES_BR:
+            # audit fix for pt-PT the generic rules missed (mostly
+            # "Descargar/Download" rendered as "Transferir"): wins over the
+            # agents and over the source warning.
+            converted = CORRECOES_BR[clave]
+            estado = (
+                ESTADO_OK
+                if converted == texto_pt
+                else ESTADO_CORRIGIDO
+            )
+        elif dec is not None:
             # validated by the review agents: accept their pt-BR verbatim
             converted = dec
+            estado = _resolve_estado(aviso, texto_pt, converted)
         elif clave in CORRECOES:
             converted = CORRECOES[clave]
+            estado = _resolve_estado(aviso, texto_pt, converted)
         else:
             converted = converter(texto_pt)
-
-        estado = _resolve_estado(aviso, texto_pt, converted)
+            estado = _resolve_estado(aviso, texto_pt, converted)
 
         if estado == ESTADO_OK:
             out.at[idx, COL_CORRECAO] = ""
@@ -837,6 +1648,12 @@ def process_sheet(df: pd.DataFrame) -> pd.DataFrame:
                 converted if converted != texto_pt else ""
             )
         out.at[idx, COL_ESTADO] = estado
+        # Explanatory note for polemic / ambiguous rows; keep any note the
+        # source workbook already carried.
+        comentario = _clean(row.get(COL_COMENTARIO))
+        if not comentario and clave in COMENTARIOS:
+            comentario = COMENTARIOS[clave]
+        out.at[idx, COL_COMENTARIO] = comentario
         if dec is not None or clave in CORRECOES:
             # reviewed and closed by the reviewer / review agents
             out.at[idx, COL_PRIORIDADE] = "Fechado"
@@ -947,20 +1764,31 @@ def _construir_final(processed: dict[str, pd.DataFrame]) -> dict[str, pd.DataFra
         pt_original = out[pt_col].map(_clean) if pt_col else ""
         correcao = out[COL_CORRECAO].map(_clean) if COL_CORRECAO in out.columns else ""
         estado = out[COL_ESTADO].map(_clean) if COL_ESTADO in out.columns else ""
+        chave_col = next((c for c in KEY_COLUMNS if c in out.columns), None)
+        chave = (
+            out[chave_col].map(_clean)
+            if chave_col
+            else pd.Series([""] * len(out), index=out.index)
+        )
 
-        def _final(p: str, c: str, e: str) -> str:
+        def _final(p: str, c: str, e: str, k: str) -> str:
             if c:
                 return c
             if not p:
                 return ""
             # Only unresolved rows are gated on pt-PT residue; OK/CORRIGIDO text
             # is already validated and must never be blanked by a false positive.
-            if e == ESTADO_PENDENTE_PO and _tem_residuo_pt_pt(p):
+            if (
+                e == ESTADO_PENDENTE_PO
+                and k not in FALSE_POSITIVOS_PT_PT
+                and _tem_residuo_pt_pt(p)
+            ):
                 return ""
             return p
 
         out[COL_FINAL] = [
-            _final(p, c, e) for p, c, e in zip(pt_original, correcao, estado)
+            _final(p, c, e, k)
+            for p, c, e, k in zip(pt_original, correcao, estado, chave)
         ]
         out = out.drop(
             columns=[
@@ -972,6 +1800,75 @@ def _construir_final(processed: dict[str, pd.DataFrame]) -> dict[str, pd.DataFra
         )
         final[sheet] = out
     return final
+
+
+def _write_preenchido(
+    entrada: Path, destino: Path, processed: dict[str, pd.DataFrame]
+) -> None:
+    """Write the source workbook with Estado/Corrección PT/Comentario filled.
+
+    The original file is the base: sheet order, headers, formatting, column
+    widths and the ``OK,Corregir`` dropdown are preserved. Only the three
+    review columns are written, matched by key so the row order never shifts.
+    """
+    from openpyxl import load_workbook
+
+    wb = load_workbook(entrada)
+    for sheet, df in processed.items():
+        if sheet not in wb.sheetnames:
+            continue
+        ws = wb[sheet]
+        # header row is not necessarily row 1 (the source may carry title rows)
+        header_row = 1
+        for r in range(1, min(ws.max_row, 30) + 1):
+            cells = [str(c.value).strip() for c in ws[r] if c.value is not None]
+            if any(c in cells for c in KEY_COLUMNS):
+                header_row = r
+                break
+        header = {
+            str(c.value).strip(): c.column
+            for c in ws[header_row]
+            if c.value is not None
+        }
+        cols = {name: header[name] for name in
+                (COL_ESTADO, COL_CORRECAO, COL_COMENTARIO) if name in header}
+        if COL_ESTADO not in cols:
+            continue
+        key_name = next((c for c in KEY_COLUMNS if c in header), None)
+        if key_name is None:
+            continue
+        key_col = header[key_name]
+
+        estado = df[COL_ESTADO].tolist() if COL_ESTADO in df.columns else []
+        correcao = df[COL_CORRECAO].tolist() if COL_CORRECAO in df.columns else []
+        comentario = df[COL_COMENTARIO].tolist() if COL_COMENTARIO in df.columns else []
+        # The key alone is not unique (the technical key column is truncated and
+        # repeats across rows). Both the sheet and the frame keep the source row
+        # order, so the nth occurrence of a key maps to the nth frame row.
+        pending: dict[str, list[int]] = {}
+        for i, key in enumerate(df[key_name].tolist()):
+            pending.setdefault(str(key).strip(), []).append(i)
+
+        seen: dict[str, int] = {}
+        for row in ws.iter_rows(min_row=header_row + 1):
+            key = str(row[key_col - 1].value or "").strip()
+            slots = pending.get(key)
+            if not slots:
+                continue
+            pos = seen.get(key, 0)
+            if pos >= len(slots):
+                continue
+            seen[key] = pos + 1
+            idx = slots[pos]
+            for name, col in cols.items():
+                src = {
+                    COL_ESTADO: estado,
+                    COL_CORRECAO: correcao,
+                    COL_COMENTARIO: comentario,
+                }[name]
+                value = src[idx] if idx < len(src) else ""
+                row[col - 1].value = value if value else None
+    wb.save(destino)
 
 
 def build(xlsx_in: str | None = None, out_dir: str | None = None) -> int:
@@ -1002,12 +1899,16 @@ def build(xlsx_in: str | None = None, out_dir: str | None = None) -> int:
 
     with pd.ExcelWriter(destino / OUT_COMPLETA) as writer:
         for sheet, df in processed.items():
-            df.to_excel(writer, sheet_name=sheet[:31], index=False)
+            df.to_excel(writer, sheet_name=_pt_br_sheet(sheet)[:31], index=False)
+
+    # entrega principal: o próprio ficheiro original, preenchido nas três
+    # colunas de revisão (abas, formatação e dropdown OK/Corregir intactos)
+    _write_preenchido(entrada, destino / OUT_PREENCHIDO, processed)
 
     final = _construir_final(processed)
     with pd.ExcelWriter(destino / OUT_FINAL) as writer:
         for sheet, df in final.items():
-            df.to_excel(writer, sheet_name=sheet[:31], index=False)
+            df.to_excel(writer, sheet_name=_pt_br_sheet(sheet)[:31], index=False)
 
     duvidas = _extract_duvidas(xl, processed)
     duvidas.to_excel(destino / OUT_DUVIDAS, index=False)

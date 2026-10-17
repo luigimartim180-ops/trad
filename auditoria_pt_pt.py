@@ -50,13 +50,25 @@ PAT = re.compile(
 )
 
 
+def _txt(value: object) -> str:
+    """Texto limpo de uma célula; ``None``/NaN viram string vazia.
+
+    Cuidado: ``NaN or ""`` devolve ``NaN`` (é truthy), por isso a coerção tem
+    de ser explícita — senão as linhas ``OK`` (correção vazia) nunca entram na
+    auditoria.
+    """
+    if value is None or (isinstance(value, float) and pd.isna(value)):
+        return ""
+    return str(value)
+
+
 def main() -> int:
     sheets = pd.read_excel(conv.OUT_COMPLETA, sheet_name=None)
     rows = []
     for name, df in sheets.items():
         for _, r in df.iterrows():
-            pt = str(r.get("Traducción PT actual") or "")
-            corr = str(r.get(conv.COL_CORRECAO) or "").strip()
+            pt = _txt(r.get("Traducción PT actual"))
+            corr = _txt(r.get(conv.COL_CORRECAO)).strip()
             rows.append(
                 (
                     name,

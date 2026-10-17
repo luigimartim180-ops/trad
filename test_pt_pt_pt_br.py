@@ -60,11 +60,38 @@ class TestConverter(unittest.TestCase):
             conv.converter("A transferir ficheiros em massa"),
             "A baixar arquivos em massa",
         )
-        # data migration keeps the verb
+        # Data migration keeps the verb "transferir" (it is a real transfer,
+        # not a download), but the pt-PT progressive still becomes a gerund.
         self.assertEqual(
             conv.converter("A transferir dados: 1 de 10"),
-            "A transferir dados: 1 de 10",
+            "Transferindo dados: 1 de 10",
         )
+
+    def test_bare_progressive_becomes_gerund(self) -> None:
+        for pt_pt, pt_br in [
+            ("A carregar…", "Carregando…"),
+            ("A processar", "Processando"),
+            ("A verificar…", "Verificando…"),
+            ("A expirar", "Expirando"),
+            ("A reconstruir o item 1 de 5", "Reconstruindo o item 1 de 5"),
+            ("A atualizar 1 de 5 allotments", "Atualizando 1 de 5 allotments"),
+            ("A enviar…", "Enviando…"),
+            ("A mostrar 1 a 10 de 50", "Mostrando 1 a 10 de 50"),
+        ]:
+            self.assertEqual(conv.converter(pt_pt), pt_br, pt_pt)
+
+    def test_bare_progressive_leaves_non_verbs_alone(self) -> None:
+        # Proper nouns and prepositional phrases must survive untouched: a
+        # generic "A <word>" rule would corrupt them.
+        for text in [
+            "A Cuiner é uma solução POS",
+            "A Icar é líder global",
+            "A Fideltour utiliza o documento",
+            "Nova conta a receber",
+            "a partir de hoje",
+            "Contas a receber",
+        ]:
+            self.assertEqual(conv.converter(text), text, text)
 
     def test_tem_a_certeza(self) -> None:
         self.assertEqual(
@@ -147,15 +174,22 @@ class TestConverter(unittest.TestCase):
             conv.CORRECOES["apps.report.downloadExcel"], "Baixar Excel"
         )
 
-    def test_duvida_keys_never_converted(self) -> None:
-        for key in [
-            "apps.aiAssistant.label.hotel",
-            "apps.chainSpaceLockType.radio.onHold",
-            "apps.chainSpaceLockType.radio.outOfOrder",
-            "apps.chainSpaceLockType.radio.outOfService",
-            "PropertyClassType t WHERE t.Code = '9'",
-        ]:
-            self.assertIsNone(conv.CORRECOES[key])
+    def test_duvida_keys_closed_by_po(self) -> None:
+        # every former open question is now a binding PO decision
+        for key in conv.CORRECOES_PO:
+            self.assertIsInstance(conv.CORRECOES_PO[key], str)
+        self.assertEqual(conv.CORRECOES_PO["apps.aiAssistant.label.hotel"], "Propriedade")
+        self.assertEqual(
+            conv.CORRECOES_PO["PropertyClassType t WHERE t.Code = '9'"], "Pensão"
+        )
+        self.assertEqual(
+            conv.CORRECOES_PO[
+                "shared.radioButton.propertyEmailSchedulerEventINVCVOID.message"
+            ],
+            "Fatura anulada",
+        )
+        self.assertFalse(conv.DUVIDAS_KEYS)
+        self.assertFalse(conv.DUVIDAS_GRUPOS)
 
     def test_pensao_kept(self) -> None:
         self.assertEqual(conv.converter("Pensão"), "Pensão")
@@ -271,6 +305,43 @@ class TestRules(unittest.TestCase):
             self.assertNotEqual(repl.lower(), "cota")
             self.assertNotIn("allotment", pattern.pattern.lower())
 
+    def test_frontend_panel_gaps(self) -> None:
+        # terms the native panel reported as still pt-PT
+        self.assertEqual(conv.converter("Tenha em conta que ..."), "Observe que ...")
+        self.assertEqual(conv.converter("Tenha em conta o seguinte"), "Observe o seguinte")
+        self.assertEqual(
+            conv.converter("contêm pelo menos um caráter"),
+            "contêm pelo menos um caractere",
+        )
+        self.assertEqual(conv.converter("18 carateres"), "18 caracteres")
+        self.assertEqual(conv.converter("Definições gerais"), "Configurações gerais")
+        self.assertEqual(conv.converter("Definição de tarifa"), "Configuração de tarifa")
+        self.assertEqual(conv.converter("fatura eletrónica"), "fatura eletrônica")
+        self.assertEqual(conv.converter("chave eletrónica"), "chave eletrônica")
+        self.assertEqual(conv.converter("logótipo"), "logotipo")
+
+    def test_anular_becomes_cancelar(self) -> None:
+        self.assertEqual(conv.converter("Anular"), "Cancelar")
+        self.assertEqual(conv.converter("FATURA ANULADA"), "FATURA CANCELADA")
+        self.assertEqual(conv.converter("Modelo de fatura anulada"), "Modelo de fatura cancelada")
+        self.assertEqual(conv.converter("Anulado por"), "Cancelado por")
+        self.assertEqual(
+            conv.converter("retificar uma fatura anulará a fatura original"),
+            "retificar uma fatura cancelará a fatura original",
+        )
+
+    def test_void_invoice_override_kept(self) -> None:
+        # the PO keeps "Fatura anulada" (void) as the INVCVOID label, distinct
+        # from "cancelada"; the automatic residue gate must not blank it.
+        key = "shared.radioButton.propertyEmailSchedulerEventINVCVOID.message"
+        self.assertEqual(conv.CORRECOES_PO[key], "Fatura anulada")
+        self.assertIn(key, conv.FALSE_POSITIVOS_PT_PT)
+
+    def test_country_names(self) -> None:
+        self.assertEqual(conv.converter("Arménia"), "Armênia")
+        self.assertEqual(conv.converter("Estónia"), "Estônia")
+        self.assertEqual(conv.converter("Polónia"), "Polônia")
+
 
 class TestPipeline(unittest.TestCase):
     @classmethod
@@ -358,6 +429,15 @@ class TestPipeline(unittest.TestCase):
         for _, row in igual.iterrows():
             pt = conv._clean(row["Traducción PT actual"])
             clave = row["Clave"]
+            if clave in conv.CORRECOES_PO:
+                # binding PO decision: closes as CORRIGIDO (or OK if unchanged)
+                expected = (
+                    conv.ESTADO_OK
+                    if conv.CORRECOES_PO[clave] == pt
+                    else conv.ESTADO_CORRIGIDO
+                )
+                self.assertEqual(row[conv.COL_ESTADO], expected)
+                continue
             if (
                 not pt
                 or clave in conv.DUVIDAS_KEYS
@@ -504,10 +584,72 @@ class TestPipeline(unittest.TestCase):
 
     def test_audit_new_rules_meal_and_register(self) -> None:
         self.assertEqual(conv.converter("pequeno-almoço"), "café da manhã")
-        self.assertEqual(conv.converter("alojamento e pequeno-almoço"), "alojamento e café da manhã")
+        self.assertEqual(conv.converter("alojamento e pequeno-almoço"), "acomodação e café da manhã")
         self.assertEqual(conv.converter("por se registar"), "por se registrar")
         self.assertEqual(conv.converter("o pessoal registe"), "o pessoal registre")
         self.assertEqual(conv.converter("caixa registadora"), "caixa registradora")
+
+    def test_cross_audit_lexical_gaps(self) -> None:
+        self.assertEqual(conv.converter("Novo artigo"), "Novo item")
+        self.assertEqual(conv.converter("Artigos de faturamento"), "Itens de faturamento")
+        self.assertEqual(conv.converter("Código postal"), "CEP")
+        self.assertEqual(conv.converter("NIF da filial"), "CPF/CNPJ da filial")
+        self.assertEqual(conv.converter("Faturar a"), "Faturar para")
+        self.assertEqual(conv.converter("Iniciar sessão"), "Fazer login")
+        self.assertEqual(conv.converter("Menu de bar"), "Cardápio do bar")
+        self.assertEqual(conv.converter("Lavandaria"), "Lavanderia")
+        self.assertEqual(conv.converter("Hora de fim"), "Horário de término")
+        self.assertEqual(conv.converter("informação bancária"), "informações bancárias")
+        self.assertEqual(conv.converter("desportivos"), "esportivos")
+        self.assertEqual(conv.converter("Descarregue o anexo"), "Baixe o anexo")
+
+    def test_cross_audit_partida_and_alojamento_gender(self) -> None:
+        self.assertEqual(conv.converter("Partida"), "Saída")
+        self.assertEqual(conv.converter("Data de partida"), "Data de saída")
+        self.assertEqual(conv.converter("Novo alojamento"), "Nova acomodação")
+        self.assertEqual(conv.converter("bloquear o alojamento"), "bloquear a acomodação")
+        self.assertEqual(conv.converter("os alojamentos"), "as acomodações")
+        self.assertEqual(conv.converter("todos os alojamentos"), "todas as acomodações")
+
+    def test_cross_audit_alojamento_agreement(self) -> None:
+        expected = {
+            "Não tem nenhum alojamento atribuído": "Não tem nenhuma acomodação atribuída",
+            "Tem este alojamento atribuído": "Tem esta acomodação atribuída",
+            "Alojamentos reservados": "Acomodações reservadas",
+            "Aplicar aos alojamentos selecionados": "Aplicar às acomodações selecionadas",
+            "Nenhum dos alojamentos selecionados está bloqueado":
+                "Nenhuma das acomodações selecionadas está bloqueada",
+            "Todos os alojamentos foram bloqueados com sucesso":
+                "Todas as acomodações foram bloqueadas com sucesso",
+            "Alojamento não físico": "Acomodação não física",
+            "Esta ocupação não existe para esta propriedade e para o alojamento selecionado":
+                "Esta ocupação não existe para esta propriedade e para a acomodação selecionada",
+            "certifique-se de que o alojamento não está sujo nem ocupado":
+                "certifique-se de que a acomodação não está suja nem ocupada",
+            "Reverter o cancelamento irá definir o alojamento selecionado como reservado":
+                "Reverter o cancelamento irá definir a acomodação selecionada como reservada",
+        }
+        for pt, br in expected.items():
+            self.assertEqual(conv.converter(pt), br)
+
+    def test_cross_audit_agreement_does_not_overreach(self) -> None:
+        # "consumido" agrees with "Bloqueio", not with "acomodação".
+        self.assertEqual(
+            conv.converter("Bloqueio de alojamento provisório consumido"),
+            "Bloqueio de acomodação provisória consumido",
+        )
+        # "reservado" agrees with "grupo", not with "acomodação".
+        self.assertEqual(
+            conv.converter(
+                "definir o alojamento selecionado como grupo reservado"
+            ),
+            "definir a acomodação selecionada como grupo reservado",
+        )
+
+    def test_cross_audit_no_pt_pt_left_in_new_terms(self) -> None:
+        for term in ("alojamento", "partida", "artigo", "iniciar sessão",
+                     "código postal", "NIF", "lavandaria", "desportivo"):
+            self.assertNotIn(term, conv.converter(term))
 
     def test_audit_new_rules_default_and_housekeeping(self) -> None:
         self.assertEqual(conv.converter("valor predefinido"), "valor padrão")
@@ -525,6 +667,58 @@ class TestPipeline(unittest.TestCase):
         ):
             self.assertIn("transferir", conv.converter(texto).lower())
 
+    def test_preenchido_keeps_source_workbook_structure(self) -> None:
+        from openpyxl import load_workbook
+        src = load_workbook(ROOT / conv.XLSX_IN)
+        out = load_workbook(ROOT / conv.OUT_PREENCHIDO)
+        self.assertEqual(src.sheetnames, out.sheetnames)
+        for name in src.sheetnames:
+            if name == conv.INFO_SHEET:
+                continue
+            self.assertEqual(
+                [c.value for c in src[name][1]],
+                [c.value for c in out[name][1]],
+                f"cabeçalho alterado em {name}",
+            )
+            self.assertEqual(src[name].dimensions, out[name].dimensions)
+            self.assertEqual(src[name].freeze_panes, out[name].freeze_panes)
+            src_dv = [dv.formula1 for dv in src[name].data_validations.dataValidation]
+            out_dv = [dv.formula1 for dv in out[name].data_validations.dataValidation]
+            self.assertEqual(src_dv, out_dv, f"dropdown perdido em {name}")
+
+    def test_preenchido_columns_and_states(self) -> None:
+        sheets = pd.read_excel(ROOT / conv.OUT_PREENCHIDO, sheet_name=None)
+        for name, df in sheets.items():
+            if name == conv.INFO_SHEET:
+                continue
+            self.assertIn(conv.COL_ESTADO, df.columns)
+            estados = set(df[conv.COL_ESTADO].dropna().unique())
+            self.assertTrue(
+                estados <= {"OK", conv.ESTADO_CORRIGIDO},
+                f"estados inesperados em {name}: {estados}",
+            )
+            ok = df[df[conv.COL_ESTADO] == "OK"]
+            vazias = ok[conv.COL_CORRECAO].isna() | (
+                ok[conv.COL_CORRECAO].astype(str).str.strip() == ""
+            )
+            self.assertTrue(vazias.all(), f"OK com Corrección PT em {name}")
+
+    def test_preenchido_comments_only_on_polemic_rows(self) -> None:
+        sheets = pd.read_excel(ROOT / conv.OUT_PREENCHIDO, sheet_name=None)
+        seen: set[str] = set()
+        for name, df in sheets.items():
+            if name == conv.INFO_SHEET:
+                continue
+            for _, row in df.iterrows():
+                com = row[conv.COL_COMENTARIO]
+                if pd.isna(com) or not str(com).strip():
+                    continue
+                key = next(str(row[c]) for c in conv.KEY_COLUMNS if c in df.columns)
+                # a note only ever comes from COMENTARIOS, and always the same
+                self.assertEqual(str(com).strip(), conv.COMENTARIOS[key])
+                seen.add(key)
+        self.assertEqual(seen, set(conv.COMENTARIOS))
+
     def test_final_file_has_single_text_column(self) -> None:
         sheets = pd.read_excel(ROOT / conv.OUT_FINAL, sheet_name=None)
         for df in sheets.values():
@@ -536,8 +730,9 @@ class TestPipeline(unittest.TestCase):
 
     def test_final_file_matches_correction_or_original(self) -> None:
         original = pd.read_excel(ROOT / conv.XLSX_IN, sheet_name=None)
+        src = {v: k for k, v in conv.SHEET_NAMES_PT_BR.items()}
         for name, df in pd.read_excel(ROOT / conv.OUT_FINAL, sheet_name=None).items():
-            orig_df = original[name]
+            orig_df = original[src.get(name, name)]
             key_col = "Clave" if "Clave" in df.columns else "Código"
             orig = {
                 str(r[key_col]): str(r.get("Traducción PT actual") or "")
@@ -548,6 +743,8 @@ class TestPipeline(unittest.TestCase):
                 if pd.isna(final) or not str(final).strip():
                     continue
                 key = str(row[key_col])
+                if key in conv.FALSE_POSITIVOS_PT_PT:
+                    continue
                 if str(final) != orig.get(key, ""):
                     self.assertFalse(
                         conv._tem_residuo_pt_pt(str(final)),
@@ -558,8 +755,9 @@ class TestPipeline(unittest.TestCase):
         import re
         pat = re.compile(r"\{\{.*?\}\}|\{\d+\}|<[^>]+>")
         original = pd.read_excel(ROOT / conv.XLSX_IN, sheet_name=None)
+        src = {v: k for k, v in conv.SHEET_NAMES_PT_BR.items()}
         for name, df in pd.read_excel(ROOT / conv.OUT_FINAL, sheet_name=None).items():
-            orig_df = original[name]
+            orig_df = original[src.get(name, name)]
             key_col = "Clave" if "Clave" in df.columns else "Código"
             orig_keys = orig_df[key_col].astype(str).values
             for _, row in df.iterrows():
@@ -581,13 +779,16 @@ class TestPipeline(unittest.TestCase):
 
     def test_final_file_has_no_pt_pt_in_pending_rows(self) -> None:
         for name, df in pd.read_excel(ROOT / conv.OUT_FINAL, sheet_name=None).items():
+            key_col = "Clave" if "Clave" in df.columns else "Código"
             for _, row in df.iterrows():
                 final = row[conv.COL_FINAL]
                 if pd.isna(final):
                     continue
+                if str(row.get(key_col)) in conv.FALSE_POSITIVOS_PT_PT:
+                    continue
                 self.assertFalse(
                     conv._tem_residuo_pt_pt(str(final)),
-                    f"{name}/{row.get('Clave', row.get('Código'))} tem pt-PT",
+                    f"{name}/{row.get(key_col)} tem pt-PT",
                 )
 
     def test_cli_accepts_custom_output_dir(self) -> None:
