@@ -60,11 +60,38 @@ class TestConverter(unittest.TestCase):
             conv.converter("A transferir ficheiros em massa"),
             "A baixar arquivos em massa",
         )
-        # data migration keeps the verb
+        # Data migration keeps the verb "transferir" (it is a real transfer,
+        # not a download), but the pt-PT progressive still becomes a gerund.
         self.assertEqual(
             conv.converter("A transferir dados: 1 de 10"),
-            "A transferir dados: 1 de 10",
+            "Transferindo dados: 1 de 10",
         )
+
+    def test_bare_progressive_becomes_gerund(self) -> None:
+        for pt_pt, pt_br in [
+            ("A carregar…", "Carregando…"),
+            ("A processar", "Processando"),
+            ("A verificar…", "Verificando…"),
+            ("A expirar", "Expirando"),
+            ("A reconstruir o item 1 de 5", "Reconstruindo o item 1 de 5"),
+            ("A atualizar 1 de 5 allotments", "Atualizando 1 de 5 allotments"),
+            ("A enviar…", "Enviando…"),
+            ("A mostrar 1 a 10 de 50", "Mostrando 1 a 10 de 50"),
+        ]:
+            self.assertEqual(conv.converter(pt_pt), pt_br, pt_pt)
+
+    def test_bare_progressive_leaves_non_verbs_alone(self) -> None:
+        # Proper nouns and prepositional phrases must survive untouched: a
+        # generic "A <word>" rule would corrupt them.
+        for text in [
+            "A Cuiner é uma solução POS",
+            "A Icar é líder global",
+            "A Fideltour utiliza o documento",
+            "Nova conta a receber",
+            "a partir de hoje",
+            "Contas a receber",
+        ]:
+            self.assertEqual(conv.converter(text), text, text)
 
     def test_tem_a_certeza(self) -> None:
         self.assertEqual(

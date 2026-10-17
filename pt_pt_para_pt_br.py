@@ -393,6 +393,109 @@ CORRECOES_PO: dict[str, str] = {
 
 CORRECOES.update(CORRECOES_PO)
 
+#: Correções descobertas na auditoria BR (2026-10): pt-PT que passou intacto,
+#: sobretudo "Descargar/Download" traduzido como "Transferir/Transfira" (o pt-BR
+#: usa "Baixar"), além de "eliminá-lo"->"excluí-lo" e "A aguardar"->"Aguardando".
+#: Têm precedência sobre as regras genéricas; não colidem com decisões dos agentes.
+CORRECOES_BR: dict[str, str] = {
+    "apps.accountReceivableTransaction.gridAction.download": "Baixar",
+    "apps.endOfDay.process.emergencyReports.description": (
+        "Baixe os relatórios de emergência e, caso ocorra uma falha generalizada, estará preparado para gerenciar a sua propriedade temporariamente sem o Ulyses Suite."
+    ),
+    "apps.integration.barcelo.downloadInvoice": "Baixar fatura",
+    "apps.integration.bavel.downloadInvoice": "Baixar fatura",
+    "apps.integration.description.a3": (
+        "Baixe arquivos e carregue-os no sistema de contabilidade A3Con. Poupe tempo e analise dados com esta solução da Wolters Kluwer."
+    ),
+    "apps.integration.description.gsp": (
+        "O Ulyses Guest Services Portal permite que os seus hóspedes façam o check-in online, consultem a sua conta, baixem faturas e muito mais. Poupe tempo, aumente a distância e proteja a sua equipe."
+    ),
+    "apps.integration.description.sage200": (
+        "O Sage 200 é um conjunto de produtos de contabilidade e gestão desenvolvido pelo Sage Group, destinado a médias empresas. Baixe os arquivos necessários e carregue-os no seu sistema de contabilidade."
+    ),
+    "apps.integration.ertzaintza.button.downloadParteViajerosXML": "Baixar XML de partes de viajantes",
+    "apps.integration.ertzaintza.button.downloadReservationXML": "Baixar XML de reservas",
+    "apps.integration.fatturaPA.downloadInvoice": "Baixar faturas",
+    "apps.rate.importExcelModal.instructions": (
+        "Carregue o documento preenchido com todas as condições do contrato atualizadas (Preços, Encerramentos, CTA, CTD, Estadia máx./mín.). Baixe o modelo Excel caso ainda não o tenha feito."
+    ),
+    "apps.report.options.downloadNow": "Baixar agora",
+    "apps.reservation.reservationRoomStaySidebar.await": "Aguardando localizador",
+    "apps.reservationGroup.event.await": "Aguardando localizador",
+    "apps.reservationGroupInquiry.await": "Aguardando localizador",
+    "apps.rooming.importExcel": (
+        "Baixe o modelo abaixo e preencha-o com toda a informação necessária para criar todas as acomodações. Pode compartilhar este arquivo com outras empresas, pelo que deve garantir que o carrega quando o rooming estiver confirmado."
+    ),
+    "apps.systemSettings.import.downloadTemplate": (
+        "Baixe o seguinte arquivo, preencha os seus dados e carregue-o para importar dados para o UlysesCloud"
+    ),
+    "core.button.downloadExcel": "Baixar Excel",
+    "core.button.downloadExcelWithAllMappings": "Baixar todos os mapeamentos Excel",
+    "core.button.downloadInvoice": "Baixar fatura",
+    "core.label.waitingFor": "Aguardando desde",
+    "core.userMessage.server.paynopain.credorax.pending_3ds_response": "Aguardando processamento da resposta em 3DS",
+    "core.userMessage.server.paynopain.credorax.pending_confirmation": "Aguardando confirmação",
+    "core.userMessage.server.paynopain.credorax.pending_processor_response": "Resposta aguardando processamento",
+    "shared.grid.noViewAllDataInGridReport": (
+        "O resultado tem mais de 5000 linhas, altere os filtros aplicados ou baixe o relatório em PDF, Excel ou CSV."
+    ),
+    "shared.modal.bulkAssign.importExcel.instructions": (
+        "Carregue o documento preenchido com todas as estadias atualizadas. Baixe o modelo Excel caso ainda não o tenha feito."
+    ),
+    "shared.modal.importAccountingMappingExcel.importExcel": (
+        "Baixe o seguinte arquivo, defina as suas acomodações com os respetivos tipos de acomodação e carregue-o para criar a estrutura de acomodações da sua propriedade."
+    ),
+    "shared.modal.importItemExcel.importExcel": (
+        "Baixe o seguinte arquivo, defina os seus produtos com os respetivos tipos de itens e carregue-o para criar a estrutura de itens da sua propriedade."
+    ),
+    "shared.modal.importMeterExcel.importExcel": (
+        "Baixe o arquivo, especifique os contadores com os respetivos tipos e carregue-o para criar a estrutura de contadores do seu estabelecimento."
+    ),
+    "shared.modal.importProductExcel.importExcel": (
+        "Baixe o seguinte arquivo, defina os seus produtos com os respetivos tipos de produto e carregue-o para criar a estrutura de produtos da sua propriedade."
+    ),
+    "shared.modal.importRoomExcel.importExcel": (
+        "Baixe o seguinte arquivo, defina as suas acomodações com os respetivos tipos de acomodação e carregue-o para criar a estrutura de acomodações da sua propriedade."
+    ),
+    "shared.modal.importTranslateExcel.importExcel": (
+        "Baixe o seguinte arquivo, defina as suas acomodações com os respetivos tipos de acomodação e carregue-o para criar a estrutura de acomodações da sua propriedade."
+    ),
+    "shared.modal.information.createCutOff.message": (
+        "Vai executar o processo de Cut-Off. Após este processo, as configurações e o bloqueio de acomodação ficarão bloqueadas. Pode revertê-lo excluindo o Cut-Off."
+    ),
+    "shared.modal.information.deleteMeterNotAllowed.message": (
+        "Este contador tem leituras adicionadas e não é possível excluá-lo"
+    ),
+    "shared.modal.information.genericAccountingAlreadyExported.title": "Período baixado",
+    "shared.modal.information.siteminderImportReservation.message": (
+        "Tem certeza de que deseja prosseguir com esta ação?\n\nEste processo irá pedir ao Channel Manager que volte a baixar todas as reservas, tanto atuais como futuras. Como resultado, todas as reservas geradas pelo Channel Manager serão baixadas novamente e as reservas existentes serão atualizadas em conformidade.\n\nObserve que este processo é irreversível."
+    ),
+    "shared.modal.propagateVehicle.deleteMessage": (
+        "Este veículo é utilizado em {{count}} estadias atuais ou futuras. Deseja também excluí-lo dessas estadias?"
+    ),
+    "shared.modal.rooming.downloadExcel.roomingListType1": "Baixar atual",
+    "shared.modal.rooming.downloadExcel.roomingListType2": "Baixar exemplo",
+    "shared.modal.rooming.downloadExcel.roomingListType3": "Baixar bloqueio de acomodações",
+    "shared.modal.rooming.downloadExcel.roomingListType4": "Baixar bloqueio de acomodações alargado",
+    "shared.modal.rooming.importExcel": (
+        "Baixe o modelo abaixo e preencha-o com todas as informações necessárias para criar todas as acomodações. Pode compartilhar este arquivo com outras empresas, mas certifique-se de que o carrega quando a rooming list estiver confirmada."
+    ),
+    "shared.switch.allowDownloadInvoice.message": (
+        "Ative esta opção para permitir que os usuários baixem as faturas relacionadas com as suas reservas"
+    ),
+    "shared.switch.allowInHouseDownloadInvoice.message": (
+        "Ative esta opção para permitir que os usuários baixem as faturas relacionadas com as suas reservas"
+    ),
+    "shared.switch.generateRoomingListByBlock.message": (
+        "Ative esta opção se quiser que o arquivo a baixar tenha as rooming lists separadas por data e blocos de quantidade, em vez do mínimo possível de rooming lists"
+    ),
+    "shared.switch.profileMappingAllowAddDeposit.message": (
+        "Ative esta opção para permitir a criação de depósitos quando são baixados na reserva."
+    ),
+}
+
+CORRECOES.update(CORRECOES_BR)
+
 #: Explanatory notes for the ``Comentario`` column. Only rows that are
 #: polemic, ambiguous or need a reason get a note; everything else stays
 #: empty on purpose (the correction itself is self-explanatory).
@@ -494,6 +597,167 @@ COMENTARIOS: dict[str, str] = {
     "core.button.download": (
         "Baixar: em pt-BR \"download\" é \"baixar\". Regra aplicada só aos "
         "botões de download, nunca às transferências de conta/folio."
+    ),
+    "core.button.downloadExcel": (
+        "Baixar: \"Descargar\" é \"baixar\" em pt-BR, não \"transferir\" "
+        "(transferir = mover entre contas/folios)."
+    ),
+    "core.button.downloadInvoice": (
+        "Baixar fatura: \"Download invoice\" é descarregar o PDF, não "
+        "transferir valores."
+    ),
+    "shared.modal.rooming.downloadExcel.roomingListType1": (
+        "Baixar atual: botão de descarregar a rooming list; ES \"Descargar\"."
+    ),
+    "shared.modal.rooming.downloadExcel.roomingListType2": (
+        "Baixar exemplo: botão de descarregar o modelo; ES \"Descargar\"."
+    ),
+    "shared.modal.rooming.downloadExcel.roomingListType3": (
+        "Baixar bloqueio de acomodações: ES \"Descargar roomblock\"; é "
+        "descarregar o ficheiro, não transferir."
+    ),
+    "shared.modal.rooming.downloadExcel.roomingListType4": (
+        "Baixar bloqueio de acomodações alargado: ES \"Descargar roomblock "
+        "extendido\"; é descarregar o ficheiro."
+    ),
+    "apps.report.options.downloadNow": (
+        "Baixar agora: opção de descarregar o relatório imediatamente."
+    ),
+    "shared.switch.profileMappingAllowAddDeposit.message": (
+        "Baixados: os depósitos são descarregados (ES \"descargados\"), não "
+        "transferidos entre contas."
+    ),
+    "shared.modal.information.genericAccountingAlreadyExported.title": (
+        "Período baixado: ES \"Periodo descargado\"; refere a exportação/"
+        "descarga do período contabilístico."
+    ),
+    "shared.switch.generateRoomingListByBlock.message": (
+        "Arquivo a baixar: ES \"que se descargue el archivo\"; é descarregar, "
+        "não transferir."
+    ),
+    "shared.switch.allowDownloadInvoice.message": (
+        "Baixem: ES \"la descarga de facturas\"; os clientes descarregam as "
+        "faturas."
+    ),
+    "shared.switch.allowInHouseDownloadInvoice.message": (
+        "Baixem: ES \"la descarga de facturas\"; os clientes descarregam as "
+        "faturas."
+    ),
+    "shared.modal.information.siteminderImportReservation.message": (
+        "Baixar novamente: ES \"vuelva a descargar\"; o Channel Manager volta "
+        "a descarregar as reservas (não as transfere)."
+    ),
+    "shared.grid.noViewAllDataInGridReport": (
+        "Baixe o relatório: ES \"descargue el report\"; acima de 5000 linhas "
+        "é preciso descarregar."
+    ),
+    "apps.rate.importExcelModal.instructions": (
+        "Baixe o modelo: ES \"descargar la plantilla\"."
+    ),
+    "shared.modal.bulkAssign.importExcel.instructions": (
+        "Baixe o modelo: ES \"Descarga el modelo Excel\"."
+    ),
+    "apps.integration.description.a3": (
+        "Baixe arquivos: ES \"Descarga asientos contables y expórtalos\"; "
+        "refere a exportação de ficheiros para o sistema A3Con."
+    ),
+    "apps.integration.description.sage200": (
+        "Baixe os arquivos: ES \"Descarga los ficheros necesarios\"."
+    ),
+    "apps.integration.description.gsp": (
+        "Baixem faturas: ES \"descargar sus facturas\"; os hóspedes "
+        "descarregam as suas faturas."
+    ),
+    "apps.endOfDay.process.emergencyReports.description": (
+        "Baixe os relatórios: ES \"Descarga los informes de emergencia\"; é "
+        "descarregar para uso offline, não transferir."
+    ),
+    "apps.rooming.importExcel": (
+        "Baixe o modelo: ES \"Descargue la plantilla a continuación\"."
+    ),
+    "shared.modal.rooming.importExcel": (
+        "Baixe o modelo: ES \"Descarga la plantilla y rellénala\"."
+    ),
+    "apps.systemSettings.import.downloadTemplate": (
+        "Baixe o ficheiro: ES \"Descarga el siguiente fichero\"; descarregar "
+        "o modelo, não transferir."
+    ),
+    "shared.modal.importItemExcel.importExcel": (
+        "Baixe o arquivo: ES \"Descarga el fichero\"; descarregar o modelo."
+    ),
+    "shared.modal.importMeterExcel.importExcel": (
+        "Baixe o arquivo: ES \"Descargue el archivo\"; descarregar o modelo."
+    ),
+    "shared.modal.importProductExcel.importExcel": (
+        "Baixe o arquivo: ES \"Descarga el fichero\"; descarregar o modelo."
+    ),
+    "shared.modal.importRoomExcel.importExcel": (
+        "Baixe o arquivo: ES \"Descarga el fichero\"; descarregar o modelo."
+    ),
+    "shared.modal.importTranslateExcel.importExcel": (
+        "Baixe o arquivo: ES \"Descargue el siguiente archivo\"; descarregar "
+        "o modelo."
+    ),
+    "shared.modal.importAccountingMappingExcel.importExcel": (
+        "Baixe o arquivo: ES \"Descarga el siguiente archivo\"; descarregar o "
+        "modelo."
+    ),
+    "apps.accountReceivableTransaction.gridAction.download": (
+        "Baixar: ação de descarregar o extrato (ES \"Descargar\"). O "
+        "genérico \"Transferir\" era erro; existe outra chave .transfer para "
+        "a transferência real entre contas."
+    ),
+    "apps.integration.barcelo.downloadInvoice": (
+        "Baixar fatura: ES \"Descargar factura\"; é descarregar o PDF."
+    ),
+    "apps.integration.bavel.downloadInvoice": (
+        "Baixar fatura: ES \"Descargar factura\"; é descarregar o PDF."
+    ),
+    "apps.integration.fatturaPA.downloadInvoice": (
+        "Baixar faturas: ES \"Descargar facturas\"; é descarregar os PDF."
+    ),
+    "apps.integration.ertzaintza.button.downloadParteViajerosXML": (
+        "Baixar XML: ES \"Descarga parte viajeros XML\"; é descarregar o "
+        "ficheiro."
+    ),
+    "apps.integration.ertzaintza.button.downloadReservationXML": (
+        "Baixar XML: ES \"Descarga reservation XML\"; é descarregar o "
+        "ficheiro."
+    ),
+    "core.button.downloadExcelWithAllMappings": (
+        "Baixar todos os mapeamentos Excel: ES \"Descargar Excel de mapeos\"; "
+        "é descarregar o ficheiro."
+    ),
+    "apps.reservation.reservationRoomStaySidebar.await": (
+        "Aguardando: em pt-BR usa-se o gerúndio (\"Aguardando\"), não \"A "
+        "aguardar\"; ES \"Esperando\"."
+    ),
+    "apps.reservationGroup.event.await": (
+        "Aguardando: em pt-BR usa-se o gerúndio; ES \"Esperando\"."
+    ),
+    "apps.reservationGroupInquiry.await": (
+        "Aguardando: em pt-BR usa-se o gerúndio; ES \"Esperando\"."
+    ),
+    "core.label.waitingFor": (
+        "Aguardando: em pt-BR usa-se o gerúndio; ES \"Esperando desde\"."
+    ),
+    "core.userMessage.server.paynopain.credorax.pending_3ds_response": (
+        "Aguardando: gerúndio pt-BR para \"Pendiente de\"."
+    ),
+    "core.userMessage.server.paynopain.credorax.pending_confirmation": (
+        "Aguardando: gerúndio pt-BR para \"Pendiente de\"."
+    ),
+    "core.userMessage.server.paynopain.credorax.pending_processor_response": (
+        "Aguardando: gerúndio pt-BR para \"pending\"."
+    ),
+    "shared.modal.information.deleteMeterNotAllowed.message": (
+        "Excluí-lo: pt-BR usa \"excluir\" para delete; \"eliminar\" é pt-PT."
+    ),
+    "shared.modal.propagateVehicle.deleteMessage": (
+        "Excluí-lo: pt-BR usa \"excluir\" para delete; \"eliminar\" é pt-PT."
+    ),
+    "shared.modal.information.createCutOff.message": (
+        "Excluindo: pt-BR usa \"excluir\" para delete; \"eliminar\" é pt-PT."
     ),
     "core.navbar.user.logs": (
         "Baixar logs: verbo \"baixar\" (pt-BR) em vez de \"transferir\"."
@@ -980,6 +1244,40 @@ _PROGRESSIVE_RE = re.compile(
 )
 
 
+#: pt-PT "bare" progressive ("A processar...") -> pt-BR gerund ("Processando...").
+#: Only the leading position is rewritten, and only for known verbs: matching
+#: any word would corrupt proper nouns ("A Cuiner", "A Icar") and prepositional
+#: phrases ("a partir de", "a receber"). Auxiliary forms ("está a carregar")
+#: are handled by _PROGRESSIVE_RE, which is safe because of the auxiliary.
+_BARE_PROGRESSIVE_VERBS = frozenset(
+    """
+    processar verificar reconstruir expirar enviar atualizar transferir gerar
+    validar executar carregar bloquear desbloquear excluir reverter mostrar
+    aplicar adicionar criar cancelar redirecionar selecionar mapear reenviar
+    resolver dividir guardar importar exportar sincronizar digitalizar preparar
+    converter apagar duplicar imprimir calcular gravar
+    """.split()
+)
+_BARE_PROGRESSIVE_RE = re.compile(
+    r"^(\s*)a\s+(" + "|".join(sorted(_BARE_PROGRESSIVE_VERBS, key=len, reverse=True)) + r")\b",
+    re.IGNORECASE,
+)
+
+
+def _fix_bare_progressive(text: str) -> str:
+    """Rewrite a leading pt-PT "A <verbo>r" as the pt-BR gerund.
+
+    The match is anchored to the start of the string, so the gerund always
+    opens the sentence and is therefore capitalised.
+    """
+    match = _BARE_PROGRESSIVE_RE.match(text)
+    if match is None:
+        return text
+    lead, verb = match.group(1), match.group(2)
+    gerund = verb[:-1] + "ndo"
+    return lead + gerund[:1].upper() + gerund[1:] + text[match.end():]
+
+
 def _fix_progressive(text: str) -> str:
     def _repl(match: re.Match[str]) -> str:
         aux, verb = match.group(1), match.group(2)
@@ -1106,6 +1404,7 @@ def converter(texto: str) -> str:
     # Runs after SUBSTITUICOES so a lemma rule ("gerir"->"gerenciar") is applied
     # first; the gerund is then derived from the pt-BR stem ("gerenciando").
     protected = _fix_progressive(protected)
+    protected = _fix_bare_progressive(protected)
     protected = _fix_agreement(protected)
 
     return _restore(protected, saved)
@@ -1316,6 +1615,16 @@ def process_sheet(df: pd.DataFrame) -> pd.DataFrame:
             # traducción PT" / "Igual a ES/EN") and the review agents, so the
             # row closes as CORRIGIDO.
             converted = CORRECOES_PO[clave]
+            estado = (
+                ESTADO_OK
+                if converted == texto_pt
+                else ESTADO_CORRIGIDO
+            )
+        elif clave in CORRECOES_BR:
+            # audit fix for pt-PT the generic rules missed (mostly
+            # "Descargar/Download" rendered as "Transferir"): wins over the
+            # agents and over the source warning.
+            converted = CORRECOES_BR[clave]
             estado = (
                 ESTADO_OK
                 if converted == texto_pt

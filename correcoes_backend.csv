@@ -1,4 +1,5 @@
 Clave;Estado;Corrección PT;Comentario
+apps.accountReceivableTransaction.gridAction.download;Corregir;Baixar;"Baixar: ação de descarregar o extrato (ES ""Descargar""). O genérico ""Transferir"" era erro; existe outra chave .transfer para a transferência real entre contas."
 apps.accountReceivableTransaction.transfer.header;Corregir;Tem certeza de que deseja mover as transações selecionadas para uma conta a receber diferente? Em caso afirmativo, selecione abaixo a nova conta e continue.;
 apps.activity.pageView.chain;Corregir;Rede;
 apps.aiAssistant.label.hotel;Corregir;Propriedade;"Propriedade (e não Hotel): o assistente cobre hotéis e outros tipos de propriedade, seguindo o EN ""Property"". Só o ES usa ""Hotel""."
@@ -94,7 +95,7 @@ apps.endOfDay.process.arrivalsNotCheckedIn.description;Corregir;Escolha se desej
 apps.endOfDay.process.departuresNotCheckedOut.description;Corregir;Escolha se deseja prolongar por mais 1 dia as reservas que não efetuaram o check-out ou efetuar o check-out uma a uma. Em alternativa, prolongue-as todas por 1 dia e continue o processo de auditoria.;
 apps.endOfDay.process.departuresNotCheckedOut.title;Corregir;Saídas sem check-out;
 apps.endOfDay.process.depositExpected.description;Corregir;Encontra abaixo os depósitos pendentes de aplicação para as chegadas de hoje, que serão aplicados automaticamente no check-in. Se quiser efetuar esta ação agora, clique o botão para aplicar o depósito desejado.;
-apps.endOfDay.process.emergencyReports.description;Corregir;Transfira os relatórios de emergência e, caso ocorra uma falha generalizada, estará preparado para gerenciar a sua propriedade temporariamente sem o Ulyses Suite.;
+apps.endOfDay.process.emergencyReports.description;Corregir;Baixe os relatórios de emergência e, caso ocorra uma falha generalizada, estará preparado para gerenciar a sua propriedade temporariamente sem o Ulyses Suite.;"Baixe os relatórios: ES ""Descarga los informes de emergencia""; é descarregar para uso offline, não transferir."
 apps.endOfDay.process.inHouseCustomers.description;Corregir;Reveja a qualidade da informação coletada dos clientes que efetuaram o check-in hoje. Certifique-se de que recolhe todos os dados necessários antes de clicar em Próximo processo.;
 apps.endOfDay.process.italianPolice.description;Corregir;Encontra abaixo os clientes que efetuaram o check-in hoje e que serão incluídos no formulário de registro policial. Pode agora baixar o arquivo e submetê-lo às autoridades, se necessário.;
 apps.endOfDay.process.mossos.description;Corregir;Encontra abaixo os clientes que efetuaram o check-in hoje e que serão incluídos no formulário de registro policial. Pode agora baixar o arquivo e submetê-lo às autoridades, se necessário.;
@@ -142,6 +143,7 @@ apps.importJob.category.importGenderTypeMapList;Corregir;Tipo de gênero;
 apps.importJob.category.importProductAccommodationMapList;Corregir;Acomodação do produto;
 apps.importJob.category.importPropertyRoomTypeMapList;Corregir;Tipo de acomodação da propriedade;
 apps.importJob.category.importRoomMapList;Corregir;Acomodação;
+apps.importJob.statusText.running;Corregir;Reconstruindo o item {{currentItem}} de {{totalItems}}. Tarefa iniciada em {{startDate}}. Tempo restante: {{remainingTime}};
 apps.importJob.typeInstructions.Contact;Corregir;Contato, consectetur adipiscing elit. Integer at feugiat dolor. Sed congue in felis id molestie.;
 apps.importJob.typeInstructions.ContactCategory;Corregir;Categoria de contato, consectetur adipiscing elit. Integer at feugiat dolor. Sed congue in felis id molestie.;
 apps.importJob.typeInstructions.PropertyRoomFeature;Corregir;Característica da acomodação da propriedade, consectetur adipiscing elit. Integer at feugiat dolor. Sed congue in felis id molestie.;
@@ -162,7 +164,9 @@ apps.integration.accounting.downloadFile;Corregir;Baixar arquivos;
 apps.integration.accounting.invoiceTypeTab.description;Corregir;Indique aqui se deseja substituir o valor padrão por um mapeamento de tipo de fatura;
 apps.integration.accounting.productTab.description;Corregir;Indique aqui se deseja substituir o valor padrão por um mapeamento personalizado;
 apps.integration.accounting.trevenque.check;Corregir;Tem certeza de que deseja verificar?;
+apps.integration.barcelo.downloadInvoice;Corregir;Baixar fatura;"Baixar fatura: ES ""Descargar factura""; é descarregar o PDF."
 apps.integration.barcelo.includedElementsDescription;Corregir;Indique aqui os elementos que deseja incluir;
+apps.integration.bavel.downloadInvoice;Corregir;Baixar fatura;"Baixar fatura: ES ""Descargar factura""; é descarregar o PDF."
 apps.integration.bavel.ftp.info;Corregir;Se deseja enviar extratos de contas a receber para a Bavel por SFTP (Secure FTP), indique as credenciais da Bavel para o efeito. Para as obter, contate o seu fornecedor de TI ou a Bavel.;
 apps.integration.bavel.mapping.info;Corregir;Esta seção destina-se apenas a faturas;
 apps.integration.bavel.webservice.info;Corregir;Se deseja enviar extratos de contas a receber para a Bavel por Webservice, indique o host, o usuário e a senha.;
@@ -171,7 +175,7 @@ apps.integration.bavel3XML.mappingTab.headers.chainProductCode;Corregir;Código 
 apps.integration.bavel3XML.mappingTab.headers.chainProductName;Corregir;Nome do produto da rede;
 apps.integration.bavel3XML.productTab.description;Corregir;Indique aqui se deseja substituir o valor padrão por um mapeamento personalizado;
 apps.integration.description.360sp;Corregir;Integração com a API da 3ParkOnline para gerenciar reservas de serviços de estacionamento para clientes do hotel.;
-apps.integration.description.a3;Corregir;Transfira arquivos e carregue-os no sistema de contabilidade A3Con. Poupe tempo e analise dados com esta solução da Wolters Kluwer.;
+apps.integration.description.a3;Corregir;Baixe arquivos e carregue-os no sistema de contabilidade A3Con. Poupe tempo e analise dados com esta solução da Wolters Kluwer.;"Baixe arquivos: ES ""Descarga asientos contables y expórtalos""; refere a exportação de ficheiros para o sistema A3Con."
 apps.integration.description.acibi;Corregir;Potencie a estratégia do seu hotel com a nossa integração ACI BI: analise projeções, tendências de pickup e produção em tempo real. Acesse a informação precisa para tomar decisões fundamentadas e maximizar a rentabilidade operacional.;
 apps.integration.description.agora;Corregir;Integração entre o Ágora Restaurant e o Ulyses Suite. Sincronize talões e encargos de acomodação automaticamente.;
 apps.integration.description.aiosell;Corregir;A Aiosell permite aos hoteleiros gerenciar, monitorizar e maximizar a receita do hotel através de preços dinâmicos e automatização.;
@@ -205,7 +209,7 @@ apps.integration.description.genaccount;Corregir;Esta integração genérica e p
 apps.integration.description.gesvi;Corregir;A Gesvi é um especialista global em leitores de documentos e armazenamento. Adicione esta integração se deseja ligar o Ulyses Suite aos leitores da Gesvi.;
 apps.integration.description.gna;Corregir;Sistema de ligação direta que lhe permite controlar e gerenciar a disponibilidade dos suas acomodações em mais de 70 canais de distribuição online.;
 apps.integration.description.golfmanager;Corregir;O Golfmanager é o único software 100% baseado na cloud que lhe permite gerenciar as necessidades operacionais de um clube de golfe num único programa.;
-apps.integration.description.gsp;Corregir;O Ulyses Guest Services Portal permite que os seus hóspedes façam o check-in online, consultem a sua conta, transfiram faturas e muito mais. Poupe tempo, aumente a distância e proteja a sua equipe.;
+apps.integration.description.gsp;Corregir;O Ulyses Guest Services Portal permite que os seus hóspedes façam o check-in online, consultem a sua conta, baixem faturas e muito mais. Poupe tempo, aumente a distância e proteja a sua equipe.;"Baixem faturas: ES ""descargar sus facturas""; os hóspedes descarregam as suas faturas."
 apps.integration.description.guestmate;Corregir;O GuestMate centra-se na relação móvel Hotel-Hóspede, abrangendo todos os canais de interação com o hóspede. O hotel pode chegar diretamente aos seus clientes através do celular em todas as fases da estadia.;
 apps.integration.description.guestrevu;Corregir;A GuestRevu disponibiliza tecnologia de feedback de hóspedes para recolher sem esforço a informação de que precisa para gerenciar ativamente a sua reputação online, melhorar a experiência dos hóspedes e aumentar a receita.;
 apps.integration.description.guestsuites;Corregir;A Guest Suite recolhe as opiniões dos hóspedes do hotel para compreender, gerenciar e melhorar a reputação eletrônica.;
@@ -261,7 +265,7 @@ apps.integration.description.roomcloud;Corregir;A RoomCloud é um channel manage
 apps.integration.description.roommatik;Corregir;Com os quiosques de check-in pode ter uma recepção totalmente automatizada 24 horas por dia. Evite filas na recepção digitalizando o check-in com os quiosques Roommatik. Compatibilidade com todas as tecnologias de chaves, incluindo chaves convencionais.;
 apps.integration.description.roompricegenie;Corregir;Conte com mais receita sem trabalhar mais. Com o RoomPriceGenie, os preços dos suas acomodações são definidos automaticamente de forma correta, todas as noites.;
 apps.integration.description.safebooking;Corregir;A Safebooking ajuda-o a garantir reservas, oferecendo aos seus hóspedes um seguro completo, específico para hotéis, que cobre cancelamento, interrupção e objetos esquecidos na acomodação. Um serviço chave na mão que aumenta as reservas antecipadas e reduz o risco financeiro do seu negócio.;
-apps.integration.description.sage200;Corregir;O Sage 200 é um conjunto de produtos de contabilidade e gestão desenvolvido pelo Sage Group, destinado a médias empresas. Transfira os arquivos necessários e carregue-os no seu sistema de contabilidade.;
+apps.integration.description.sage200;Corregir;O Sage 200 é um conjunto de produtos de contabilidade e gestão desenvolvido pelo Sage Group, destinado a médias empresas. Baixe os arquivos necessários e carregue-os no seu sistema de contabilidade.;"Baixe os arquivos: ES ""Descarga los ficheros necesarios""."
 apps.integration.description.sage50;Corregir;Esta integração ajudá-lo-á a gerar os arquivos necessários para alimentar o seu sistema de contabilidade Sage 50. Gere facilmente arquivos das suas receitas, faturas, pagamentos e muito mais.;
 apps.integration.description.sapaccounting;Corregir;Esta integração ajudá-lo-á a gerar os arquivos necessários para alimentar o seu sistema de contabilidade SAP. Gere facilmente arquivos das suas receitas, faturas, pagamentos e muito mais.;
 apps.integration.description.sef;Corregir;Ative esta integração para gerar o arquivo que tem de ser enviado à polícia portuguesa;
@@ -314,7 +318,10 @@ Para acessar a todas as funcionalidades da integração eSeason Digital Marketin
 apps.integration.edm.inactive;Corregir;A integração eSeason Digital Marketing não está configurada. Contate o suporte do Ulyses Suite para utilizar esta integração.;
 apps.integration.edm.refreshMapping;Corregir;"Utilize esta ação se deseja reenviar informações sobre as entidades da propriedade ou as estadias da reserva.
 Observe que as alterações não serão aplicadas imediatamente; por isso, recomendamos consultar o aba ""Fila"" para acompanhar o progresso.";
+apps.integration.ertzaintza.button.downloadParteViajerosXML;Corregir;Baixar XML de partes de viajantes;"Baixar XML: ES ""Descarga parte viajeros XML""; é descarregar o ficheiro."
+apps.integration.ertzaintza.button.downloadReservationXML;Corregir;Baixar XML de reservas;"Baixar XML: ES ""Descarga reservation XML""; é descarregar o ficheiro."
 apps.integration.facturacionCL.invoiceTypeTab.description;Corregir;Indique aqui se deseja substituir o valor padrão por um mapeamento de tipo de fatura.;
+apps.integration.fatturaPA.downloadInvoice;Corregir;Baixar faturas;"Baixar faturas: ES ""Descargar facturas""; é descarregar os PDF."
 apps.integration.fatturaPA.mappingTab.description;Corregir;Indique aqui se deseja substituir o valor padrão por um mapeamento de pagamento;
 apps.integration.fatturaPA.mappingTab.headers.chainProductCode;Corregir;Código de produto da rede;
 apps.integration.fatturaPA.mappingTab.headers.chainProductName;Corregir;Nome de produto da rede;
@@ -538,7 +545,7 @@ apps.login.section.login.info2FAValidation;Corregir;Informe o código único par
 apps.login.section.login.login;Corregir;Fazer login;
 apps.login.section.login.updated;Corregir;Senha atualizada;
 apps.login.section.maintenance.signOut;Corregir;Sair;
-apps.login.section.passwordRecovery.botValidation;Corregir;A validar que o usuário é humano;
+apps.login.section.passwordRecovery.botValidation;Corregir;Validando que o usuário é humano;
 apps.login.section.passwordRecovery.description;Corregir;Escreva o seu nome de usuário se deseja receber por e-mail uma ligação para repor a sua senha;
 apps.login.section.passwordRecovery.failed;Corregir;Não foi possível enviar-lhe o e-mail. Tente novamente ou contate o seu administrador.;
 apps.login.section.passwordRecovery.goToLogin;Corregir;Fazer login novamente;
@@ -716,15 +723,18 @@ apps.rate.amountAfterTax;Corregir;Abra para definir as relações entre os tipos
 apps.rate.button.importFromSpreadsheet;Corregir;Importar de planilha;
 apps.rate.createNewDerivedRatePlan;Corregir;Ative esta opção se deseja associar esta tarifa a outra tarifa e definir um desconto fixo e/ou variável (%) para as relacionar. Observe que associar tarifas definirá automaticamente os preços dos produtos nesta tarifa no aba de disponibilidade. Certifique-se também de que as datas desta tarifa estão dentro do intervalo da sua tarifa principal.;
 apps.rate.importExcelModal.downloadExcel;Corregir;Baixar modelo;
+apps.rate.importExcelModal.instructions;Corregir;Carregue o documento preenchido com todas as condições do contrato atualizadas (Preços, Encerramentos, CTA, CTD, Estadia máx./mín.). Baixe o modelo Excel caso ainda não o tenha feito.;"Baixe o modelo: ES ""descargar la plantilla""."
 apps.rate.importExcelModal.securityControl.hint;Corregir;"Utilize o controle de segurança se deseja verificar o Excel importado; não preencha os campos se não querer qualquer validação";
 apps.rate.importExcelModal.warningMinAmountExceeded;Corregir;Algumas alterações excederam o valor mínimo configurado para o respetiva acomodação.;
 apps.rateAvailability.action.addAccommodation;Corregir;Adicionar acomodação;
 apps.rateAvailability.action.deleteAccommodation;Corregir;Excluir acomodação;
+apps.rebuild.statusText.running;Corregir;Reconstruindo o item {{currentItem}} de {{totalItems}}. Tarefa iniciada em {{startDate}}. Tempo restante: {{remainingTime}};
 apps.rebuild.typeInstructions.Room;Corregir;Acomodação, consectetur adipiscing elit. Integer at feugiat dolor. Sed congue in felis id molestie.;
 apps.report.downloadCSV;Corregir;Baixar CSV;
 apps.report.downloadExcel;Corregir;Baixar Excel;
 apps.report.downloadPDF;Corregir;Baixar PDF;
 apps.report.noPropertySMTPAccount;Corregir;Certifique-se de que existe uma conta SMTP válida e que está atribuída na seção Fatura, em Configurações da propriedade > Configuração de e-mail;
+apps.report.options.downloadNow;Corregir;Baixar agora;Baixar agora: opção de descarregar o relatório imediatamente.
 apps.report.options.information;Corregir;"Selecione como deseja gerar o seu relatório:
 
 Baixar agora: obtenha o seu relatório imediatamente.
@@ -756,6 +766,7 @@ apps.reservation.reservationRoomStayRoute.modalRoute.targetInfo.anotherRoomStay;
 apps.reservation.reservationRoomStayRoute.modalRoute.targetInfo.extra;Corregir;Os encargos selecionados nos passos anteriores serão enviados para um dos folios extra desta acomodação;
 apps.reservation.reservationRoomStayRoute.modalRoute.targetInfo.main;Corregir;Os encargos selecionados nos passos anteriores serão enviados para o folio principal desta acomodação;
 apps.reservation.reservationRoomStayRoute.modalRoute.targetInfo.reservation;Corregir;Os encargos selecionados nos passos anteriores serão enviados para um folio principal compartilhado por todas as estadias desta reserva;
+apps.reservation.reservationRoomStaySidebar.await;Corregir;Aguardando localizador;"Aguardando: em pt-BR usa-se o gerúndio (""Aguardando""), não ""A aguardar""; ES ""Esperando""."
 apps.reservation.reservationSerie.copyElectronicLock;Corregir;Copiar chave eletrônica;
 apps.reservation.reservationSerie.generateElectronicLock;Corregir;Gerar chave eletrônica;
 apps.reservation.reservationSerie.reservation;Corregir;Utilize esta opção se deseja criar uma cópia desta reserva, incluindo todos os suas acomodações e serviços.;
@@ -769,9 +780,12 @@ apps.reservationGroup.action.printDocument;Corregir;Imprimir documento;"Imprimir
 apps.reservationGroup.action.sendConfirmation;Corregir;Enviar confirmação;
 apps.reservationGroup.action.sendContract;Corregir;Enviar contrato;
 apps.reservationGroup.action.sendProposal;Corregir;Enviar proposta;
+apps.reservationGroup.event.await;Corregir;Aguardando localizador;"Aguardando: em pt-BR usa-se o gerúndio; ES ""Esperando""."
 apps.reservationGroup.rooming.views.2;Corregir;Bloqueio de acomodações;
 apps.reservationGroup.rooming.views.3;Corregir;Ocupação do bloqueio de acomodações;
 apps.reservationGroup.serie.modalMessage;Corregir;Utilize esta opção se deseja criar uma cópia deste grupo de reservas.;
+apps.reservationGroupInquiry.await;Corregir;Aguardando localizador;"Aguardando: em pt-BR usa-se o gerúndio; ES ""Esperando""."
+apps.reservationQuote.action.expiring;Corregir;Expirando;
 apps.reservationRoomStay.cancellation.policy.afterDeadline;Corregir;<p>De acordo com a política, será retido o valor de <strong>{{amount}}</strong> pelo cancelamento.</p>;
 apps.reservationRoomStayCheckin.titleSettings.roomDetails;Corregir;Detalhes da acomodação;
 apps.reservationRoomStayGuestMessage.pageMessage;Corregir;Carregando mais mensagens...;
@@ -785,13 +799,13 @@ apps.roomAssign.warning.notDedicatedToStayAllotment;Corregir;Esta acomodação n
 apps.roomType.action.new;Corregir;Novo tipo de acomodação;
 apps.rooming.confirmExcel;Corregir;Verificar acomodações;
 apps.rooming.downloadExcel;Corregir;Clique aqui para baixar o arquivo de exemplo;
-apps.rooming.importExcel;Corregir;Transfira o modelo abaixo e preencha-o com toda a informação necessária para criar todas as acomodações. Pode compartilhar este arquivo com outras empresas, pelo que deve garantir que o carrega quando o rooming estiver confirmado.;
+apps.rooming.importExcel;Corregir;Baixe o modelo abaixo e preencha-o com toda a informação necessária para criar todas as acomodações. Pode compartilhar este arquivo com outras empresas, pelo que deve garantir que o carrega quando o rooming estiver confirmado.;"Baixe o modelo: ES ""Descargue la plantilla a continuación""."
 apps.space.action.addAccommodation;Corregir;Adicionar acomodação;
 apps.spaceRack.messages.noRoomBlockSelected;Corregir;Nenhuma das acomodações selecionadas está bloqueada;
 apps.spaceRack.messages.noRoomUnblockedSelected;Corregir;Nenhuma das acomodações selecionadas está disponível para bloqueio;
 apps.spaceRack.roomType;Corregir;Por tipo de acomodação;
 apps.storedIdentityDocument.gridAction.bulkDelete;Corregir;Exclusão em massa;
-apps.systemSettings.import.downloadTemplate;Corregir;Transfira o seguinte arquivo, preencha os seus dados e carregue-o para importar dados para o UlysesCloud;
+apps.systemSettings.import.downloadTemplate;Corregir;Baixe o seguinte arquivo, preencha os seus dados e carregue-o para importar dados para o UlysesCloud;"Baixe o ficheiro: ES ""Descarga el siguiente fichero""; descarregar o modelo, não transferir."
 apps.user.action.add;Corregir;Adicionar usuário;
 apps.user.action.new;Corregir;Novo usuário;
 apps.user.action.revokePassword;Corregir;Revogar senha;
@@ -811,7 +825,10 @@ core.button.delete;Corregir;Excluir;
 core.button.deleteEntity;Corregir;Excluir {{entity}};
 core.button.download;Corregir;Baixar;"Baixar: em pt-BR ""download"" é ""baixar"". Regra aplicada só aos botões de download, nunca às transferências de conta/folio."
 core.button.downloadDocument;Corregir;Baixar documento;
+core.button.downloadExcel;Corregir;Baixar Excel;"Baixar: ""Descargar"" é ""baixar"" em pt-BR, não ""transferir"" (transferir = mover entre contas/folios)."
+core.button.downloadExcelWithAllMappings;Corregir;Baixar todos os mapeamentos Excel;"Baixar todos os mapeamentos Excel: ES ""Descargar Excel de mapeos""; é descarregar o ficheiro."
 core.button.downloadFileAutomatically;Corregir;Baixar arquivo automaticamente;
+core.button.downloadInvoice;Corregir;Baixar fatura;"Baixar fatura: ""Download invoice"" é descarregar o PDF, não transferir valores."
 core.button.downloadNDocuments;Corregir;Baixar documentos ({{n}});
 core.button.downloadTemplate;Corregir;Baixar modelo;
 core.button.historyLog;Corregir;Registro de histórico;
@@ -961,6 +978,7 @@ core.label.chainSource;Corregir;Origem da rede;
 core.label.chainSpaceLockType;Corregir;Tipo de bloqueio de espaço da rede;
 core.label.changeCompaniesTab;Corregir;Alterar aba de empresas;
 core.label.channelRoom;Corregir;Acomodação do canal;
+core.label.checking;Corregir;Verificando...;
 core.label.commissionAmount;Corregir;Valor da comissão;
 core.label.contact;Corregir;Contato;
 core.label.contactTo;Corregir;Contatar;
@@ -993,6 +1011,7 @@ core.label.endTime;Corregir;Horário de término;
 core.label.errorRepeatPassword;Corregir;As senhas não coincidem;
 core.label.ertzaintzaParteViajerosRegistration;Corregir;Registro de parte de viajantes;
 core.label.ertzaintzaReservaHospedajeRegistration;Corregir;Registro de reserva;
+core.label.expiring;Corregir;Expirando;
 core.label.externalUserId;Corregir;ID externo do usuário;
 core.label.extraAdultAmountAfterTax;Corregir;Valor do adulto extra após impostos;
 core.label.extraBaby;Corregir;Bebê extra;
@@ -1064,6 +1083,7 @@ core.label.percentage;Corregir;Porcentagem;
 core.label.percentageInfant;Corregir;% bebê;
 core.label.physicalRoom;Corregir;Acomodação física;
 core.label.postalCode;Corregir;CEP;
+core.label.processing;Corregir;Processando;
 core.label.productAccommodation;Corregir;Acomodação;
 core.label.productAccommodationUpgrade;Corregir;Upgrade de acomodação;
 core.label.productChainRoomType;Corregir;Tipo de acomodação de produto da rede;
@@ -1137,11 +1157,13 @@ core.label.roomTypeRoomSubType;Corregir;Tipo e subtipo de acomodação;
 core.label.roomTypes;Corregir;Tipos de acomodação;
 core.label.roomingListAlert;Corregir;Esta rooming list não tem nenhum bloqueio de acomodação associada;
 core.label.roomsReserved;Corregir;Acomodações reservadas;
+core.label.running;Corregir;Executando;
 core.label.saveToCalculateAmount;Corregir;Guarde para calcular os preços líquidos, os valores faturados e os impostos;
 core.label.scanning;Corregir;Digitalizando;
 core.label.secondSurName;Corregir;Segundo sobrenome;
 core.label.section;Corregir;Seção;
 core.label.selectRoom;Corregir;Selecionar acomodação;
+core.label.sending;Corregir;Enviando...;
 core.label.serviceConsumptionControl;Corregir;Controle de consumos de serviços;
 core.label.setting;Corregir;Configuração;
 core.label.settings;Corregir;Configurações;
@@ -1187,6 +1209,7 @@ core.label.usersReceiveNotifications;Corregir;Usuários que recebem notificaçõ
 core.label.vendorUser;Corregir;Usuário de venda;
 core.label.villeGreffe;Corregir;Cidade de registro;
 core.label.voidReasonType;Corregir;Tipo de motivo de cancelamento;
+core.label.waitingFor;Corregir;Aguardando desde;"Aguardando: em pt-BR usa-se o gerúndio; ES ""Esperando desde""."
 core.label.webServiceLogin;Corregir;Usuário do WebService;
 core.label.webServicePassword;Corregir;Senha do WebService;
 core.modal.actionToEntity;Corregir;Tem certeza de que deseja {{action}} este(a) {{entity}}?;
@@ -1372,6 +1395,7 @@ core.title.deleteEntity;Corregir;Excluir {{entity}};
 core.title.reloadEntity;Corregir;Recarregar padrões;
 core.title.saveEntity;Corregir;Salvar {{entity}};
 core.title.unsavedChanges;Corregir;Alterações não salvas;
+core.userMessage.changeEvent.activeEventChange;Corregir;Processando alterações da reserva;
 core.userMessage.changeEvent.amount;Corregir;valor;
 core.userMessage.changeEvent.companyAccommodationPercentageCommission;Corregir;A porcentagem de comissão não pode ser superior a 100%;
 core.userMessage.changeEvent.noInfantAllowedInProperty;Corregir;Esta propriedade não aceita bebês;
@@ -1436,6 +1460,9 @@ core.userMessage.server.nospaceorroomwithspacefound.default;Corregir;Não foi po
 core.userMessage.server.passwordrevokenotallowedinactiveuser.default;Corregir;Não pode revogar a senha de um usuário inativo.;
 core.userMessage.server.passwordrevokenotallowedintegrationuser.default;Corregir;Não pode revogar a senha de um usuário de integração.;
 core.userMessage.server.passwordrevokenotalloweditself.default;Corregir;Não pode revogar a sua própria senha.;
+core.userMessage.server.paynopain.credorax.pending_3ds_response;Corregir;Aguardando processamento da resposta em 3DS;"Aguardando: gerúndio pt-BR para ""Pendiente de""."
+core.userMessage.server.paynopain.credorax.pending_confirmation;Corregir;Aguardando confirmação;"Aguardando: gerúndio pt-BR para ""Pendiente de""."
+core.userMessage.server.paynopain.credorax.pending_processor_response;Corregir;Resposta aguardando processamento;"Aguardando: gerúndio pt-BR para ""pending""."
 core.userMessage.server.paynopain.redsys.107;Corregir;O banco emissor não permite autorização automática. É necessário contatar o seu centro autorizador por telefone para obter uma aprovação manual.;
 core.userMessage.server.paynopain.redsys.109;Corregir;Recusada porque o comércio não está devidamente registrado nos sistemas internacionais de cartões.;
 core.userMessage.server.paynopain.redsys.110;Corregir;O valor da transação é invulgar para o tipo de comércio que solicita a autorização de pagamento.;
@@ -2023,6 +2050,7 @@ shared.grid.header.userType;Corregir;Tipo de usuário;
 shared.grid.header.users;Corregir;Usuários;
 shared.grid.header.uuidMessageLog;Corregir;Registro de mensagens UUID;
 shared.grid.noViewAllDataInGrid;Corregir;O resultado tem muitas linhas, não é possível apresentar todos os dados do sistema.;
+shared.grid.noViewAllDataInGridReport;Corregir;O resultado tem mais de 5000 linhas, altere os filtros aplicados ou baixe o relatório em PDF, Excel ou CSV.;"Baixe o relatório: ES ""descargue el report""; acima de 5000 linhas é preciso descarregar."
 shared.grid.search.chainSecurity.getIpWhiteList.page;Corregir;Escreva aqui para pesquisar por endereço IP, cidade, distrito e CEP;
 shared.grid.search.folio.folioSummary.page;Corregir;Escreva aqui para pesquisar por nome ou código da acomodação;
 shared.grid.search.invoice.invoiceSummary.page;Corregir;Escreva aqui para pesquisar por nome ou número da fatura, código e código da acomodação;
@@ -2034,6 +2062,10 @@ shared.grid.search.property.getUser.page;Corregir;Escreva aqui para pesquisar po
 shared.grid.search.propertyIntegrationHospedaje.getHospedajeQueue.page;Corregir;Escreva aqui para pesquisar por lote de registro;
 shared.grid.search.role.getUser.page;Corregir;Escreva aqui para pesquisar por nome de usuário;
 shared.grid.search.user.get.page;Corregir;Escreva aqui para pesquisar por nome de usuário;
+shared.grid.selectAll.processSelected;Corregir;Selecionando todos os elementos ( {{selected}} de {{allElements}} );
+shared.grid.totalItem;Corregir;Mostrando {{first}} a {{last}} de {{total}} elemento;
+shared.grid.totalItems;Corregir;Mostrando {{first}} a {{last}} de {{total}} elementos;
+shared.grid.totalItemsMin;Corregir;Mostrando {{first}} a {{last}} de {{total}};
 shared.information.notAuthorized.message;Corregir;"A sua conta não tem permissões para ver esta página.
 
 Contate o seu administrador para obter estas permissões.";
@@ -2050,6 +2082,7 @@ shared.input.error.pattern.password;Corregir;"Este campo está incorreto. Inform
 shared.input.error.pattern.phoneNumber;Corregir;Informe um número de telefone válido (apenas dígitos, espaços, +, -, pontos e parênteses);
 shared.input.hint.limitCreditAmount;Corregir;Indique aqui o limite de crédito desta estadia. Deixe em branco para indicar que o crédito é ilimitado ou informe um valor para permitir lançamentos cuja soma não ultrapasse o valor informado.;
 shared.input.loadingList;Corregir;Carregando lista de dados...;
+shared.input.testEmail.checking;Corregir;Verificando conta;
 shared.modal.addBilling.addNewTickets.button;Corregir;Selecionar itens;
 shared.modal.addBilling.addNewTickets.message;Corregir;Detectamos que este produto tem itens relacionados. Selecione-os para obter mais detalhes.;
 shared.modal.addBilling.addNewTickets.messageTickets;Corregir;Foram adicionados {{item}} itens;
@@ -2077,22 +2110,38 @@ shared.modal.applyReservationCancellation.message.grouped;Corregir;"O valor tota
 shared.modal.applyReservationCancellation.message.refundExceedsAvailable;Corregir;O valor a reembolsar não pode exceder o excesso de pagamento disponível.;
 shared.modal.applyReservationCancellation.message.separated;Corregir;"Os elementos selecionados serão agrupados numa linha ""Taxa de cancelamento"". Os restantes permanecerão detalhados. Observe que um produto de acomodação liquidada individualmente afetará os indicadores de ocupação (ADR, taxa de ocupação, RevPAR).";
 shared.modal.applyReservationCancellation.process.chargeAll;Corregir;Valor total da estadia;
+shared.modal.autoMapAll.title;Corregir;Aplicando mapeamento automático;
+shared.modal.autoMapAll.updating;Corregir;Mapeando automaticamente {{current}} de {{total}} entidades;
+shared.modal.automatedGroupSettlement.title;Corregir;Processando a liquidação do grupo;
+shared.modal.automatedGroupSettlement.updating;Corregir;Aplicando a liquidação {{current}} de {{total}};
+shared.modal.automatedRevertGroupSettlement.title;Corregir;Revertendo a liquidação do grupo;
+shared.modal.automatedRevertGroupSettlement.updating;Corregir;Revertendo a liquidação {{current}} de {{total}};
+shared.modal.batchPosting.info.processing;Corregir;Processando lançamentos;
 shared.modal.billing.title;Corregir;Informação de faturamento;
 shared.modal.blockLockSpaceLock.error;Corregir;Encontramos alguns erros ao bloquear determinadas acomodações, verifique-os abaixo;
 shared.modal.blockLockSpaceLock.title;Corregir;Bloqueio em massa de acomodações;
 shared.modal.blockLockSpaceLock.updated;Corregir;Todas as acomodações foram bloqueadas com sucesso;
-shared.modal.blockLockSpaceLock.updating;Corregir;A bloquear {{current}} de {{total}} acomodações;
+shared.modal.blockLockSpaceLock.updating;Corregir;Bloqueando {{current}} de {{total}} acomodações;
 shared.modal.blockSpaceLock.error;Corregir;Encontramos alguns erros ao bloquear determinadas acomodações, verifique-os abaixo;
 shared.modal.blockSpaceLock.title;Corregir;Bloqueio em massa de acomodações;
 shared.modal.blockSpaceLock.updated;Corregir;Todas as acomodações foram bloqueadas com sucesso;
-shared.modal.blockSpaceLock.updating;Corregir;A bloquear {{current}} de {{total}} acomodações;
+shared.modal.blockSpaceLock.updating;Corregir;Bloqueando {{current}} de {{total}} acomodações;
+shared.modal.bulkAddOccupancy.updating;Corregir;Adicionando {{current}} de {{total}} ocupações;
+shared.modal.bulkAssign.importExcel.instructions;Corregir;Carregue o documento preenchido com todas as estadias atualizadas. Baixe o modelo Excel caso ainda não o tenha feito.;"Baixe o modelo: ES ""Descarga el modelo Excel""."
 shared.modal.bulkAssign.title;Corregir;Atribuição em massa de acomodação;
+shared.modal.bulkCreateSeries.creating;Corregir;Processando a série {{current}} de {{total}};
+shared.modal.bulkCreateSeries.title;Corregir;Criando séries em massa;
+shared.modal.bulkCreateSeriesReservationEvent.creating;Corregir;Processando a série de eventos {{current}} de {{total}};
+shared.modal.bulkCreateSeriesReservationEvent.title;Corregir;Criando séries de eventos em massa;
+shared.modal.bulkCreateSeriesReservationGroup.creating;Corregir;Processando a série {{current}} de {{total}};
+shared.modal.bulkCreateSeriesReservationGroup.title;Corregir;Criando séries de grupo em massa;
 shared.modal.bulkDownloadFile.title;Corregir;Baixando arquivos em massa;"Baixando arquivos em massa: gerúndio pt-BR; ""a transferir"" seria pt-PT."
 shared.modal.bulkLockFunctionSpaceLock.error;Corregir;Encontramos alguns erros ao bloquear determinadas salas de eventos;
+shared.modal.bulkLockFunctionSpaceLock.updating;Corregir;Bloqueando {{current}} de {{total}} salas de eventos;
 shared.modal.bulkLockSpaceLock.error;Corregir;Encontramos alguns erros ao bloquear determinadas acomodações;
 shared.modal.bulkLockSpaceLock.title;Corregir;Bloqueio em massa de acomodações;
 shared.modal.bulkLockSpaceLock.updated;Corregir;Todas as acomodações foram bloqueadas com sucesso;
-shared.modal.bulkLockSpaceLock.updating;Corregir;A bloquear {{current}} de {{total}} acomodações;
+shared.modal.bulkLockSpaceLock.updating;Corregir;Bloqueando {{current}} de {{total}} acomodações;
 shared.modal.bulkProcessNotifications.notices.hint;Corregir;Detectamos alguns avisos;
 shared.modal.bulkProcessNotifications.notices.title;Corregir;Avisos detectados;
 shared.modal.bulkProcessNotifications.title;Corregir;Notificações detectadas;
@@ -2103,14 +2152,21 @@ shared.modal.bulkProcessSummary.success;Corregir;Todos os registros foram modifi
 shared.modal.bulkRemoveEmailQueue.error;Corregir;Encontramos alguns erros ao excluir alguns registros;
 shared.modal.bulkRemoveEmailQueue.title;Corregir;Excluir registro de e-mails;
 shared.modal.bulkRemoveEmailQueue.updated;Corregir;Todos os registros foram excluídos com sucesso;
-shared.modal.bulkRemoveEmailQueue.updating;Corregir;A excluir {{current}} de {{total}} registros;
+shared.modal.bulkRemoveEmailQueue.updating;Corregir;Excluindo {{current}} de {{total}} registros;
 shared.modal.bulkResendEmailQueue.error;Corregir;Encontramos alguns erros ao enviar determinados e-mails;
+shared.modal.bulkResendEmailQueue.updating;Corregir;Reenviando {{current}} de {{total}} e-mails;
 shared.modal.bulkUnblockSpaceLock.error;Corregir;Encontramos alguns erros ao desbloquear determinados bloqueios de espaço, verifique-os abaixo;
+shared.modal.bulkUnblockSpaceLock.updating;Corregir;Desbloqueando {{current}} de {{total}} bloqueios de espaço;
 shared.modal.bulkUnlockFunctionSpaceLock.error;Corregir;Encontramos alguns erros ao desbloquear determinados bloqueios de salas de eventos, verifique-os abaixo;
+shared.modal.bulkUnlockFunctionSpaceLock.updating;Corregir;Desbloqueando {{current}} de {{total}} bloqueios de salas de eventos;
 shared.modal.bulkUpdateAllotment.error;Corregir;Encontramos alguns erros ao atualizar determinados allotments, verifique-os abaixo;
+shared.modal.bulkUpdateAllotment.updating;Corregir;Atualizando {{current}} de {{total}} allotments;
 shared.modal.bulkUpdateOffer.error;Corregir;Encontramos alguns erros ao atualizar determinadas ofertas, verifique-os abaixo;
+shared.modal.bulkUpdateOffer.updating;Corregir;Atualizando {{current}} de {{total}} ofertas;
 shared.modal.bulkUpdatePromotion.error;Corregir;Encontramos alguns erros ao atualizar determinadas promoções, verifique-os abaixo;
+shared.modal.bulkUpdatePromotion.updating;Corregir;Atualizando {{current}} de {{total}} promoções;
 shared.modal.bulkUpdateRate.error;Corregir;Encontramos alguns erros ao atualizar determinadas tarifas, verifique-os abaixo;
+shared.modal.bulkUpdateRate.updating;Corregir;Atualizando {{current}} de {{total}} tarifas;
 shared.modal.calculatedEventChangeModal.message;Corregir;"Deseja aplicar as alterações?
 
  - Clique em Cancelar se deseja cancelar a alteração.
@@ -2119,19 +2175,24 @@ shared.modal.calculatedEventChangeModal.message;Corregir;"Deseja aplicar as alte
 shared.modal.cancelDeviceProcess.message;Corregir;Tem certeza de que deseja cancelar este processo neste dispositivo?;
 shared.modal.cancelPaymentAuthorization.message;Corregir;Tem certeza de que deseja alterar o estado desta pré-autorização de pagamento?;
 shared.modal.cancelReservationEvent.error;Corregir;Encontramos alguns erros ao cancelar alguns dos eventos e não foi possível concluir o processo. Reveja os erros abaixo e aplique as alterações necessárias para concluir o processo de cancelamento;
+shared.modal.cancelReservationEvent.generating;Corregir;Cancelando evento {{current}} de {{total}};
 shared.modal.cancelReservationGroup.error;Corregir;Encontramos alguns erros durante o cancelamento e não foi possível concluir o processo. Reveja os erros abaixo e aplique as alterações necessárias para concluir o processo de cancelamento;
+shared.modal.cancelReservationGroup.generating;Corregir;Cancelando {{current}} de {{total}};
 shared.modal.cancelReservationRoomStayBulk.error;Corregir;Encontramos alguns erros durante o cancelamento de algumas estadias e não foi possível concluir o processo. Reveja os erros abaixo e aplique as alterações necessárias para concluir o processo de cancelamento;
+shared.modal.cancelReservationRoomStayBulk.generating;Corregir;Cancelando estadia {{current}} de {{total}};
 shared.modal.cashierClose.information;Corregir;Confirme o valor atual na sua caixa. O saldo de fim de turno será a diferença entre o saldo final e o levantamento de caixa. Se o valor atual for diferente do saldo final, indique o motivo nas observações de fechamento.;
 shared.modal.cashierClose.label.endCashAmountIn;Corregir;Valor recebido;
 shared.modal.cashierClose.label.endCashAmountOut;Corregir;Valor pago;
 shared.modal.cashierClose.label.endCashForeignAmountIn;Corregir;Valor recebido em moeda estrangeira;
 shared.modal.cashierClose.label.endCashForeignAmountOut;Corregir;Valor pago em moeda estrangeira;
-shared.modal.changeGridBulk.deleteDependencyInGrid.title;Corregir;A excluir elementos;
+shared.modal.changeGridBulk.addInGrid.title;Corregir;Adicionando elementos;
+shared.modal.changeGridBulk.addInGrid.updating;Corregir;Adicionando os elementos selecionados;
+shared.modal.changeGridBulk.deleteDependencyInGrid.title;Corregir;Excluindo elementos;
 shared.modal.changeGridBulk.deleteDependencyInGrid.updated;Corregir;Os elementos selecionados foram excluídos ou inativados;
-shared.modal.changeGridBulk.deleteDependencyInGrid.updating;Corregir;A excluir ou inativar os elementos selecionados;
-shared.modal.changeGridBulk.deleteInGrid.title;Corregir;A excluir elementos;
+shared.modal.changeGridBulk.deleteDependencyInGrid.updating;Corregir;Excluindo ou inativar os elementos selecionados;
+shared.modal.changeGridBulk.deleteInGrid.title;Corregir;Excluindo elementos;
 shared.modal.changeGridBulk.deleteInGrid.updated;Corregir;Os elementos selecionados foram excluídos;
-shared.modal.changeGridBulk.deleteInGrid.updating;Corregir;A excluir os elementos selecionados;
+shared.modal.changeGridBulk.deleteInGrid.updating;Corregir;Excluindo os elementos selecionados;
 shared.modal.changePassword.info;Corregir;Para alterar a sua senha atual, tem de informar a senha atual e a nova. Lembre-se de não utilizar nenhuma das últimas 4 senhas.;
 shared.modal.changePriceModelType.message;Corregir;A alteração do modelo de preços irá repor a configuração atual e será necessário informar novamente os preços. Consulte a documentação para obter mais informação sobre o impacto desta alteração.;
 shared.modal.changeSubscription.title;Corregir;Alterar assinatura;
@@ -2146,6 +2207,7 @@ shared.modal.checkin.roomAssign.roomAssign;Corregir;A acomodação atribuída é
 shared.modal.checkin.roomAssign.roomNotAssign;Corregir;Não tem acomodação atribuída;
 shared.modal.checkin.roomAssign.unassign;Corregir;Desatribuir acomodação;
 shared.modal.checkinSettlementBulk.error;Corregir;Encontramos alguns erros durante o processamento de alguns check-ins e não foi possível concluir o processo. Reveja os erros abaixo e aplique as alterações necessárias para concluir o processo;
+shared.modal.checkinSettlementBulk.generating;Corregir;Processando {{current}} de {{total}};
 shared.modal.checkinSettlementBulk.info;Corregir;Este processo irá gerar a faturamento das estadias selecionadas;
 shared.modal.checkinSettlementBulk.title;Corregir;Faturamento em massa;
 shared.modal.checkoutReservationGroup.message;Corregir;"Não existem mais estadias pendentes de conclusão neste grupo.
@@ -2161,6 +2223,7 @@ shared.modal.copyToChain.selectOne;Corregir;Tem de selecionar pelo menos uma se�
 shared.modal.copyToChain.title;Corregir;Copiar para a rede;
 shared.modal.copyToProperty.error;Corregir;Encontramos alguns erros ao atualizar determinadas propriedades, verifique-os abaixo;
 shared.modal.copyToProperty.hint;Corregir;Selecione as propriedades para as quais deseja copiar os dados deste(a) {{entity}}. Observe que, se já existir em alguma das propriedades selecionadas, será substituído;
+shared.modal.copyToProperty.updating;Corregir;Atualizando {{current}} de {{total}} propriedades;
 shared.modal.createDeposit.billTo;Corregir;Faturar para;
 shared.modal.createDeposit.paymentInfo;Corregir;Clique em salvar para criar o depósito. Observe que o Ulyses Suite não está solicitando o pagamento a ninguém neste momento. Para o fazer, não se esqueça de enviar um e-mail de lembrete para poder liquidar o depósito;
 shared.modal.createDeposit.split.info;Corregir;Escolha uma opção para gerar o número de depósitos que querer;
@@ -2180,6 +2243,7 @@ shared.modal.deleteEntityDependent.message.delete.ok;Corregir;Observe que a excl
 shared.modal.deleteEntityDependent.message.inactive.ok;Corregir;Indique o motivo pelo qual deseja desativar este valor;
 shared.modal.deleteEntityDependent.message.noAction.message;Corregir;Não pode executar nenhuma das ações desejadas nesta entidade.;
 shared.modal.deleteEntityDependent.message.replace.ok;Corregir;Selecione o valor pelo qual deseja substituí-lo;
+shared.modal.deleteReservationRoomStayAlert.bulk.updating;Corregir;Resolvendo {{current}} de {{total}} alertas;
 shared.modal.deleteVehicle.alsoDeleteFromProfile;Corregir;Excluir também este veículo do perfil do cliente;
 shared.modal.deleteVehicle.alsoOnProfileMessage;Corregir;Este veículo também está salvo no perfil do cliente.;
 shared.modal.deleteVehicle.delete;Corregir;Excluir;
@@ -2213,28 +2277,30 @@ shared.modal.grid.changeLog.rateProductDailyPrice;Corregir;Registro de alteraç�
 shared.modal.grid.changeLog.rateProductPackage;Corregir;Registro de alterações do pacote de produtos;
 shared.modal.grid.changeLog.roomBlock;Corregir;Registro de alterações do bloqueio de acomodação;
 shared.modal.groupCheckin.error;Corregir;Encontramos alguns erros durante o check-in do grupo e não foi possível concluir o processo. Reveja os erros abaixo e aplique as alterações necessárias para concluir o processo de check-in;
+shared.modal.groupCheckin.generating;Corregir;Gerando check-in {{current}} de {{total}};
 shared.modal.groupCheckin.info;Corregir;Está prestes a iniciar o check-in de um grupo de estadias. Observe que este processo pode demorar algum tempo. Será notificado dos erros caso o processo não possa ser concluído. Se tal acontecer, recomendamos que aplique as alterações e reinicie o processo de check-in;
 shared.modal.groupCheckin.summary;Corregir;Parabéns! Concluiu o check-in do grupo com sucesso. Agora pode acessar individualmente a todas as reservas e gerenciar os respetivos detalhes;
 shared.modal.groupCheckout.error;Corregir;Encontramos alguns erros durante o check-out do grupo e não foi possível concluir o processo. Reveja os erros abaixo e aplique as alterações necessárias para concluir o processo de check-out;
+shared.modal.groupCheckout.generating;Corregir;Gerando check-out {{current}} de {{total}};
 shared.modal.groupCheckout.info;Corregir;Está prestes a iniciar o check-out de um grupo de estadias. Observe que este processo pode demorar algum tempo. Será notificado dos erros caso o processo não possa ser concluído. Se tal acontecer, recomendamos que aplique as alterações e reinicie o processo de check-out;
 shared.modal.groupCheckout.summary;Corregir;Parabéns! Concluiu o check-out do grupo com sucesso. Agora pode acessar individualmente a todas as reservas e gerenciar os respetivos detalhes;
 shared.modal.groupFolioProduct.auto;Corregir;Agrupar por acomodação e data;
 shared.modal.guestCheckin.addressSynced;Corregir;A endereço está sincronizada com {{guestName}};
 shared.modal.guestCheckin.useSameAddressAsFirstGuest;Corregir;Utilizar a mesma endereço que {{guestName}};
 shared.modal.importAccountingMappingExcel.downloadExcel;Corregir;Clique aqui para baixar o arquivo de exemplo;
-shared.modal.importAccountingMappingExcel.importExcel;Corregir;Transfira o seguinte arquivo, defina os suas acomodações com os respetivos tipos de acomodação e carregue-o para criar a estrutura de acomodações da sua propriedade.;
+shared.modal.importAccountingMappingExcel.importExcel;Corregir;Baixe o seguinte arquivo, defina as suas acomodações com os respetivos tipos de acomodação e carregue-o para criar a estrutura de acomodações da sua propriedade.;"Baixe o arquivo: ES ""Descarga el siguiente archivo""; descarregar o modelo."
 shared.modal.importItemExcel.confirmExcel;Corregir;Reveja a lista abaixo para confirmar que todos os itens estão corretos antes de serem criados no Ulyses PMS.;
 shared.modal.importItemExcel.downloadExcel;Corregir;Clique aqui para baixar o arquivo de exemplo;
-shared.modal.importItemExcel.importExcel;Corregir;Transfira o seguinte arquivo, defina os seus produtos com os respetivos tipos de itens e carregue-o para criar a estrutura de itens da sua propriedade.;
+shared.modal.importItemExcel.importExcel;Corregir;Baixe o seguinte arquivo, defina os seus produtos com os respetivos tipos de itens e carregue-o para criar a estrutura de itens da sua propriedade.;"Baixe o arquivo: ES ""Descarga el fichero""; descarregar o modelo."
 shared.modal.importMeterExcel.downloadExcel;Corregir;Clique aqui para baixar o arquivo de exemplo;
-shared.modal.importMeterExcel.importExcel;Corregir;Transfira o arquivo, especifique os contadores com os respetivos tipos e carregue-o para criar a estrutura de contadores do seu estabelecimento.;
+shared.modal.importMeterExcel.importExcel;Corregir;Baixe o arquivo, especifique os contadores com os respetivos tipos e carregue-o para criar a estrutura de contadores do seu estabelecimento.;"Baixe o arquivo: ES ""Descargue el archivo""; descarregar o modelo."
 shared.modal.importProductExcel.downloadExcel;Corregir;Clique aqui para baixar o arquivo de exemplo;
-shared.modal.importProductExcel.importExcel;Corregir;Transfira o seguinte arquivo, defina os seus produtos com os respetivos tipos de produto e carregue-o para criar a estrutura de produtos da sua propriedade.;
+shared.modal.importProductExcel.importExcel;Corregir;Baixe o seguinte arquivo, defina os seus produtos com os respetivos tipos de produto e carregue-o para criar a estrutura de produtos da sua propriedade.;"Baixe o arquivo: ES ""Descarga el fichero""; descarregar o modelo."
 shared.modal.importRoomExcel.confirmExcel;Corregir;Reveja a lista abaixo para confirmar que todas as acomodações estão corretos antes de serem criados no Ulyses PMS.;
 shared.modal.importRoomExcel.downloadExcel;Corregir;Clique aqui para baixar o arquivo de exemplo;
-shared.modal.importRoomExcel.importExcel;Corregir;Transfira o seguinte arquivo, defina os suas acomodações com os respetivos tipos de acomodação e carregue-o para criar a estrutura de acomodações da sua propriedade.;
+shared.modal.importRoomExcel.importExcel;Corregir;Baixe o seguinte arquivo, defina as suas acomodações com os respetivos tipos de acomodação e carregue-o para criar a estrutura de acomodações da sua propriedade.;"Baixe o arquivo: ES ""Descarga el fichero""; descarregar o modelo."
 shared.modal.importRoomingList.info;Corregir;Confirme a informação abaixo antes de as acomodações serem adicionados a este grupo. Observe que apenas serão adicionados as acomodações ao grupo, mas não serão geradas as estadias, que terão de ser geradas posteriormente.;
-shared.modal.importTranslateExcel.importExcel;Corregir;Transfira o seguinte arquivo, defina os suas acomodações com os respetivos tipos de acomodação e carregue-o para criar a estrutura de acomodações da sua propriedade.;
+shared.modal.importTranslateExcel.importExcel;Corregir;Baixe o seguinte arquivo, defina as suas acomodações com os respetivos tipos de acomodação e carregue-o para criar a estrutura de acomodações da sua propriedade.;"Baixe o arquivo: ES ""Descargue el siguiente archivo""; descarregar o modelo."
 shared.modal.information.accommodationTypeChange.message;Corregir;O tipo de acomodação da estadia foi alterado. Esta estadia já tem um acesso. Lembre-se de atualizar as áreas de acesso autorizadas, se necessário.;
 shared.modal.information.accommodationTypeChange.title;Corregir;Alteração do tipo de acomodação;
 shared.modal.information.addElectronicLock.message;Corregir;Adicionar fechadura eletrônica no dispositivo de escrita.;
@@ -2281,6 +2347,7 @@ shared.modal.information.cancelPaymentAuthorization.message;Corregir;Tem certeza
 shared.modal.information.cancelProcess.message;Corregir;Tem certeza de que deseja cancelar o processo?;
 shared.modal.information.changeAppAndRedirect.message;Corregir;"Para acessar aos dados, temos de o redirecionar para outra aplicação do sistema.
 Tem certeza?";
+shared.modal.information.changeAppAndRedirect.title;Corregir;Redirecionando para outra aplicação;
 shared.modal.information.changeEntityDirty.message;Corregir;"Tem dados que não foram salvos e que se perderão ao mudar de vista.
 Tem certeza?";
 shared.modal.information.changeEntityDirty.submitted;Corregir;Salvar;
@@ -2289,7 +2356,7 @@ shared.modal.information.changeOwnerTypeCompany.message;Corregir;"Deseja alterar
 shared.modal.information.changeOwnerTypeIndividual.message;Corregir;"Deseja alterar este proprietário para o tipo ""Particular""?";
 shared.modal.information.changeSectionAndRedirect.message;Corregir;"Para acessar aos dados, temos de o redirecionar para outra seção do sistema.
 Tem certeza?";
-shared.modal.information.changeSectionAndRedirect.title;Corregir;A redirecionar para outra seção;
+shared.modal.information.changeSectionAndRedirect.title;Corregir;Redirecionando para outra seção;
 shared.modal.information.changeStatusSpace.message;Corregir;Tem certeza de que deseja alterar o estado do espaço?;
 shared.modal.information.changeStatusTask.message;Corregir;Tem certeza de que deseja alterar o estado da tarefa?;
 shared.modal.information.checkoutWithOpenFolio.message;Corregir;Está prestes a fazer o check-out de uma acomodação que tem um folio de reserva ou um folio de grupo pendente de pagamento, mas pode continuar. Deseja prosseguir mesmo assim?;
@@ -2308,7 +2375,7 @@ shared.modal.information.convertNonTaxable.message;Corregir;Tem certeza de que d
 shared.modal.information.copyToChain.message;Corregir;Tem certeza de que deseja copiar esta entidade para a rede?;
 shared.modal.information.copyToChain.title;Corregir;Copiar para a rede;
 shared.modal.information.createAccount.message;Corregir;Deseja criar uma nova conta para esta estadia?;
-shared.modal.information.createCutOff.message;Corregir;Vai executar o processo de Cut-Off. Após este processo, as configurações e o bloqueio de acomodação ficarão bloqueadas. Pode revertê-lo eliminando o Cut-Off.;
+shared.modal.information.createCutOff.message;Corregir;Vai executar o processo de Cut-Off. Após este processo, as configurações e o bloqueio de acomodação ficarão bloqueadas. Pode revertê-lo excluindo o Cut-Off.;"Excluindo: pt-BR usa ""excluir"" para delete; ""eliminar"" é pt-PT."
 shared.modal.information.createEntityProperty.message;Corregir;Tem certeza de que deseja criar na propriedade?;
 shared.modal.information.createEntityProperty.submitted;Corregir;Salvar;
 shared.modal.information.createEntityProperty.title;Corregir;Salvar na propriedade;
@@ -2376,6 +2443,7 @@ shared.modal.information.deleteMapping.title;Corregir;Excluir mapeamento;
 shared.modal.information.deleteMeter.message;Corregir;Tem certeza de que deseja excluir este contador?;
 shared.modal.information.deleteMeter.submitted;Corregir;Excluir;
 shared.modal.information.deleteMeter.title;Corregir;Excluir contador;
+shared.modal.information.deleteMeterNotAllowed.message;Corregir;Este contador tem leituras adicionadas e não é possível excluá-lo;"Excluí-lo: pt-BR usa ""excluir"" para delete; ""eliminar"" é pt-PT."
 shared.modal.information.deleteMeterNotAllowed.title;Corregir;Este contador não pode ser excluído;
 shared.modal.information.deleteNotice.message;Corregir;Tem certeza de que deseja excluir este aviso?;
 shared.modal.information.deleteNotice.title;Corregir;Excluir aviso;
@@ -2461,6 +2529,7 @@ shared.modal.information.forcedPlanningOverbooking.message;Corregir;Esta ação 
 shared.modal.information.functionRoomProtected.message;Corregir;"Esta acomodação está protegido 
  Verifique a observação de proteção e desproteja a acomodação antes de continuar.";
 shared.modal.information.functionRoomProtected.title;Corregir;Acomodação protegido;
+shared.modal.information.genericAccountingAlreadyExported.title;Corregir;Período baixado;"Período baixado: ES ""Periodo descargado""; refere a exportação/descarga do período contabilístico."
 shared.modal.information.hasCloseDayAvailability.message;Corregir;Alguns dias da tarifa selecionada não estão disponíveis. Tem certeza de que deseja continuar?;
 shared.modal.information.includeAutomaticCharge.message;Corregir;Tem certeza de que deseja incluir esta entidade na cobrança automática?;
 shared.modal.information.invoiceAmend.message;Corregir;"Tem certeza de que deseja retificar esta fatura?
@@ -2583,9 +2652,9 @@ shared.modal.information.sendConfirmation.message;Corregir;Deseja enviar agora o
 shared.modal.information.septeoBillResend.message;Corregir;Tem certeza de que deseja reenviar esta fatura para o Septeo Bill?;
 shared.modal.information.siteminderImportReservation.message;Corregir;"Tem certeza de que deseja prosseguir com esta ação?
 
-Este processo irá pedir ao Channel Manager que volte a baixar todas as reservas, tanto atuais como futuras. Como resultado, todas as reservas geradas pelo Channel Manager serão transferidas novamente e as reservas existentes serão atualizadas em conformidade.
+Este processo irá pedir ao Channel Manager que volte a baixar todas as reservas, tanto atuais como futuras. Como resultado, todas as reservas geradas pelo Channel Manager serão baixadas novamente e as reservas existentes serão atualizadas em conformidade.
 
-Observe que este processo é irreversível.";
+Observe que este processo é irreversível.";"Baixar novamente: ES ""vuelva a descargar""; o Channel Manager volta a descarregar as reservas (não as transfere)."
 shared.modal.information.skipImport.message;Corregir;Tem certeza de que deseja ignorar a importação? Ainda faltam dados por importar?;
 shared.modal.information.syncPassportScan.message;Corregir;Deseja recuperar do PassportScan as alterações sobre os hóspedes?;
 shared.modal.information.takeAction.message;Corregir;Tem certeza de que deseja executar esta ação?;
@@ -2612,12 +2681,16 @@ shared.modal.keyboardShortcuts.info;Corregir;"Os atalhos de teclado com o indica
 shared.modal.logHistory.title;Corregir;Registro de histórico de {{entity}};
 shared.modal.lostItem.info;Corregir;Selecione o estado que deseja aplicar a cada objeto perdido selecionado;
 shared.modal.lostItemStatus.error;Corregir;"Encontramos alguns erros ao atualizar determinadas propriedades; consulte-os abaixo";
+shared.modal.lostItemStatus.updating;Corregir;Processando {{current}} de {{total}} objetos perdidos;
 shared.modal.maintenanceIssue.info;Corregir;Selecione o estado que deseja aplicar a cada incidência selecionada;
 shared.modal.maintenanceIssueStatus.error;Corregir;"Encontramos alguns erros ao atualizar determinadas propriedades; consulte-os abaixo";
+shared.modal.maintenanceIssueStatus.updating;Corregir;Processando {{current}} de {{total}} incidências de manutenção;
 shared.modal.maintenanceWorkOrder.info;Corregir;Selecione o estado que deseja aplicar a cada ordem de trabalho selecionada;
 shared.modal.maintenanceWorkOrderStatus.error;Corregir;"Encontramos alguns erros ao atualizar determinadas propriedades; consulte-os abaixo";
+shared.modal.maintenanceWorkOrderStatus.updating;Corregir;Processando {{current}} de {{total}} ordens de trabalho de manutenção;
 shared.modal.maintenanceWorkOrderTask.info;Corregir;Selecione o estado que deseja aplicar a cada tarefa de ordem de trabalho selecionada;
 shared.modal.maintenanceWorkOrderTaskStatus.error;Corregir;"Encontramos alguns erros ao atualizar determinadas propriedades; consulte-os abaixo";
+shared.modal.maintenanceWorkOrderTaskStatus.updating;Corregir;Processando {{current}} de {{total}} tarefas de ordens de trabalho de manutenção;
 shared.modal.management.downloadExcelHint;Corregir;Marque os abas que deseja incluir no arquivo Excel final (o número máximo permitido é de 10 elementos);
 shared.modal.merge.noSuggestion;Corregir;Lamentamos, não encontramos nenhuma sugestão adequada;
 shared.modal.newFolio.profileType;Corregir;Selecione uma das opções abaixo para ser atribuída como faturar para no novo folio. Caso nenhuma das sugestões corresponda ao desejado, selecione Outra empresa ou Outro cliente para selecionar manualmente o perfil a faturar;
@@ -2630,8 +2703,10 @@ shared.modal.newProperty.propertySetup.info;Corregir;Tipo de propriedade desejad
 shared.modal.paymentScheduler.confirmationModal.messageError;Corregir;Tem certeza de que deseja executar a automatização de pagamentos?;
 shared.modal.paymentScheduler.confirmationModal.messagePending;Corregir;Tem certeza de que deseja tentar novamente a execução desta automatização de pagamentos?;
 shared.modal.printInvoice.downloadNInvoice;Corregir;Baixar {{count}} faturas;
+shared.modal.printInvoice.processing;Corregir;Processando faturas;
+shared.modal.process.title;Corregir;Processando operações;
 shared.modal.process.updating;Corregir;As operações pedidas estão sendo processadas;
-shared.modal.propagateVehicle.deleteMessage;Corregir;Este veículo é utilizado em {{count}} estadias atuais ou futuras. Deseja também eliminá-lo dessas estadias?;
+shared.modal.propagateVehicle.deleteMessage;Corregir;Este veículo é utilizado em {{count}} estadias atuais ou futuras. Deseja também excluí-lo dessas estadias?;"Excluí-lo: pt-BR usa ""excluir"" para delete; ""eliminar"" é pt-PT."
 shared.modal.propagateVehicle.title;Corregir;Aplicar a registros associados;
 shared.modal.propagateVehicle.updateMessage;Corregir;Este veículo está associado ao perfil do cliente. Deseja também aplicar esta alteração ao perfil e a outras estadias atuais ou futuras?;
 shared.modal.propertyBreakdown.allTab;Corregir;Todas as abas;
@@ -2640,11 +2715,15 @@ shared.modal.propertyBreakdown.oneTab;Corregir;Aba atual;
 shared.modal.protectEntity.protect;Corregir;Ative esta opção para impedir que os usuários façam alterações neste(a) {{entity}};
 shared.modal.protectEntity.unprotect;Corregir;Ative esta opção para impedir que os usuários façam alterações neste(a) {{entity}};
 shared.modal.publicAPIEventQueueStatusType.error;Corregir;"Encontramos alguns erros ao atualizar determinadas propriedades; consulte-os abaixo";
+shared.modal.publicAPIEventQueueStatusType.updating;Corregir;Processando {{current}} de {{total}} filas de eventos;
 shared.modal.publicApiPush.automapping;Corregir;Encontra abaixo todas as sugestões de mapeamento para cada acomodação e tarifa, para que não tenha de as criar individualmente. Observe que as sugestões podem ser removidas clicando no ícone à direita.;
 shared.modal.publicApiPush.preautomapping;Corregir;Nesta seção pode mapear os códigos do Ulyses Suite para códigos externos. Se forem iguais, não precisa de executar este passo e pode avançar para o passo seguinte.;
 shared.modal.rebuildOrReorganize.error;Corregir;"Encontramos alguns erros ao atualizar determinadas propriedades; consulte-os abaixo";
+shared.modal.rebuildOrReorganize.title;Corregir;Reconstruindo ou reorganizar índices;
+shared.modal.rebuildOrReorganize.updating;Corregir;Processando {{current}} de {{total}} índices;
 shared.modal.replicateEntity.error;Corregir;"Encontramos alguns erros ao atualizar determinadas propriedades; consulte-os abaixo";
 shared.modal.replicateEntity.hint;Corregir;Selecione as propriedades nas quais deseja replicar os dados deste(a) {{entity}}. Observe que, se já existir em alguma das propriedades selecionadas, será substituído(a);
+shared.modal.replicateEntity.updating;Corregir;Atualizando {{current}} de {{total}} propriedades;
 shared.modal.resendQueueErrors.message;Corregir;Selecione as opções com as quais deseja reenviar os erros dessas filas;
 shared.modal.reservationEventBulkUpdate.step0.info;Corregir;Selecione os eventos que deseja atualizar;
 shared.modal.reservationEventBulkUpdate.step1.info;Corregir;Selecione o tipo de dados do evento que deseja atualizar;
@@ -2683,13 +2762,18 @@ shared.modal.reservationRoomStayBulkUpdate.step2.removeWakeUpCall.info;Corregir;
 shared.modal.revertActionReservation.messages.checkIn.ok;Corregir;Reverter o check-in removerá a conta associada a esta estadia e libertará o(a) {{productTypeName}}. Tem certeza de que deseja executar esta operação?;
 shared.modal.revertActionReservation.messages.checkOut.ok;Corregir;Reverter o check-out repõe a conta tal como estava antes do check-out e ocupará o(a) {{productTypeName}}. Tem certeza de que deseja executar esta ação?;
 shared.modal.revertCheckinBulk.error;Corregir;Encontramos alguns erros durante a reversão de alguns check-ins e não foi possível concluir o processo. Reveja os erros abaixo e aplique as alterações necessárias para concluir o processo de reversão;
+shared.modal.revertCheckinBulk.generating;Corregir;Revertendo check-in {{current}} de {{total}};
 shared.modal.revertCheckinBulk.info;Corregir;Está prestes a reverter o check-in de um grupo de estadias. Observe que este processo pode demorar algum tempo. Será notificado dos erros caso o processo não possa ser concluído. Se tal acontecer, recomendamos que aplique as alterações e reinicie o processo de reversão;
 shared.modal.revertCheckoutBulk.error;Corregir;Encontramos alguns erros durante a reversão de alguns check-outs e não foi possível concluir o processo. Reveja os erros abaixo e aplique as alterações necessárias para concluir o processo de reversão;
+shared.modal.revertCheckoutBulk.generating;Corregir;Revertendo check-out {{current}} de {{total}};
 shared.modal.revertCheckoutBulk.info;Corregir;Está prestes a reverter o check-out de um grupo de estadias. Observe que este processo pode demorar algum tempo. Será notificado dos erros caso o processo não possa ser concluído. Se tal acontecer, recomendamos que aplique as alterações e reinicie o processo de reversão;
 shared.modal.rooming.confirmExcel;Corregir;Verificar acomodações;
-shared.modal.rooming.downloadExcel.roomingListType3;Corregir;Transferir bloqueio de acomodações;
-shared.modal.rooming.downloadExcel.roomingListType4;Corregir;Transferir bloqueio de acomodações alargado;
-shared.modal.rooming.importExcel;Corregir;Transfira o modelo abaixo e preencha-o com todas as informações necessárias para criar todas as acomodações. Pode compartilhar este arquivo com outras empresas, mas certifique-se de que o carrega quando a rooming list estiver confirmada.;
+shared.modal.rooming.downloadExcel.roomingListType1;Corregir;Baixar atual;"Baixar atual: botão de descarregar a rooming list; ES ""Descargar""."
+shared.modal.rooming.downloadExcel.roomingListType2;Corregir;Baixar exemplo;"Baixar exemplo: botão de descarregar o modelo; ES ""Descargar""."
+shared.modal.rooming.downloadExcel.roomingListType3;Corregir;Baixar bloqueio de acomodações;"Baixar bloqueio de acomodações: ES ""Descargar roomblock""; é descarregar o ficheiro, não transferir."
+shared.modal.rooming.downloadExcel.roomingListType4;Corregir;Baixar bloqueio de acomodações alargado;"Baixar bloqueio de acomodações alargado: ES ""Descargar roomblock extendido""; é descarregar o ficheiro."
+shared.modal.rooming.importExcel;Corregir;Baixe o modelo abaixo e preencha-o com todas as informações necessárias para criar todas as acomodações. Pode compartilhar este arquivo com outras empresas, mas certifique-se de que o carrega quando a rooming list estiver confirmada.;"Baixe o modelo: ES ""Descarga la plantilla y rellénala""."
+shared.modal.roomingListGenerateStay.generating;Corregir;Gerando estadia {{current}} de {{total}};
 shared.modal.roomingListGenerateStay.info;Corregir;Está prestes a gerar estadias a partir das acomodações selecionadas. Tem certeza de que deseja prosseguir?;
 shared.modal.saveChainEntityToAllProperties.message;Corregir;Esta entidade é utilizada por algumas propriedades. Deseja aplicar estas alterações a todas essas propriedades?;
 shared.modal.saveChainEntityToAllProperties.saveChainOnly;Corregir;Salvar na rede;
@@ -2707,20 +2791,26 @@ shared.modal.sendCommunication.config.titleSendFiles;Corregir;Enviar arquivos;
 shared.modal.siteminder.automapping;Corregir;Encontra abaixo todas as sugestões de mapeamento para cada acomodação e tarifa, para que não tenha de as criar individualmente. Observe que as sugestões podem ser removidas clicando no ícone à direita.;
 shared.modal.siteminder.preautomapping;Corregir;Nesta seção pode mapear os códigos do Ulyses Suite para códigos externos. Se forem iguais, não precisa de executar este passo e pode avançar para o passo seguinte.;
 shared.modal.spaceLockBulk.error;Corregir;Encontramos alguns erros durante o processo em massa. Pode consultar o registro abaixo para aplicar as alterações necessárias e tentar novamente mais tarde.;
+shared.modal.spaceLockBulk.generating;Corregir;Aplicando ação {{current}} de {{total}};
 shared.modal.splitReservationRoomStay.error;Corregir;Encontramos alguns erros durante a divisão de algumas estadias de reserva.;
+shared.modal.splitReservationRoomStay.generating;Corregir;Dividindo estadia de reserva {{current}} de {{total}};
 shared.modal.splitReservationRoomStay.infoSplit;Corregir;Divida esta acomodação em várias instâncias. Pode criá-las na mesma reserva ou separar as acomodações em reservas diferentes.;
 shared.modal.storedDocument.nomanually;Corregir;Lamentamos, não encontramos documentos de armazenamento.;
 shared.modal.storedDocument.nosuggestion;Corregir;Lamentamos, não encontramos nenhuma sugestão adequada!;
 shared.modal.stripeDepositSelect.info;Corregir;Foram encontrados no Stripe os seguintes pagamentos que não foram criados no Ulyses. Selecione o pagamento que deseja associar ao depósito ou clique em fechar se quiser criar um novo depósito:;
 shared.modal.stripeSelect.error;Corregir;Foram encontrados no Stripe os seguintes pagamentos que não foram criados no Ulyses. Selecione o pagamento que deseja associar ao depósito:;
+shared.modal.transferUserData.generating;Corregir;Transferindo dados: {{current}} de {{total}};
 shared.modal.unblockFunctionSpaceLock.error;Corregir;"Encontramos alguns erros ao tentar desbloquear acomodações; consulte-os abaixo.";
+shared.modal.unblockFunctionSpaceLock.updating;Corregir;Desbloqueando {{current}} de {{total}} salas de eventos;
 shared.modal.unblockSpaceLock.error;Corregir;"Encontramos alguns erros ao desbloquear determinadas acomodações; consulte-os abaixo";
 shared.modal.unblockSpaceLock.title;Corregir;Desbloqueio de acomodações em massa;
 shared.modal.unblockSpaceLock.updated;Corregir;Todas as acomodações foram desbloqueados com sucesso;
-shared.modal.unblockSpaceLock.updating;Corregir;A desbloquear a acomodação {{code}};
+shared.modal.unblockSpaceLock.updating;Corregir;Desbloqueando a acomodação {{code}};
 shared.modal.updateEventBulk.error;Corregir;"Encontramos alguns erros ao atualizar determinados eventos; consulte-os abaixo";
+shared.modal.updateEventBulk.updating;Corregir;Atualizando {{current}} de {{total}} eventos;
 shared.modal.updateInvoicePayment.originalPayments.info;Corregir;Selecione os pagamentos que deseja atualizar;
 shared.modal.updateRoomStayBulk.error;Corregir;"Encontramos alguns erros ao atualizar determinadas estadias; consulte-os abaixo";
+shared.modal.updateRoomStayBulk.updating;Corregir;Atualizando {{current}} de {{total}} estadias;
 shared.modal.uploadFile.media.any;Corregir;arquivo;
 shared.modal.uploadFile.title;Corregir;Enviar {{media}};
 shared.modal.uploadImage.message;Corregir;Clique no botão abaixo para enviar uma imagem.;
@@ -2788,6 +2878,7 @@ shared.sectionPanel.roomMode;Corregir;Modo de  acomodação;
 shared.sectionPanel.securityControl;Corregir;Controle de segurança;
 shared.sectionPanel.selectOptionsToCopy;Corregir;Selecione as opções que deseja copiar;
 shared.sectionPanel.settings;Corregir;Configurações;
+shared.sectionPanel.soonToExpire;Corregir;Expirando brevemente;
 shared.sectionPanel.syncInfoBetweenPropertyAndChain;Corregir;Sincronizar informação entre propriedade e rede;
 shared.sectionPanel.tokensByUser;Corregir;Tokens por usuário;
 shared.sectionPanel.userBreakdown;Corregir;Discriminação por usuário;
@@ -2801,11 +2892,11 @@ shared.switch.allowAmend.message;Corregir;Ative esta opção para permitir retif
 shared.switch.allowAssignRoom.message;Corregir;Ative esta opção para permitir atribuir acomodação;
 shared.switch.allowAssignRoom.title;Corregir;Permitir atribuir acomodação;
 shared.switch.allowCheckoutPayment.message;Corregir;Ative esta opção para permitir que os usuários paguem os folios abertos associados à sua estadia;
-shared.switch.allowDownloadInvoice.message;Corregir;Ative esta opção para permitir que os usuários transfiram as faturas relacionadas com as suas reservas;
+shared.switch.allowDownloadInvoice.message;Corregir;Ative esta opção para permitir que os usuários baixem as faturas relacionadas com as suas reservas;"Baixem: ES ""la descarga de facturas""; os clientes descarregam as faturas."
 shared.switch.allowDownloadInvoice.title;Corregir;Baixar faturas;
 shared.switch.allowGenerateKey.message;Corregir;Ative esta opção para permitir que os seus clientes gerem as chaves das acomodações;
 shared.switch.allowGuestMessage.message;Corregir;Ative esta opção para permitir que os clientes comuniquem com a sua equipe através do Ulyses Kiosk e selecione a conta SMTP e os usuários (ou funções) que receberão notificações de mensagens por ler.;
-shared.switch.allowInHouseDownloadInvoice.message;Corregir;Ative esta opção para permitir que os usuários transfiram as faturas relacionadas com as suas reservas;
+shared.switch.allowInHouseDownloadInvoice.message;Corregir;Ative esta opção para permitir que os usuários baixem as faturas relacionadas com as suas reservas;"Baixem: ES ""la descarga de facturas""; os clientes descarregam as faturas."
 shared.switch.allowInHouseDownloadInvoice.title;Corregir;Baixar faturas;
 shared.switch.allowManualBreakdown.message;Corregir;Ative esta opção para permitir que os usuários informem a discriminação de F&B;
 shared.switch.allowManualOtherBreakdown.message;Corregir;Ative esta opção para permitir que os usuários informem a porcentagem de discriminação de outros de F&B;
@@ -2895,7 +2986,7 @@ shared.switch.findByEmailFideltour.title;Corregir;Pesquisar usuário na Fideltou
 shared.switch.forceCompliance.message;Corregir;Ative esta opção se quiser garantir que os campos obrigatórios exigidos pela regulamentação de acomodação são preenchidos nos processos envolvidos nesta integração.;
 shared.switch.functionRoomShareable.message;Corregir;Ative esta opção se quiser permitir atribuir 2 ou mais eventos em simultâneo a esta sala de eventos;
 shared.switch.functionRoomShareable.title;Corregir;Compartilhável;
-shared.switch.generateRoomingListByBlock.message;Corregir;Ative esta opção se quiser que o arquivo a transferir tenha as rooming lists separadas por data e blocos de quantidade, em vez do mínimo possível de rooming lists;
+shared.switch.generateRoomingListByBlock.message;Corregir;Ative esta opção se quiser que o arquivo a baixar tenha as rooming lists separadas por data e blocos de quantidade, em vez do mínimo possível de rooming lists;"Arquivo a baixar: ES ""que se descargue el archivo""; é descarregar, não transferir."
 shared.switch.generateSeparateFiles.message;Corregir;Ative esta opção para gerar dois arquivos separados (vendas e pagamentos) compactados num arquivo ZIP. Caso contrário, será gerado um único arquivo.;
 shared.switch.generateSeparateFiles.title;Corregir;Gerar arquivos separados;
 shared.switch.googleGmail.message;Corregir;"Ative esta opção se quiser utilizar o Google Gmail.
@@ -2933,6 +3024,7 @@ shared.switch.priceUpload.message;Corregir;Ative esta opção se quiser enviar o
 shared.switch.priceUploadModal.message;Corregir;Ative esta opção se quiser enviar os seus preços para o channel manager através do PMS. Certifique-se de que o seu channel manager permite o envio desta informação.;
 shared.switch.productBoardPriceIncluded.message;Corregir;Ative esta opção se quiser incluir um regime neste controle. Nesse caso, indique o regime e se este está incluído no preço original.;
 shared.switch.productionSepteoBill.message;Corregir;Ative esta opção para que o Septeo Bill funcione em modo de produção e indique uma data se quiser agendá-lo (entretanto, utilizará o ambiente de teste);
+shared.switch.profileMappingAllowAddDeposit.message;Corregir;Ative esta opção para permitir a criação de depósitos quando são baixados na reserva.;"Baixados: os depósitos são descarregados (ES ""descargados""), não transferidos entre contas."
 shared.switch.profileMappingRefundDeposit.message;Corregir;Ative esta opção se quiser reembolsar o depósito automaticamente;
 shared.switch.propertyAllowMiDNI.message;Corregir;Ative esta opção se quiser permitir que o hóspede utilize a câmara do celular para digitalizar documentos MiDNI;
 shared.switch.propertyGSPAdditionalEndTime.message;Corregir;Ative esta opção para solicitar aos seus hóspedes a horário de término;

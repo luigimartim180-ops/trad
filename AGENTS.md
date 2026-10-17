@@ -16,7 +16,7 @@ python3 orquestrador.py aplicar    # regenera xlsx/csv já com decisões
 
 ## Testes e QA
 ```bash
-python3 -m unittest test_pt_pt_pt_br   # 77 testes
+python3 -m unittest test_pt_pt_pt_br   # 79 testes
 python3 qa_report.py                   # sign-off (7 checks)
 ```
 
@@ -28,6 +28,18 @@ python3 qa_report.py                   # sign-off (7 checks)
   "carregar"); flexões antes de regras genéricas ("anulado" antes de "anular").
 - Substituição direta `re.sub(padrao, subst, texto)` — nunca
   `re.sub(r"\\1", m.group(1))`, porque `group(1)` pode ser `None` → `TypeError`.
+- **Progressivo pt-PT → gerúndio**: `_fix_progressive` trata "está a carregar";
+  `_fix_bare_progressive` trata o progressivo sem auxiliar ("A processar…") e
+  só na posição inicial e com lista fechada de verbos — uma regra genérica
+  "A <palavra>" corromperia nomes próprios ("A Cuiner", "A Icar") e expressões
+  preposicionais ("a partir de", "a receber").
+- **`CORRECOES_BR`** (auditoria 2026-10): correções cirúrgicas por chave com
+  precedência sobre regras e agentes, para pt-PT que escapava às regras
+  genéricas — sobretudo "Descargar/Download" traduzido como "Transferir"
+  (pt-BR usa "Baixar").
+- **Cuidado com NaN**: `str(valor or "")` devolve `"nan"` porque `NaN` é
+  truthy; usar coerção explícita com `pd.isna`, senão as linhas `OK` (correção
+  vazia) escapam a qualquer auditoria.
 - `_protect`/`_restore` guardam `{{...}}`, `{0}`, tags HTML antes das regras.
 - Nunca traduzir ES/EN de raiz; nunca tocar em colunas fora de
   `Estado`/`Corrección PT`/`Comentario`.
